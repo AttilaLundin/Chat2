@@ -1,7 +1,12 @@
+import java.awt.*;
+import java.util.Set;
+
 public class ChatRoom {
 
-    private User c1;
-    private User c2;
-    private Message message;
+    private Set<User> users;
+    private List message;
+
+
+
 
 }
