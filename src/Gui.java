@@ -13,9 +13,10 @@ import java.util.List;
 
 public class Gui extends JFrame{
     private JPanel homePanel;
+    private Client client;
 
-
-    public Gui(){
+    public Gui(Client client){
+        this.client = client;
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
         setContentPane(homePanel);
@@ -50,7 +51,8 @@ public class Gui extends JFrame{
                         filePaths.add(i.getAbsolutePath());
                         System.out.println("File path: " + i.getAbsolutePath());
                     }
-                    //client.imageProcessing(user, new ChatRoom(), filePaths);
+                    client.sendMessage(filePaths.get(0));
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

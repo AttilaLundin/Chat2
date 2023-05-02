@@ -1,3 +1,6 @@
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -9,8 +12,8 @@ public class Client {
     private static final int SERVER_PORT = 1234;
     private Socket socket;
 
-    private ObjectOutputStream ois;
-    private ObjectInputStream oos;
+    private ObjectOutputStream oos;
+    private ObjectInputStream ois;
 
     public void connectToServer(){
         boolean connected = false;
@@ -20,8 +23,9 @@ public class Client {
                 socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
                 socket.setKeepAlive(true);
                 connected = socket.isConnected();
-                ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-                ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+                oos = new ObjectOutputStream(socket.getOutputStream());
+                ois = new ObjectInputStream(socket.getInputStream());
+                System.out.println("connected");
             } catch (IOException e){
                 System.out.println("waiting");
                 try{
@@ -33,8 +37,15 @@ public class Client {
         }
     }
 
-    public void sendMessage(){
-
+    public void sendMessage(String filePath){
+        try{
+            BufferedImage bufferedImage = ImageIO.read(new File(filePath));
+            oos.defaultWriteObject();
+            oos.writeObject(new Message("test", bufferedImage, new User()));
+            oos.flush();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
 
