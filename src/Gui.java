@@ -10,44 +10,21 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Represents the graphical user interface (GUI) for the chat application, allowing users to interact with the application.
- *
- * The GUI class provides an interface for users to interact with the chat application, including sending messages and images,
- * as well as navigating through various features and functionalities.
- */
-public class GUI extends JFrame{
 
-    private JPanel rootPanel;
-    private JPanel sidePanel;
-    private JButton homeButton;
-    private JButton gitHubButton;
-    private JButton messageButton;
-    private JButton contactsButton;
+public class Gui extends JFrame{
     private JPanel homePanel;
-    private User user;
-    private Client client;
 
-    /**
-     * Constructs a new GUI instance associated with the provided User object.
-     *
-     * Initializes the graphical user interface, sets its size and position, and establishes a connection to the server.
-     *
-     * @param user User object representing the current user interacting with the GUI
-     */
-    public GUI(User user){
-        this.user = user;
+
+    public Gui(){
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setContentPane(rootPanel);
+        setContentPane(homePanel);
         setSize(screeSize.width * 3 / 5,screeSize.height * 3 / 5);
         setMinimumSize(minmumWindowSize);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeHomePanel();
         setVisible(true);
-        client = new Client();
-        client.connectToServer();
     }
 
     /**
@@ -67,7 +44,7 @@ public class GUI extends JFrame{
                     dtde.acceptDrop(DnDConstants.ACTION_COPY);
 
                     if(!transferable.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) throw new Exception();
-                    List<File> images = (List<File>) transferable.getTransferData(DataFlavor.javaFileListFlavor);
+                    java.util.List<File> images = (List<File>) transferable.getTransferData(DataFlavor.javaFileListFlavor);
                     ArrayList<String> filePaths = new ArrayList<>();
                     for (File i : images) {
                         filePaths.add(i.getAbsolutePath());
