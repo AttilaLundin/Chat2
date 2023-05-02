@@ -40,7 +40,6 @@ public class Client {
     public void sendMessage(String filePath){
         try{
             BufferedImage bufferedImage = ImageIO.read(new File(filePath));
-            oos.defaultWriteObject();
             oos.writeObject(new Message("test", bufferedImage, new User()));
             oos.flush();
         }catch (IOException e){

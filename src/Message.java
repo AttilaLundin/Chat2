@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 
 public class Message implements Serializable {
     private String text;
-    private BufferedImage image;
+    private transient BufferedImage image;
     private String time;
     private User sender;
 
@@ -13,6 +13,10 @@ public class Message implements Serializable {
         this.image = image;
         time = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
         this.sender= sender;
+    }
+
+    public String getText(){
+        return text;
     }
 
 

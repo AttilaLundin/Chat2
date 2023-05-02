@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 //fixa enum för msg typer
@@ -11,12 +14,28 @@ import java.net.Socket;
  */
 public class ClientHandler implements Runnable{
     private final Socket socket;
+    private ObjectOutputStream oos;
+    private ObjectInputStream ois;
 
     public ClientHandler(Socket socket){
         this.socket = socket;
+
     }
 
     public void run(){
+        try(ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream())){
+            socket.setKeepAlive(true);
+
+            while (true){
+
+                Message message = (Message) ois.readObject();
+                System.out.println(message.getText());
+            }
+        }catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
 
     }
 

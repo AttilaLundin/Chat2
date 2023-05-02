@@ -1,4 +1,4 @@
-import java.io.*;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -25,7 +25,6 @@ public class Server {
         try (ServerSocket serverSocket = new ServerSocket(PORT)){
 
             while(true){
-
                 // Accept incoming client connections,
                 // listens for a connection to be made to this socket and accepts it. The method blocks until a connection is made.
                 Socket socket = serverSocket.accept();
