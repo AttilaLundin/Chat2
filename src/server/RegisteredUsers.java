@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class RegisteredUsers {
 
-    private Map<String, User> registeredUsers;
+    private final Map<String, User> registeredUsers;
 
     public RegisteredUsers(){
         registeredUsers = Collections.synchronizedMap(new HashMap<>());
