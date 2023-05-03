@@ -13,13 +13,15 @@ public class RegisteredUsers {
 
     public RegisteredUsers(){
         registeredUsers = Collections.synchronizedMap(new HashMap<>());
-
+        registeredUsers.put("a", new User());
     }
 
     public boolean validateUser(User loginAttempt){
         User user = registeredUsers.get(loginAttempt.getUserName());
         if(user == null) return false;
-        return user.equals(loginAttempt);
+        boolean bool = user.equals(loginAttempt);
+        System.out.println("validation " +bool);
+        return bool;
     }
 
     public boolean createUser(Register register){

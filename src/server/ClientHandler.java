@@ -36,6 +36,7 @@ public class ClientHandler implements Runnable{
             ObjectInputStream input = new ObjectInputStream(socket.getInputStream())){
             socket.setKeepAlive(true);
 
+
             while (true){
                 Object object = input.readObject();
                 if(object instanceof Message message){
@@ -44,6 +45,7 @@ public class ClientHandler implements Runnable{
                 else if(object instanceof User user){
                     output.writeObject(registeredUsers.validateUser(user));
                     output.flush();
+                    System.out.println("response from server sent ");
                 }else if(object instanceof Register register){
                     output.flush();
                     output.writeObject(registeredUsers.createUser(register));

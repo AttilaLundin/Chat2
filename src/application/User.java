@@ -16,17 +16,23 @@ public class User implements Serializable {
         this.password = password;
         this.chatRoomIDs = chatRoomIDs;
     }
-    public User(String Username, String displayName, String password){
-        this.UserName= Username;
-        this.displayName = displayName;
+    public User(String username, String displayName, String password){
+        this.UserName= username;
+        this.displayName = username;
+        this.password = password;
+        this.chatRoomIDs = new ArrayList<>();
+    }
+    public User(String username, String password){
+        this.UserName= username;
+        this.displayName = username;
         this.password = password;
         this.chatRoomIDs = new ArrayList<>();
     }
 
     public User(){
-        this.UserName= "username";
-        this.displayName = "displayName";
-        this.password = "password";
+        this.UserName= "a";
+        this.displayName = "a";
+        this.password = "aa";
     }
     public void addPassword(){
         LogInfo = new HashMap<>();
