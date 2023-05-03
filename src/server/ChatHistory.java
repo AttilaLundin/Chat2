@@ -12,19 +12,20 @@ public class ChatHistory {
     //kan vi lägger chattrumsID i separat klass, vi kör en hashmap på skiten, med
 
     private final Map<UUID, ChatRoom> chatRoomHistory;
-    private final Map<User, List<UUID>> väljettnamn;
+    private final Map<User, List<UUID>> chatroomsUsersAreIn;
 
     public ChatHistory(){
         chatRoomHistory = Collections.synchronizedMap(new HashMap<>());
-        väljettnamn = Collections.synchronizedMap(new HashMap<>());
+        chatroomsUsersAreIn = Collections.synchronizedMap(new HashMap<>());
     }
 
 
 //    lagrar alla chatrum här som är kopplade till user
     public void addChatRoom(ChatRoom chatRoom, UUID chatRoomId, List<User> users){
-        if(chatRoomHistory.putIfAbsent(chatRoomId, chatRoom) == null){
+        if(!chatRoomHistory.containsKey(chatRoomId)){
+
             for(User user : users){
-                väljettnamn.get(user).add(chatRoomId);
+                chatroomsUsersAreIn.get(user).add(chatRoomId);
             }
         }
     }
@@ -39,7 +40,7 @@ public class ChatHistory {
     }
 
     public void addMessage(UUID chatRoomId, Message message){
-
+        chatRoomHistory.get(chatRoomId).addMessage(message);
     }
 
     public ChatRoom getChatroom(int chatRoomId){

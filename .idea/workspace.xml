@@ -6,17 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="jh">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/ChatRoom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/ChatHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ChatHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ClientConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ConnectionHandler.java" afterDir="false" />
+    </list>
+    <list id="acccb66a-aa85-492c-a780-f96147765580" name="Changes by benny" comment="">
+      <change beforePath="$PROJECT_DIR$/src/application/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Message.java" afterDir="false" />
     </list>
     <list id="25826a8a-48ba-4ba5-adee-9a22015f4501" name="Changes by Mehrab Kazmi" comment="Changes by Mehrab Kazmi">
+      <change beforePath="$PROJECT_DIR$/src/application/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
     </list>
     <list id="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" name="Changes by rozgar" comment="">
+      <change beforePath="$PROJECT_DIR$/src/application/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/ChatRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ClientHandler.java" afterDir="false" />
     </list>
     <list id="6d653381-a49a-48d0-8db6-87a360bddb09" name="Changes by rozkh" comment="" />
@@ -41,13 +45,29 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/server/ClientHandler.java">
+    <file path="$PROJECT_DIR$/src/application/Message.java">
       <ranges>
-        <range start1="2" end1="2" start2="2" end2="4" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="7" end1="8" start2="9" end2="9" changelist="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" />
-        <range start1="21" end1="22" start2="22" end2="25" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="23" end1="24" start2="26" end2="27" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="32" end1="35" start2="35" end2="39" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="1" end1="3" start2="1" end2="1" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="33" end1="33" start2="31" end2="32" changelist="acccb66a-aa85-492c-a780-f96147765580" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/application/User.java">
+      <ranges>
+        <range start1="0" end1="0" start2="0" end2="2" changelist="25826a8a-48ba-4ba5-adee-9a22015f4501" />
+        <range start1="6" end1="6" start2="8" end2="10" changelist="25826a8a-48ba-4ba5-adee-9a22015f4501" />
+        <range start1="17" end1="18" start2="21" end2="22" changelist="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" />
+        <range start1="20" end1="20" start2="24" end2="30" changelist="25826a8a-48ba-4ba5-adee-9a22015f4501" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/application/ChatRoom.java">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="3" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="8" end1="9" start2="9" end2="9" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="10" end1="11" start2="10" end2="10" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="15" end1="16" start2="14" end2="15" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="19" end1="20" start2="18" end2="19" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="22" end1="22" start2="21" end2="29" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="43" end1="45" start2="50" end2="51" changelist="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" />
       </ranges>
     </file>
   </component>
@@ -60,23 +80,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Store__Message&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/attil/IdeaProjects/server/src&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Store__Message",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/attil/IdeaProjects/server",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\lundi\IdeaProjects\Chat2\src" />
@@ -86,7 +106,7 @@
       <recent name="C:\Users\attil\IdeaProjects\Chat2\src\application\graphics" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="application.Main" />
       <module name="Chat2" />
@@ -95,16 +115,16 @@
       </method>
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="server.ClientConnection" />
+      <option name="MAIN_CLASS_NAME" value="server.ConnectionHandler" />
       <module name="Chat2" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../server/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../server" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Server" />
       <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Server" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -117,7 +137,7 @@
       <updated>1683035226135</updated>
       <workItem from="1683051564033" duration="6760000" />
       <workItem from="1683065435676" duration="2302000" />
-      <workItem from="1683100819143" duration="5304000" />
+      <workItem from="1683100819143" duration="9655000" />
     </task>
     <task id="LOCAL−00001" summary="asd">
       <created>1683035410568</created>
@@ -177,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683104905667</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="jh">
+      <created>1683106396987</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683106396987</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,8 +227,8 @@
     <MESSAGE value="gui added" />
     <MESSAGE value="chatroom" />
     <MESSAGE value="chatroom added" />
-    <MESSAGE value="jh" />
     <MESSAGE value="Changes by Mehrab Kazmi" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by Mehrab Kazmi" />
+    <MESSAGE value="jh" />
+    <option name="LAST_COMMIT_MESSAGE" value="jh" />
   </component>
 </project>
