@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="jh">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/ChatRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/ChatHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ChatHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ConnectionHandler.java" afterDir="false" />
     </list>
     <list id="acccb66a-aa85-492c-a780-f96147765580" name="Changes by benny" comment="">
       <change beforePath="$PROJECT_DIR$/src/application/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Message.java" afterDir="false" />
@@ -45,29 +42,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/application/Message.java">
-      <ranges>
-        <range start1="1" end1="3" start2="1" end2="1" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="33" end1="33" start2="31" end2="32" changelist="acccb66a-aa85-492c-a780-f96147765580" />
-      </ranges>
-    </file>
     <file path="$PROJECT_DIR$/src/application/User.java">
       <ranges>
         <range start1="0" end1="0" start2="0" end2="2" changelist="25826a8a-48ba-4ba5-adee-9a22015f4501" />
         <range start1="6" end1="6" start2="8" end2="10" changelist="25826a8a-48ba-4ba5-adee-9a22015f4501" />
         <range start1="17" end1="18" start2="21" end2="22" changelist="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" />
         <range start1="20" end1="20" start2="24" end2="30" changelist="25826a8a-48ba-4ba5-adee-9a22015f4501" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/application/ChatRoom.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="3" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="8" end1="9" start2="9" end2="9" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="10" end1="11" start2="10" end2="10" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="15" end1="16" start2="14" end2="15" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="19" end1="20" start2="18" end2="19" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="22" end1="22" start2="21" end2="29" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="43" end1="45" start2="50" end2="51" changelist="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" />
       </ranges>
     </file>
   </component>
@@ -137,7 +117,7 @@
       <updated>1683035226135</updated>
       <workItem from="1683051564033" duration="6760000" />
       <workItem from="1683065435676" duration="2302000" />
-      <workItem from="1683100819143" duration="9655000" />
+      <workItem from="1683100819143" duration="11178000" />
     </task>
     <task id="LOCAL−00001" summary="asd">
       <created>1683035410568</created>
@@ -204,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683106396987</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="jh">
+      <created>1683110981359</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1683110981359</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

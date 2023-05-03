@@ -22,12 +22,18 @@ public class ChatHistory {
 
 //    lagrar alla chatrum här som är kopplade till user
     public void addChatRoom(ChatRoom chatRoom, UUID chatRoomId, List<User> users){
-        if(!chatRoomHistory.containsKey(chatRoomId)){
+        if(chatRoomHistory.containsKey(chatRoomId)) return;
 
-            for(User user : users){
-                chatroomsUsersAreIn.get(user).add(chatRoomId);
+        chatRoomHistory.put(chatRoomId, chatRoom);
+        for(User user : users){
+            if(chatroomsUsersAreIn.containsKey(user)) chatroomsUsersAreIn.get(user).add(chatRoomId);
+            else {
+                ArrayList<UUID> chatrooms = new ArrayList<>();
+                chatrooms.add(chatRoomId);
+                chatroomsUsersAreIn.put(user, chatrooms);
             }
         }
+
     }
 
     //    lagrar alla chatrum i user som är kopplade till user
