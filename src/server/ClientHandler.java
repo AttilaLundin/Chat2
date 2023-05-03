@@ -1,6 +1,8 @@
 package server;
 
 import application.Message;
+import application.Register;
+import application.User;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -21,10 +23,12 @@ public class ClientHandler implements Runnable{
     private ObjectInputStream input;
 
     private ChatHistory chatHistory;
+    private RegisteredUsers registeredUsers;
 
-    public ClientHandler(Socket socket, ChatHistory chatHistory){
+    public ClientHandler(Socket socket, ChatHistory chatHistory, RegisteredUsers registeredUsers){
         this.socket = socket;
         this.chatHistory = chatHistory;
+        this.registeredUsers = registeredUsers;
     }
 
     public void run(){
@@ -36,6 +40,13 @@ public class ClientHandler implements Runnable{
                 Object object = input.readObject();
                 if(object instanceof Message message){
                     chatHistory.addMessage(message.getChatRoomID(), message);
+                }
+                else if(object instanceof User user){
+                    output.writeObject(registeredUsers.validateUser(user));
+                    output.flush();
+                }else if(object instanceof Register register){
+                    output.flush();
+                    output.writeObject(registeredUsers.createUser(register));
                 }
             }
         }catch (IOException | ClassNotFoundException e){

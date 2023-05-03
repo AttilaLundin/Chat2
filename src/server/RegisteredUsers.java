@@ -1,0 +1,31 @@
+package server;
+
+import application.Register;
+import application.User;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
+
+public class RegisteredUsers {
+
+    private Map<String, User> registeredUsers;
+
+    public RegisteredUsers(){
+        registeredUsers = Collections.synchronizedMap(new HashMap<>());
+    }
+
+    public boolean validateUser(User loginAttempt){
+        User user = registeredUsers.get(loginAttempt.getUserName());
+        return user != null && registeredUsers.get(user.getUserName()).equals(user);
+    }
+
+    public boolean createUser(Register register){
+        String username = register.getUsername();
+        if(registeredUsers.containsKey(username)) return false;
+        registeredUsers.put(username, new User(username, register.getPassword(), register.getDisplayName()));
+        return true;
+    }
+
+
+}
