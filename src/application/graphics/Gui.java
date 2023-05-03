@@ -1,3 +1,7 @@
+package application.graphics;
+
+import application.Client;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;

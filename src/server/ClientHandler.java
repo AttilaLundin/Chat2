@@ -1,3 +1,5 @@
+package server;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -29,22 +31,13 @@ public class ClientHandler implements Runnable{
 
             while (true){
 
-                Message message = (Message) ois.readObject();
+                application.Message message = (application.Message) ois.readObject();
                 System.out.println(message.getText());
             }
         }catch (IOException | ClassNotFoundException e){
             e.printStackTrace();
         }
-
-
     }
-
-
-
-
-
-
-
 }
 
 

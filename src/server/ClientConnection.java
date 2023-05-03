@@ -1,8 +1,10 @@
+package server;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
+public class ClientConnection {
     private static final int PORT = 1234;
 
     public static void main(String[] args){
@@ -19,7 +21,5 @@ public class Server {
             System.err.println("Server Error: " + e.getMessage());
             e.printStackTrace();
         }
-
     }
-
 }

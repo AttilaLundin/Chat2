@@ -1,3 +1,7 @@
+package application;
+
+import application.User;
+
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
