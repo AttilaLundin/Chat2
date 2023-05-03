@@ -42,12 +42,7 @@ public class Dashboard extends JFrame{
 
     }
 
-    /**
-     * Initializes the home panel, enabling drag and drop functionality for images.
-     *
-     * Sets up a DropTarget for the home panel, allowing users to drag and drop images onto the panel, and processes the dropped
-     * images by sending them to the server.
-     */
+
     private void initializeMainPanel(){
         mainPanel.setDropTarget(new DropTarget(mainPanel, DnDConstants.ACTION_COPY, new DropTargetAdapter() {
             @Override
