@@ -8,4 +8,4 @@ public class Login {
         String PasswordStored = user.getPasswordFromServer(user.getUserName());
         return user.getPassword().equals(PasswordStored);
     }
-}
+}///r
