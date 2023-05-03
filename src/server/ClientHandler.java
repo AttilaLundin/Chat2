@@ -10,13 +10,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 
-/**
- * Represents a client handler for the server, responsible for managing communication with a connected client.
- *
- * The ClientHandler class manages communication between the server and a connected client. It reads incoming messages
- * from clients and takes appropriate actions based on the message type. The class implements the Runnable interface,
- * allowing it to be run in a separate thread.
- */
+
 public class ClientHandler implements Runnable{
     private final Socket socket;
     private ObjectOutputStream output;
