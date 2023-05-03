@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="gui added">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-05-02_16_12__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-05-02_16_12__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="jh" />
+    <list id="acccb66a-aa85-492c-a780-f96147765580" name="Changes by benny" comment="" />
+    <list id="25826a8a-48ba-4ba5-adee-9a22015f4501" name="Changes by Mehrab Kazmi" comment="Changes by Mehrab Kazmi" />
+    <list id="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" name="Changes by rozgar" comment="">
+      <change beforePath="$PROJECT_DIR$/src/application/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/ChatRoom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
     </list>
+    <list id="6d653381-a49a-48d0-8db6-87a360bddb09" name="Changes by rozkh" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="gui" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -45,9 +48,9 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Store__Message&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/attil/IdeaProjects/server/src&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/attil/IdeaProjects/server&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -60,26 +63,29 @@
       <recent name="C:\Users\lundi\IdeaProjects\Chat2\src" />
       <recent name="C:\Users\lundi\IdeaProjects\Chat2\src\graphics" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\attil\IdeaProjects\Chat2\src\application\graphics" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="application.Main" />
       <module name="Chat2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Server" />
+      <option name="MAIN_CLASS_NAME" value="server.ConnectionHandler" />
       <module name="Chat2" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../server/src" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../server" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Server" />
       <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Server" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -90,7 +96,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683035226135</updated>
-      <workItem from="1683051564033" duration="794000" />
+      <workItem from="1683051564033" duration="6760000" />
+      <workItem from="1683065435676" duration="2302000" />
+      <workItem from="1683100819143" duration="11523000" />
     </task>
     <task id="LOCAL−00001" summary="asd">
       <created>1683035410568</created>
@@ -122,7 +130,63 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1683041702582</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="gui added">
+      <created>1683052657089</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683052657089</updated>
+    </task>
+    <task id="LOCAL-00007" summary="chatroom">
+      <created>1683052882123</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1683052882123</updated>
+    </task>
+    <task id="LOCAL-00008" summary="chatroom added">
+      <created>1683059004038</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683059004038</updated>
+    </task>
+    <task id="LOCAL-00009" summary="jh">
+      <created>1683104905667</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1683104905667</updated>
+    </task>
+    <task id="LOCAL-00010" summary="jh">
+      <created>1683106396987</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683106396987</updated>
+    </task>
+    <task id="LOCAL-00011" summary="jh">
+      <created>1683110981359</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1683110981359</updated>
+    </task>
+    <task id="LOCAL-00012" summary="jh">
+      <created>1683112497400</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1683112497400</updated>
+    </task>
+    <task id="LOCAL-00013" summary="jh">
+      <created>1683112632663</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1683112632663</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +207,10 @@
     <MESSAGE value="asd" />
     <MESSAGE value="Client class impelemented" />
     <MESSAGE value="gui added" />
-    <option name="LAST_COMMIT_MESSAGE" value="gui added" />
+    <MESSAGE value="chatroom" />
+    <MESSAGE value="chatroom added" />
+    <MESSAGE value="Changes by Mehrab Kazmi" />
+    <MESSAGE value="jh" />
+    <option name="LAST_COMMIT_MESSAGE" value="jh" />
   </component>
 </project>
