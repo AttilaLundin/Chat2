@@ -7,7 +7,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-//fixa enum för msg typer
 
 /**
  * Represents a client handler for the server, responsible for managing communication with a connected client.
@@ -18,8 +17,8 @@ import java.net.Socket;
  */
 public class ClientHandler implements Runnable{
     private final Socket socket;
-    private ObjectOutputStream oos;
-    private ObjectInputStream ois;
+    private ObjectOutputStream output;
+    private ObjectInputStream input;
 
     private ChatHistory chatHistory;
 
@@ -29,12 +28,12 @@ public class ClientHandler implements Runnable{
     }
 
     public void run(){
-        try(ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream())){
+        try(ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+            ObjectInputStream input = new ObjectInputStream(socket.getInputStream())){
             socket.setKeepAlive(true);
 
             while (true){
-                Object object = ois.readObject();
+                Object object = input.readObject();
                 if(object instanceof Message message){
                     chatHistory.addMessage(message.getChatRoomID(), message);
                 }
