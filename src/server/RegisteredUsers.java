@@ -13,6 +13,7 @@ public class RegisteredUsers {
 
     public RegisteredUsers(){
         registeredUsers = Collections.synchronizedMap(new HashMap<>());
+
     }
 
     public boolean validateUser(User loginAttempt){
