@@ -6,12 +6,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LoginWindow extends JFrame{
-    private JButton skapaAnvändareButton;
+    private JButton createUserButton;
     private JPanel rootPanel;
-    private JButton button1;
-    private JButton button2;
-    private JTextField textField1;
-    private JPasswordField passwordField1;
+    private JButton okButton;
+    private JButton exitButton;
+    private JTextField usernameField;
+    private JPasswordField passwordField;
     private Client client;
     public LoginWindow(Client client){
         this.client = client;

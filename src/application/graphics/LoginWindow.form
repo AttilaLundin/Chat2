@@ -10,10 +10,11 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="114cd" class="javax.swing.JButton" binding="skapaAnvändareButton" default-binding="true">
+      <component id="114cd" class="javax.swing.JButton" binding="createUserButton">
         <constraints border-constraint="South"/>
         <properties>
-          <text value="Skapa Användare"/>
+          <label value="Create new user"/>
+          <text value="Create new user"/>
         </properties>
       </component>
       <grid id="aad58" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -32,20 +33,22 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="a91c3" class="javax.swing.JButton" binding="button1" default-binding="true">
+              <component id="a91c3" class="javax.swing.JButton" binding="okButton">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Button"/>
+                  <label value="OK"/>
+                  <text value="OK"/>
                 </properties>
               </component>
-              <component id="cb7c7" class="javax.swing.JButton" binding="button2" default-binding="true">
+              <component id="cb7c7" class="javax.swing.JButton" binding="exitButton">
                 <constraints>
                   <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Button"/>
+                  <label value="EXIT"/>
+                  <text value="EXIT"/>
                 </properties>
               </component>
               <hspacer id="93a2a">
@@ -75,7 +78,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="bab6a" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+              <component id="bab6a" class="javax.swing.JTextField" binding="usernameField">
                 <constraints>
                   <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -83,7 +86,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="2de36" class="javax.swing.JPasswordField" binding="passwordField1" default-binding="true">
+              <component id="2de36" class="javax.swing.JPasswordField" binding="passwordField">
                 <constraints>
                   <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
