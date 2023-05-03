@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="lagra användare">
-      <change afterPath="$PROJECT_DIR$/src/application/graphics/Dashboard.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/graphics/Dashboard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/graphics/LoginWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/graphics/Gui.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/LoginWindow.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/graphics/Gui.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/RegisteredUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/RegisteredUsers.java" afterDir="false" />
+    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="lagra användare, logga in och skapa ny användare">
+      <change beforePath="$PROJECT_DIR$/src/application/graphics/Dashboard.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/Dashboard.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/graphics/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/Dashboard.java" afterDir="false" />
     </list>
-    <list id="2b0eaaff-6dd5-4d33-a30d-68f67e24d0f7" name="Changes by rozkh" comment="">
-      <change beforePath="$PROJECT_DIR$/src/server/RegisteredUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/RegisteredUsers.java" afterDir="false" />
-    </list>
+    <list id="48846e33-55ee-4cb0-b45b-7b816779e4ae" name="Changes by odaym" comment="" />
+    <list id="2b0eaaff-6dd5-4d33-a30d-68f67e24d0f7" name="Changes by rozkh" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="userLogin" />
+        <entry key="$PROJECT_DIR$" value="userLogin_central_storage" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,15 +43,6 @@
       </UrlAndAccount>
     </option>
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/server/RegisteredUsers.java">
-      <ranges>
-        <range start1="19" end1="20" start2="19" end2="21" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="25" end1="26" start2="26" end2="27" changelist="2b0eaaff-6dd5-4d33-a30d-68f67e24d0f7" />
-        <range start1="28" end1="30" start2="29" end2="29" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-      </ranges>
-    </file>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -75,11 +58,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "438",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "310",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "userLogin__central__storage",
+    "git-widget-placeholder": "gui__implementation",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/attil/IdeaProjects/server",
+    "last_opened_file_path": "C:/Users/attil/IdeaProjects/Chat2/src/application/graphics",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -89,6 +72,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\attil\IdeaProjects\Chat2\src\application\graphics" />
       <recent name="C:\Users\lundi\IdeaProjects\Chat2\src" />
       <recent name="C:\Users\lundi\IdeaProjects\Chat2\src\graphics" />
     </key>
@@ -211,7 +195,28 @@
       <option name="project" value="LOCAL" />
       <updated>1683125081982</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="lagra användare, logga in och skapa ny användare">
+      <created>1683133123556</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1683133123556</updated>
+    </task>
+    <task id="LOCAL-00017" summary="lagra användare, logga in och skapa ny användare">
+      <created>1683133164013</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1683133164014</updated>
+    </task>
+    <task id="LOCAL-00018" summary="lagra användare, logga in och skapa ny användare">
+      <created>1683133286754</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1683133286754</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +242,7 @@
     <MESSAGE value="Changes by Mehrab Kazmi" />
     <MESSAGE value="jh" />
     <MESSAGE value="lagra användare" />
-    <option name="LAST_COMMIT_MESSAGE" value="lagra användare" />
+    <MESSAGE value="lagra användare, logga in och skapa ny användare" />
+    <option name="LAST_COMMIT_MESSAGE" value="lagra användare, logga in och skapa ny användare" />
   </component>
 </project>
