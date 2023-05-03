@@ -2,27 +2,39 @@ package application;
 
 import java.io.Serializable;
 import java.util.*;
+
 public class User implements Serializable {
+    private int UsernamePasswordPair;
     private String UserName;
     private String displayName;
-    private String PassWord;
+    private String password;
+    private Map<String, String> LogInfo;
 
     private List<UUID> chatRoomIDs;
 
-    public User(String Username, String displayName, String PassWord, List<UUID> chatRoomIDs){
+    public User(String Username, String displayName, String password, List<UUID> chatRoomIDs){
         this.UserName= Username;
         this.displayName = displayName;
-        this.PassWord = PassWord;
+        this.password = password;
         this.chatRoomIDs = chatRoomIDs;
     }
 
     public User(){
-        this.UserName= "Username";
+        this.UserName= "username";
         this.displayName = "displayName";
-        this.PassWord = "PAssWord"; // varför stort W 🤨 jag vet inte bara blir så iblöand eller hru???
-
+        this.password = "password";
+    }
+    public void addPassword(){
+        LogInfo = new HashMap<>();
+        LogInfo.put(this.UserName, this.password);
     }
 
+    public String getPasswordFromServer(String UserName){
+       return LogInfo.get(UserName);
+    }
+    public String getPassword(){
+        return password;
+    }
     public void addChatRoom(UUID chatRoomID){
         this.chatRoomIDs.add(chatRoomID);
     }

@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="jh" />
+    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="jh">
+      <change afterPath="$PROJECT_DIR$/src/server/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
+    </list>
     <list id="acccb66a-aa85-492c-a780-f96147765580" name="Changes by benny" comment="" />
     <list id="25826a8a-48ba-4ba5-adee-9a22015f4501" name="Changes by Mehrab Kazmi" comment="Changes by Mehrab Kazmi" />
     <list id="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" name="Changes by rozgar" comment="">
-      <change beforePath="$PROJECT_DIR$/src/application/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/ChatRoom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
     </list>
     <list id="6d653381-a49a-48d0-8db6-87a360bddb09" name="Changes by rozkh" comment="" />
@@ -32,6 +35,34 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="0d12e642-6215-42f0-9da9-fa680f2be915" />
+        <option name="url" value="https://github.com/AttilaLundin/Chat2.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/application/User.java">
+      <ranges>
+        <range start1="4" end1="4" start2="4" end2="5" changelist="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" />
+        <range start1="5" end1="5" start2="6" end2="7" changelist="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" />
+        <range start1="7" end1="8" start2="9" end2="11" changelist="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" />
+        <range start1="11" end1="12" start2="14" end2="15" changelist="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" />
+        <range start1="14" end1="15" start2="17" end2="18" changelist="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" />
+        <range start1="19" end1="20" start2="22" end2="23" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="21" end1="22" start2="24" end2="30" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="23" end1="23" start2="31" end2="33" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="24" end1="25" start2="34" end2="37" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+      </ranges>
+    </file>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -48,7 +79,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Store__Message&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;userLogin&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/attil/IdeaProjects/server&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -66,8 +97,11 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\attil\IdeaProjects\Chat2\src\application\graphics" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="application" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="application.Main" />
       <module name="Chat2" />
