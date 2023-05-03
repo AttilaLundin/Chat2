@@ -4,18 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="jh">
-      <change afterPath="$PROJECT_DIR$/src/application/Register.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/RegisteredUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="lagra användare">
+      <change afterPath="$PROJECT_DIR$/src/application/graphics/Dashboard.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/graphics/Dashboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/graphics/LoginWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Register.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ConnectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/graphics/Gui.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/LoginWindow.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/graphics/Gui.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/RegisteredUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/RegisteredUsers.java" afterDir="false" />
     </list>
-    <list id="acccb66a-aa85-492c-a780-f96147765580" name="Changes by benny" comment="" />
-    <list id="25826a8a-48ba-4ba5-adee-9a22015f4501" name="Changes by Mehrab Kazmi" comment="Changes by Mehrab Kazmi" />
-    <list id="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" name="Changes by rozgar" comment="" />
-    <list id="6d653381-a49a-48d0-8db6-87a360bddb09" name="Changes by rozkh" comment="" />
+    <list id="2b0eaaff-6dd5-4d33-a30d-68f67e24d0f7" name="Changes by rozkh" comment="">
+      <change beforePath="$PROJECT_DIR$/src/server/RegisteredUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/RegisteredUsers.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +51,15 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/server/RegisteredUsers.java">
+      <ranges>
+        <range start1="19" end1="20" start2="19" end2="21" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="25" end1="26" start2="26" end2="27" changelist="2b0eaaff-6dd5-4d33-a30d-68f67e24d0f7" />
+        <range start1="28" end1="30" start2="29" end2="29" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+      </ranges>
+    </file>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -64,6 +75,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "438",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "userLogin__central__storage",
     "ignore.virus.scanning.warn.message": "true",
@@ -86,27 +98,6 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="application" />
     </key>
-  </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="application.Main" />
-      <module name="Chat2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Server" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="server.ConnectionHandler" />
-      <module name="Chat2" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../server" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Server" />
-    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -213,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683122802796</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="lagra användare">
+      <created>1683125081982</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1683125081982</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +236,7 @@
     <MESSAGE value="chatroom added" />
     <MESSAGE value="Changes by Mehrab Kazmi" />
     <MESSAGE value="jh" />
-    <option name="LAST_COMMIT_MESSAGE" value="jh" />
+    <MESSAGE value="lagra användare" />
+    <option name="LAST_COMMIT_MESSAGE" value="lagra användare" />
   </component>
 </project>

@@ -4,12 +4,10 @@ import java.io.Serializable;
 import java.util.*;
 
 public class User implements Serializable {
-    private int UsernamePasswordPair;
     private String UserName;
     private String displayName;
     private String password;
     private Map<String, String> LogInfo;
-
     private List<UUID> chatRoomIDs;
 
     public User(String Username, String displayName, String password, List<UUID> chatRoomIDs){
@@ -35,9 +33,6 @@ public class User implements Serializable {
         LogInfo.put(this.UserName, this.password);
     }
 
-    public boolean validPassword(User user){
-        return this.password.equals(user.password);
-    }
     public String getPasswordFromServer(String UserName){
        return LogInfo.get(UserName);
     }
@@ -55,4 +50,19 @@ public class User implements Serializable {
     public String getDisplayName() {
         return displayName;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj) return true;
+        if(obj == null || getClass() != obj.getClass()) return false;
+        User user = (User) obj;
+
+        return user.UserName.equals(this.UserName) && user.password.equals(this.password);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(this.UserName);
+    }
+
 }

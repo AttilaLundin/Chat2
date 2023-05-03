@@ -17,15 +17,14 @@ public class RegisteredUsers {
 
     public boolean validateUser(User loginAttempt){
         User user = registeredUsers.get(loginAttempt.getUserName());
-        return user != null && registeredUsers.get(user.getUserName()).equals(user);
+        if(user == null) return false;
+        return user.equals(loginAttempt);
     }
 
     public boolean createUser(Register register){
         String username = register.getUsername();
         if(registeredUsers.containsKey(username)) return false;
-        registeredUsers.put(username, new User(username, register.getPassword(), register.getDisplayName()));
+        registeredUsers.put(username, new User(username, register.getPassword(), username));
         return true;
     }
-
-
 }
