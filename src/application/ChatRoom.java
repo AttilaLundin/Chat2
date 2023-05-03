@@ -47,7 +47,7 @@ public class ChatRoom implements Cloneable{
     @Override
     protected ChatRoom clone() {
         try{
-          return (ChatRoom) super.clone();
+            return (ChatRoom) super.clone();
         }
         catch(CloneNotSupportedException e){
             throw new AssertionError("Cloning for this object is not supported", e);

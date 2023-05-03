@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="jh">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ChatHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ChatHistory.java" afterDir="false" />
-    </list>
-    <list id="acccb66a-aa85-492c-a780-f96147765580" name="Changes by benny" comment="">
-      <change beforePath="$PROJECT_DIR$/src/application/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Message.java" afterDir="false" />
-    </list>
-    <list id="25826a8a-48ba-4ba5-adee-9a22015f4501" name="Changes by Mehrab Kazmi" comment="Changes by Mehrab Kazmi">
-      <change beforePath="$PROJECT_DIR$/src/application/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
-    </list>
+    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="jh" />
+    <list id="acccb66a-aa85-492c-a780-f96147765580" name="Changes by benny" comment="" />
+    <list id="25826a8a-48ba-4ba5-adee-9a22015f4501" name="Changes by Mehrab Kazmi" comment="Changes by Mehrab Kazmi" />
     <list id="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" name="Changes by rozgar" comment="">
       <change beforePath="$PROJECT_DIR$/src/application/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/ChatRoom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ClientHandler.java" afterDir="false" />
     </list>
     <list id="6d653381-a49a-48d0-8db6-87a360bddb09" name="Changes by rozkh" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,16 +31,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/application/User.java">
-      <ranges>
-        <range start1="0" end1="0" start2="0" end2="2" changelist="25826a8a-48ba-4ba5-adee-9a22015f4501" />
-        <range start1="6" end1="6" start2="8" end2="10" changelist="25826a8a-48ba-4ba5-adee-9a22015f4501" />
-        <range start1="17" end1="18" start2="21" end2="22" changelist="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" />
-        <range start1="20" end1="20" start2="24" end2="30" changelist="25826a8a-48ba-4ba5-adee-9a22015f4501" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -117,7 +98,7 @@
       <updated>1683035226135</updated>
       <workItem from="1683051564033" duration="6760000" />
       <workItem from="1683065435676" duration="2302000" />
-      <workItem from="1683100819143" duration="11178000" />
+      <workItem from="1683100819143" duration="11523000" />
     </task>
     <task id="LOCAL−00001" summary="asd">
       <created>1683035410568</created>
@@ -191,7 +172,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683110981359</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="jh">
+      <created>1683112497400</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1683112497400</updated>
+    </task>
+    <task id="LOCAL-00013" summary="jh">
+      <created>1683112632663</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1683112632663</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
