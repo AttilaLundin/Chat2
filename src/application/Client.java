@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.UUID;
 
 public class Client {
 
@@ -45,7 +46,7 @@ public class Client {
     public void sendMessage(String filePath){
         try{
             BufferedImage bufferedImage = ImageIO.read(new File(filePath));
-            oos.writeObject(new Message("test", bufferedImage, new User())); // skickar msg till server, vad näst?
+            oos.writeObject(new Message("test", bufferedImage, new User(), UUID.randomUUID())); // skickar msg till server, vad näst?
             oos.flush();
         }catch (IOException e){
             e.printStackTrace();

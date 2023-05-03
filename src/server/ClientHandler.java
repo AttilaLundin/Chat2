@@ -1,5 +1,7 @@
 package server;
 
+import application.Message;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -19,9 +21,11 @@ public class ClientHandler implements Runnable{
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
 
-    public ClientHandler(Socket socket){
-        this.socket = socket;
+    private ChatHistory chatHistory;
 
+    public ClientHandler(Socket socket, ChatHistory chatHistory){
+        this.socket = socket;
+        this.chatHistory = chatHistory;
     }
 
     public void run(){
@@ -30,9 +34,10 @@ public class ClientHandler implements Runnable{
             socket.setKeepAlive(true);
 
             while (true){
-
-                application.Message message = (application.Message) ois.readObject();
-                System.out.println(message.getText());
+                Object object = ois.readObject();
+                if(object instanceof Message message){
+                    chatHistory.addMessage(message.getChatRoomID(), message);
+                }
             }
         }catch (IOException | ClassNotFoundException e){
             e.printStackTrace();

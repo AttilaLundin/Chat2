@@ -1,6 +1,7 @@
 package server;
 
 import application.ChatRoom;
+import application.Message;
 import application.User;
 
 import java.util.*;
@@ -10,13 +11,12 @@ public class ChatHistory {
 
     //kan vi lägger chattrumsID i separat klass, vi kör en hashmap på skiten, med
 
-    private Map<UUID, ChatRoom> chatRoomHistory;
-    private Map<User, List<UUID>> väljettnamn;
-    private UUID chatRoomId;
-
+    private final Map<UUID, ChatRoom> chatRoomHistory;
+    private final Map<User, List<UUID>> väljettnamn;
 
     public ChatHistory(){
-        chatRoomHistory = Collections.synchronizedMap(chatRoomHistory);
+        chatRoomHistory = Collections.synchronizedMap(new HashMap<>());
+        väljettnamn = Collections.synchronizedMap(new HashMap<>());
     }
 
 
@@ -38,8 +38,9 @@ public class ChatHistory {
         }
     }
 
+    public void addMessage(UUID chatRoomId, Message message){
 
-
+    }
 
     public ChatRoom getChatroom(int chatRoomId){
         return chatRoomHistory.get(chatRoomId);

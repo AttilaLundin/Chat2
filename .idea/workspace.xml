@@ -4,27 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="chatroom added">
-      <change afterPath="$PROJECT_DIR$/src/application/ChatRoom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/ChatHistory.java" afterDir="false" />
+    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="jh">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChatHistory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChatRoom.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gui.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/Gui.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/Gui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ClientConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ChatHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ChatHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ClientConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ClientConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ClientHandler.java" afterDir="false" />
     </list>
-    <list id="25826a8a-48ba-4ba5-adee-9a22015f4501" name="Changes by Mehrab Kazmi" comment="">
-      <change beforePath="$PROJECT_DIR$/src/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
+    <list id="25826a8a-48ba-4ba5-adee-9a22015f4501" name="Changes by Mehrab Kazmi" comment="Changes by Mehrab Kazmi">
+      <change beforePath="$PROJECT_DIR$/src/application/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
     </list>
-    <list id="cf73eb8d-15ca-483c-849f-41e1b0929606" name="Changes by Odai" comment="" />
     <list id="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" name="Changes by rozgar" comment="">
-      <change beforePath="$PROJECT_DIR$/src/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ClientHandler.java" afterDir="false" />
     </list>
     <list id="6d653381-a49a-48d0-8db6-87a360bddb09" name="Changes by rozkh" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,21 +43,11 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/server/ClientHandler.java">
       <ranges>
-        <range start1="0" end1="0" start2="0" end2="2" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="5" end1="6" start2="7" end2="7" changelist="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" />
-        <range start1="31" end1="32" start2="32" end2="33" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="37" end1="39" start2="38" end2="38" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="40" end1="47" start2="39" end2="39" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/application/User.java">
-      <ranges>
-        <range start1="0" end1="0" start2="0" end2="2" changelist="25826a8a-48ba-4ba5-adee-9a22015f4501" />
-        <range start1="1" end1="2" start2="3" end2="4" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="6" end1="6" start2="8" end2="10" changelist="25826a8a-48ba-4ba5-adee-9a22015f4501" />
-        <range start1="7" end1="8" start2="11" end2="12" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="11" end1="12" start2="15" end2="16" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
-        <range start1="20" end1="20" start2="24" end2="30" changelist="25826a8a-48ba-4ba5-adee-9a22015f4501" />
+        <range start1="2" end1="2" start2="2" end2="4" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="7" end1="8" start2="9" end2="9" changelist="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" />
+        <range start1="21" end1="22" start2="22" end2="25" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="23" end1="24" start2="26" end2="27" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
+        <range start1="32" end1="35" start2="35" end2="39" changelist="02740190-028b-4c58-bdf5-1625c1ed7212" />
       </ranges>
     </file>
   </component>
@@ -103,7 +86,7 @@
       <recent name="C:\Users\attil\IdeaProjects\Chat2\src\application\graphics" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="application.Main" />
       <module name="Chat2" />
@@ -134,7 +117,7 @@
       <updated>1683035226135</updated>
       <workItem from="1683051564033" duration="6760000" />
       <workItem from="1683065435676" duration="2302000" />
-      <workItem from="1683100819143" duration="3877000" />
+      <workItem from="1683100819143" duration="5304000" />
     </task>
     <task id="LOCAL−00001" summary="asd">
       <created>1683035410568</created>
@@ -187,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683059004038</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="jh">
+      <created>1683104905667</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1683104905667</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +200,8 @@
     <MESSAGE value="gui added" />
     <MESSAGE value="chatroom" />
     <MESSAGE value="chatroom added" />
-    <option name="LAST_COMMIT_MESSAGE" value="chatroom added" />
+    <MESSAGE value="jh" />
+    <MESSAGE value="Changes by Mehrab Kazmi" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by Mehrab Kazmi" />
   </component>
 </project>
