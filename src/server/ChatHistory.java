@@ -10,7 +10,7 @@ import java.util.*;
 public class ChatHistory {
 
     //kan vi lägger chattrumsID i separat klass, vi kör en hashmap på skiten, med
-
+    // enkla versionen, add message synchronized, problem med alien message
     private final Map<UUID, ChatRoom> chatRoomHistory;
     private final Map<User, List<UUID>> chatroomsUsersAreIn;
 

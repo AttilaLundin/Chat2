@@ -9,5 +9,4 @@ public class Main {
         Gui gui = new Gui(client);
         client.connectToServer();
     }
-
 }
