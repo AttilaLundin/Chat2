@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="application.graphics.Dashboard">
+  <grid id="27dc6" binding="rootPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="1236" height="814"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="f4033" binding="sidePanel" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints border-constraint="West"/>
+        <properties>
+          <background color="-15790311"/>
+          <foreground color="-15790311"/>
+        </properties>
+        <border type="bevel-raised"/>
+        <children>
+          <component id="64473" class="javax.swing.JButton" binding="dashboardButton">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="40" height="40"/>
+                <preferred-size width="40" height="40"/>
+                <maximum-size width="40" height="40"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-15066591"/>
+              <borderPainted value="false"/>
+              <foreground color="-15066591"/>
+              <icon value="application/graphics/icons/icons8_dashboard_layout_40px.png"/>
+              <label value=""/>
+              <opaque value="false"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="e023" class="javax.swing.JButton" binding="githubButton">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="40" height="40"/>
+                <preferred-size width="40" height="40"/>
+                <maximum-size width="40" height="40"/>
+              </grid>
+            </constraints>
+            <properties>
+              <actionCommand value="Button"/>
+              <background color="-15066591"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <defaultCapable value="true"/>
+              <foreground color="-15066591"/>
+              <icon value="application/graphics/icons/icons8_github_40px_1.png"/>
+              <label value=""/>
+              <text value=""/>
+              <verifyInputWhenFocusTarget value="true"/>
+              <visible value="true"/>
+            </properties>
+          </component>
+          <component id="eba3c" class="javax.swing.JButton" binding="contactsButton">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="40" height="40"/>
+                <preferred-size width="40" height="40"/>
+                <maximum-size width="40" height="40"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-15066591"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <foreground color="-15066591"/>
+              <icon value="application/graphics/icons/icons8_contacts_40px.png"/>
+              <label value=""/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="3885a" class="javax.swing.JButton" binding="messageButton">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-15066591"/>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <foreground color="-15066591"/>
+              <icon value="application/graphics/icons/icons8_topic_40px.png"/>
+              <label value=""/>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="f0086" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <background color="-15066588"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="1d3ad" layout-manager="GridBagLayout">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <visible value="false"/>
+            </properties>
+            <border type="bevel-lowered"/>
+            <children/>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

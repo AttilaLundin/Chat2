@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="gui added">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-05-02_16_12__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-05-02_16_12__Changes_.xml" afterDir="false" />
+    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="merged branch with master">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/graphics/Dashboard.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/Dashboard.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/graphics/LoginWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/LoginWindow.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/graphics/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/LoginWindow.java" afterDir="false" />
     </list>
+    <list id="48846e33-55ee-4cb0-b45b-7b816779e4ae" name="Changes by odaym" comment="" />
+    <list id="2b0eaaff-6dd5-4d33-a30d-68f67e24d0f7" name="Changes by rozkh" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,10 +27,23 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="gui" />
+        <entry key="$PROJECT_DIR$" value="userLogin_central_storage" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="0d12e642-6215-42f0-9da9-fa680f2be915" />
+        <option name="url" value="https://github.com/AttilaLundin/Chat2.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -38,49 +54,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/attil/IdeaProjects/server/src&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "310",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/attil/IdeaProjects/Chat2/src/application/graphics",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\attil\IdeaProjects\Chat2\src\application\graphics" />
       <recent name="C:\Users\lundi\IdeaProjects\Chat2\src" />
       <recent name="C:\Users\lundi\IdeaProjects\Chat2\src\graphics" />
     </key>
-  </component>
-  <component name="RunManager" selected="Application.Server">
-    <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Chat2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Server" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Server" />
-      <module name="Chat2" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../server/src" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.Server" />
-      <item itemvalue="Application.Main" />
-    </list>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\attil\IdeaProjects\Chat2\src\application\graphics" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="application" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -90,7 +93,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683035226135</updated>
-      <workItem from="1683051564033" duration="794000" />
+      <workItem from="1683051564033" duration="6760000" />
+      <workItem from="1683065435676" duration="2302000" />
+      <workItem from="1683100819143" duration="11523000" />
+      <workItem from="1683192244152" duration="302000" />
     </task>
     <task id="LOCAL−00001" summary="asd">
       <created>1683035410568</created>
@@ -122,7 +128,147 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1683041702582</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="gui added">
+      <created>1683052657089</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683052657089</updated>
+    </task>
+    <task id="LOCAL-00007" summary="chatroom">
+      <created>1683052882123</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1683052882123</updated>
+    </task>
+    <task id="LOCAL-00008" summary="chatroom added">
+      <created>1683059004038</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683059004038</updated>
+    </task>
+    <task id="LOCAL-00009" summary="jh">
+      <created>1683104905667</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1683104905667</updated>
+    </task>
+    <task id="LOCAL-00010" summary="jh">
+      <created>1683106396987</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683106396987</updated>
+    </task>
+    <task id="LOCAL-00011" summary="jh">
+      <created>1683110981359</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1683110981359</updated>
+    </task>
+    <task id="LOCAL-00012" summary="jh">
+      <created>1683112497400</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1683112497400</updated>
+    </task>
+    <task id="LOCAL-00013" summary="jh">
+      <created>1683112632663</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1683112632663</updated>
+    </task>
+    <task id="LOCAL-00014" summary="jh">
+      <created>1683122802796</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1683122802796</updated>
+    </task>
+    <task id="LOCAL-00015" summary="lagra användare">
+      <created>1683125081982</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1683125081982</updated>
+    </task>
+    <task id="LOCAL-00016" summary="lagra användare, logga in och skapa ny användare">
+      <created>1683133123556</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1683133123556</updated>
+    </task>
+    <task id="LOCAL-00017" summary="lagra användare, logga in och skapa ny användare">
+      <created>1683133164013</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1683133164014</updated>
+    </task>
+    <task id="LOCAL-00018" summary="lagra användare, logga in och skapa ny användare">
+      <created>1683133286754</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1683133286754</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Dashboard gui">
+      <created>1683136261127</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1683136261127</updated>
+    </task>
+    <task id="LOCAL-00020" summary="LoginWindow gui">
+      <created>1683136424548</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1683136424548</updated>
+    </task>
+    <task id="LOCAL-00021" summary="LoginWindow gui">
+      <created>1683138651417</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1683138651417</updated>
+    </task>
+    <task id="LOCAL-00022" summary="loggin dude">
+      <created>1683138675084</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1683138675084</updated>
+    </task>
+    <task id="LOCAL-00023" summary="loggin dude">
+      <created>1683138827574</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1683138827574</updated>
+    </task>
+    <task id="LOCAL-00024" summary="merged branch with master">
+      <created>1683201897100</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1683201897100</updated>
+    </task>
+    <task id="LOCAL-00025" summary="merged branch with master">
+      <created>1683201903879</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1683201903879</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +289,16 @@
     <MESSAGE value="asd" />
     <MESSAGE value="Client class impelemented" />
     <MESSAGE value="gui added" />
-    <option name="LAST_COMMIT_MESSAGE" value="gui added" />
+    <MESSAGE value="chatroom" />
+    <MESSAGE value="chatroom added" />
+    <MESSAGE value="Changes by Mehrab Kazmi" />
+    <MESSAGE value="jh" />
+    <MESSAGE value="lagra användare" />
+    <MESSAGE value="lagra användare, logga in och skapa ny användare" />
+    <MESSAGE value="Dashboard gui" />
+    <MESSAGE value="LoginWindow gui" />
+    <MESSAGE value="loggin dude" />
+    <MESSAGE value="merged branch with master" />
+    <option name="LAST_COMMIT_MESSAGE" value="merged branch with master" />
   </component>
 </project>
