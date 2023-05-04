@@ -9,13 +9,12 @@ import java.awt.event.ActionListener;
 
 public class UserCreation extends JFrame {
     private JPanel rootPanel;
-    private JButton button1;
     private JButton createButton;
-    private JTextField textField1;
-    private JPasswordField passwordField1;
+    private JTextField usernameField;
+    private JPasswordField reenteredpasswordField;
     private JTextField textField2;
     private JPasswordField passwordField2;
-    private JButton button2;
+    private JButton capybara;
     private Register user;
     public UserCreation() {
         Dimension minmumWindowSize = new Dimension(500, 300);
@@ -26,7 +25,7 @@ public class UserCreation extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-        user = new Register(textField1.getText(), passwordField1.getText(),textField2.getText());
+        user = new Register(usernameField.getText(), reenteredpasswordField.getText(),textField2.getText());
 
         createButton.addActionListener(new ActionListener() {
 

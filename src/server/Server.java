@@ -26,3 +26,5 @@ public class Server {
         }
     }
 }
+
+//stöd för persistence
