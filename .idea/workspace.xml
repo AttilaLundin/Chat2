@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="updated UI">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/graphics/LoginWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/LoginWindow.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/graphics/UserCreation.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/UserCreation.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/graphics/UserCreation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/UserCreation.java" afterDir="false" />
-    </list>
+    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="updated UI" />
     <list id="48846e33-55ee-4cb0-b45b-7b816779e4ae" name="Changes by odaym" comment="" />
     <list id="2b0eaaff-6dd5-4d33-a30d-68f67e24d0f7" name="Changes by rozkh" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -325,7 +320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683224282023</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="updated UI">
+      <created>1683226095700</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1683226095700</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
