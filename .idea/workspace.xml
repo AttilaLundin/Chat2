@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="loggin dude">
+    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="merged branch with master">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/graphics/Dashboard.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/Dashboard.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/graphics/LoginWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/LoginWindow.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/graphics/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/LoginWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ChatHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ChatHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/RegisteredUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/RegisteredUsers.java" afterDir="false" />
     </list>
     <list id="48846e33-55ee-4cb0-b45b-7b816779e4ae" name="Changes by odaym" comment="" />
     <list id="2b0eaaff-6dd5-4d33-a30d-68f67e24d0f7" name="Changes by rozkh" comment="" />
@@ -254,7 +254,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683138827574</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="merged branch with master">
+      <created>1683201897100</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1683201897100</updated>
+    </task>
+    <task id="LOCAL-00025" summary="merged branch with master">
+      <created>1683201903879</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1683201903879</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,6 +298,7 @@
     <MESSAGE value="Dashboard gui" />
     <MESSAGE value="LoginWindow gui" />
     <MESSAGE value="loggin dude" />
-    <option name="LAST_COMMIT_MESSAGE" value="loggin dude" />
+    <MESSAGE value="merged branch with master" />
+    <option name="LAST_COMMIT_MESSAGE" value="merged branch with master" />
   </component>
 </project>

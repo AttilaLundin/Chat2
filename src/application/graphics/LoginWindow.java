@@ -17,6 +17,7 @@ public class LoginWindow extends JFrame{
     private JButton exitButton;
     private JTextField usernameField;
     private JPasswordField passwordField;
+    private JPanel okcancelPanel;
     private Client client;
     public LoginWindow(Client client){
         this.client = client;

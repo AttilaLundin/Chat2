@@ -26,7 +26,7 @@
             </constraints>
             <properties>
               <background color="-15066591"/>
-              <borderPainted value="true"/>
+              <borderPainted value="false"/>
               <foreground color="-15066591"/>
               <icon value="application/graphics/icons/icons8_dashboard_layout_40px.png"/>
               <label value=""/>
