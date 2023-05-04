@@ -13,7 +13,7 @@ public class RegisteredUsers {
 
     public RegisteredUsers(){
         registeredUsers = Collections.synchronizedMap(new HashMap<>());
-        registeredUsers.put("a", new User());
+        registeredUsers.put("test", new User.Builder("test", "testp").build());
     }
 
     public boolean validateUser(User loginAttempt){
@@ -27,7 +27,7 @@ public class RegisteredUsers {
     public boolean createUser(Register register){
         String username = register.getUsername();
         if(registeredUsers.containsKey(username)) return false;
-        registeredUsers.put(username, new User());
+        registeredUsers.put(username, new User.Builder("test", "testp").build());
         return true;
     }
 }
