@@ -16,6 +16,7 @@ public class UserCreation extends JFrame {
     private JPasswordField passwordField2;
     private JButton capybara;
     private Register user;
+
     public UserCreation() {
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
