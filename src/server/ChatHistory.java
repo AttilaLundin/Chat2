@@ -33,7 +33,6 @@ public class ChatHistory {
                 chatroomsUsersAreIn.put(user, chatrooms);
             }
         }
-
     }
 
     //    lagrar alla chatrum i user som är kopplade till user
