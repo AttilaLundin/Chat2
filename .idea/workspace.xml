@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="merged branch with master">
+      <change afterPath="$PROJECT_DIR$/src/application/graphics/icons/icons8_Password_Key_40px.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/graphics/icons/icons8_close_40px.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/graphics/icons/icons8_login_40px_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/application/graphics/icons/icons8_username_40px.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/graphics/Dashboard.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/Dashboard.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/graphics/LoginWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/LoginWindow.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/graphics/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/LoginWindow.java" afterDir="false" />
     </list>
     <list id="48846e33-55ee-4cb0-b45b-7b816779e4ae" name="Changes by odaym" comment="" />
     <list id="2b0eaaff-6dd5-4d33-a30d-68f67e24d0f7" name="Changes by rozkh" comment="" />
@@ -27,10 +29,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="userLogin_central_storage" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -59,10 +62,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "100",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "310",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "grapgicalupdate__loginwindow",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/attil/IdeaProjects/Chat2/src/application/graphics",
     "node.js.detected.package.eslint": "true",
@@ -79,6 +84,7 @@
       <recent name="C:\Users\lundi\IdeaProjects\Chat2\src\graphics" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\attil\IdeaProjects\Chat2\src\application\graphics\icons" />
       <recent name="C:\Users\attil\IdeaProjects\Chat2\src\application\graphics" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
