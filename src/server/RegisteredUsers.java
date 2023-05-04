@@ -27,7 +27,7 @@ public class RegisteredUsers {
     public boolean createUser(Register register){
         String username = register.getUsername();
         if(registeredUsers.containsKey(username)) return false;
-        registeredUsers.put(username, new User(username, register.getPassword(), username));
+        registeredUsers.put(username, new User());
         return true;
     }
 }

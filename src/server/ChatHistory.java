@@ -48,7 +48,7 @@ public class ChatHistory {
         chatRoomHistory.get(chatRoomId).addMessage(message);
     }
 
-    public ChatRoom getChatroom(int chatRoomId){
+    public ChatRoom getChatroom(UUID chatRoomId){
         return chatRoomHistory.get(chatRoomId);
 
     }
