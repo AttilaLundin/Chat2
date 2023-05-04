@@ -36,19 +36,15 @@
           </component>
           <component id="e023" class="javax.swing.JButton" binding="githubButton">
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <minimum-size width="40" height="40"/>
-                <preferred-size width="40" height="40"/>
-                <maximum-size width="40" height="40"/>
-              </grid>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <actionCommand value="Button"/>
-              <background color="-15066591"/>
+              <background color="-15790311"/>
               <borderPainted value="false"/>
-              <contentAreaFilled value="false"/>
+              <contentAreaFilled value="true"/>
               <defaultCapable value="true"/>
-              <foreground color="-15066591"/>
+              <foreground color="-15790311"/>
               <icon value="application/graphics/icons/icons8_github_40px_1.png"/>
               <label value=""/>
               <text value=""/>
@@ -65,24 +61,29 @@
               </grid>
             </constraints>
             <properties>
-              <background color="-15066591"/>
+              <background color="-15790311"/>
               <borderPainted value="false"/>
-              <contentAreaFilled value="false"/>
-              <foreground color="-15066591"/>
+              <contentAreaFilled value="true"/>
+              <foreground color="-15790311"/>
               <icon value="application/graphics/icons/icons8_contacts_40px.png"/>
               <label value=""/>
+              <opaque value="true"/>
               <text value=""/>
             </properties>
           </component>
           <component id="3885a" class="javax.swing.JButton" binding="messageButton">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="40" height="40"/>
+                <preferred-size width="40" height="40"/>
+                <maximum-size width="40" height="40"/>
+              </grid>
             </constraints>
             <properties>
-              <background color="-15066591"/>
+              <background color="-15790311"/>
               <borderPainted value="false"/>
-              <contentAreaFilled value="false"/>
-              <foreground color="-15066591"/>
+              <contentAreaFilled value="true"/>
+              <foreground color="-15790311"/>
               <icon value="application/graphics/icons/icons8_topic_40px.png"/>
               <label value=""/>
               <text value=""/>

@@ -24,7 +24,7 @@ public class LoginWindow extends JFrame{
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
         setContentPane(rootPanel);
-        setSize(screeSize.width / 5,screeSize.height  / 5);
+        setSize(screeSize.width / 5,screeSize.height  / 2);
         setMinimumSize(minmumWindowSize);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -33,7 +33,7 @@ public class LoginWindow extends JFrame{
         createUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Create_User createUser = new Create_User();
+                UserCreation createUser = new UserCreation();
 
             }
         });
