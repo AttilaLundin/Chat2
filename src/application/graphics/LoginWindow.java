@@ -51,7 +51,7 @@ public class LoginWindow extends JFrame{
                 String password = new String(passwordField.getPassword());
                 System.out.println("username: " + username + " Password: " + password);
 
-                if(client.sendLoginRequest(new User())) dispose();
+                if(client.sendLoginRequest(username, password)) dispose();
             }
         });
         passwordField.addActionListener(new ActionListener() {

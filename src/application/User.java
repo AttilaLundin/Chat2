@@ -4,33 +4,48 @@ import java.io.Serializable;
 import java.util.*;
 
 public class User implements Serializable {
-    private String UserName;
+    private String username;
     private String displayName;
     private String password;
     private Map<String, String> LogInfo;
     private List<UUID> chatRoomIDs;
 
-    public User(String Username, String displayName, String password, List<UUID> chatRoomIDs){
-        this.UserName= Username;
-        this.displayName = displayName;
-        this.password = password;
-        this.chatRoomIDs = chatRoomIDs;
+    private User(Builder builder){
+        this.username= builder.username;
+        this.displayName = builder.displayName;
+        this.password = builder.password;
+        this.chatRoomIDs = builder.chatRoomIDs;
     }
 
-    public User(){
-        this.UserName= "a";
-        this.displayName = "a";
-        this.password = "aa";
-    }
-    public User(String Username, String displayName, String password){
-        this.UserName= Username;
-        this.displayName = displayName;
-        this.password = password;
-      //  this.chatRoomIDs = chatRoomIDs;
+    public static class Builder{
+        private String username;
+        private String displayName;
+        private String password;
+        private List<UUID> chatRoomIDs;
+
+        public Builder (String username, String password){
+            this.username = username;
+            this.password = password;
+        }
+
+        public Builder displayName (String displayName){
+            this.displayName = displayName;
+            return this;
+        }
+
+        public Builder chatRoomIDs(List<UUID> chatRoomIDs) {
+            this.chatRoomIDs = chatRoomIDs;
+            return this;
+        }
+
+        public User build(){
+            return new User(this);
+        }
+
     }
     public void addPassword(){
         LogInfo = new HashMap<>();
-        LogInfo.put(this.UserName, this.password);
+        LogInfo.put(this.username, this.password);
     }
 
     public void addChatRoom(UUID chatRoomID){
@@ -39,7 +54,7 @@ public class User implements Serializable {
 
     public List<UUID> getChatRoomIDs(){return chatRoomIDs;}
 
-    public String getUserName(){return UserName;}
+    public String getUserName(){return username;}
 
     public String getDisplayName() {
         return displayName;
@@ -51,12 +66,12 @@ public class User implements Serializable {
         if(obj == null || getClass() != obj.getClass()) return false;
         User user = (User) obj;
 
-        return user.UserName.equals(this.UserName) && user.password.equals(this.password);
+        return user.username.equals(this.username) && user.password.equals(this.password);
     }
 
     @Override
     public int hashCode(){
-        return Objects.hash(this.UserName);
+        return Objects.hash(this.username);
     }
 
 }
