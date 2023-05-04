@@ -1,7 +1,6 @@
 package application.graphics;
 
 import application.Register;
-import application.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,17 +8,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UserCreation extends JFrame {
-    private JPanel panel1;
+    private JPanel rootPanel;
+    private JButton button1;
     private JButton createButton;
     private JTextField textField1;
     private JPasswordField passwordField1;
     private JTextField textField2;
     private JPasswordField passwordField2;
+    private JButton button2;
     private Register user;
     public UserCreation() {
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setContentPane(panel1);
+        setContentPane(rootPanel);
         setSize(screeSize.width / 5,screeSize.height  / 2);
         setMinimumSize(minmumWindowSize);
         setLocationRelativeTo(null);
