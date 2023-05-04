@@ -52,9 +52,10 @@ public class Client {
         }
     }
 
-    public boolean sendLoginRequest(User user){
+    public boolean sendLoginRequest(String username, String password){
         try{
-            output.writeObject(user);
+
+            output.writeObject(new User());
             output.flush();
 
             long timeout = System.currentTimeMillis();
