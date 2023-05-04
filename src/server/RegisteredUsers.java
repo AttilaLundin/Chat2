@@ -20,7 +20,7 @@ public class RegisteredUsers {
         User user = registeredUsers.get(loginAttempt.getUserName());
         if(user == null) return false;
         boolean bool = user.equals(loginAttempt);
-        System.out.println("validation " +bool);
+        System.out.println("validation " + bool);
         return bool;
     }
 

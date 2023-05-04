@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="loggin dude">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ChatHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ChatHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/RegisteredUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/RegisteredUsers.java" afterDir="false" />
     </list>
     <list id="48846e33-55ee-4cb0-b45b-7b816779e4ae" name="Changes by odaym" comment="" />
     <list id="2b0eaaff-6dd5-4d33-a30d-68f67e24d0f7" name="Changes by rozkh" comment="" />
@@ -81,15 +85,6 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="application" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="application.Main" />
-      <module name="Chat2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

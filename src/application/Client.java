@@ -57,8 +57,6 @@ public class Client {
         try{
             output.writeObject(user);
             output.flush();
-            System.out.println("User created: " + user.getUserName() + " " + user.getPassword());
-
 
             long timeout = System.currentTimeMillis();
             while(System.currentTimeMillis() - timeout < 5000){
