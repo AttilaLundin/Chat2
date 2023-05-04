@@ -2,25 +2,29 @@ package application;
 
 import java.io.Serializable;
 import java.util.*;
+
 public class User implements Serializable {
     private String UserName;
     private String displayName;
-    private String PassWord;
-
+    private String password;
+    private Map<String, String> LogInfo;
     private List<UUID> chatRoomIDs;
 
-    public User(String Username, String displayName, String PassWord, List<UUID> chatRoomIDs){
+    public User(String Username, String displayName, String password, List<UUID> chatRoomIDs){
         this.UserName= Username;
         this.displayName = displayName;
-        this.PassWord = PassWord;
+        this.password = password;
         this.chatRoomIDs = chatRoomIDs;
     }
 
     public User(){
-        this.UserName= "Username";
-        this.displayName = "displayName";
-        this.PassWord = "PAssWord"; // varför stort W 🤨 jag vet inte bara blir så iblöand eller hru???
-
+        this.UserName= "a";
+        this.displayName = "a";
+        this.password = "aa";
+    }
+    public void addPassword(){
+        LogInfo = new HashMap<>();
+        LogInfo.put(this.UserName, this.password);
     }
 
     public void addChatRoom(UUID chatRoomID){
@@ -34,4 +38,19 @@ public class User implements Serializable {
     public String getDisplayName() {
         return displayName;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj) return true;
+        if(obj == null || getClass() != obj.getClass()) return false;
+        User user = (User) obj;
+
+        return user.UserName.equals(this.UserName) && user.password.equals(this.password);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(this.UserName);
+    }
+
 }

@@ -1,6 +1,8 @@
 package server;
 
 import application.Message;
+import application.Register;
+import application.User;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -8,23 +10,19 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 
-/**
- * Represents a client handler for the server, responsible for managing communication with a connected client.
- *
- * The ClientHandler class manages communication between the server and a connected client. It reads incoming messages
- * from clients and takes appropriate actions based on the message type. The class implements the Runnable interface,
- * allowing it to be run in a separate thread.
- */
+
 public class ClientHandler implements Runnable{
     private final Socket socket;
     private ObjectOutputStream output;
     private ObjectInputStream input;
 
     private ChatHistory chatHistory;
+    private RegisteredUsers registeredUsers;
 
-    public ClientHandler(Socket socket, ChatHistory chatHistory){
+    public ClientHandler(Socket socket, ChatHistory chatHistory, RegisteredUsers registeredUsers){
         this.socket = socket;
         this.chatHistory = chatHistory;
+        this.registeredUsers = registeredUsers;
     }
 
     public void run(){
@@ -32,10 +30,19 @@ public class ClientHandler implements Runnable{
             ObjectInputStream input = new ObjectInputStream(socket.getInputStream())){
             socket.setKeepAlive(true);
 
+
             while (true){
                 Object object = input.readObject();
                 if(object instanceof Message message){
                     chatHistory.addMessage(message.getChatRoomID(), message);
+                }
+                else if(object instanceof User user){
+                    output.writeObject(registeredUsers.validateUser(user));
+                    output.flush();
+                    System.out.println("response from server sent ");
+                }else if(object instanceof Register register){
+                    output.flush();
+                    output.writeObject(registeredUsers.createUser(register));
                 }
             }
         }catch (IOException | ClassNotFoundException e){
