@@ -45,7 +45,7 @@ public class Client {
     public void sendMessage(String filePath){
         try{
             BufferedImage bufferedImage = ImageIO.read(new File(filePath));
-            output.writeObject(new Message("test", bufferedImage, new User(), chatRoom.getChatRoomID())); // skickar msg till server, vad näst?
+            output.writeObject(new Message("test", bufferedImage, new User.Builder("test", "testp").build(), chatRoom.getChatRoomID())); // skickar msg till server, vad näst?
             output.flush();
         }catch (IOException e){
             e.printStackTrace();
@@ -54,8 +54,7 @@ public class Client {
 
     public boolean sendLoginRequest(String username, String password){
         try{
-            UserCredentials credentials = new UserCredentials(username, password);
-            output.writeObject(credentials);
+            output.writeObject(new User.Builder(username, password).build());
             output.flush();
 
             long timeout = System.currentTimeMillis();
