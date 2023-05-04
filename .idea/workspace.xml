@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="new loginwindow look">
-      <change afterPath="$PROJECT_DIR$/src/application/graphics/icons/icons8_Refresh_40px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/graphics/icons/icons8_done_40px.png" afterDir="false" />
+    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="updated UI">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-05-02_16_12__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-05-02_16_12__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/graphics/Dashboard.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/Dashboard.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/graphics/LoginWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/LoginWindow.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/graphics/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/LoginWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/graphics/UserCreation.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/UserCreation.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/graphics/UserCreation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/UserCreation.java" afterDir="false" />
     </list>
     <list id="48846e33-55ee-4cb0-b45b-7b816779e4ae" name="Changes by odaym" comment="" />
     <list id="2b0eaaff-6dd5-4d33-a30d-68f67e24d0f7" name="Changes by rozkh" comment="" />
@@ -25,13 +19,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="new_ui_usercreation" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -69,13 +64,16 @@
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "310",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "new__ui__usercreation",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/attil/IdeaProjects/Chat2/src/application/graphics",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -125,6 +123,7 @@
       <workItem from="1683065435676" duration="2302000" />
       <workItem from="1683100819143" duration="11523000" />
       <workItem from="1683192244152" duration="302000" />
+      <workItem from="1683217183696" duration="1156000" />
     </task>
     <task id="LOCAL−00001" summary="asd">
       <created>1683035410568</created>
@@ -342,6 +341,7 @@
     <MESSAGE value="loggin dude" />
     <MESSAGE value="merged branch with master" />
     <MESSAGE value="new loginwindow look" />
-    <option name="LAST_COMMIT_MESSAGE" value="new loginwindow look" />
+    <MESSAGE value="updated UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated UI" />
   </component>
 </project>
