@@ -20,7 +20,7 @@ public class ChatHistory {
     }
 
 
-//    lagrar alla chatrum här som är kopplade till user
+    //    lagrar alla chatrum här som är kopplade till user
     public void addChatRoom(ChatRoom chatRoom, UUID chatRoomId, List<User> users){
         if(chatRoomHistory.containsKey(chatRoomId)) return;
 
@@ -33,7 +33,6 @@ public class ChatHistory {
                 chatroomsUsersAreIn.put(user, chatrooms);
             }
         }
-
     }
 
     //    lagrar alla chatrum i user som är kopplade till user
@@ -49,7 +48,7 @@ public class ChatHistory {
         chatRoomHistory.get(chatRoomId).addMessage(message);
     }
 
-    public ChatRoom getChatroom(int chatRoomId){
+    public ChatRoom getChatroom(UUID chatRoomId){
         return chatRoomHistory.get(chatRoomId);
 
     }

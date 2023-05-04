@@ -1,12 +1,15 @@
 package application;
 
-import application.graphics.Gui;
+import application.graphics.Create_User;
+import application.graphics.LoginWindow;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
         Client client = new Client();
-        Gui gui = new Gui(client);
+        //Create_User createUser = new Create_User();
+        LoginWindow loginWindow = new LoginWindow(client);
+
         client.connectToServer();
     }
 }

@@ -10,12 +10,13 @@ public class Server {
     public static void main(String[] args){
         //lägg till läser in chathistory
         ChatHistory chatHistory = new ChatHistory();
+        RegisteredUsers registeredUsers = new RegisteredUsers();
         try (ServerSocket serverSocket = new ServerSocket(PORT)){
 
 
             while(true){
                 Socket socket = serverSocket.accept();
-                ClientHandler clientHandler = new ClientHandler(socket, chatHistory);
+                ClientHandler clientHandler = new ClientHandler(socket, chatHistory, registeredUsers);
                 new Thread(clientHandler).start();
                 System.out.println("New Thread started for socket: " + socket.getPort());
             }
