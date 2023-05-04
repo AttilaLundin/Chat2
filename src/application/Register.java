@@ -25,4 +25,7 @@ public class Register implements Serializable {
         return password;
     }
 
+    public boolean RegisterUser(){
+        return true;
+    }
 }
