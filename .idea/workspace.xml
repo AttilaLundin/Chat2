@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="merged branch with master">
-      <change afterPath="$PROJECT_DIR$/src/application/graphics/icons/icons8_Password_Key_40px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/graphics/icons/icons8_close_40px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/graphics/icons/icons8_login_40px_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/graphics/icons/icons8_username_40px.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/graphics/LoginWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/graphics/LoginWindow.form" afterDir="false" />
-    </list>
+    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="merged branch with master" />
     <list id="48846e33-55ee-4cb0-b45b-7b816779e4ae" name="Changes by odaym" comment="" />
     <list id="2b0eaaff-6dd5-4d33-a30d-68f67e24d0f7" name="Changes by rozkh" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +60,7 @@
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "310",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "grapgicalupdate__loginwindow",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/attil/IdeaProjects/Chat2/src/application/graphics",
     "node.js.detected.package.eslint": "true",
@@ -274,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683201903879</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="new loginwindow look">
+      <created>1683207099836</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1683207099836</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +305,7 @@
     <MESSAGE value="LoginWindow gui" />
     <MESSAGE value="loggin dude" />
     <MESSAGE value="merged branch with master" />
-    <option name="LAST_COMMIT_MESSAGE" value="merged branch with master" />
+    <MESSAGE value="new loginwindow look" />
+    <option name="LAST_COMMIT_MESSAGE" value="new loginwindow look" />
   </component>
 </project>
