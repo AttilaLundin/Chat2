@@ -33,13 +33,14 @@ public class LoginWindow extends JFrame{
         createUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Create_User createUser = new Create_User();
 
             }
         });
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                System.exit(0);
             }
         });
         okButton.addActionListener(new ActionListener() {

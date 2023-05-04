@@ -5,11 +5,12 @@ import java.io.Serializable;
 public class Register implements Serializable {
     private final String userName;
     private final String password;
+    private  String DisplayName;
 
-    public Register(String Username, String displayName, String password){
+    public Register(String Username, String password,String displayName){
         this.userName= Username;
         this.password = password;
-
+        this.DisplayName = DisplayName;
     }
 
     public Register(){

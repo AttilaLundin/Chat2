@@ -22,6 +22,12 @@ public class User implements Serializable {
         this.displayName = "a";
         this.password = "aa";
     }
+    public User(String Username, String displayName, String password){
+        this.UserName= Username;
+        this.displayName = displayName;
+        this.password = password;
+      //  this.chatRoomIDs = chatRoomIDs;
+    }
     public void addPassword(){
         LogInfo = new HashMap<>();
         LogInfo.put(this.UserName, this.password);
