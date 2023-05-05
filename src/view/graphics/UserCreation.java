@@ -29,13 +29,20 @@ public class UserCreation extends JFrame {
         user = new Register(usernameField.getText(), reenteredpasswordField.getText(),textField2.getText());
 
         createButton.addActionListener(new ActionListener() {
-
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                System.out.println("User Created");
-                //System.exit(0);
-                dispose();
+            public void actionPerformed(ActionEvent e) {
+
+                String username = usernameField.getText();
+                String password = new String(passwordField2.getPassword());
+                String passwordControll=new String(reenteredpasswordField.getPassword());
+                String displayName = textField2.getText();
+                if (password.equals(passwordControll)){
+                    Register newUser = new Register(username, password, displayName);
+                }
+
             }
         });
     }
+
+
 }

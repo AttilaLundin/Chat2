@@ -42,6 +42,8 @@ public class LoginWindow extends JFrame{
                 System.exit(0);
             }
         });
+
+
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
