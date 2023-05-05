@@ -1,4 +1,4 @@
-package application;
+package Model;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -63,7 +63,6 @@ public class Client {
                 if(object != null){
                     System.out.println("user received");
                 }
-
             }
 
         }catch (IOException | ClassNotFoundException e){

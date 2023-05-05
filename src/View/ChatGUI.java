@@ -1,9 +1,8 @@
-package application;
+package View;
 
-import application.graphics.Create_User;
-import application.graphics.LoginWindow;
+import Model.Client;
 
-public class Main {
+public class ChatGUI {
     public static void main(String[] args) {
         System.out.println("Hello world!");
         Client client = new Client();

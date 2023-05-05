@@ -1,8 +1,8 @@
-package server;
+package Controller;
 
-import application.ChatRoom;
-import application.Message;
-import application.User;
+import Model.ChatRoom;
+import Model.Message;
+import Model.User;
 
 import java.util.*;
 

@@ -1,14 +1,11 @@
-package application.graphics;
+package View;
 
-import application.Client;
-import application.User;
+import Model.Client;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLOutput;
-import java.util.Arrays;
 
 public class LoginWindow extends JFrame{
     private JButton createUserButton;
