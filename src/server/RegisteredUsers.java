@@ -16,15 +16,16 @@ public class RegisteredUsers {
         registeredUsers.put("test", new User.Builder("test", "testp").build());
     }
 
-    public boolean validateUser(User loginAttempt){
+    public User validateUser(User loginAttempt){
         User user = registeredUsers.get(loginAttempt.getUserName());
-        if(user == null){
-            System.out.println("validation: false");
-            return false;
+        if(user.equals(loginAttempt)){
+            System.out.println("validation successful");
+            return user;
         }
-        boolean bool = user.equals(loginAttempt);
-        System.out.println("validation " + bool);
-        return bool;
+        else{
+            System.out.println("validation unsuccessful");
+            return null;
+        }
     }
 
     public boolean createUser(Register register){

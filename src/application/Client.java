@@ -59,11 +59,11 @@ public class Client {
 
             long timeout = System.currentTimeMillis();
             while(System.currentTimeMillis() - timeout < 5000){
-                Object object = input.readObject();
-                if(object instanceof Boolean bool){
-                    System.out.println("response from server " + bool);
-                    return bool;
+                Object object = (User) input.readObject();
+                if(object != null){
+                    System.out.println("user received");
                 }
+
             }
 
         }catch (IOException | ClassNotFoundException e){
