@@ -1,20 +1,17 @@
-package application.graphics;
+package view.graphics;
 
-import application.Client;
-import application.User;
+import controller.Client;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLOutput;
-import java.util.Arrays;
 
 public class LoginWindow extends JFrame{
     private JButton createUserButton;
     private JPanel rootPanel;
     private JButton okButton;
-    private JButton exitButton;
+    private JButton exitButton; //8===3
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JPanel okcancelPanel;
@@ -51,7 +48,9 @@ public class LoginWindow extends JFrame{
                 String password = new String(passwordField.getPassword());
                 System.out.println("username: " + username + " Password: " + password);
 
-                if(client.sendLoginRequest(username, password)) dispose();
+                if(client.sendLoginRequest(username, password)){
+                    dispose();
+                }
             }
         });
         passwordField.addActionListener(new ActionListener() {

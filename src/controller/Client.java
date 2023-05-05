@@ -1,4 +1,8 @@
-package application;
+package controller;
+
+import model.ChatRoom;
+import model.Message;
+import model.User;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -14,7 +18,7 @@ public class Client {
     private static final String SERVER_ADDRESS = "localhost";
     private static final int SERVER_PORT = 1234;
     private Socket socket;
-    // private User user;
+    private User user;
     private ChatRoom chatRoom;
 
     private ObjectOutputStream output;
@@ -45,7 +49,7 @@ public class Client {
     public void sendMessage(String filePath){
         try{
             BufferedImage bufferedImage = ImageIO.read(new File(filePath));
-            output.writeObject(new Message("test", bufferedImage, new User(), chatRoom.getChatRoomID())); // skickar msg till server, vad näst?
+            output.writeObject(new Message("test", bufferedImage, new User.Builder("test", "testp").build(), chatRoom.getChatRoomID())); // skickar msg till server, vad näst?
             output.flush();
         }catch (IOException e){
             e.printStackTrace();
@@ -54,17 +58,16 @@ public class Client {
 
     public boolean sendLoginRequest(String username, String password){
         try{
-
-            output.writeObject(new User());
+            output.writeObject(new User.Builder(username, password).build());
             output.flush();
 
             long timeout = System.currentTimeMillis();
             while(System.currentTimeMillis() - timeout < 5000){
-                Object object = input.readObject();
-                if(object instanceof Boolean bool){
-                    System.out.println("response from server " + bool);
-                    return bool;
+                User object = (User) input.readObject();
+                if(object != null){
+                    System.out.println("user received");
                 }
+                this.user = object;
             }
 
         }catch (IOException | ClassNotFoundException e){
@@ -72,5 +75,4 @@ public class Client {
         }
         return false;
     }
-
 }
