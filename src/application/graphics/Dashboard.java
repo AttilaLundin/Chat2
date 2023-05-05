@@ -1,3 +1,8 @@
+package application.graphics;
+
+import application.Client;
+import application.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
@@ -10,32 +15,36 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class Gui extends JFrame{
-    private JPanel homePanel;
+public class Dashboard extends JFrame{
+    private JPanel rootPanel;
+    private JPanel sidePanel;
+    private JButton dashboardButton;
+    private JButton githubButton;
+    private JButton contactsButton;
+    private JButton messageButton;
+    private JPanel mainPanel;
+    private User user;
     private Client client;
 
-    public Gui(Client client){
+    public Dashboard(User user, Client client){
+        this.user = user;
         this.client = client;
+        client.connectToServer();
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setContentPane(homePanel);
+        setContentPane(rootPanel);
         setSize(screeSize.width * 3 / 5,screeSize.height * 3 / 5);
         setMinimumSize(minmumWindowSize);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        initializeHomePanel();
+        initializeMainPanel();
         setVisible(true);
+
     }
 
-    /**
-     * Initializes the home panel, enabling drag and drop functionality for images.
-     *
-     * Sets up a DropTarget for the home panel, allowing users to drag and drop images onto the panel, and processes the dropped
-     * images by sending them to the server.
-     */
-    private void initializeHomePanel(){
-        homePanel.setDropTarget(new DropTarget(homePanel, DnDConstants.ACTION_COPY, new DropTargetAdapter() {
+
+    private void initializeMainPanel(){
+        mainPanel.setDropTarget(new DropTarget(mainPanel, DnDConstants.ACTION_COPY, new DropTargetAdapter() {
             @Override
             public void drop(DropTargetDropEvent dtde) {
                 try {
@@ -59,4 +68,6 @@ public class Gui extends JFrame{
             }
         }));
     }
+
+
 }
