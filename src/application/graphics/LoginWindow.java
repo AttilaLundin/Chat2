@@ -18,13 +18,14 @@ public class LoginWindow extends JFrame{
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JPanel okcancelPanel;
+    private JButton button1;
     private Client client;
     public LoginWindow(Client client){
         this.client = client;
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
         setContentPane(rootPanel);
-        setSize(screeSize.width / 5,screeSize.height  / 5);
+        setSize(screeSize.width / 5,screeSize.height  / 2);
         setMinimumSize(minmumWindowSize);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -33,13 +34,14 @@ public class LoginWindow extends JFrame{
         createUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UserCreation createUser = new UserCreation();
 
             }
         });
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                System.exit(0);
             }
         });
         okButton.addActionListener(new ActionListener() {
@@ -49,7 +51,7 @@ public class LoginWindow extends JFrame{
                 String password = new String(passwordField.getPassword());
                 System.out.println("username: " + username + " Password: " + password);
 
-                if(client.sendLoginRequest(new User())) dispose();
+                if(client.sendLoginRequest(username, password)) dispose();
             }
         });
         passwordField.addActionListener(new ActionListener() {

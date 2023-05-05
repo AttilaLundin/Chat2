@@ -1,8 +1,5 @@
 package application;
 
-import application.Message;
-import application.User;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -10,13 +7,15 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.UUID;
+
 
 public class Client {
 
     private static final String SERVER_ADDRESS = "localhost";
     private static final int SERVER_PORT = 1234;
     private Socket socket;
+    // private User user;
+    private ChatRoom chatRoom;
 
     private ObjectOutputStream output;
     private ObjectInputStream input;
@@ -46,16 +45,17 @@ public class Client {
     public void sendMessage(String filePath){
         try{
             BufferedImage bufferedImage = ImageIO.read(new File(filePath));
-            output.writeObject(new Message("test", bufferedImage, new User(), UUID.randomUUID())); // skickar msg till server, vad näst?
+            output.writeObject(new Message("test", bufferedImage, new User(), chatRoom.getChatRoomID())); // skickar msg till server, vad näst?
             output.flush();
         }catch (IOException e){
             e.printStackTrace();
         }
     }
 
-    public boolean sendLoginRequest(User user){
+    public boolean sendLoginRequest(String username, String password){
         try{
-            output.writeObject(user);
+
+            output.writeObject(new User());
             output.flush();
 
             long timeout = System.currentTimeMillis();
