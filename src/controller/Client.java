@@ -62,20 +62,17 @@ public class Client {
             output.writeObject(new User.Builder(username, password).build());
             output.flush();
 
-            long timeout = System.currentTimeMillis();
-            while(System.currentTimeMillis() - timeout < 5000){
-                User sessionUser = (User) input.readObject();
-                if(sessionUser != null){
-                    System.out.println("user received");
-                    return user;
-                }
-                this.user = sessionUser;
+            User sessionUser = (User) input.readObject();
+            if(sessionUser != null) {
+                System.out.println("user received");
+                return sessionUser;
             }
+            return null;
 
         }catch (IOException | ClassNotFoundException e){
             e.printStackTrace();
         }
         return null;
     }
-    
+
 }
