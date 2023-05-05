@@ -2,6 +2,7 @@ package controller;
 
 import model.ChatRoom;
 import model.Message;
+import model.Register;
 import model.User;
 
 import javax.imageio.ImageIO;
@@ -56,23 +57,24 @@ public class Client {
         }
     }
 
-    public boolean sendLoginRequest(String username, String password){
+    public User sendLoginRequest(String username, String password){
         try{
             output.writeObject(new User.Builder(username, password).build());
             output.flush();
 
             long timeout = System.currentTimeMillis();
             while(System.currentTimeMillis() - timeout < 5000){
-                User object = (User) input.readObject();
-                if(object != null){
+                User sessionUser = (User) input.readObject();
+                if(sessionUser != null){
                     System.out.println("user received");
+                    return user;
                 }
-                this.user = object;
+                this.user = sessionUser;
             }
 
         }catch (IOException | ClassNotFoundException e){
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 }

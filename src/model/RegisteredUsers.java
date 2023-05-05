@@ -16,7 +16,8 @@ public class RegisteredUsers {
 
     public User validateUser(User loginAttempt){
         User user = registeredUsers.get(loginAttempt.getUserName());
-        if(user.equals(loginAttempt)){
+        if(user == null) return null;
+        if (user.equals(loginAttempt)) {
             System.out.println("validation successful");
             return user;
         }

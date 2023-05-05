@@ -1,6 +1,7 @@
 package view.graphics;
 
 import controller.Client;
+import model.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,11 +11,11 @@ import java.awt.event.ActionListener;
 public class LoginWindow extends JFrame{
     private JButton createUserButton;
     private JPanel rootPanel;
-    private JButton okButton;
+    private JButton loginButton;
     private JButton exitButton; //8===3
     private JTextField usernameField;
     private JPasswordField passwordField;
-    private JPanel okcancelPanel;
+    private JPanel buttonPanel;
     private JButton button1;
     private Client client;
     public LoginWindow(Client client){
@@ -41,15 +42,28 @@ public class LoginWindow extends JFrame{
                 System.exit(0);
             }
         });
-        okButton.addActionListener(new ActionListener() {
+        loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String username = usernameField.getText();
-                String password = new String(passwordField.getPassword());
-                System.out.println("username: " + username + " Password: " + password);
 
-                if(client.sendLoginRequest(username, password)){
-                    dispose();
+                String password = new String(passwordField.getPassword());
+
+                System.out.println("username: " + username + " Password: " + password);
+                if(username.equals("") || password.equals("")){
+                    System.out.println("username and/or login field(s) empty, try again");
+                }
+                else{
+                    User sessionUser = client.sendLoginRequest(username, password);
+                    if(sessionUser != null){
+                        dispose();
+                        Dashboard dashboard = new Dashboard(sessionUser, client);
+                    }
+                    else{
+                        System.out.println("Incorrect credentials: try again. JLAbel");
+                        usernameField.setText("");
+                        passwordField.setText("");
+                    }
                 }
             }
         });
