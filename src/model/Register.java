@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import java.io.Serializable;
 
@@ -10,7 +10,7 @@ public class Register implements Serializable {
     public Register(String Username, String password,String displayName){
         this.userName= Username;
         this.password = password;
-        this.DisplayName = DisplayName;
+        this.DisplayName = displayName;
     }
 
     public Register(){

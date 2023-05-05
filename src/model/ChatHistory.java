@@ -1,8 +1,4 @@
-package Controller;
-
-import Model.ChatRoom;
-import Model.Message;
-import Model.User;
+package model;
 
 import java.util.*;
 

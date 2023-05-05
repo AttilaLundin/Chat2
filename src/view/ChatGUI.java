@@ -1,6 +1,7 @@
-package View;
+package view;
 
-import Model.Client;
+import controller.Client;
+import view.graphics.LoginWindow;
 
 public class ChatGUI {
     public static void main(String[] args) {

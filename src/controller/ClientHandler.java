@@ -1,8 +1,6 @@
-package Controller;
+package controller;
 
-import Model.Message;
-import Model.Register;
-import Model.User;
+import model.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

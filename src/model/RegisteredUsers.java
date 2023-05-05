@@ -1,7 +1,5 @@
-package Controller;
+package model;
 
-import Model.Register;
-import Model.User;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;

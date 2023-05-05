@@ -1,4 +1,8 @@
-package Model;
+package controller;
+
+import model.ChatRoom;
+import model.Message;
+import model.User;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -14,7 +18,7 @@ public class Client {
     private static final String SERVER_ADDRESS = "localhost";
     private static final int SERVER_PORT = 1234;
     private Socket socket;
-    // private User user;
+    private User user;
     private ChatRoom chatRoom;
 
     private ObjectOutputStream output;
@@ -59,10 +63,11 @@ public class Client {
 
             long timeout = System.currentTimeMillis();
             while(System.currentTimeMillis() - timeout < 5000){
-                Object object = (User) input.readObject();
+                User object = (User) input.readObject();
                 if(object != null){
                     System.out.println("user received");
                 }
+                this.user = object;
             }
 
         }catch (IOException | ClassNotFoundException e){

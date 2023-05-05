@@ -1,4 +1,7 @@
-package Controller;
+package controller;
+
+import model.ChatHistory;
+import model.RegisteredUsers;
 
 import java.io.IOException;
 import java.net.ServerSocket;
