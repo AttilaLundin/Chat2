@@ -11,13 +11,13 @@ public class RegisteredUsers {
 
     public RegisteredUsers(){
         registeredUsers = Collections.synchronizedMap(new HashMap<>());
-        registeredUsers.put("test", new SessionUser.SessionUserBuilder().username("test").password("testp").displayname("testd").build());
+        registeredUsers.put("test", new SessionUser.SessionUserBuilder().username("test").password("test").displayname("test").build());
     }
 
-    public SessionUser validateUser(SessionUser loginAttempt){
+    public SessionUser validateUser(Login loginAttempt){
         SessionUser user = registeredUsers.get(loginAttempt.getUsername());
         if(user == null) return null;
-        if (user.equals(loginAttempt)) {
+        if (user.correctCredentials(loginAttempt)) {
             System.out.println("validation successful");
             return user;
         }
@@ -27,11 +27,12 @@ public class RegisteredUsers {
         }
     }
 
-    public boolean createUser(Register register){
+    public SessionUser createUser(Register register){
         String username = register.getUsername();
-        if(registeredUsers.containsKey(username)) return false;
-        registeredUsers.put(username, new SessionUser.SessionUserBuilder().username("test").password("testp").build());
-        return true;
+        if(registeredUsers.containsKey(username)) return null;
+        SessionUser sessionUser = new SessionUser.SessionUserBuilder().username(register.getUsername()).password(register.getPassword()).displayname(register.getDisplayName()).build();
+        registeredUsers.put(username, sessionUser);
+        return sessionUser;
     }
 
 

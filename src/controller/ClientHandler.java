@@ -1,10 +1,10 @@
 package controller;
 
+import interfaces.User;
 import model.*;
 import model.RegisteredUsers;
 import model.TextMessage;
 import model.Register;
-import model.SessionUser;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -16,7 +16,7 @@ import java.net.Socket;
 public class ClientHandler implements Runnable{
     private final Socket socket;
     private ChatHistory chatHistory;
-    private RegisteredUsers registeredUsers;
+    private final RegisteredUsers registeredUsers;
 
     public ClientHandler(Socket socket, ChatHistory chatHistory, RegisteredUsers registeredUsers){
         this.socket = socket;
@@ -35,9 +35,8 @@ public class ClientHandler implements Runnable{
                 if(object instanceof TextMessage textMessage){
                     chatHistory.addMessage(textMessage.getChatRoomID(), textMessage);
                 }
-                else if(object instanceof SessionUser user){
-                    output.writeObject(registeredUsers.validateUser(user));
-                    output.flush();
+                else if(object instanceof User user){
+                    user.userHandler(registeredUsers, output);
                     System.out.println("response from server sent ");
                 }
                 else if(object instanceof Register register){

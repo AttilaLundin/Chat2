@@ -1,7 +1,9 @@
 package model;
 
+import controller.ClientHandler;
 import interfaces.User;
 
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.*;
 
@@ -25,9 +27,35 @@ public class SessionUser implements User, Serializable{
     }
 
     @Override
-    public void userHandler() {
+    public void userHandler(Object object, ObjectOutputStream outputStream) {
 
     }
+
+
+
+
+
+    public void addPassword(){
+        LogInfo = new HashMap<>();
+        LogInfo.put(this.username, this.password);
+    }
+
+    public void addChatRoom(UUID chatRoomID){
+        this.chatRoomIDs.add(chatRoomID);
+    }
+
+    public List<UUID> getChatRoomIDs(){return chatRoomIDs;}
+
+    public String getDisplayname() {
+        return displayname;
+    }
+
+    public boolean correctCredentials(Login login){
+        return username.equals(login.getUsername()) && password.equals(login.getPassword());
+    }
+
+
+
     public static class SessionUserBuilder{
         private String username;
         private String displayname;
@@ -58,33 +86,6 @@ public class SessionUser implements User, Serializable{
         }
 
     }
-    public void addPassword(){
-        LogInfo = new HashMap<>();
-        LogInfo.put(this.username, this.password);
-    }
 
-    public void addChatRoom(UUID chatRoomID){
-        this.chatRoomIDs.add(chatRoomID);
-    }
-
-    public List<UUID> getChatRoomIDs(){return chatRoomIDs;}
-
-    public String getDisplayname() {
-        return displayname;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if(this == obj) return true;
-        if(obj == null || getClass() != obj.getClass()) return false;
-        SessionUser user = (SessionUser) obj;
-
-        return user.username.equals(this.username) && user.password.equals(this.password);
-    }
-
-    @Override
-    public int hashCode(){
-        return Objects.hash(this.username);
-    }
 
 }

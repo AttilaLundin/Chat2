@@ -2,6 +2,7 @@ package model;
 
 import interfaces.User;
 
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -42,6 +43,19 @@ public class Register implements User, Serializable{
     public String getUsername(){
         return username;
     }
+
+    @Override
+    public void userHandler(Object object, ObjectOutputStream outputStream) {
+        RegisteredUsers registeredUsers = (RegisteredUsers) object;
+        try {
+            outputStream.writeObject(registeredUsers.createUser(this));
+            outputStream.flush();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
     public String getPassword(){
         return password;
     }
@@ -49,9 +63,6 @@ public class Register implements User, Serializable{
         return displayname;
     }
 
-    @Override
-    public void userHandler() {
 
-    }
 
 }

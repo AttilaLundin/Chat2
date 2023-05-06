@@ -1,12 +1,17 @@
 package view.graphics;
 
 import controller.Client;
+import model.Login;
+import model.Register;
 import model.SessionUser;
+import view.ChatGUI;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class LoginWindow extends JFrame{
     private JButton createUserButton;
@@ -17,7 +22,7 @@ public class LoginWindow extends JFrame{
     private JPasswordField passwordField;
     private JPanel buttonPanel;
     private JButton button1;
-    private Client client;
+    private final Client client;
     public LoginWindow(Client client){
         this.client = client;
         Dimension minmumWindowSize = new Dimension(500, 300);
@@ -27,12 +32,17 @@ public class LoginWindow extends JFrame{
         setMinimumSize(minmumWindowSize);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        initializeButtons();
+        getRootPane().setDefaultButton(loginButton);
         setVisible(true);
+    }
 
+
+    public void initializeButtons(){
         createUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UserCreation createUser = new UserCreation();
+                UserCreation userCreation = new UserCreation(client);
                 dispose();
             }
         });
@@ -48,28 +58,27 @@ public class LoginWindow extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String username = usernameField.getText();
-
                 String password = new String(passwordField.getPassword());
 
                 System.out.println("username: " + username + " Password: " + password);
-                if(!username.equals("") || !password.equals("")){
-                    boolean loginSuccessful = client.sendLoginRequest(username, password);
-                    if(loginSuccessful){
-                        Dashboard dashboard = new Dashboard(client);
-                        dispose();
-                    }
-                    else{
-                        System.out.println("Incorrect credentials: try again. JLAbel");
-                        usernameField.setText("");
-                        passwordField.setText("");
-                    }
 
+                boolean loginSuccessful = client.sendLoginRequest(new Login.LoginBuilder().username(username).password(password).build());
+                if(loginSuccessful){
+                    Dashboard dashboard = new Dashboard(client);
+                    dispose();
                 }
                 else{
-                    System.out.println("username and/or login field(s) empty, try again");
+                    System.out.println("Incorrect credentials: try again. JLAbel");
+                    usernameField.setText("");
+                    passwordField.setText("");
                 }
-            }
-        });
-    }
 
+
+                }
+
+        });
+
+
+
+    }
 }

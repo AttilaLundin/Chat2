@@ -1,9 +1,11 @@
 package model;
 
+import controller.ClientHandler;
+import controller.Server;
 import interfaces.User;
 
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Login implements User, Serializable {
 
@@ -41,7 +43,17 @@ public class Login implements User, Serializable {
     }
 
     @Override
-    public void userHandler() {}
+    public void userHandler(Object object, ObjectOutputStream outputStream) {
+        RegisteredUsers registeredUsers = (RegisteredUsers)object;
+        try {
+            outputStream.writeObject(registeredUsers.validateUser(this));
+            outputStream.flush();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
     public String getPassword(){
         return password;
     }
