@@ -97,5 +97,9 @@ public class Client {
         return false;
     }
 
+    public SessionUser getSessionUser(){
+        return sessionUser;
+    }
+
 
 }

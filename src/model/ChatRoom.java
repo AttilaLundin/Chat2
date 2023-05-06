@@ -15,11 +15,9 @@ public class ChatRoom implements Cloneable, Serializable {
     private final List<Message> messages;
 
     public ChatRoom(List<SessionUser> users, List<Message> messages){
-
         chatRoomID = UUID.randomUUID();
         this.users = users;
         this.messages = messages;
-
     }
 
     public ChatRoom(){

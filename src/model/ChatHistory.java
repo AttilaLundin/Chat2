@@ -37,8 +37,15 @@ public class ChatHistory {
         chatRoomHistory.get(chatRoomId).addMessage(message);
     }
 
-    public ChatRoom getChatroom(UUID chatRoomId){
-        return chatRoomHistory.get(chatRoomId);
+    public ArrayList<ChatRoom> getChatRooms(SessionUser user){
+        ArrayList<ChatRoom> listOfChatRooms = new ArrayList<>();
+        List<UUID> listOfIDs = usersChatRoom.get(user);
+
+        for(UUID ID : listOfIDs){
+            listOfChatRooms.add(chatRoomHistory.get(ID));
+        }
+
+        return listOfChatRooms;
     }
 
 }

@@ -106,6 +106,16 @@
             <border type="bevel-lowered"/>
             <children/>
           </grid>
+          <component id="6e977" class="javax.swing.JLabel" binding="dispalynameLabel">
+            <constraints border-constraint="North"/>
+            <properties>
+              <font size="26" style="1"/>
+              <foreground color="-855824"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <text value="Displayname"/>
+            </properties>
+          </component>
         </children>
       </grid>
     </children>

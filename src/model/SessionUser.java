@@ -12,13 +12,11 @@ public class SessionUser implements User, Serializable{
     private String displayname;
     private String password;
     private Map<String, String> LogInfo;
-    private List<UUID> chatRoomIDs;
 
     private SessionUser(SessionUserBuilder SessionUserBuilder){
         this.username= Objects.requireNonNull(SessionUserBuilder.username);
         this.displayname = Objects.requireNonNull(SessionUserBuilder.displayname);
         this.password = Objects.requireNonNull(SessionUserBuilder.password);
-        this.chatRoomIDs = SessionUserBuilder.chatRoomIDs;
     }
 
     @Override
@@ -27,7 +25,9 @@ public class SessionUser implements User, Serializable{
     }
 
     @Override
-    public void userHandler(Object object, ObjectOutputStream outputStream) {
+    public void userHandler(Object registeredUsers, Object chatHistory, ObjectOutputStream outputStream) {
+
+
 
     }
 
@@ -40,11 +40,6 @@ public class SessionUser implements User, Serializable{
         LogInfo.put(this.username, this.password);
     }
 
-    public void addChatRoom(UUID chatRoomID){
-        this.chatRoomIDs.add(chatRoomID);
-    }
-
-    public List<UUID> getChatRoomIDs(){return chatRoomIDs;}
 
     public String getDisplayname() {
         return displayname;

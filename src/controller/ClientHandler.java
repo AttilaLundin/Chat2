@@ -35,7 +35,7 @@ public class ClientHandler implements Runnable{
                     message.messageHandler(chatHistory);
                 }
                 else if(object instanceof User user){
-                    user.userHandler(registeredUsers, output);
+                    user.userHandler(registeredUsers, chatHistory, output);
                     System.out.println("response from server sent ");
                 }
             }

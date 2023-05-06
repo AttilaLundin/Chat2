@@ -45,8 +45,8 @@ public class Register implements User, Serializable{
     }
 
     @Override
-    public void userHandler(Object object, ObjectOutputStream outputStream) {
-        RegisteredUsers registeredUsers = (RegisteredUsers) object;
+    public void userHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
+        RegisteredUsers registeredUsers = (RegisteredUsers) registeredUser;
         try {
             outputStream.writeObject(registeredUsers.createUser(this));
             outputStream.flush();

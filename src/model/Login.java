@@ -6,6 +6,7 @@ import interfaces.User;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Login implements User, Serializable {
 
@@ -43,8 +44,8 @@ public class Login implements User, Serializable {
     }
 
     @Override
-    public void userHandler(Object object, ObjectOutputStream outputStream) {
-        RegisteredUsers registeredUsers = (RegisteredUsers)object;
+    public void userHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
+        RegisteredUsers registeredUsers = (RegisteredUsers)registeredUser;
         try {
             outputStream.writeObject(registeredUsers.validateUser(this));
             outputStream.flush();

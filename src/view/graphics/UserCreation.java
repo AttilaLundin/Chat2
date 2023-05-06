@@ -25,6 +25,7 @@ public class UserCreation extends JFrame {
 
     public UserCreation(Client client) {
         this.client = client;
+
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
         setContentPane(rootPanel);

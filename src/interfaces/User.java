@@ -10,6 +10,6 @@ public interface User {
 
     String getUsername();
 
-    void userHandler(Object object, ObjectOutputStream outputStream);
+    void userHandler(Object registeredUsers, Object chatHistory, ObjectOutputStream outputStream);
 
 }
