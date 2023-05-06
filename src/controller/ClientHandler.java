@@ -1,8 +1,6 @@
-package server;
+package controller;
 
-import application.Message;
-import application.Register;
-import application.User;
+import model.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -37,7 +35,8 @@ public class ClientHandler implements Runnable{
                     output.writeObject(registeredUsers.validateUser(user));
                     output.flush();
                     System.out.println("response from server sent ");
-                }else if(object instanceof Register register){
+                }
+                else if(object instanceof Register register){
                     output.flush();
                     output.writeObject(registeredUsers.createUser(register));
                 }
