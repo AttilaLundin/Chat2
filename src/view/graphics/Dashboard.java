@@ -33,7 +33,7 @@ public class Dashboard extends JFrame{
     private Client client;
 
     public Dashboard(Client client){
-        this.user = user;
+//        this.user = user;
         this.client = client;
         sessionUser = client.getSessionUser();
         client.connectToServer();

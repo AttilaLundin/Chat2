@@ -29,7 +29,7 @@ public class SessionUser implements User, Serializable{
 
         ChatHistory chatHistory = (ChatHistory) history;
         try {
-            outputStream.writeObject(chatHistory1.getChatRooms(this));
+            outputStream.writeObject(chatHistory.getChatRooms(this));
             outputStream.flush();
         }catch (Exception e){
             e.printStackTrace();

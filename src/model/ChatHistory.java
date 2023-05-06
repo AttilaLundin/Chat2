@@ -39,7 +39,7 @@ public class ChatHistory {
 
     public ArrayList<ChatRoom> getChatRooms(SessionUser user){
         ArrayList<ChatRoom> listOfChatRooms = new ArrayList<>();
-        List<UUID> listOfIDs = usersChatRoom.get(user);
+        List<UUID> listOfIDs = usersChatroom.get(user);
         if(listOfIDs.size() == 0) return listOfChatRooms;
 
         for(UUID ID : listOfIDs){
