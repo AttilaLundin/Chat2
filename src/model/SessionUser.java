@@ -11,7 +11,7 @@ public class SessionUser implements User, Serializable{
     private String username;
     private String displayname;
     private String password;
-    private Map<String, String> LogInfo;
+    private List<ChatRoom> chatRooms;
 
     private SessionUser(SessionUserBuilder SessionUserBuilder){
         this.username= Objects.requireNonNull(SessionUserBuilder.username);
@@ -25,10 +25,9 @@ public class SessionUser implements User, Serializable{
     }
 
     @Override
-    public void userHandler(Object registeredUsers, Object chatHistory, ObjectOutputStream outputStream) {
+    public void userHandler(Object registeredUsers, Object history, ObjectOutputStream outputStream) {
 
-        ChatHistory chatHistory1 = (ChatHistory) chatHistory;
-
+        ChatHistory chatHistory = (ChatHistory) history;
         try {
             outputStream.writeObject(chatHistory1.getChatRooms(this));
             outputStream.flush();
@@ -36,16 +35,6 @@ public class SessionUser implements User, Serializable{
             e.printStackTrace();
         }
     }
-
-
-
-
-
-    public void addPassword(){
-        LogInfo = new HashMap<>();
-        LogInfo.put(this.username, this.password);
-    }
-
 
     public String getDisplayname() {
         return displayname;

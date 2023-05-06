@@ -3,12 +3,17 @@ package controller;
 import model.*;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -18,7 +23,6 @@ public class Client {
     private static final int SERVER_PORT = 1234;
     private Socket socket;
     private SessionUser sessionUser;
-    private ChatRoom chatRoom;
     private ObjectOutputStream output;
     private ObjectInputStream input;
 
@@ -95,6 +99,27 @@ public class Client {
         }
 
         return false;
+    }
+
+    public List<ChatRoom> getChatRooms(SessionUser sessionUser){
+
+        try {
+            output.writeObject(sessionUser);
+            output.flush();
+
+            Object object = input.readObject();
+            List <ChatRoom> chatRooms = new ArrayList<>();
+            if(object instanceof List<?> list){
+                for(Object o : list) if(o instanceof ChatRoom chatRoom) chatRooms.add(chatRoom);
+            }
+            return chatRooms;
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+
     }
 
     public SessionUser getSessionUser(){

@@ -1,6 +1,7 @@
 package view.graphics;
 
 import controller.Client;
+import model.ChatRoom;
 import model.SessionUser;
 
 import javax.swing.*;
@@ -23,6 +24,10 @@ public class Dashboard extends JFrame{
     private JButton contactsButton;
     private JButton messageButton;
     private JPanel mainPanel;
+    private JTable chatroomTable;
+    private JScrollPane chatRoomScrollPane;
+    private JPanel chatRoomPanel;
+    private JLabel displayNameLabel;
     private JLabel dispalynameLabel;
     private SessionUser sessionUser;
     private Client client;
@@ -42,7 +47,6 @@ public class Dashboard extends JFrame{
         initializeMainPanel();
         setDisplayName();
         setVisible(true);
-
     }
 
     private void setDisplayName(){
@@ -61,7 +65,15 @@ public class Dashboard extends JFrame{
                     dtde.acceptDrop(DnDConstants.ACTION_COPY);
 
                     if(!transferable.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) throw new Exception();
-                    java.util.List<File> images = (List<File>) transferable.getTransferData(DataFlavor.javaFileListFlavor);
+                    List <File> images = new ArrayList<>();
+                    Object object = transferable.getTransferData(DataFlavor.javaFileListFlavor);
+                    if(object instanceof List<?> list){
+                        for(Object o : list){
+                            if(o instanceof File image) images.add(image);
+
+                        }
+                    }
+
                     ArrayList<String> filePaths = new ArrayList<>();
                     for (File i : images) {
                         filePaths.add(i.getAbsolutePath());
