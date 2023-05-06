@@ -12,13 +12,13 @@ public class ChatRoom implements Cloneable, Serializable {
 
     private final UUID chatRoomID;
     private List<SessionUser> users;
-    private final List<Message> textMessages;
+    private final List<Message> messages;
 
-    public ChatRoom(List<SessionUser> users, List<Message> textMessages){
+    public ChatRoom(List<SessionUser> users, List<Message> messages){
 
         chatRoomID = UUID.randomUUID();
         this.users = users;
-        this.textMessages = textMessages;
+        this.messages = messages;
 
     }
 
@@ -27,7 +27,7 @@ public class ChatRoom implements Cloneable, Serializable {
         ArrayList<SessionUser> testUsers = new ArrayList<>();
         testUsers.add(new SessionUser.SessionUserBuilder().username("test").password("testp").build());
         testUsers.add(new SessionUser.SessionUserBuilder().username("test").password("testp").build());
-        this.textMessages = new ArrayList<>();
+        this.messages = new ArrayList<>();
     }
 
     public List<SessionUser> getUsers(){
@@ -38,10 +38,10 @@ public class ChatRoom implements Cloneable, Serializable {
         return chatRoomID;
     }
     public List<Message> getMessages(){
-        return textMessages;
+        return messages;
     }
-    public void addMessage(TextMessage textMessage){
-        this.textMessages.add(textMessage);
+    public void addMessage(Message message){
+        this.messages.add(message);
     }
 
     /* Möjligtvis ofullständig kloning, om privata variabler i chatroom inte är primitiva/immutable så

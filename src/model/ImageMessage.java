@@ -5,6 +5,7 @@ import interfaces.Message;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Objects;
 import java.util.UUID;
 
 public class ImageMessage implements Message, Serializable {
@@ -21,13 +22,13 @@ public class ImageMessage implements Message, Serializable {
         this.chatRoomID = imageMessageBuilder.chatRoomID;
     }
 
-    public static class ImageMessageBuilder{
-        private transient BufferedImage image;
+    public static class ImageMessageBuilder implements Serializable{
+        private BufferedImage image;
         private String timeSent;
         private SessionUser sender;
         private UUID chatRoomID;
 
-        public ImageMessageBuilder text (BufferedImage image){
+        public ImageMessageBuilder image (BufferedImage image){
             this.image = image;
             return this;
         }
@@ -74,7 +75,8 @@ public class ImageMessage implements Message, Serializable {
     }
 
     @Override
-    public void messageHandler(){
+    public void messageHandler(Object object){
+//        todo: hantera bilder, lägg in i chatroomhistory
 
     }
 

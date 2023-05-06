@@ -1,10 +1,9 @@
 package controller;
 
+import interfaces.Message;
 import interfaces.User;
 import model.*;
 import model.RegisteredUsers;
-import model.TextMessage;
-import model.Register;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -32,16 +31,12 @@ public class ClientHandler implements Runnable{
 
             while (true){
                 Object object = input.readObject();
-                if(object instanceof TextMessage textMessage){
-                    chatHistory.addMessage(textMessage.getChatRoomID(), textMessage);
+                if(object instanceof Message message){
+                    message.messageHandler(chatHistory);
                 }
                 else if(object instanceof User user){
                     user.userHandler(registeredUsers, output);
                     System.out.println("response from server sent ");
-                }
-                else if(object instanceof Register register){
-                    output.flush();
-                    output.writeObject(registeredUsers.createUser(register));
                 }
             }
         }catch (IOException | ClassNotFoundException e){

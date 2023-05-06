@@ -73,6 +73,11 @@ public class TextMessage implements Message,Serializable {
         return chatRoomID;
     }
 
+    @Override
+    public void messageHandler(Object object) {
+
+    }
+
     public void messageHandler(){
 
     }

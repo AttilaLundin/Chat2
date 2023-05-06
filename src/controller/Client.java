@@ -1,9 +1,6 @@
 package controller;
 
-import model.ChatRoom;
-import model.Login;
-import model.Register;
-import model.SessionUser;
+import model.*;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -12,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.UUID;
 
 
 public class Client {
@@ -50,7 +48,7 @@ public class Client {
     public void sendMessage(String filePath){
         try{
             BufferedImage bufferedImage = ImageIO.read(new File(filePath));
-          //  output.writeObject(new TextMessage("test", bufferedImage, new SessionUser.Builder("test", "testp").build(), chatRoom.getChatRoomID())); // skickar msg till server, vad näst?
+            output.writeObject(new ImageMessage.ImageMessageBuilder().image(bufferedImage).sender(sessionUser).chatRoomID(UUID.randomUUID()).timeSent().build()); // skickar msg till server, vad näst?
             output.flush();
         }catch (IOException e){
             e.printStackTrace();

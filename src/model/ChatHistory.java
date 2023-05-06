@@ -1,5 +1,7 @@
 package model;
 
+import interfaces.Message;
+
 import java.util.*;
 
 
@@ -31,8 +33,8 @@ public class ChatHistory {
         }
     }
 
-    public void addMessage(UUID chatRoomId, TextMessage textMessage){
-        chatRoomHistory.get(chatRoomId).addMessage(textMessage);
+    public void addMessage(UUID chatRoomId, Message message){
+        chatRoomHistory.get(chatRoomId).addMessage(message);
     }
 
     public ChatRoom getChatroom(UUID chatRoomId){

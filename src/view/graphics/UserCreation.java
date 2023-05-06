@@ -18,6 +18,9 @@ public class UserCreation extends JFrame {
     private JButton capybara;
     private JButton loginButton;
     private Client client;
+    private final String[] invalidUsernameChars = {"&", "=", "_", "'", "-", ",", "<", ">", "."};
+    private final String[] invalidPasswordChars = { "(", ")", "{", "}", "[", "]", "|", "'", "´", "¬", "¦", "!", "\"", "£", "$", "%",
+            "<", ">", "&", "*", ";", ":", "#", "^", "-", "_", "~", "+", "=", ",", "@", "."};
 
 
     public UserCreation(Client client) {
@@ -44,7 +47,7 @@ public class UserCreation extends JFrame {
                 String password = new String(passwordField.getPassword());
                 String controllPassword = new String(passwordField2.getPassword());
                 String displayName = displaynameField.getText();
-                if (password.equals(controllPassword) ){
+                if (password.equals(controllPassword) && validUsername(username) && validPassword(password) && validDisplayName(displayName)){
                     boolean registrationSuccessful = client.sendRegistrationRequest(new Register.RegisterBuilder().username(username).password(password).displayname(displayName).build());
                     if(registrationSuccessful){
                         Dashboard dashboard = new Dashboard(client);
@@ -57,6 +60,8 @@ public class UserCreation extends JFrame {
                         passwordField2.setText("");
                         displaynameField.setText("");
                     }
+                }else{
+                    System.out.println("Invalid username or password: try again.");
                 }
             }
         });
@@ -68,8 +73,26 @@ public class UserCreation extends JFrame {
                 dispose();
             }
         });
+    }
 
+    private boolean validUsername(String userName){
+        if(userName.length() < 4 || userName.length() > 30) return false;
+        for(String s : invalidUsernameChars){
+            if(userName.contains(s)) return false;
+        }
+        return true;
+    }
 
+    private boolean validPassword(String password){
+        if(password.length() < 4 || password.length() > 30) return false;
+        for(String s : invalidPasswordChars){
+            if(password.contains(s)) return false;
+        }
+        return true;
+    }
+
+    private boolean validDisplayName(String displayName){
+        return displayName.length() >= 1 && displayName.length() <= 30;
     }
 
 
