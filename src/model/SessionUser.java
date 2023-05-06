@@ -27,8 +27,14 @@ public class SessionUser implements User, Serializable{
     @Override
     public void userHandler(Object registeredUsers, Object chatHistory, ObjectOutputStream outputStream) {
 
+        ChatHistory chatHistory1 = (ChatHistory) chatHistory;
 
-
+        try {
+            outputStream.writeObject(chatHistory1.getChatRooms(this));
+            outputStream.flush();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

@@ -1,12 +1,9 @@
 package model;
 
-import controller.ClientHandler;
-import controller.Server;
-import interfaces.User;
 
+import interfaces.User;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.Objects;
 
 public class Login implements User, Serializable {
 
