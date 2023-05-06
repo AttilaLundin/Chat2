@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="application.graphics.UserCreation">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.graphics.UserCreation">
   <grid id="27dc6" binding="rootPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="20" y="20" width="1342" height="747"/>
@@ -187,7 +187,7 @@
                       <focusPainted value="false"/>
                       <focusable value="false"/>
                       <foreground color="-15066588"/>
-                      <icon value="application/graphics/icons/capybara.png"/>
+                      <icon value="model/graphics/icons/capybara.png"/>
                       <opaque value="false"/>
                       <requestFocusEnabled value="false"/>
                       <rolloverEnabled value="false"/>
@@ -213,7 +213,7 @@
               <contentAreaFilled value="true"/>
               <font size="28"/>
               <foreground color="-855824"/>
-              <icon value="application/graphics/icons/icons8_done_40px.png"/>
+              <icon value="model/graphics/icons/icons8_done_40px.png"/>
               <label value="Create"/>
               <text value="Create"/>
             </properties>

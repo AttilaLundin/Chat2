@@ -1,4 +1,4 @@
-package application;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +22,8 @@ public class ChatRoom implements Cloneable{
     public ChatRoom(){
         chatRoomID = UUID.randomUUID();
         ArrayList<User> testUsers = new ArrayList<>();
-        testUsers.add(new User());
-        testUsers.add(new User());
+        testUsers.add(new User.Builder("test", "testp").build());
+        testUsers.add(new User.Builder("test", "testp").build());
         this.messages = new ArrayList<>();
     }
 

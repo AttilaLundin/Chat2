@@ -1,8 +1,4 @@
-package server;
-
-import application.ChatRoom;
-import application.Message;
-import application.User;
+package model;
 
 import java.util.*;
 

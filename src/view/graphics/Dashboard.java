@@ -1,7 +1,7 @@
-package application.graphics;
+package view.graphics;
 
-import application.Client;
-import application.User;
+import controller.Client;
+import model.User;
 
 import javax.swing.*;
 import java.awt.*;

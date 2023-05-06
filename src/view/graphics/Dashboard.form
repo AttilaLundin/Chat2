@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="application.graphics.Dashboard">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.graphics.Dashboard">
   <grid id="27dc6" binding="rootPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="20" y="20" width="1236" height="814"/>
@@ -28,7 +28,7 @@
               <background color="-15066591"/>
               <borderPainted value="false"/>
               <foreground color="-15066591"/>
-              <icon value="application/graphics/icons/icons8_dashboard_layout_40px.png"/>
+              <icon value="view/graphics/icons/icons8_dashboard_layout_40px.png"/>
               <label value=""/>
               <opaque value="false"/>
               <text value=""/>
@@ -45,7 +45,7 @@
               <contentAreaFilled value="true"/>
               <defaultCapable value="true"/>
               <foreground color="-15790311"/>
-              <icon value="application/graphics/icons/icons8_github_40px_1.png"/>
+              <icon value="view/graphics/icons/icons8_github_40px_1.png"/>
               <label value=""/>
               <text value=""/>
               <verifyInputWhenFocusTarget value="true"/>
@@ -65,7 +65,7 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="true"/>
               <foreground color="-15790311"/>
-              <icon value="application/graphics/icons/icons8_contacts_40px.png"/>
+              <icon value="view/graphics/icons/icons8_contacts_40px.png"/>
               <label value=""/>
               <opaque value="true"/>
               <text value=""/>
@@ -84,7 +84,7 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="true"/>
               <foreground color="-15790311"/>
-              <icon value="application/graphics/icons/icons8_topic_40px.png"/>
+              <icon value="view/graphics/icons/icons8_topic_40px.png"/>
               <label value=""/>
               <text value=""/>
             </properties>
