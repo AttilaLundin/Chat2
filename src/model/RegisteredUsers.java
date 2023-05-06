@@ -1,8 +1,5 @@
 package model;
 
-import model.user.Register;
-import model.user.SessionUser;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +11,7 @@ public class RegisteredUsers {
 
     public RegisteredUsers(){
         registeredUsers = Collections.synchronizedMap(new HashMap<>());
-        registeredUsers.put("test", new SessionUser.Builder("test", "testp").build());
+        registeredUsers.put("test", new SessionUser.SessionUserBuilder().username("test").password("testp").displayname("testd").build());
     }
 
     public SessionUser validateUser(SessionUser loginAttempt){
@@ -33,7 +30,7 @@ public class RegisteredUsers {
     public boolean createUser(Register register){
         String username = register.getUsername();
         if(registeredUsers.containsKey(username)) return false;
-        registeredUsers.put(username, new SessionUser.Builder("test", "testp").build());
+        registeredUsers.put(username, new SessionUser.SessionUserBuilder().username("test").password("testp").build());
         return true;
     }
 

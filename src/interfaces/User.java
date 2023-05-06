@@ -1,4 +1,4 @@
-package model.user;
+package interfaces;
 
 public interface User{
 

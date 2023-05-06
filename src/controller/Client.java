@@ -1,8 +1,8 @@
 package controller;
 
 import model.ChatRoom;
-import model.messages.TextMessage;
-import model.user.SessionUser;
+import model.Login;
+import model.SessionUser;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -18,11 +18,11 @@ public class Client {
     private static final String SERVER_ADDRESS = "localhost";
     private static final int SERVER_PORT = 1234;
     private Socket socket;
-    private SessionUser user;
+    private SessionUser sessionUser;
     private ChatRoom chatRoom;
-
     private ObjectOutputStream output;
     private ObjectInputStream input;
+
 
     public void connectToServer(){
         boolean connected = false;
@@ -49,29 +49,33 @@ public class Client {
     public void sendMessage(String filePath){
         try{
             BufferedImage bufferedImage = ImageIO.read(new File(filePath));
-            output.writeObject(new TextMessage("test", bufferedImage, new SessionUser.Builder("test", "testp").build(), chatRoom.getChatRoomID())); // skickar msg till server, vad näst?
+          //  output.writeObject(new TextMessage("test", bufferedImage, new SessionUser.Builder("test", "testp").build(), chatRoom.getChatRoomID())); // skickar msg till server, vad näst?
             output.flush();
         }catch (IOException e){
             e.printStackTrace();
         }
     }
 
-    public SessionUser sendLoginRequest(String username, String password){
+    public boolean sendLoginRequest(String username, String password){
         try{
-            output.writeObject(new SessionUser.Builder(username, password).build());
+
+            output.writeObject(new Login.LoginBuilder().username(username).password(password).build());
             output.flush();
 
             SessionUser sessionUser = (SessionUser) input.readObject();
             if(sessionUser != null) {
                 System.out.println("user received");
-                return sessionUser;
+                this.sessionUser = sessionUser;
+                return true;
             }
-            return null;
+
+            return false;
 
         }catch (IOException | ClassNotFoundException e){
             e.printStackTrace();
         }
-        return null;
+
+        return false;
     }
 
 }

@@ -1,6 +1,6 @@
-package model.messages;
+package interfaces;
 
-import model.user.SessionUser;
+import model.SessionUser;
 
 import java.util.UUID;
 

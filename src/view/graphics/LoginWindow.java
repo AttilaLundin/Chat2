@@ -1,7 +1,7 @@
 package view.graphics;
 
 import controller.Client;
-import model.user.SessionUser;
+import model.SessionUser;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,7 +33,7 @@ public class LoginWindow extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 UserCreation createUser = new UserCreation();
-
+                dispose();
             }
         });
         exitButton.addActionListener(new ActionListener() {
@@ -52,33 +52,22 @@ public class LoginWindow extends JFrame{
                 String password = new String(passwordField.getPassword());
 
                 System.out.println("username: " + username + " Password: " + password);
-                if(username.equals("") || password.equals("")){
-                    System.out.println("username and/or login field(s) empty, try again");
-                }
-                else{
-                    SessionUser sessionUser = client.sendLoginRequest(username, password);
-                    if(sessionUser != null){
+                if(!username.equals("") || !password.equals("")){
+                    boolean loginSuccessful = client.sendLoginRequest(username, password);
+                    if(loginSuccessful){
+                        Dashboard dashboard = new Dashboard(client);
                         dispose();
-                        Dashboard dashboard = new Dashboard(sessionUser, client);
                     }
                     else{
                         System.out.println("Incorrect credentials: try again. JLAbel");
                         usernameField.setText("");
                         passwordField.setText("");
                     }
+
                 }
-            }
-        });
-        passwordField.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        usernameField.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
+                else{
+                    System.out.println("username and/or login field(s) empty, try again");
+                }
             }
         });
     }

@@ -1,6 +1,6 @@
 package view.graphics;
 
-import model.user.Register;
+import model.Register;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ public class UserCreation extends JFrame {
     private JTextField textField2;
     private JPasswordField passwordField2;
     private JButton capybara;
-    private Register user;
+
 
     public UserCreation() {
         Dimension minmumWindowSize = new Dimension(500, 300);
@@ -26,7 +26,7 @@ public class UserCreation extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-        user = new Register(usernameField.getText(), reenteredpasswordField.getText(),textField2.getText());
+
 
         createButton.addActionListener(new ActionListener() {
             @Override
@@ -37,7 +37,7 @@ public class UserCreation extends JFrame {
                 String passwordControll=new String(reenteredpasswordField.getPassword());
                 String displayName = textField2.getText();
                 if (password.equals(passwordControll)){
-                    Register newUser = new Register(username, password, displayName);
+                    Register newUser = new Register.RegisterBuilder().username(username).password(password).displayname(displayName).build();
                 }
 
             }

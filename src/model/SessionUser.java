@@ -1,4 +1,6 @@
-package model.user;
+package model;
+
+import interfaces.User;
 
 import java.io.Serializable;
 import java.util.*;
@@ -10,11 +12,11 @@ public class SessionUser implements User, Serializable{
     private Map<String, String> LogInfo;
     private List<UUID> chatRoomIDs;
 
-    private SessionUser(Builder builder){
-        this.username= builder.username;
-        this.displayname = builder.displayname;
-        this.password = builder.password;
-        this.chatRoomIDs = builder.chatRoomIDs;
+    private SessionUser(SessionUserBuilder SessionUserBuilder){
+        this.username= Objects.requireNonNull(SessionUserBuilder.username);
+        this.displayname = Objects.requireNonNull(SessionUserBuilder.displayname);
+        this.password = Objects.requireNonNull(SessionUserBuilder.password);
+        this.chatRoomIDs = SessionUserBuilder.chatRoomIDs;
     }
 
     @Override
@@ -26,23 +28,27 @@ public class SessionUser implements User, Serializable{
     public void userHandler() {
 
     }
-    public static class Builder{
+    public static class SessionUserBuilder{
         private String username;
         private String displayname;
         private String password;
         private List<UUID> chatRoomIDs;
 
-        public Builder (String username, String password){
+        public SessionUserBuilder username(String username){
             this.username = username;
-            this.password = password;
+            return this;
         }
-
-        public Builder displayName (String displayName){
-            this.displayname = displayName;
+        public SessionUserBuilder displayname(String displayname){
+            this.displayname = displayname;
+            return this;
+        }
+        public SessionUserBuilder password(String password){
+            this.password = password;
             return this;
         }
 
-        public Builder chatRoomIDs(List<UUID> chatRoomIDs) {
+
+        public SessionUserBuilder chatRoomIDs(List<UUID> chatRoomIDs) {
             this.chatRoomIDs = chatRoomIDs;
             return this;
         }

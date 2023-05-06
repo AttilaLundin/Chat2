@@ -1,9 +1,10 @@
 package controller;
 
 import model.*;
-import model.messages.TextMessage;
-import model.user.Register;
-import model.user.SessionUser;
+import model.RegisteredUsers;
+import model.TextMessage;
+import model.Register;
+import model.SessionUser;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
