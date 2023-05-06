@@ -1,6 +1,6 @@
 package view.graphics;
 
-import model.Register;
+import model.user.Register;
 
 import javax.swing.*;
 import java.awt.*;

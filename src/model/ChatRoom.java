@@ -1,33 +1,38 @@
 package model;
 
+import model.messages.Message;
+import model.messages.TextMessage;
+import model.user.SessionUser;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 
-public class ChatRoom implements Cloneable{
+public class ChatRoom implements Cloneable, Serializable {
 
-    private UUID chatRoomID;
-    private List<User> users;
-    private List<Message> messages;
+    private final UUID chatRoomID;
+    private List<SessionUser> users;
+    private final List<Message> textMessages;
 
-    public ChatRoom(List<User> users, List<Message> messages){
+    public ChatRoom(List<SessionUser> users, List<Message> textMessages){
 
         chatRoomID = UUID.randomUUID();
         this.users = users;
-        this.messages = messages;
+        this.textMessages = textMessages;
 
     }
 
     public ChatRoom(){
         chatRoomID = UUID.randomUUID();
-        ArrayList<User> testUsers = new ArrayList<>();
-        testUsers.add(new User.Builder("test", "testp").build());
-        testUsers.add(new User.Builder("test", "testp").build());
-        this.messages = new ArrayList<>();
+        ArrayList<SessionUser> testUsers = new ArrayList<>();
+        testUsers.add(new SessionUser.Builder("test", "testp").build());
+        testUsers.add(new SessionUser.Builder("test", "testp").build());
+        this.textMessages = new ArrayList<>();
     }
 
-    public List<User> getUsers(){
+    public List<SessionUser> getUsers(){
         return users;
     }
 
@@ -35,10 +40,10 @@ public class ChatRoom implements Cloneable{
         return chatRoomID;
     }
     public List<Message> getMessages(){
-        return messages;
+        return textMessages;
     }
-    public void addMessage(Message message){
-        this.messages.add(message);
+    public void addMessage(TextMessage textMessage){
+        this.textMessages.add(textMessage);
     }
 
     /* Möjligtvis ofullständig kloning, om privata variabler i chatroom inte är primitiva/immutable så

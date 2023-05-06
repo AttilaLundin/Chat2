@@ -1,7 +1,7 @@
 package view.graphics;
 
 import controller.Client;
-import model.User;
+import model.user.SessionUser;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,10 +23,10 @@ public class Dashboard extends JFrame{
     private JButton contactsButton;
     private JButton messageButton;
     private JPanel mainPanel;
-    private User user;
+    private SessionUser user;
     private Client client;
 
-    public Dashboard(User user, Client client){
+    public Dashboard(SessionUser user, Client client){
         this.user = user;
         this.client = client;
         client.connectToServer();

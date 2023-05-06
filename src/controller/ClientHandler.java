@@ -1,6 +1,9 @@
 package controller;
 
 import model.*;
+import model.messages.TextMessage;
+import model.user.Register;
+import model.user.SessionUser;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -28,10 +31,10 @@ public class ClientHandler implements Runnable{
 
             while (true){
                 Object object = input.readObject();
-                if(object instanceof Message message){
-                    chatHistory.addMessage(message.getChatRoomID(), message);
+                if(object instanceof TextMessage textMessage){
+                    chatHistory.addMessage(textMessage.getChatRoomID(), textMessage);
                 }
-                else if(object instanceof User user){
+                else if(object instanceof SessionUser user){
                     output.writeObject(registeredUsers.validateUser(user));
                     output.flush();
                     System.out.println("response from server sent ");

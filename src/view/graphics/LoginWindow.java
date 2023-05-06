@@ -1,7 +1,7 @@
 package view.graphics;
 
 import controller.Client;
-import model.User;
+import model.user.SessionUser;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,7 +56,7 @@ public class LoginWindow extends JFrame{
                     System.out.println("username and/or login field(s) empty, try again");
                 }
                 else{
-                    User sessionUser = client.sendLoginRequest(username, password);
+                    SessionUser sessionUser = client.sendLoginRequest(username, password);
                     if(sessionUser != null){
                         dispose();
                         Dashboard dashboard = new Dashboard(sessionUser, client);

@@ -1,9 +1,8 @@
 package controller;
 
 import model.ChatRoom;
-import model.Message;
-import model.Register;
-import model.User;
+import model.messages.TextMessage;
+import model.user.SessionUser;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -19,7 +18,7 @@ public class Client {
     private static final String SERVER_ADDRESS = "localhost";
     private static final int SERVER_PORT = 1234;
     private Socket socket;
-    private User user;
+    private SessionUser user;
     private ChatRoom chatRoom;
 
     private ObjectOutputStream output;
@@ -50,19 +49,19 @@ public class Client {
     public void sendMessage(String filePath){
         try{
             BufferedImage bufferedImage = ImageIO.read(new File(filePath));
-            output.writeObject(new Message("test", bufferedImage, new User.Builder("test", "testp").build(), chatRoom.getChatRoomID())); // skickar msg till server, vad näst?
+            output.writeObject(new TextMessage("test", bufferedImage, new SessionUser.Builder("test", "testp").build(), chatRoom.getChatRoomID())); // skickar msg till server, vad näst?
             output.flush();
         }catch (IOException e){
             e.printStackTrace();
         }
     }
 
-    public User sendLoginRequest(String username, String password){
+    public SessionUser sendLoginRequest(String username, String password){
         try{
-            output.writeObject(new User.Builder(username, password).build());
+            output.writeObject(new SessionUser.Builder(username, password).build());
             output.flush();
 
-            User sessionUser = (User) input.readObject();
+            SessionUser sessionUser = (SessionUser) input.readObject();
             if(sessionUser != null) {
                 System.out.println("user received");
                 return sessionUser;
