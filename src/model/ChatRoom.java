@@ -1,33 +1,34 @@
 package model;
 
+import interfaces.Message;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 
-public class ChatRoom implements Cloneable{
+public class ChatRoom implements Cloneable, Serializable {
 
-    private UUID chatRoomID;
-    private List<User> users;
-    private List<Message> messages;
+    private final UUID chatRoomID;
+    private List<SessionUser> users;
+    private final List<Message> messages;
 
-    public ChatRoom(List<User> users, List<Message> messages){
-
+    public ChatRoom(List<SessionUser> users, List<Message> messages){
         chatRoomID = UUID.randomUUID();
         this.users = users;
         this.messages = messages;
-
     }
 
     public ChatRoom(){
         chatRoomID = UUID.randomUUID();
-        ArrayList<User> testUsers = new ArrayList<>();
-        testUsers.add(new User.Builder("test", "testp").build());
-        testUsers.add(new User.Builder("test", "testp").build());
+        ArrayList<SessionUser> testUsers = new ArrayList<>();
+        testUsers.add(new SessionUser.SessionUserBuilder().username("test").password("testp").build());
+        testUsers.add(new SessionUser.SessionUserBuilder().username("test").password("testp").build());
         this.messages = new ArrayList<>();
     }
 
-    public List<User> getUsers(){
+    public List<SessionUser> getUsers(){
         return users;
     }
 

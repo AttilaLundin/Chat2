@@ -1,6 +1,9 @@
 package controller;
 
+import interfaces.Message;
+import interfaces.User;
 import model.*;
+import model.RegisteredUsers;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -12,7 +15,7 @@ import java.net.Socket;
 public class ClientHandler implements Runnable{
     private final Socket socket;
     private ChatHistory chatHistory;
-    private RegisteredUsers registeredUsers;
+    private final RegisteredUsers registeredUsers;
 
     public ClientHandler(Socket socket, ChatHistory chatHistory, RegisteredUsers registeredUsers){
         this.socket = socket;
@@ -29,16 +32,11 @@ public class ClientHandler implements Runnable{
             while (true){
                 Object object = input.readObject();
                 if(object instanceof Message message){
-                    chatHistory.addMessage(message.getChatRoomID(), message);
+                    message.messageHandler(chatHistory);
                 }
                 else if(object instanceof User user){
-                    output.writeObject(registeredUsers.validateUser(user));
-                    output.flush();
+                    user.userHandler(registeredUsers, chatHistory, output);
                     System.out.println("response from server sent ");
-                }
-                else if(object instanceof Register register){
-                    output.flush();
-                    output.writeObject(registeredUsers.createUser(register));
                 }
             }
         }catch (IOException | ClassNotFoundException e){

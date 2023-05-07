@@ -1,7 +1,8 @@
 package view.graphics;
 
 import controller.Client;
-import model.User;
+import model.ChatRoom;
+import model.SessionUser;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,12 +24,18 @@ public class Dashboard extends JFrame{
     private JButton contactsButton;
     private JButton messageButton;
     private JPanel mainPanel;
-    private User user;
+    private JTable chatroomTable;
+    private JScrollPane chatRoomScrollPane;
+    private JPanel chatRoomPanel;
+    private JLabel displayNameLabel;
+    private JLabel dispalynameLabel;
+    private SessionUser sessionUser;
     private Client client;
 
-    public Dashboard(User user, Client client){
-        this.user = user;
+    public Dashboard(Client client){
+//        this.user = user;
         this.client = client;
+        sessionUser = client.getSessionUser();
         client.connectToServer();
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -38,8 +45,12 @@ public class Dashboard extends JFrame{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeMainPanel();
+        setDisplayName();
         setVisible(true);
+    }
 
+    private void setDisplayName(){
+        dispalynameLabel.setText("Welcome " + sessionUser.getDisplayname() + ", have a capybara day!");
     }
 
 
@@ -54,7 +65,15 @@ public class Dashboard extends JFrame{
                     dtde.acceptDrop(DnDConstants.ACTION_COPY);
 
                     if(!transferable.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) throw new Exception();
-                    java.util.List<File> images = (List<File>) transferable.getTransferData(DataFlavor.javaFileListFlavor);
+                    List <File> images = new ArrayList<>();
+                    Object object = transferable.getTransferData(DataFlavor.javaFileListFlavor);
+                    if(object instanceof List<?> list){
+                        for(Object o : list){
+                            if(o instanceof File image) images.add(image);
+
+                        }
+                    }
+
                     ArrayList<String> filePaths = new ArrayList<>();
                     for (File i : images) {
                         filePaths.add(i.getAbsolutePath());

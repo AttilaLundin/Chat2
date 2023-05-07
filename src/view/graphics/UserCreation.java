@@ -1,5 +1,6 @@
 package view.graphics;
 
+import controller.Client;
 import model.Register;
 
 import javax.swing.*;
@@ -11,13 +12,20 @@ public class UserCreation extends JFrame {
     private JPanel rootPanel;
     private JButton createButton;
     private JTextField usernameField;
-    private JPasswordField reenteredpasswordField;
-    private JTextField textField2;
     private JPasswordField passwordField2;
+    private JTextField displaynameField;
+    private JPasswordField passwordField;
     private JButton capybara;
-    private Register user;
+    private JButton loginButton;
+    private Client client;
+    private final String[] invalidUsernameChars = {"&", "=", "_", "'", "-", ",", "<", ">", "."};
+    private final String[] invalidPasswordChars = { "(", ")", "{", "}", "[", "]", "|", "'", "´", "¬", "¦", "!", "\"", "£", "$", "%",
+            "<", ">", "&", "*", ";", ":", "#", "^", "-", "_", "~", "+", "=", ",", "@", "."};
 
-    public UserCreation() {
+
+    public UserCreation(Client client) {
+        this.client = client;
+
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
         setContentPane(rootPanel);
@@ -25,17 +33,68 @@ public class UserCreation extends JFrame {
         setMinimumSize(minmumWindowSize);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        initializeButtons();
+        getRootPane().setDefaultButton(createButton);
         setVisible(true);
-        user = new Register(usernameField.getText(), reenteredpasswordField.getText(),textField2.getText());
+    }
 
+
+    public void initializeButtons(){
         createButton.addActionListener(new ActionListener() {
-
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                System.out.println("User Created");
-                //System.exit(0);
+            public void actionPerformed(ActionEvent e) {
+
+                String username = usernameField.getText();
+                String password = new String(passwordField.getPassword());
+                String controllPassword = new String(passwordField2.getPassword());
+                String displayName = displaynameField.getText();
+                if (password.equals(controllPassword) && validUsername(username) && validPassword(password) && validDisplayName(displayName)){
+                    boolean registrationSuccessful = client.sendRegistrationRequest(new Register.RegisterBuilder().username(username).password(password).displayname(displayName).build());
+                    if(registrationSuccessful){
+                        Dashboard dashboard = new Dashboard(client);
+                        dispose();
+                    }
+                    else{
+                        System.out.println("Invalid username: try again. JLAbel");
+                        usernameField.setText("");
+                        passwordField.setText("");
+                        passwordField2.setText("");
+                        displaynameField.setText("");
+                    }
+                }else{
+                    System.out.println("Invalid username or password: try again.");
+                }
+            }
+        });
+
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LoginWindow loginWindow = new LoginWindow(client);
                 dispose();
             }
         });
     }
+
+    private boolean validUsername(String userName){
+        if(userName.length() < 4 || userName.length() > 30) return false;
+        for(String s : invalidUsernameChars){
+            if(userName.contains(s)) return false;
+        }
+        return true;
+    }
+
+    private boolean validPassword(String password){
+        if(password.length() < 4 || password.length() > 30) return false;
+        for(String s : invalidPasswordChars){
+            if(password.contains(s)) return false;
+        }
+        return true;
+    }
+
+    private boolean validDisplayName(String displayName){
+        return displayName.length() >= 1 && displayName.length() <= 30;
+    }
+
+
 }
