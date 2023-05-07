@@ -1,4 +1,8 @@
-package model;
+package server;
+
+import sharedresources.SessionUser;
+import sharedresources.Login;
+import sharedresources.Register;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -18,11 +22,9 @@ public class RegisteredUsers {
         SessionUser user = registeredUsers.get(loginAttempt.getUsername());
         if(user == null) return null;
         if (user.correctCredentials(loginAttempt)) {
-            System.out.println("validation successful");
             return user;
         }
         else{
-            System.out.println("validation unsuccessful");
             return null;
         }
     }

@@ -1,7 +1,6 @@
-package model;
+package sharedresources;
 
-import controller.ClientHandler;
-import interfaces.User;
+import server.ChatHistory;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -11,7 +10,6 @@ public class SessionUser implements User, Serializable{
     private String username;
     private String displayname;
     private String password;
-    private List<ChatRoom> chatRooms;
 
     private SessionUser(SessionUserBuilder SessionUserBuilder){
         this.username= Objects.requireNonNull(SessionUserBuilder.username);

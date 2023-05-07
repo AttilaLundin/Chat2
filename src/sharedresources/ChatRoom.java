@@ -1,6 +1,4 @@
-package model;
-
-import interfaces.Message;
+package sharedresources;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,8 +21,9 @@ public class ChatRoom implements Cloneable, Serializable {
     public ChatRoom(){
         chatRoomID = UUID.randomUUID();
         ArrayList<SessionUser> testUsers = new ArrayList<>();
-        testUsers.add(new SessionUser.SessionUserBuilder().username("test").password("testp").build());
-        testUsers.add(new SessionUser.SessionUserBuilder().username("test").password("testp").build());
+        testUsers.add(new SessionUser.SessionUserBuilder().username("test").password("test").displayname("test").build());
+        testUsers.add(new SessionUser.SessionUserBuilder().username("test1").password("testp").displayname("test1").build());
+        users = testUsers;
         this.messages = new ArrayList<>();
     }
 
@@ -34,6 +33,10 @@ public class ChatRoom implements Cloneable, Serializable {
 
     public UUID getChatRoomID(){
         return chatRoomID;
+    }
+
+    public List<SessionUser> getUsersInChatRoom(){
+        return users;
     }
     public List<Message> getMessages(){
         return messages;

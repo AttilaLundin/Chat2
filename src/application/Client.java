@@ -1,10 +1,8 @@
-package controller;
+package application;
 
-import model.*;
+import sharedresources.*;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +10,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,7 +34,7 @@ public class Client {
                 connected = socket.isConnected();
                 output = new ObjectOutputStream(socket.getOutputStream());
                 input = new ObjectInputStream(socket.getInputStream());
-                System.out.println("connected");
+                System.out.println("Connected to server");
             } catch (IOException e){
                 System.out.println("waiting");
                 try{
@@ -67,8 +64,8 @@ public class Client {
 
             SessionUser sessionUser = (SessionUser) input.readObject();
             if(sessionUser != null) {
-                System.out.println("user received");
                 this.sessionUser = sessionUser;
+
                 return true;
             }
             return false;
@@ -88,7 +85,6 @@ public class Client {
 
             SessionUser sessionUser = (SessionUser) input.readObject();
             if(sessionUser != null) {
-                System.out.println("new user received");
                 this.sessionUser = sessionUser;
                 return true;
             }

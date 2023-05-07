@@ -1,7 +1,4 @@
-package interfaces;
-
-import controller.ClientHandler;
-import model.RegisteredUsers;
+package sharedresources;
 
 import java.io.ObjectOutputStream;
 

@@ -1,7 +1,8 @@
-package model;
+package sharedresources;
 
 
-import interfaces.User;
+import server.RegisteredUsers;
+
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
@@ -44,7 +45,9 @@ public class Login implements User, Serializable {
     public void userHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
         RegisteredUsers registeredUsers = (RegisteredUsers)registeredUser;
         try {
-            outputStream.writeObject(registeredUsers.validateUser(this));
+            SessionUser sessionUser = registeredUsers.validateUser(this);
+
+            outputStream.writeObject(sessionUser);
             outputStream.flush();
         }catch (Exception e){
             e.printStackTrace();

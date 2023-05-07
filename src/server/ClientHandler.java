@@ -1,9 +1,8 @@
-package controller;
+package server;
 
-import interfaces.Message;
-import interfaces.User;
-import model.*;
-import model.RegisteredUsers;
+import sharedresources.Message;
+import sharedresources.User;
+import sharedresources.SessionUser;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -36,7 +35,6 @@ public class ClientHandler implements Runnable{
                 }
                 else if(object instanceof User user){
                     user.userHandler(registeredUsers, chatHistory, output);
-                    System.out.println("response from server sent ");
                 }
             }
         }catch (IOException | ClassNotFoundException e){

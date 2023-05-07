@@ -1,8 +1,7 @@
-package interfaces;
+package sharedresources;
 
-import model.SessionUser;
+import sharedresources.SessionUser;
 
-import java.util.Objects;
 import java.util.UUID;
 
 public interface Message {

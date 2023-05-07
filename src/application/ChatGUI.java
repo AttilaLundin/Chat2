@@ -1,8 +1,6 @@
-package view;
+package application;
 
-import controller.Client;
-import view.graphics.LoginWindow;
-import view.graphics.UserCreation;
+import application.graphics.LoginWindow;
 
 public class ChatGUI {
     public static void main(String[] args) {

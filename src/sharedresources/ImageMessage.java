@@ -1,11 +1,8 @@
-package model;
-
-import interfaces.Message;
+package sharedresources;
 
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.Objects;
 import java.util.UUID;
 
 public class ImageMessage implements Message, Serializable {

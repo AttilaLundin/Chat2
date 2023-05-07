@@ -1,7 +1,7 @@
-package view.graphics;
+package application.graphics;
 
-import controller.Client;
-import model.Register;
+import application.Client;
+import sharedresources.Register;
 
 import javax.swing.*;
 import java.awt.*;

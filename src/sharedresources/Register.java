@@ -1,6 +1,6 @@
-package model;
+package sharedresources;
 
-import interfaces.User;
+import server.RegisteredUsers;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;

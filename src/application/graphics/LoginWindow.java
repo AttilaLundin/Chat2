@@ -1,17 +1,12 @@
-package view.graphics;
+package application.graphics;
 
-import controller.Client;
-import model.Login;
-import model.Register;
-import model.SessionUser;
-import view.ChatGUI;
+import application.Client;
+import sharedresources.Login;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class LoginWindow extends JFrame{
     private JButton createUserButton;
