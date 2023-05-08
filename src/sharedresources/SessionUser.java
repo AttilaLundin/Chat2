@@ -38,8 +38,8 @@ public class SessionUser implements User, DataHandler, Serializable{
         return displayname;
     }
 
-    public boolean correctCredentials(Login login){
-        return username.equals(login.getUsername()) && password.equals(login.getPassword());
+    public boolean correctCredentials(LoginRequest loginRequest){
+        return username.equals(loginRequest.getUsername()) && password.equals(loginRequest.getPassword());
     }
 
 

@@ -1,7 +1,7 @@
 package application.graphics;
 
 import application.Client;
-import sharedresources.Login;
+import sharedresources.LoginRequest;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,7 +55,7 @@ public class LoginWindow extends JFrame{
                 String username = usernameField.getText();
                 String password = new String(passwordField.getPassword());
 
-                boolean loginSuccessful = client.sendLoginRequest(new Login.LoginBuilder().username(username).password(password).build());
+                boolean loginSuccessful = client.sendLoginRequest(new LoginRequest.LoginBuilder().username(username).password(password).build());
                 if(loginSuccessful){
                     Dashboard dashboard = new Dashboard(client);
                     dispose();

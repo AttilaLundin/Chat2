@@ -6,12 +6,12 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Register implements User, DataHandler, Serializable{
+public class RegisterRequest implements User, DataHandler, Serializable{
     private final String username;
     private final String password;
     private final String displayname;
 
-    public Register(RegisterBuilder registerBuilder){
+    public RegisterRequest(RegisterBuilder registerBuilder){
         this.username= Objects.requireNonNull(registerBuilder.username);
         this.password = Objects.requireNonNull(registerBuilder.password);
         this.displayname = Objects.requireNonNull(registerBuilder.displayname);
@@ -34,8 +34,8 @@ public class Register implements User, DataHandler, Serializable{
             return this;
         }
 
-        public Register build(){
-            return new Register(this);
+        public RegisterRequest build(){
+            return new RegisterRequest(this);
         }
 
     }

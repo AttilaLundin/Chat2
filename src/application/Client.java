@@ -56,10 +56,10 @@ public class Client {
         }
     }
 
-    public boolean sendLoginRequest(Login login){
+    public boolean sendLoginRequest(LoginRequest loginRequest){
         try{
 
-            output.writeObject(login);
+            output.writeObject(loginRequest);
             output.flush();
 
             SessionUser sessionUser = (SessionUser) input.readObject();
@@ -77,10 +77,10 @@ public class Client {
         return false;
     }
 
-    public boolean sendRegistrationRequest(Register register){
+    public boolean sendRegistrationRequest(RegisterRequest registerRequest){
         try{
 
-            output.writeObject(register);
+            output.writeObject(registerRequest);
             output.flush();
 
             SessionUser sessionUser = (SessionUser) input.readObject();

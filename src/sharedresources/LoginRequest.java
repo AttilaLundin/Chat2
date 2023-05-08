@@ -6,12 +6,12 @@ import server.userStorage;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Login implements User,DataHandler, Serializable {
+public class LoginRequest implements User,DataHandler, Serializable {
 
     private final String username;
     private final String password;
 
-    public Login(LoginBuilder loginBuilder){
+    public LoginRequest(LoginBuilder loginBuilder){
         this.username = loginBuilder.username;
         this.password = loginBuilder.password;
     }
@@ -31,8 +31,8 @@ public class Login implements User,DataHandler, Serializable {
             return this;
         }
 
-        public Login build(){
-            return new Login(this);
+        public LoginRequest build(){
+            return new LoginRequest(this);
         }
 
     }

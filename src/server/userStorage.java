@@ -1,8 +1,8 @@
 package server;
 
 import sharedresources.SessionUser;
-import sharedresources.Login;
-import sharedresources.Register;
+import sharedresources.LoginRequest;
+import sharedresources.RegisterRequest;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -18,10 +18,10 @@ public class userStorage {
         registeredUsers.put("test1", new SessionUser.SessionUserBuilder().username("test1").password("test1").displayname("test1").build());
     }
 
-    public SessionUser validateUser(Login loginAttempt){
-        SessionUser user = registeredUsers.get(loginAttempt.getUsername());
+    public SessionUser validateUser(LoginRequest loginRequestAttempt){
+        SessionUser user = registeredUsers.get(loginRequestAttempt.getUsername());
         if(user == null) return null;
-        if (user.correctCredentials(loginAttempt)) {
+        if (user.correctCredentials(loginRequestAttempt)) {
             return user;
         }
         else{
@@ -29,10 +29,10 @@ public class userStorage {
         }
     }
 
-    public SessionUser createUser(Register register){
-        String username = register.getUsername();
+    public SessionUser createUser(RegisterRequest registerRequest){
+        String username = registerRequest.getUsername();
         if(registeredUsers.containsKey(username)) return null;
-        SessionUser newUser = new SessionUser.SessionUserBuilder().username(register.getUsername()).password(register.getPassword()).displayname(register.getDisplayName()).build();
+        SessionUser newUser = new SessionUser.SessionUserBuilder().username(registerRequest.getUsername()).password(registerRequest.getPassword()).displayname(registerRequest.getDisplayName()).build();
         registeredUsers.put(username, newUser);
         return newUser;
     }
