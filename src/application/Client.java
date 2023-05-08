@@ -97,6 +97,28 @@ public class Client {
         return false;
     }
 
+    public ArrayList<SessionUser> getUsersList(GetUsersRequest usersRequest){
+        try {
+            ArrayList<SessionUser> sessionUsers = new ArrayList<>();
+
+            output.writeObject(usersRequest);
+            output.flush();
+
+            Object object = input.readObject();
+
+            if(object instanceof ArrayList<?> list){
+                for(Object o : list){
+                    if(o instanceof SessionUser s) sessionUsers.add(s);
+                }
+                return sessionUsers;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     public List<ChatRoom> getChatRooms(){
 
         try {
@@ -117,6 +139,7 @@ public class Client {
         return null;
 
     }
+
 
     public SessionUser getSessionUser(){
         return sessionUser;

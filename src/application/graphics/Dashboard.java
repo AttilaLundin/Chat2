@@ -2,6 +2,7 @@ package application.graphics;
 
 import application.Client;
 import sharedresources.ChatRoom;
+import sharedresources.GetUsersRequest;
 import sharedresources.SessionUser;
 
 import javax.swing.*;
@@ -27,6 +28,8 @@ public class Dashboard extends JFrame{
     private JScrollPane chatRoomScrollPane;
     private JPanel chatRoomPanel;
     private JLabel displayNameLabel;
+    private JList userList;
+    private JButton createChatRoomButton;
     private SessionUser sessionUser;
     private Client client;
 
@@ -98,13 +101,10 @@ public class Dashboard extends JFrame{
 
                         }
                     }
-
-                    ArrayList<String> filePaths = new ArrayList<>();
-                    for (File i : images) {
-                        filePaths.add(i.getAbsolutePath());
-                        System.out.println("File path: " + i.getAbsolutePath());
+                    
+                    for (File image : images) {
+                        client.sendMessage(image.getAbsolutePath());
                     }
-                    client.sendMessage(filePaths.get(0));
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -114,12 +114,12 @@ public class Dashboard extends JFrame{
     }
 
     private void displayUsersList(){
-        ArrayList<SessionUser> users = client.getUsersList();
-        DefaultListModel<SessionUser> modelList = new DefaultListModel<>();
+        ArrayList<SessionUser> users = client.getUsersList(new GetUsersRequest());
+
         for(SessionUser user : users){
-            modelList.addElement(user);
+
         }
-        usersList.setModel(modelList); // skapa en usersList i guin
+
     }
 
 
