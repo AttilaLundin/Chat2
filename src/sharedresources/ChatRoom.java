@@ -12,10 +12,10 @@ public class ChatRoom implements Cloneable, Serializable {
 
     private String chatRoomName;
     private final UUID chatRoomID;
-    private List<SessionUser> users;
+    private List<User> users;
     private final List<Message> messages;
 
-    public ChatRoom(List<SessionUser> users, List<Message> messages){
+    public ChatRoom(List<User> users, List<Message> messages){
         chatRoomID = UUID.randomUUID();
         this.users = users;
         this.messages = messages;
@@ -25,9 +25,9 @@ public class ChatRoom implements Cloneable, Serializable {
 
 
         this.chatRoomID = UUID.randomUUID();
-        ArrayList<SessionUser> testUsers = new ArrayList<>();
-        testUsers.add(new SessionUser.SessionUserBuilder().username("test").password("test").displayname("test").build());
-        testUsers.add(new SessionUser.SessionUserBuilder().username("test1").password("test1").displayname("test1").build());
+        ArrayList<User> testUsers = new ArrayList<>();
+        testUsers.add(new User.SessionUserBuilder().username("test").password("test").displayname("test").build());
+        testUsers.add(new User.SessionUserBuilder().username("test1").password("test1").displayname("test1").build());
         this.users = testUsers;
 
 
@@ -35,7 +35,7 @@ public class ChatRoom implements Cloneable, Serializable {
         this.messages = new ArrayList<>();
     }
 
-    public List<SessionUser> getUsers(){
+    public List<User> getUsers(){
         return users;
     }
 
@@ -43,7 +43,7 @@ public class ChatRoom implements Cloneable, Serializable {
         return chatRoomID;
     }
 
-    public List<SessionUser> getUsersInChatRoom(){
+    public List<User> getUsersInChatRoom(){
         return users;
     }
     public List<Message> getMessages(){

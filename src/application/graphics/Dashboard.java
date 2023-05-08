@@ -3,7 +3,7 @@ package application.graphics;
 import application.Client;
 import sharedresources.ChatRoom;
 import sharedresources.GetUsersRequest;
-import sharedresources.SessionUser;
+import sharedresources.User;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,13 +30,13 @@ public class Dashboard extends JFrame{
     private JLabel displayNameLabel;
     private JList userList;
     private JButton createChatRoomButton;
-    private SessionUser sessionUser;
+    private User user;
     private Client client;
 
     public Dashboard(Client client){
 
         this.client = client;
-        sessionUser = client.getSessionUser();
+        user = client.getSessionUser();
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
         setContentPane(rootPanel);
@@ -59,7 +59,7 @@ public class Dashboard extends JFrame{
         if(chatRooms.isEmpty()) return;
         String[] items = new String[chatRooms.size()];
         for(int i = 0; i < chatRooms.size(); i++){
-            List<SessionUser> usersInRoom = chatRooms.get(i).getUsersInChatRoom();
+            List<User> usersInRoom = chatRooms.get(i).getUsersInChatRoom();
             StringBuilder stringBuilder = new StringBuilder();
             for(int j = 0; j < usersInRoom.size(); j++){
                 stringBuilder.append(usersInRoom.get(j).getDisplayName());
@@ -78,7 +78,7 @@ public class Dashboard extends JFrame{
     }
 
     private void setDisplayName(){
-        displayNameLabel.setText("Welcome " + sessionUser.getDisplayName() + ", have a capybara day!");
+        displayNameLabel.setText("Welcome " + user.getDisplayName() + ", have a capybara day!");
     }
 
 
@@ -114,9 +114,9 @@ public class Dashboard extends JFrame{
     }
 
     private void displayUsersList(){
-        ArrayList<SessionUser> users = client.getUsersList(new GetUsersRequest());
+        ArrayList<User> users = client.getUsersList(new GetUsersRequest());
 
-        for(SessionUser user : users){
+        for(User user : users){
 
         }
 

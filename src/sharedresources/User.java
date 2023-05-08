@@ -2,18 +2,17 @@ package sharedresources;
 
 import server.chatRoomStorage;
 import sharedresources.interfaces.DataHandler;
-import sharedresources.interfaces.User;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.*;
 
-public class SessionUser implements User, DataHandler, Serializable{
+public class User implements sharedresources.interfaces.User, DataHandler, Serializable{
     private String username;
     private String displayname;
     private String password;
 
-    private SessionUser(SessionUserBuilder sessionUserBuilder){
+    private User(SessionUserBuilder sessionUserBuilder){
         this.username= Objects.requireNonNull(sessionUserBuilder.username);
         this.displayname = Objects.requireNonNull(sessionUserBuilder.displayname);
         this.password = Objects.requireNonNull(sessionUserBuilder.password);
@@ -71,8 +70,8 @@ public class SessionUser implements User, DataHandler, Serializable{
             return this;
         }
 
-        public SessionUser build(){
-            return new SessionUser(this);
+        public User build(){
+            return new User(this);
         }
 
     }

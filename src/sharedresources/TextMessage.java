@@ -11,7 +11,7 @@ import java.util.UUID;
 public class TextMessage implements Message, DataHandler, Serializable {
     private final String text;
     private String timeSent;
-    private SessionUser sender;
+    private User sender;
     private UUID chatRoomID;
 
     public TextMessage(TextMessageBuilder textMessageBuilder){
@@ -24,7 +24,7 @@ public class TextMessage implements Message, DataHandler, Serializable {
     public static class TextMessageBuilder{
         private String text;
         private String timeSent;
-        private SessionUser sender;
+        private User sender;
         private UUID chatRoomID;
 
         public TextMessageBuilder text (String text){
@@ -37,7 +37,7 @@ public class TextMessage implements Message, DataHandler, Serializable {
             return this;
         }
 
-        public TextMessageBuilder sender(SessionUser sender) {
+        public TextMessageBuilder sender(User sender) {
             this.sender = sender;
             return this;
         }
@@ -67,7 +67,7 @@ public class TextMessage implements Message, DataHandler, Serializable {
     }
 
     @Override
-    public SessionUser getSender() {
+    public User getSender() {
         return sender;
     }
 

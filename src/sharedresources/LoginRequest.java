@@ -3,12 +3,11 @@ package sharedresources;
 
 import server.userStorage;
 import sharedresources.interfaces.DataHandler;
-import sharedresources.interfaces.User;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class LoginRequest implements User, DataHandler, Serializable {
+public class LoginRequest implements sharedresources.interfaces.User, DataHandler, Serializable {
 
     private final String username;
     private final String password;
@@ -47,9 +46,9 @@ public class LoginRequest implements User, DataHandler, Serializable {
     public void dataHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
         userStorage userStorage = (userStorage)registeredUser;
         try {
-            SessionUser sessionUser = userStorage.validateUser(this);
+            User user = userStorage.validateUser(this);
 
-            outputStream.writeObject(sessionUser);
+            outputStream.writeObject(user);
             outputStream.flush();
         }catch (Exception e){
             e.printStackTrace();
