@@ -6,9 +6,6 @@ import sharedresources.requests.GetUsersRequest;
 import sharedresources.User;
 
 import javax.swing.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.*;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -46,6 +43,7 @@ public class Dashboard extends JFrame{
     private List<String> selectedUsernames = new ArrayList<>();
     private JButton createCapyHerdButton;
     private JPanel userPanel;
+    private JList chatroomList;
     private JButton createChatRoomButton;
     private ChatRoom displayedChatroom;
     private User user;
