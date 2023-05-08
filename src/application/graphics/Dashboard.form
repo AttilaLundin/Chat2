@@ -148,6 +148,7 @@
               <fixedCellHeight value="-1"/>
               <foreground color="-1"/>
               <model/>
+              <selectionMode value="2"/>
               <visible value="true"/>
             </properties>
           </component>

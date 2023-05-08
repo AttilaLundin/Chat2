@@ -15,6 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -57,21 +59,16 @@ public class Dashboard extends JFrame{
         DefaultListModel<String> listModel = new DefaultListModel<>();
         userList.setModel(listModel);
         userList.setCellRenderer(new UsernameListCellRenderer());
+        userList.setSelectionModel(new CustomListSelectionModel());
         userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-        userList.addMouseListener(new MouseAdapter() {
+        userList.addListSelectionListener(new ListSelectionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                int clickedIndex = userList.locationToIndex(e.getPoint());
-                if(clickedIndex != -1){
-                    String clickedUsername = listModel.getElementAt(clickedIndex);
-                    if (selectedUsernames.contains(clickedUsername)){
-                        selectedUsernames.remove(clickedUsername);
-                        userList.removeSelectionInterval(clickedIndex, clickedIndex);
-                    }
-                    else{
-                        selectedUsernames.add(clickedUsername);
-                        userList.addSelectionInterval(clickedIndex, clickedIndex);
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    selectedUsernames.clear();
+                    for (int index : userList.getSelectedIndices()) {
+                        selectedUsernames.add(listModel.getElementAt(index));
                     }
                     System.out.println("Selected usernames: " + selectedUsernames);
                 }
