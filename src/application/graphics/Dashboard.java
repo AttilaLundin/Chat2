@@ -94,15 +94,14 @@ public class Dashboard extends JFrame{
         initializeDragAndDrop();
         setDisplayName();
         chatRoomPanel.setLayout(new BorderLayout());
-        initChatRoomDisplay();
+//        initChatRoomDisplay();
         setVisible(true);
 
     }
-
+/*
     public void initChatRoomDisplay(){
 
         List<ChatRoom> chatRooms = client.getChatRooms();
-        System.out.println(chatRooms.size());
         if(chatRooms.isEmpty()) return;
         String[] items = new String[chatRooms.size()];
         for(int i = 0; i < chatRooms.size(); i++){
@@ -124,12 +123,15 @@ public class Dashboard extends JFrame{
 
     }
 
+ */
+
     private void setDisplayName(){
         displayNameLabel.setText("Welcome " + user.getDisplayName() + ", have a capybara day!");
     }
 
 
     private void initializeDragAndDrop(){
+        //TODO: ändra mainPanel nedan till den panelen som kommer displaya chatrummet.
         mainPanel.setDropTarget(new DropTarget(mainPanel, DnDConstants.ACTION_COPY, new DropTargetAdapter() {
             @Override
             public void drop(DropTargetDropEvent dtde) {
