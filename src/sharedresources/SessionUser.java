@@ -1,6 +1,6 @@
 package sharedresources;
 
-import server.ChatHistory;
+import server.chatroomStorage;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -25,9 +25,9 @@ public class SessionUser implements User, Serializable{
     @Override
     public void userHandler(Object registeredUsers, Object history, ObjectOutputStream outputStream) {
 
-        ChatHistory chatHistory = (ChatHistory) history;
+        chatroomStorage chatroomStorage = (chatroomStorage) history;
         try {
-            outputStream.writeObject(chatHistory.getChatRooms(this));
+            outputStream.writeObject(chatroomStorage.getChatRooms(this));
             outputStream.flush();
         }catch (Exception e){
             e.printStackTrace();

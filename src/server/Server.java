@@ -9,14 +9,14 @@ public class Server {
 
     public static void main(String[] args){
 
-        ChatHistory chatHistory = new ChatHistory();
-        RegisteredUsers registeredUsers = new RegisteredUsers();
+        chatroomStorage chatroomStorage = new chatroomStorage();
+        userStorage userStorage = new userStorage();
         try (ServerSocket serverSocket = new ServerSocket(PORT)){
 
 
             while(true){
                 Socket socket = serverSocket.accept();
-                ClientHandler clientHandler = new ClientHandler(socket, chatHistory, registeredUsers);
+                ClientHandler clientHandler = new ClientHandler(socket, chatroomStorage, userStorage);
                 new Thread(clientHandler).start();
                 System.out.println("New Thread started for socket: " + socket.getPort());
             }

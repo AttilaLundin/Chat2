@@ -12,13 +12,13 @@ import java.util.Objects;
 
 public class ClientHandler implements Runnable{
     private final Socket socket;
-    private ChatHistory chatHistory;
-    private final RegisteredUsers registeredUsers;
+    private chatroomStorage chatroomStorage;
+    private final userStorage userStorage;
 
-    public ClientHandler(Socket socket, ChatHistory chatHistory, RegisteredUsers registeredUsers){
+    public ClientHandler(Socket socket, chatroomStorage chatroomStorage, userStorage userStorage){
         this.socket = Objects.requireNonNull(socket);
-        this.chatHistory = Objects.requireNonNull(chatHistory);
-        this.registeredUsers = Objects.requireNonNull(registeredUsers);
+        this.chatroomStorage = Objects.requireNonNull(chatroomStorage);
+        this.userStorage = Objects.requireNonNull(userStorage);
     }
 
     public void run(){
@@ -30,10 +30,10 @@ public class ClientHandler implements Runnable{
             while (true){
                 Object object = input.readObject();
                 if(object instanceof Message message){
-                    message.messageHandler(chatHistory);
+                    message.messageHandler(chatroomStorage);
                 }
                 else if(object instanceof User user){
-                    user.userHandler(registeredUsers, chatHistory, output);
+                    user.userHandler(userStorage, chatroomStorage, output);
                 }
             }
         }catch (IOException | ClassNotFoundException e){

@@ -1,6 +1,6 @@
 package sharedresources;
 
-import server.RegisteredUsers;
+import server.userStorage;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -46,9 +46,9 @@ public class Register implements User, Serializable{
 
     @Override
     public void userHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
-        RegisteredUsers registeredUsers = (RegisteredUsers) registeredUser;
+        userStorage userStorage = (userStorage) registeredUser;
         try {
-            outputStream.writeObject(registeredUsers.createUser(this));
+            outputStream.writeObject(userStorage.createUser(this));
             outputStream.flush();
         }catch (Exception e){
             e.printStackTrace();

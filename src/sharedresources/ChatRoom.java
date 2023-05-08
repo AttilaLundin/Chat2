@@ -8,6 +8,7 @@ import java.util.UUID;
 
 public class ChatRoom implements Cloneable, Serializable {
 
+    private String chatRoomName;
     private final UUID chatRoomID;
     private List<SessionUser> users;
     private final List<Message> messages;
@@ -19,11 +20,16 @@ public class ChatRoom implements Cloneable, Serializable {
     }
 
     public ChatRoom(){
+
+
         this.chatRoomID = UUID.randomUUID();
         ArrayList<SessionUser> testUsers = new ArrayList<>();
         testUsers.add(new SessionUser.SessionUserBuilder().username("test").password("test").displayname("test").build());
         testUsers.add(new SessionUser.SessionUserBuilder().username("test1").password("test1").displayname("test1").build());
         this.users = testUsers;
+
+
+
         this.messages = new ArrayList<>();
     }
 

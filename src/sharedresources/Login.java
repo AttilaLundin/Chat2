@@ -1,7 +1,7 @@
 package sharedresources;
 
 
-import server.RegisteredUsers;
+import server.userStorage;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -43,9 +43,9 @@ public class Login implements User, Serializable {
 
     @Override
     public void userHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
-        RegisteredUsers registeredUsers = (RegisteredUsers)registeredUser;
+        userStorage userStorage = (userStorage)registeredUser;
         try {
-            SessionUser sessionUser = registeredUsers.validateUser(this);
+            SessionUser sessionUser = userStorage.validateUser(this);
 
             outputStream.writeObject(sessionUser);
             outputStream.flush();

@@ -8,11 +8,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisteredUsers {
+public class userStorage {
 
     private final Map<String, SessionUser> registeredUsers;
 
-    public RegisteredUsers(){
+    public userStorage(){
         registeredUsers = Collections.synchronizedMap(new HashMap<>());
         registeredUsers.put("test", new SessionUser.SessionUserBuilder().username("test").password("test").displayname("test").build());
         registeredUsers.put("test1", new SessionUser.SessionUserBuilder().username("test1").password("test1").displayname("test1").build());

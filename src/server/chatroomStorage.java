@@ -7,12 +7,12 @@ import sharedresources.SessionUser;
 import java.util.*;
 
 
-public class ChatHistory {
+public class chatroomStorage {
 
     private final Map<UUID, ChatRoom> chatRoomHistory;
     private final Map<SessionUser, List<UUID>> usersChatRooms;
 
-    public ChatHistory() {
+    public chatroomStorage() {
         chatRoomHistory = Collections.synchronizedMap(new HashMap<>());
         usersChatRooms = Collections.synchronizedMap(new HashMap<>());
     }
@@ -22,16 +22,17 @@ public class ChatHistory {
         return null;
     }
 
-    public void addChatRoom(ChatRoom chatRoom, UUID chatRoomId, List<SessionUser> users){
-        if(chatRoomHistory.containsKey(chatRoomId)) return;
+    public void addChatRoom(List<SessionUser> membersInChatRoom, String chatRoomName){
 
-        chatRoomHistory.put(chatRoomId, chatRoom);
-        for(SessionUser user : users){
-            if(usersChatRooms.containsKey(user)) usersChatRooms.get(user).add(chatRoomId);
+        ChatRoom chatRoom = new ChatRoom(membersInChatRoom, new ArrayList<>());
+
+        chatRoomHistory.put(chatRoom.getChatRoomID(), chatRoom);
+        for(SessionUser user : membersInChatRoom){
+            if(usersChatRooms.containsKey(user)) usersChatRooms.get(user).add(chatRoom.getChatRoomID());
             else {
-                ArrayList<UUID> chatrooms = new ArrayList<>();
-                chatrooms.add(chatRoomId);
-                usersChatRooms.put(user, chatrooms);
+                ArrayList<UUID> chatRoomId = new ArrayList<>();
+                chatRoomId.add(chatRoom.getChatRoomID());
+                usersChatRooms.put(user, chatRoomId);
             }
         }
     }
@@ -39,8 +40,5 @@ public class ChatHistory {
     public void addMessage(UUID chatRoomId, Message message){
         chatRoomHistory.get(chatRoomId).addMessage(message);
     }
-
-
-
 }
 
