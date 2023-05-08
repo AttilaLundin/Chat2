@@ -1,4 +1,4 @@
-package sharedresources;
+package sharedresources.requests;
 
 import sharedresources.interfaces.DataHandler;
 

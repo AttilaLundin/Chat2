@@ -2,7 +2,7 @@ package application.graphics;
 
 import application.Client;
 import sharedresources.ChatRoom;
-import sharedresources.GetUsersRequest;
+import sharedresources.requests.GetUsersRequest;
 import sharedresources.User;
 
 import javax.swing.*;

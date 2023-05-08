@@ -1,6 +1,9 @@
 package application;
 
 import sharedresources.*;
+import sharedresources.requests.GetUsersRequest;
+import sharedresources.requests.LoginRequest;
+import sharedresources.requests.RegisterRequest;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

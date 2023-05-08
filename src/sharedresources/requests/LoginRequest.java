@@ -1,7 +1,8 @@
-package sharedresources;
+package sharedresources.requests;
 
 
 import server.userStorage;
+import sharedresources.User;
 import sharedresources.interfaces.DataHandler;
 
 import java.io.ObjectOutputStream;

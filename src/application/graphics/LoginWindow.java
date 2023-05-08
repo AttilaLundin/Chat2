@@ -1,7 +1,7 @@
 package application.graphics;
 
 import application.Client;
-import sharedresources.LoginRequest;
+import sharedresources.requests.LoginRequest;
 
 import javax.swing.*;
 import java.awt.*;

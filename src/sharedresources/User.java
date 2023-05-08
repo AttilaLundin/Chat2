@@ -2,6 +2,7 @@ package sharedresources;
 
 import server.chatRoomStorage;
 import sharedresources.interfaces.DataHandler;
+import sharedresources.requests.LoginRequest;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;

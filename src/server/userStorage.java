@@ -1,8 +1,8 @@
 package server;
 
 import sharedresources.User;
-import sharedresources.LoginRequest;
-import sharedresources.RegisterRequest;
+import sharedresources.requests.LoginRequest;
+import sharedresources.requests.RegisterRequest;
 
 import java.util.Collections;
 import java.util.HashMap;
