@@ -6,7 +6,7 @@ import server.userStorage;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Login implements User, Serializable {
+public class Login implements User,DataHandler, Serializable {
 
     private final String username;
     private final String password;
@@ -42,7 +42,7 @@ public class Login implements User, Serializable {
     }
 
     @Override
-    public void userHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
+    public void dataHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
         userStorage userStorage = (userStorage)registeredUser;
         try {
             SessionUser sessionUser = userStorage.validateUser(this);

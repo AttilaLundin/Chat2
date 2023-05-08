@@ -1,11 +1,12 @@
 package sharedresources;
 
 import java.awt.image.BufferedImage;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
 
-public class ImageMessage implements Message, Serializable {
+public class ImageMessage implements Message, DataHandler, Serializable {
     private final transient BufferedImage image;
     private final String timeSent;
     private final SessionUser sender;
@@ -72,7 +73,7 @@ public class ImageMessage implements Message, Serializable {
     }
 
     @Override
-    public void messageHandler(Object object){
+    public void dataHandler(Object userStorage, Object chatroomStorage, ObjectOutputStream outputStream){
 //        todo: hantera bilder, lägg in i chatroomhistory
 
     }

@@ -1,5 +1,6 @@
 package server;
 
+import sharedresources.DataHandler;
 import sharedresources.Message;
 import sharedresources.User;
 
@@ -29,11 +30,8 @@ public class ClientHandler implements Runnable{
 
             while (true){
                 Object object = input.readObject();
-                if(object instanceof Message message){
-                    message.messageHandler(chatroomStorage);
-                }
-                else if(object instanceof User user){
-                    user.userHandler(userStorage, chatroomStorage, output);
+                if(object instanceof DataHandler data){
+                    data.dataHandler(userStorage, chatroomStorage, output);
                 }
             }
         }catch (IOException | ClassNotFoundException e){

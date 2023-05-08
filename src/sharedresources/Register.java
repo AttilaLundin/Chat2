@@ -6,7 +6,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Register implements User, Serializable{
+public class Register implements User, DataHandler, Serializable{
     private final String username;
     private final String password;
     private final String displayname;
@@ -45,7 +45,7 @@ public class Register implements User, Serializable{
     }
 
     @Override
-    public void userHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
+    public void dataHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
         userStorage userStorage = (userStorage) registeredUser;
         try {
             outputStream.writeObject(userStorage.createUser(this));

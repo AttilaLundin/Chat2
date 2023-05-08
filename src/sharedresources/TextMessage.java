@@ -1,10 +1,11 @@
 package sharedresources;
 
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
 
-public class TextMessage implements Message,Serializable {
+public class TextMessage implements Message, DataHandler, Serializable {
     private final String text;
     private String timeSent;
     private SessionUser sender;
@@ -72,7 +73,7 @@ public class TextMessage implements Message,Serializable {
     }
 
     @Override
-    public void messageHandler(Object object) {
+    public void dataHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
 
     }
 

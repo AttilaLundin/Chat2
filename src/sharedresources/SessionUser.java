@@ -6,7 +6,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.*;
 
-public class SessionUser implements User, Serializable{
+public class SessionUser implements User, DataHandler, Serializable{
     private String username;
     private String displayname;
     private String password;
@@ -23,7 +23,7 @@ public class SessionUser implements User, Serializable{
     }
 
     @Override
-    public void userHandler(Object registeredUsers, Object history, ObjectOutputStream outputStream) {
+    public void dataHandler(Object registeredUsers, Object history, ObjectOutputStream outputStream) {
 
         chatroomStorage chatroomStorage = (chatroomStorage) history;
         try {
