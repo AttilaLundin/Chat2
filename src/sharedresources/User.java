@@ -1,12 +1,14 @@
 package sharedresources;
 
-import server.chatRoomStorage;
+import server.ChatRoomStorage;
 import sharedresources.interfaces.DataHandler;
 import sharedresources.requests.LoginRequest;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.*;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.List;
 
 public class User implements sharedresources.interfaces.User, DataHandler, Serializable{
     private String username;
@@ -27,7 +29,7 @@ public class User implements sharedresources.interfaces.User, DataHandler, Seria
     @Override
     public void dataHandler(Object registeredUsers, Object history, ObjectOutputStream outputStream) {
 
-        chatRoomStorage chatroomStorage = (chatRoomStorage) history;
+        ChatRoomStorage chatroomStorage = (ChatRoomStorage) history;
         try {
             outputStream.writeObject(chatroomStorage.getChatRooms(this));
             outputStream.flush();

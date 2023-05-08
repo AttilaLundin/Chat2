@@ -1,6 +1,6 @@
 package sharedresources.requests;
 
-import server.userStorage;
+import server.UserStorage;
 import sharedresources.interfaces.DataHandler;
 import sharedresources.interfaces.User;
 
@@ -48,7 +48,7 @@ public class RegisterRequest implements User, DataHandler, Serializable{
 
     @Override
     public void dataHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
-        userStorage userStorage = (userStorage) registeredUser;
+        UserStorage userStorage = (UserStorage) registeredUser;
         try {
             outputStream.writeObject(userStorage.createUser(this));
             outputStream.flush();

@@ -1,7 +1,7 @@
 package sharedresources.requests;
 
 
-import server.userStorage;
+import server.UserStorage;
 import sharedresources.User;
 import sharedresources.interfaces.DataHandler;
 
@@ -45,7 +45,7 @@ public class LoginRequest implements sharedresources.interfaces.User, DataHandle
 
     @Override
     public void dataHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
-        userStorage userStorage = (userStorage)registeredUser;
+        UserStorage userStorage = (UserStorage)registeredUser;
         try {
             User user = userStorage.validateUser(this);
 

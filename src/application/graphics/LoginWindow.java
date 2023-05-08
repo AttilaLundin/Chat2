@@ -3,8 +3,16 @@ package application.graphics;
 import application.Client;
 import sharedresources.requests.LoginRequest;
 
-import javax.swing.*;
-import java.awt.*;
+
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+
+
+import java.awt.Toolkit;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

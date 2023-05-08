@@ -9,8 +9,8 @@ public class Server {
 
     public static void main(String[] args){
 
-        chatRoomStorage chatroomStorage = new chatRoomStorage();
-        userStorage userStorage = new userStorage();
+        ChatRoomStorage chatroomStorage = new ChatRoomStorage();
+        UserStorage userStorage = new UserStorage();
         try (ServerSocket serverSocket = new ServerSocket(PORT)){
 
 

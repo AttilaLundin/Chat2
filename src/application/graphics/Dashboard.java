@@ -5,8 +5,16 @@ import sharedresources.ChatRoom;
 import sharedresources.requests.GetUsersRequest;
 import sharedresources.User;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.Dimension;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.dnd.DnDConstants;
@@ -30,6 +38,7 @@ public class Dashboard extends JFrame{
     private JLabel displayNameLabel;
     private JList userList;
     private JButton createChatRoomButton;
+    private ChatRoom displayedChatroom;
     private User user;
     private Client client;
 
@@ -44,7 +53,7 @@ public class Dashboard extends JFrame{
         setMinimumSize(minmumWindowSize);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        initializeMainPanel();
+        initializeDragAndDrop();
         setDisplayName();
         chatRoomPanel.setLayout(new BorderLayout());
         initChatRoomDisplay();
@@ -82,7 +91,7 @@ public class Dashboard extends JFrame{
     }
 
 
-    private void initializeMainPanel(){
+    private void initializeDragAndDrop(){
         mainPanel.setDropTarget(new DropTarget(mainPanel, DnDConstants.ACTION_COPY, new DropTargetAdapter() {
             @Override
             public void drop(DropTargetDropEvent dtde) {
@@ -93,19 +102,15 @@ public class Dashboard extends JFrame{
                     dtde.acceptDrop(DnDConstants.ACTION_COPY);
 
                     if(!transferable.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) throw new Exception();
-                    List <File> images = new ArrayList<>();
                     Object object = transferable.getTransferData(DataFlavor.javaFileListFlavor);
+
                     if(object instanceof List<?> list){
                         for(Object o : list){
-                            if(o instanceof File image) images.add(image);
-
+                            if(o instanceof File image){
+                                client.sendImageMessage(image.getAbsolutePath(), displayedChatroom.getChatRoomID());
+                            }
                         }
                     }
-                    
-                    for (File image : images) {
-                        client.sendMessage(image.getAbsolutePath());
-                    }
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

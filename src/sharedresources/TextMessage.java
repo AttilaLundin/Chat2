@@ -14,9 +14,9 @@ public class TextMessage implements Message, DataHandler, Serializable {
     private User sender;
     private UUID chatRoomID;
 
-    public TextMessage(TextMessageBuilder textMessageBuilder){
+    private TextMessage(TextMessageBuilder textMessageBuilder){
         this.text= textMessageBuilder.text;
-        this.timeSent = textMessageBuilder.timeSent;
+        this.timeSent = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
         this.sender= textMessageBuilder.sender;
         this.chatRoomID = textMessageBuilder.chatRoomID;
     }
@@ -29,11 +29,6 @@ public class TextMessage implements Message, DataHandler, Serializable {
 
         public TextMessageBuilder text (String text){
             this.text = text;
-            return this;
-        }
-
-        public TextMessageBuilder timeSent() {
-            this.timeSent = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
             return this;
         }
 
@@ -51,10 +46,6 @@ public class TextMessage implements Message, DataHandler, Serializable {
             return new TextMessage(this);
         }
     }
-
-
-
-
 
 
     public String getText(){
@@ -79,12 +70,4 @@ public class TextMessage implements Message, DataHandler, Serializable {
     public void dataHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
 
     }
-
-    public void messageHandler(){
-
-    }
-
-
-
-
 }

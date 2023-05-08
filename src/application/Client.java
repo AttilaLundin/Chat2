@@ -1,6 +1,9 @@
 package application;
 
-import sharedresources.*;
+import sharedresources.User;
+import sharedresources.ImageMessage;
+import sharedresources.TextMessage;
+import sharedresources.ChatRoom;
 import sharedresources.requests.GetUsersRequest;
 import sharedresources.requests.LoginRequest;
 import sharedresources.requests.RegisterRequest;
@@ -49,10 +52,18 @@ public class Client {
         }
     }
 
-    public void sendMessage(String filePath){
+    public void sendTextMessage(String text, UUID chatRoomID){
+        try{
+            output.writeObject(new TextMessage.TextMessageBuilder().text(text).sender(user).chatRoomID(chatRoomID).build());
+            output.flush();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+  public void sendImageMessage(String filePath, UUID chatRoomID){
         try{
             BufferedImage bufferedImage = ImageIO.read(new File(filePath));
-            output.writeObject(new ImageMessage.ImageMessageBuilder().image(bufferedImage).sender(user).chatRoomID(UUID.randomUUID()).timeSent().build()); // skickar msg till server, vad näst?
+            output.writeObject(new ImageMessage.ImageMessageBuilder().image(bufferedImage).sender(user).chatRoomID(chatRoomID).build()); // skickar msg till server, vad näst?
             output.flush();
         }catch (IOException e){
             e.printStackTrace();

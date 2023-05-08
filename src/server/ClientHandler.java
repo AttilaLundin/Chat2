@@ -11,10 +11,10 @@ import java.util.Objects;
 
 public class ClientHandler implements Runnable{
     private final Socket socket;
-    private chatRoomStorage chatRoomStorage;
-    private final userStorage userStorage;
+    private ChatRoomStorage chatRoomStorage;
+    private final UserStorage userStorage;
 
-    public ClientHandler(Socket socket, chatRoomStorage chatroomStorage, userStorage userStorage){
+    public ClientHandler(Socket socket, ChatRoomStorage chatroomStorage, UserStorage userStorage){
         this.socket = Objects.requireNonNull(socket);
         this.chatRoomStorage = Objects.requireNonNull(chatroomStorage);
         this.userStorage = Objects.requireNonNull(userStorage);

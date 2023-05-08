@@ -1,7 +1,10 @@
 package application.graphics;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
+import javax.swing.JLabel;
+import java.awt.Component;
+
 
 public class UsernameListCellRenderer extends DefaultListCellRenderer{
 
