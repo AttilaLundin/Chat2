@@ -47,10 +47,10 @@ public class RegisterRequest implements User, DataHandler, Serializable{
     }
 
     @Override
-    public void dataHandler(Object userStorage, Object chatroomStorage, ObjectOutputStream outputStream) {
-        UserStorage userStorage1 = (UserStorage) userStorage;
+    public void dataHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
+        UserStorage userStorage = (UserStorage) registeredUser;
         try {
-            outputStream.writeObject(userStorage1.createUser(this));
+            outputStream.writeObject(userStorage.createUser(this));
             outputStream.flush();
         }catch (Exception e){
             e.printStackTrace();
