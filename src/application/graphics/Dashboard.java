@@ -113,6 +113,42 @@ public class Dashboard extends JFrame{
         }));
     }
 
+    private void displayUsersList(){
+        ArrayList<SessionUser> users = client.getUsersList();
+        DefaultListModel<SessionUser> modelList = new DefaultListModel<>();
+        for(SessionUser user : users){
+            modelList.addElement(user);
+        }
+        usersList.setModel(modelList); // skapa en usersList i guin
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
     public class ChatRoomListModel extends AbstractListModel<String> {
         private final List<ChatRoom> chatRooms;
