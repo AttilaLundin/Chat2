@@ -19,29 +19,25 @@ public class UsernameListCellRenderer extends DefaultListCellRenderer{
 
     @Override
     public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus){
-        JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, false, cellHasFocus);
         String username = (String) value;
         label.setText(username);
 
         label.setBorder(new EmptyBorder(VERTICAL_PADDING, HORIZONTAL_PADDING, VERTICAL_PADDING, HORIZONTAL_PADDING));
-
         Font currentFont = label.getFont();
         label.setFont(new Font(currentFont.getName(), currentFont.getStyle(), FONT_SIZE));
 
-        Dashboard dashboard = (Dashboard) SwingUtilities.getAncestorOfClass(Dashboard.class, list);
-        isSelected = dashboard.getSelectedUsernames().contains(value);
+        boolean indexIsSelected = Arrays.stream(list.getSelectedIndices()).anyMatch(i -> i == index);
 
-        if(isSelected){
+        if(isSelected || list.isSelectedIndex(index)){
             label.setBackground(SELECTED_BACKGROUND_COLOR);
             label.setForeground(SELECTED_FOREGROUND_COLOR);
-
+            label.setOpaque(true);
         }
         else{
-            label.setBackground(list.getBackground());
-            label.setForeground(list.getForeground());
+            label.setOpaque(false);
         }
 
-        label.setOpaque(isSelected);
 
         return label;
     }
