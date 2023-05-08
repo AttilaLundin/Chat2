@@ -1,8 +1,6 @@
 package server;
 
-import sharedresources.DataHandler;
-import sharedresources.Message;
-import sharedresources.User;
+import sharedresources.interfaces.DataHandler;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -13,12 +11,12 @@ import java.util.Objects;
 
 public class ClientHandler implements Runnable{
     private final Socket socket;
-    private chatroomStorage chatroomStorage;
+    private chatRoomStorage chatRoomStorage;
     private final userStorage userStorage;
 
-    public ClientHandler(Socket socket, chatroomStorage chatroomStorage, userStorage userStorage){
+    public ClientHandler(Socket socket, chatRoomStorage chatroomStorage, userStorage userStorage){
         this.socket = Objects.requireNonNull(socket);
-        this.chatroomStorage = Objects.requireNonNull(chatroomStorage);
+        this.chatRoomStorage = Objects.requireNonNull(chatroomStorage);
         this.userStorage = Objects.requireNonNull(userStorage);
     }
 
@@ -27,11 +25,10 @@ public class ClientHandler implements Runnable{
             ObjectInputStream input = new ObjectInputStream(socket.getInputStream())){
             socket.setKeepAlive(true);
 
-
             while (true){
                 Object object = input.readObject();
                 if(object instanceof DataHandler data){
-                    data.dataHandler(userStorage, chatroomStorage, output);
+                    data.dataHandler(userStorage, chatRoomStorage, output);
                 }
             }
         }catch (IOException | ClassNotFoundException e){

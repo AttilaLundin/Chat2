@@ -1,5 +1,8 @@
 package sharedresources;
 
+import sharedresources.interfaces.DataHandler;
+import sharedresources.interfaces.Message;
+
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

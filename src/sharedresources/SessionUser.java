@@ -1,6 +1,8 @@
 package sharedresources;
 
-import server.chatroomStorage;
+import server.chatRoomStorage;
+import sharedresources.interfaces.DataHandler;
+import sharedresources.interfaces.User;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -25,7 +27,7 @@ public class SessionUser implements User, DataHandler, Serializable{
     @Override
     public void dataHandler(Object registeredUsers, Object history, ObjectOutputStream outputStream) {
 
-        chatroomStorage chatroomStorage = (chatroomStorage) history;
+        chatRoomStorage chatroomStorage = (chatRoomStorage) history;
         try {
             outputStream.writeObject(chatroomStorage.getChatRooms(this));
             outputStream.flush();
@@ -34,7 +36,7 @@ public class SessionUser implements User, DataHandler, Serializable{
         }
     }
 
-    public String getDisplayname() {
+    public String getDisplayName() {
         return displayname;
     }
 

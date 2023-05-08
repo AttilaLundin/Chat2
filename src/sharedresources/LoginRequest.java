@@ -2,11 +2,13 @@ package sharedresources;
 
 
 import server.userStorage;
+import sharedresources.interfaces.DataHandler;
+import sharedresources.interfaces.User;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class LoginRequest implements User,DataHandler, Serializable {
+public class LoginRequest implements User, DataHandler, Serializable {
 
     private final String username;
     private final String password;

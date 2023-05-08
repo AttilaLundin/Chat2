@@ -1,5 +1,7 @@
 package sharedresources;
 
+import sharedresources.interfaces.DataHandler;
+
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 

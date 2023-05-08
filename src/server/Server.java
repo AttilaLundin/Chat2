@@ -9,7 +9,7 @@ public class Server {
 
     public static void main(String[] args){
 
-        chatroomStorage chatroomStorage = new chatroomStorage();
+        chatRoomStorage chatroomStorage = new chatRoomStorage();
         userStorage userStorage = new userStorage();
         try (ServerSocket serverSocket = new ServerSocket(PORT)){
 

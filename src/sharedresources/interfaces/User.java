@@ -1,4 +1,4 @@
-package sharedresources;
+package sharedresources.interfaces;
 
 import java.io.ObjectOutputStream;
 

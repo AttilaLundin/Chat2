@@ -1,5 +1,7 @@
 package sharedresources;
 
+import sharedresources.interfaces.Message;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,18 +1,18 @@
 package server;
 
-import sharedresources.Message;
+import sharedresources.interfaces.Message;
 import sharedresources.ChatRoom;
 import sharedresources.SessionUser;
 
 import java.util.*;
 
 
-public class chatroomStorage {
+public class chatRoomStorage {
 
     private final Map<UUID, ChatRoom> chatRoomHistory;
     private final Map<SessionUser, List<UUID>> usersChatRooms;
 
-    public chatroomStorage() {
+    public chatRoomStorage() {
         chatRoomHistory = Collections.synchronizedMap(new HashMap<>());
         usersChatRooms = Collections.synchronizedMap(new HashMap<>());
     }

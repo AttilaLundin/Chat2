@@ -1,6 +1,8 @@
 package sharedresources;
 
 import server.userStorage;
+import sharedresources.interfaces.DataHandler;
+import sharedresources.interfaces.User;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -14,19 +16,19 @@ public class RegisterRequest implements User, DataHandler, Serializable{
     public RegisterRequest(RegisterBuilder registerBuilder){
         this.username= Objects.requireNonNull(registerBuilder.username);
         this.password = Objects.requireNonNull(registerBuilder.password);
-        this.displayname = Objects.requireNonNull(registerBuilder.displayname);
+        this.displayname = Objects.requireNonNull(registerBuilder.displayName);
     }
 
     public static class RegisterBuilder{
         private String username;
         private String password;
-        private String displayname;
+        private String displayName;
         public RegisterBuilder username(String username){
             this.username = username;
             return this;
         }
-        public RegisterBuilder displayname(String displayname){
-            this.displayname = displayname;
+        public RegisterBuilder displayName(String displayName){
+            this.displayName = displayName;
             return this;
         }
         public RegisterBuilder password(String password){

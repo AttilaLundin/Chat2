@@ -1,5 +1,8 @@
 package sharedresources;
 
+import sharedresources.interfaces.DataHandler;
+import sharedresources.interfaces.Message;
+
 import java.awt.image.BufferedImage;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;

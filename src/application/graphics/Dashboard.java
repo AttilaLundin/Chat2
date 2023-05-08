@@ -59,7 +59,7 @@ public class Dashboard extends JFrame{
             List<SessionUser> usersInRoom = chatRooms.get(i).getUsersInChatRoom();
             StringBuilder stringBuilder = new StringBuilder();
             for(int j = 0; j < usersInRoom.size(); j++){
-                stringBuilder.append(usersInRoom.get(j).getDisplayname());
+                stringBuilder.append(usersInRoom.get(j).getDisplayName());
                 if(j < usersInRoom.size() - 1)stringBuilder.append(", ");
             }
             items[i] = stringBuilder.toString();
@@ -75,7 +75,7 @@ public class Dashboard extends JFrame{
     }
 
     private void setDisplayName(){
-        displayNameLabel.setText("Welcome " + sessionUser.getDisplayname() + ", have a capybara day!");
+        displayNameLabel.setText("Welcome " + sessionUser.getDisplayName() + ", have a capybara day!");
     }
 
 
