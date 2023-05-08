@@ -6,8 +6,8 @@ import sharedresources.requests.GetUsersRequest;
 import sharedresources.User;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -32,7 +32,8 @@ public class Dashboard extends JFrame{
     private JLabel displayNameLabel;
     private JList userList;
     private List<String> selectedUsernames = new ArrayList<>();
-    private JButton createChatRoomButton;
+    private JButton createCapyHerdButton;
+    private JPanel userPanel;
     private User user;
     private Client client;
 
@@ -46,13 +47,19 @@ public class Dashboard extends JFrame{
         userList.setCellRenderer(new UsernameListCellRenderer());
         userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-        userList.addListSelectionListener(new ListSelectionListener() {
+        userList.addMouseListener(new MouseAdapter() {
             @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if(!e.getValueIsAdjusting()){
-                    selectedUsernames.clear();
-                    for(int index : userList.getSelectedIndices()){
-                        selectedUsernames.add(listModel.getElementAt(index));
+            public void mouseClicked(MouseEvent e) {
+                int clickedIndex = userList.locationToIndex(e.getPoint());
+                if(clickedIndex != -1){
+                    String clickedUsername = listModel.getElementAt(clickedIndex);
+                    if (selectedUsernames.contains(clickedUsername)){
+                        selectedUsernames.remove(clickedUsername);
+                        userList.removeSelectionInterval(clickedIndex, clickedIndex);
+                    }
+                    else{
+                        selectedUsernames.add(clickedUsername);
+                        userList.addSelectionInterval(clickedIndex, clickedIndex);
                     }
                     System.out.println("Selected usernames: " + selectedUsernames);
                 }
@@ -63,7 +70,7 @@ public class Dashboard extends JFrame{
         listModel.addElement("Odai");
         listModel.addElement("Roger");
         listModel.addElement("Shark");
-        listModel.addElement("Binki-");
+        listModel.addElement("Binki");
 
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
