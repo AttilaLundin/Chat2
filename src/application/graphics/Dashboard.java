@@ -5,6 +5,10 @@ import sharedresources.ChatRoom;
 import sharedresources.requests.GetUsersRequest;
 import sharedresources.User;
 
+import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.*;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -37,6 +41,9 @@ public class Dashboard extends JFrame{
     private JPanel chatRoomPanel;
     private JLabel displayNameLabel;
     private JList userList;
+    private List<String> selectedUsernames = new ArrayList<>();
+    private JButton createCapyHerdButton;
+    private JPanel userPanel;
     private JButton createChatRoomButton;
     private ChatRoom displayedChatroom;
     private User user;
@@ -46,6 +53,37 @@ public class Dashboard extends JFrame{
 
         this.client = client;
         user = client.getSessionUser();
+
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        userList.setModel(listModel);
+        userList.setCellRenderer(new UsernameListCellRenderer());
+        userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+        userList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int clickedIndex = userList.locationToIndex(e.getPoint());
+                if(clickedIndex != -1){
+                    String clickedUsername = listModel.getElementAt(clickedIndex);
+                    if (selectedUsernames.contains(clickedUsername)){
+                        selectedUsernames.remove(clickedUsername);
+                        userList.removeSelectionInterval(clickedIndex, clickedIndex);
+                    }
+                    else{
+                        selectedUsernames.add(clickedUsername);
+                        userList.addSelectionInterval(clickedIndex, clickedIndex);
+                    }
+                    System.out.println("Selected usernames: " + selectedUsernames);
+                }
+            }
+        });
+
+        listModel.addElement("Attila");
+        listModel.addElement("Odai");
+        listModel.addElement("Roger");
+        listModel.addElement("Shark");
+        listModel.addElement("Binki");
+
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
         setContentPane(rootPanel);
@@ -111,6 +149,7 @@ public class Dashboard extends JFrame{
                             }
                         }
                     }
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
