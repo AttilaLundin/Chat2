@@ -19,11 +19,11 @@ public class ChatRoom implements Cloneable, Serializable {
     }
 
     public ChatRoom(){
-        chatRoomID = UUID.randomUUID();
+        this.chatRoomID = UUID.randomUUID();
         ArrayList<SessionUser> testUsers = new ArrayList<>();
         testUsers.add(new SessionUser.SessionUserBuilder().username("test").password("test").displayname("test").build());
-        testUsers.add(new SessionUser.SessionUserBuilder().username("test1").password("testp").displayname("test1").build());
-        users = testUsers;
+        testUsers.add(new SessionUser.SessionUserBuilder().username("test1").password("test1").displayname("test1").build());
+        this.users = testUsers;
         this.messages = new ArrayList<>();
     }
 

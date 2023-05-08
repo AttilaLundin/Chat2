@@ -31,11 +31,9 @@ public class Dashboard extends JFrame{
     private Client client;
 
     public Dashboard(Client client){
-//        this.user = user;
+
         this.client = client;
         sessionUser = client.getSessionUser();
-        System.out.println(sessionUser.toString());
-        client.connectToServer();
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
         setContentPane(rootPanel);
@@ -48,13 +46,13 @@ public class Dashboard extends JFrame{
         chatRoomPanel.setLayout(new BorderLayout());
         initChatRoomDisplay();
         setVisible(true);
+
     }
-
-
 
     public void initChatRoomDisplay(){
 
-        List<ChatRoom> chatRooms = client.getChatRooms(sessionUser);
+        List<ChatRoom> chatRooms = client.getChatRooms();
+        System.out.println(chatRooms.size());
         if(chatRooms.isEmpty()) return;
         String[] items = new String[chatRooms.size()];
         for(int i = 0; i < chatRooms.size(); i++){

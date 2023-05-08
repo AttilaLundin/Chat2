@@ -97,7 +97,7 @@ public class Client {
         return false;
     }
 
-    public List<ChatRoom> getChatRooms(SessionUser sessionUser){
+    public List<ChatRoom> getChatRooms(){
 
         try {
             output.writeObject(sessionUser);

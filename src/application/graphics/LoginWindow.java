@@ -55,8 +55,6 @@ public class LoginWindow extends JFrame{
                 String username = usernameField.getText();
                 String password = new String(passwordField.getPassword());
 
-                System.out.println("username: " + username + " Password: " + password);
-
                 boolean loginSuccessful = client.sendLoginRequest(new Login.LoginBuilder().username(username).password(password).build());
                 if(loginSuccessful){
                     Dashboard dashboard = new Dashboard(client);

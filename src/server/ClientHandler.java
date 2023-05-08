@@ -2,13 +2,12 @@ package server;
 
 import sharedresources.Message;
 import sharedresources.User;
-import sharedresources.SessionUser;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-
+import java.util.Objects;
 
 
 public class ClientHandler implements Runnable{
@@ -17,9 +16,9 @@ public class ClientHandler implements Runnable{
     private final RegisteredUsers registeredUsers;
 
     public ClientHandler(Socket socket, ChatHistory chatHistory, RegisteredUsers registeredUsers){
-        this.socket = socket;
-        this.chatHistory = chatHistory;
-        this.registeredUsers = registeredUsers;
+        this.socket = Objects.requireNonNull(socket);
+        this.chatHistory = Objects.requireNonNull(chatHistory);
+        this.registeredUsers = Objects.requireNonNull(registeredUsers);
     }
 
     public void run(){

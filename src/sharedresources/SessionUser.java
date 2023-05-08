@@ -11,15 +11,15 @@ public class SessionUser implements User, Serializable{
     private String displayname;
     private String password;
 
-    private SessionUser(SessionUserBuilder SessionUserBuilder){
-        this.username= Objects.requireNonNull(SessionUserBuilder.username);
-        this.displayname = Objects.requireNonNull(SessionUserBuilder.displayname);
-        this.password = Objects.requireNonNull(SessionUserBuilder.password);
+    private SessionUser(SessionUserBuilder sessionUserBuilder){
+        this.username= Objects.requireNonNull(sessionUserBuilder.username);
+        this.displayname = Objects.requireNonNull(sessionUserBuilder.displayname);
+        this.password = Objects.requireNonNull(sessionUserBuilder.password);
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
     @Override
