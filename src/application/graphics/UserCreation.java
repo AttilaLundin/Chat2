@@ -49,7 +49,7 @@ public class UserCreation extends JFrame {
                 String controllPassword = new String(passwordField2.getPassword());
                 String displayName = displaynameField.getText();
                 if (password.equals(controllPassword) && validUsername(username) && validPassword(password) && validDisplayName(displayName)){
-                    boolean registrationSuccessful = client.sendRegistrationRequest(new RegisterRequest.RegisterBuilder().username(username).password(password).displayname(displayName).build());
+                    boolean registrationSuccessful = client.sendRegistrationRequest(new RegisterRequest.RegisterBuilder().username(username).password(password).displayName(displayName).build());
                     if(registrationSuccessful){
                         Dashboard dashboard = new Dashboard(client);
                         dispose();

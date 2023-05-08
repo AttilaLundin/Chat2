@@ -6,6 +6,8 @@ import sharedresources.GetUsersRequest;
 import sharedresources.SessionUser;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -29,6 +31,7 @@ public class Dashboard extends JFrame{
     private JPanel chatRoomPanel;
     private JLabel displayNameLabel;
     private JList userList;
+    private List<String> selectedUsernames = new ArrayList<>();
     private JButton createChatRoomButton;
     private SessionUser sessionUser;
     private Client client;
@@ -37,6 +40,31 @@ public class Dashboard extends JFrame{
 
         this.client = client;
         sessionUser = client.getSessionUser();
+
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        userList.setModel(listModel);
+        userList.setCellRenderer(new UsernameListCellRenderer());
+        userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+        userList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if(!e.getValueIsAdjusting()){
+                    selectedUsernames.clear();
+                    for(int index : userList.getSelectedIndices()){
+                        selectedUsernames.add(listModel.getElementAt(index));
+                    }
+                    System.out.println("Selected usernames: " + selectedUsernames);
+                }
+            }
+        });
+
+        listModel.addElement("Attila");
+        listModel.addElement("Odai");
+        listModel.addElement("Roger");
+        listModel.addElement("Shark");
+        listModel.addElement("Binki-");
+
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
         setContentPane(rootPanel);
