@@ -1,13 +1,13 @@
 package sharedresources.interfaces;
 
-import sharedresources.SessionUser;
+import sharedresources.User;
 
 import java.util.UUID;
 
 public interface Message {
 
     String getTimeSent();
-    SessionUser getSender();
+    User getSender();
     UUID getChatRoomID();
 
 

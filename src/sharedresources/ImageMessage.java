@@ -12,7 +12,7 @@ import java.util.UUID;
 public class ImageMessage implements Message, DataHandler, Serializable {
     private final transient BufferedImage image;
     private final String timeSent;
-    private final SessionUser sender;
+    private final User sender;
 
     private final UUID chatRoomID;
 
@@ -26,7 +26,7 @@ public class ImageMessage implements Message, DataHandler, Serializable {
     public static class ImageMessageBuilder implements Serializable{
         private BufferedImage image;
         private String timeSent;
-        private SessionUser sender;
+        private User sender;
         private UUID chatRoomID;
 
         public ImageMessageBuilder image (BufferedImage image){
@@ -39,7 +39,7 @@ public class ImageMessage implements Message, DataHandler, Serializable {
             return this;
         }
 
-        public ImageMessageBuilder sender(SessionUser sender) {
+        public ImageMessageBuilder sender(User sender) {
             this.sender = sender;
             return this;
         }
@@ -66,7 +66,7 @@ public class ImageMessage implements Message, DataHandler, Serializable {
     }
 
     @Override
-    public SessionUser getSender() {
+    public User getSender() {
         return sender;
     }
 
