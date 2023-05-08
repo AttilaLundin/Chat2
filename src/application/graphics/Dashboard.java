@@ -27,7 +27,9 @@ import java.awt.dnd.DropTargetAdapter;
 import java.awt.dnd.DropTargetDropEvent;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 public class Dashboard extends JFrame{
     private JPanel rootPanel;
@@ -41,7 +43,7 @@ public class Dashboard extends JFrame{
     private JPanel chatRoomPanel;
     private JLabel displayNameLabel;
     private JList userList;
-    private List<String> selectedUsernames = new ArrayList<>();
+    private Set<String> selectedUsernames;
     private JButton createCapyHerdButton;
     private JPanel userPanel;
     private JButton createChatRoomButton;
@@ -54,35 +56,32 @@ public class Dashboard extends JFrame{
         this.client = client;
         user = client.getSessionUser();
 
+        List<String> usernames = Arrays.asList("user1", "user2", "user3", "user4");
         DefaultListModel<String> listModel = new DefaultListModel<>();
+        usernames.forEach(listModel :: addElement);
         userList.setModel(listModel);
         userList.setCellRenderer(new UsernameListCellRenderer());
-        userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        //userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         userList.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int clickedIndex = userList.locationToIndex(e.getPoint());
-                if(clickedIndex != -1){
-                    String clickedUsername = listModel.getElementAt(clickedIndex);
-                    if (selectedUsernames.contains(clickedUsername)){
-                        selectedUsernames.remove(clickedUsername);
-                        userList.removeSelectionInterval(clickedIndex, clickedIndex);
-                    }
-                    else{
-                        selectedUsernames.add(clickedUsername);
-                        userList.addSelectionInterval(clickedIndex, clickedIndex);
-                    }
-                    System.out.println("Selected usernames: " + selectedUsernames);
+                int index = userList.locationToIndex(e.getPoint());
+                String username = listModel.get(index);
+                if (selectedUsernames.contains(username)) {
+                    selectedUsernames.remove(username);
+                } else {
+                    selectedUsernames.add(username);
                 }
+                userList.repaint();
             }
         });
-
+        /*
         listModel.addElement("Attila");
         listModel.addElement("Odai");
         listModel.addElement("Roger");
         listModel.addElement("Shark");
-        listModel.addElement("Binki");
+        listModel.addElement("Binki"); */
 
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -97,6 +96,10 @@ public class Dashboard extends JFrame{
 //        initChatRoomDisplay();
         setVisible(true);
 
+    }
+
+    public Set<String> getSelectedUsernames() {
+        return selectedUsernames;
     }
 /*
     public void initChatRoomDisplay(){
