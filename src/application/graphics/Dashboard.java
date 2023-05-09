@@ -37,7 +37,7 @@ public class Dashboard extends JFrame{
     private JPanel rootPanel;
     private JPanel sidePanel;
     private JButton gitHubButton;
-    private JButton messageButton;
+    private JButton homeScreenButton;
     private JPanel mainPanel;
     private JScrollPane chatRoomScrollPane;
     private JPanel chatRoomPanel;

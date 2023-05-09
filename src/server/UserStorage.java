@@ -7,6 +7,7 @@ import sharedresources.requests.RegisterRequest;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class UserStorage {
 
@@ -19,6 +20,12 @@ public class UserStorage {
 
     public User validateUser(LoginRequest loginRequestAttempt){
         User user = registeredUsers.get(loginRequestAttempt.getUsername());
+        Set<String> keys = registeredUsers.keySet();
+
+        for(String s : keys){
+            System.out.println(s);
+        }
+
         if(user == null) return null;
         if (user.correctCredentials(loginRequestAttempt)) {
             return user;
@@ -36,7 +43,7 @@ public class UserStorage {
         return newUser;
     }
 
-    public void getUsers(){
-
+    public Map<String, User> getAllUsers(){
+        return registeredUsers;
     }
 }
