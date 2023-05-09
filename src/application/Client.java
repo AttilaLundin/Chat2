@@ -1,24 +1,17 @@
 package application;
 
 import sharedresources.User;
-import sharedresources.ImageMessage;
 import sharedresources.TextMessage;
 import sharedresources.ChatRoom;
-import sharedresources.requests.AddMessageRequest;
-import sharedresources.requests.GetUsersRequest;
-import sharedresources.requests.LoginRequest;
-import sharedresources.requests.RegisterRequest;
+import sharedresources.interfaces.Message;
+import sharedresources.requests.*;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 
 public class Client {
@@ -53,19 +46,9 @@ public class Client {
         }
     }
 
-    public void sendTextMessage(String text){
+    public void sendMessage(SendMessageRequest sendMessageRequest){
         try{
-            output.writeObject(new TextMessage.TextMessageBuilder().text(text).sender(user).build());
-            output.flush();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-  public void sendImageMessage(String filePath, ChatRoom chatRoom){
-        try{
-            BufferedImage bufferedImage = ImageIO.read(new File(filePath));
-            ImageMessage message = new ImageMessage.ImageMessageBuilder().image(bufferedImage).sender(user).build();
-            output.writeObject(new AddMessageRequest(chatRoom, message)); // skickar msg till server, vad näst?
+            output.writeObject(sendMessageRequest);
             output.flush();
         }catch (IOException e){
             e.printStackTrace();

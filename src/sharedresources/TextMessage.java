@@ -1,5 +1,7 @@
 package sharedresources;
 
+import server.ChatRoomStorage;
+import server.UserStorage;
 import sharedresources.interfaces.DataHandler;
 import sharedresources.interfaces.Message;
 
@@ -60,7 +62,7 @@ public class TextMessage implements Message, DataHandler, Serializable {
     }
 
     @Override
-    public void dataHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
+    public void dataHandler(UserStorage userStorage, ChatRoomStorage chatRoomStorage, ObjectOutputStream outputStream) {
 
     }
 }

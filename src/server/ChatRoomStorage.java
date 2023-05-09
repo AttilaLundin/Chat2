@@ -47,6 +47,7 @@ public class ChatRoomStorage {
         ChatRoom theChatRoom = chatRoomCentralStorage.get(chatRoomID);
         if(theChatRoom == null) return;
         theChatRoom.addMessage(message);
+        //TODO: Lägg in chatrummet
     }
 }
 

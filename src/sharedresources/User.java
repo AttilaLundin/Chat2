@@ -1,6 +1,7 @@
 package sharedresources;
 
 import server.ChatRoomStorage;
+import server.UserStorage;
 import sharedresources.interfaces.DataHandler;
 import sharedresources.requests.LoginRequest;
 
@@ -27,11 +28,11 @@ public class User implements sharedresources.interfaces.User, DataHandler, Seria
     }
 
     @Override
-    public void dataHandler(Object registeredUsers, Object history, ObjectOutputStream outputStream) {
+    public void dataHandler(UserStorage userStorage, ChatRoomStorage chatRoomStorage, ObjectOutputStream outputStream) {
 
-        ChatRoomStorage chatroomStorage = (ChatRoomStorage) history;
+
         try {
-            outputStream.writeObject(chatroomStorage.getChatRooms(this));
+            outputStream.writeObject(chatRoomStorage.getChatRooms(this));
             outputStream.flush();
         }catch (Exception e){
             e.printStackTrace();
