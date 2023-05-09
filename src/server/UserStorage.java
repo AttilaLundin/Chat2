@@ -36,5 +36,7 @@ public class UserStorage {
         return newUser;
     }
 
+    public void getUsers(){
 
+    }
 }
