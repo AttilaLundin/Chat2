@@ -1,10 +1,15 @@
-package view.graphics;
+package application.graphics;
 
-import controller.Client;
-import model.Register;
+import application.Client;
+import sharedresources.requests.RegisterRequest;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import java.awt.Toolkit;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -49,7 +54,7 @@ public class UserCreation extends JFrame {
                 String controllPassword = new String(passwordField2.getPassword());
                 String displayName = displaynameField.getText();
                 if (password.equals(controllPassword) && validUsername(username) && validPassword(password) && validDisplayName(displayName)){
-                    boolean registrationSuccessful = client.sendRegistrationRequest(new Register.RegisterBuilder().username(username).password(password).displayname(displayName).build());
+                    boolean registrationSuccessful = client.sendRegistrationRequest(new RegisterRequest.RegisterBuilder().username(username).password(password).displayName(displayName).build());
                     if(registrationSuccessful){
                         Dashboard dashboard = new Dashboard(client);
                         dispose();

@@ -1,32 +1,34 @@
-package model;
+package sharedresources.requests;
 
-import interfaces.User;
+import server.UserStorage;
+import sharedresources.interfaces.DataHandler;
+import sharedresources.interfaces.User;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Register implements User, Serializable{
+public class RegisterRequest implements User, DataHandler, Serializable{
     private final String username;
     private final String password;
     private final String displayname;
 
-    public Register(RegisterBuilder registerBuilder){
+    public RegisterRequest(RegisterBuilder registerBuilder){
         this.username= Objects.requireNonNull(registerBuilder.username);
         this.password = Objects.requireNonNull(registerBuilder.password);
-        this.displayname = Objects.requireNonNull(registerBuilder.displayname);
+        this.displayname = Objects.requireNonNull(registerBuilder.displayName);
     }
 
     public static class RegisterBuilder{
         private String username;
         private String password;
-        private String displayname;
+        private String displayName;
         public RegisterBuilder username(String username){
             this.username = username;
             return this;
         }
-        public RegisterBuilder displayname(String displayname){
-            this.displayname = displayname;
+        public RegisterBuilder displayName(String displayName){
+            this.displayName = displayName;
             return this;
         }
         public RegisterBuilder password(String password){
@@ -34,8 +36,8 @@ public class Register implements User, Serializable{
             return this;
         }
 
-        public Register build(){
-            return new Register(this);
+        public RegisterRequest build(){
+            return new RegisterRequest(this);
         }
 
     }
@@ -45,10 +47,10 @@ public class Register implements User, Serializable{
     }
 
     @Override
-    public void userHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
-        RegisteredUsers registeredUsers = (RegisteredUsers) registeredUser;
+    public void dataHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
+        UserStorage userStorage = (UserStorage) registeredUser;
         try {
-            outputStream.writeObject(registeredUsers.createUser(this));
+            outputStream.writeObject(userStorage.createUser(this));
             outputStream.flush();
         }catch (Exception e){
             e.printStackTrace();

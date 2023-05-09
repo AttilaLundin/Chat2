@@ -1,7 +1,4 @@
-package controller;
-
-import model.ChatHistory;
-import model.RegisteredUsers;
+package server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -11,15 +8,15 @@ public class Server {
     private static final int PORT = 1234;
 
     public static void main(String[] args){
-        //lägg till läser in chathistory
-        ChatHistory chatHistory = new ChatHistory();
-        RegisteredUsers registeredUsers = new RegisteredUsers();
+
+        ChatRoomStorage chatroomStorage = new ChatRoomStorage();
+        UserStorage userStorage = new UserStorage();
         try (ServerSocket serverSocket = new ServerSocket(PORT)){
 
 
             while(true){
                 Socket socket = serverSocket.accept();
-                ClientHandler clientHandler = new ClientHandler(socket, chatHistory, registeredUsers);
+                ClientHandler clientHandler = new ClientHandler(socket, chatroomStorage, userStorage);
                 new Thread(clientHandler).start();
                 System.out.println("New Thread started for socket: " + socket.getPort());
             }

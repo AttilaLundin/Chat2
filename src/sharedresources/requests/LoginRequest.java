@@ -1,16 +1,19 @@
-package model;
+package sharedresources.requests;
 
 
-import interfaces.User;
+import server.UserStorage;
+import sharedresources.User;
+import sharedresources.interfaces.DataHandler;
+
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Login implements User, Serializable {
+public class LoginRequest implements sharedresources.interfaces.User, DataHandler, Serializable {
 
     private final String username;
     private final String password;
 
-    public Login(LoginBuilder loginBuilder){
+    public LoginRequest(LoginBuilder loginBuilder){
         this.username = loginBuilder.username;
         this.password = loginBuilder.password;
     }
@@ -30,8 +33,8 @@ public class Login implements User, Serializable {
             return this;
         }
 
-        public Login build(){
-            return new Login(this);
+        public LoginRequest build(){
+            return new LoginRequest(this);
         }
 
     }
@@ -41,10 +44,12 @@ public class Login implements User, Serializable {
     }
 
     @Override
-    public void userHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
-        RegisteredUsers registeredUsers = (RegisteredUsers)registeredUser;
+    public void dataHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
+        UserStorage userStorage = (UserStorage)registeredUser;
         try {
-            outputStream.writeObject(registeredUsers.validateUser(this));
+            User user = userStorage.validateUser(this);
+
+            outputStream.writeObject(user);
             outputStream.flush();
         }catch (Exception e){
             e.printStackTrace();

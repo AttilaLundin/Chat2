@@ -1,47 +1,37 @@
-package model;
+package sharedresources;
 
-import interfaces.Message;
+import sharedresources.interfaces.DataHandler;
+import sharedresources.interfaces.Message;
 
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
 
-public class TextMessage implements Message,Serializable {
+public class TextMessage implements Message, DataHandler, Serializable {
     private final String text;
     private String timeSent;
-    private SessionUser sender;
+    private User sender;
     private UUID chatRoomID;
 
-    public TextMessage(TextMessageBuilder textMessageBuilder){
+    private TextMessage(TextMessageBuilder textMessageBuilder){
         this.text= textMessageBuilder.text;
-        this.timeSent = textMessageBuilder.timeSent;
+        this.timeSent = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
         this.sender= textMessageBuilder.sender;
-        this.chatRoomID = textMessageBuilder.chatRoomID;
     }
 
     public static class TextMessageBuilder{
         private String text;
         private String timeSent;
-        private SessionUser sender;
-        private UUID chatRoomID;
+        private User sender;
 
         public TextMessageBuilder text (String text){
             this.text = text;
             return this;
         }
 
-        public TextMessageBuilder timeSent() {
-            this.timeSent = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-            return this;
-        }
-
-        public TextMessageBuilder sender(SessionUser sender) {
+        public TextMessageBuilder sender(User sender) {
             this.sender = sender;
-            return this;
-        }
-
-        public TextMessageBuilder chatRoomID(UUID chatRoomID){
-            this.chatRoomID = chatRoomID;
             return this;
         }
 
@@ -49,10 +39,6 @@ public class TextMessage implements Message,Serializable {
             return new TextMessage(this);
         }
     }
-
-
-
-
 
 
     public String getText(){
@@ -65,7 +51,7 @@ public class TextMessage implements Message,Serializable {
     }
 
     @Override
-    public SessionUser getSender() {
+    public User getSender() {
         return sender;
     }
 
@@ -74,15 +60,7 @@ public class TextMessage implements Message,Serializable {
     }
 
     @Override
-    public void messageHandler(Object object) {
+    public void dataHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
 
     }
-
-    public void messageHandler(){
-
-    }
-
-
-
-
 }

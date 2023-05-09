@@ -1,47 +1,49 @@
-package model;
+package sharedresources;
 
-import controller.ClientHandler;
-import interfaces.User;
+import server.ChatRoomStorage;
+import sharedresources.interfaces.DataHandler;
+import sharedresources.requests.LoginRequest;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.*;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.List;
 
-public class SessionUser implements User, Serializable{
+public class User implements sharedresources.interfaces.User, DataHandler, Serializable{
     private String username;
     private String displayname;
     private String password;
-    private List<ChatRoom> chatRooms;
 
-    private SessionUser(SessionUserBuilder SessionUserBuilder){
-        this.username= Objects.requireNonNull(SessionUserBuilder.username);
-        this.displayname = Objects.requireNonNull(SessionUserBuilder.displayname);
-        this.password = Objects.requireNonNull(SessionUserBuilder.password);
+    private User(SessionUserBuilder sessionUserBuilder){
+        this.username= Objects.requireNonNull(sessionUserBuilder.username);
+        this.displayname = Objects.requireNonNull(sessionUserBuilder.displayname);
+        this.password = Objects.requireNonNull(sessionUserBuilder.password);
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
     @Override
-    public void userHandler(Object registeredUsers, Object history, ObjectOutputStream outputStream) {
+    public void dataHandler(Object registeredUsers, Object history, ObjectOutputStream outputStream) {
 
-        ChatHistory chatHistory = (ChatHistory) history;
+        ChatRoomStorage chatroomStorage = (ChatRoomStorage) history;
         try {
-            outputStream.writeObject(chatHistory.getChatRooms(this));
+            outputStream.writeObject(chatroomStorage.getChatRooms(this));
             outputStream.flush();
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public String getDisplayname() {
+    public String getDisplayName() {
         return displayname;
     }
 
-    public boolean correctCredentials(Login login){
-        return username.equals(login.getUsername()) && password.equals(login.getPassword());
+    public boolean correctCredentials(LoginRequest loginRequest){
+        return username.equals(loginRequest.getUsername()) && password.equals(loginRequest.getPassword());
     }
 
 
@@ -71,8 +73,8 @@ public class SessionUser implements User, Serializable{
             return this;
         }
 
-        public SessionUser build(){
-            return new SessionUser(this);
+        public User build(){
+            return new User(this);
         }
 
     }

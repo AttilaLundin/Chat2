@@ -1,17 +1,20 @@
-package view.graphics;
+package application.graphics;
 
-import controller.Client;
-import model.Login;
-import model.Register;
-import model.SessionUser;
-import view.ChatGUI;
+import application.Client;
+import sharedresources.requests.LoginRequest;
 
-import javax.swing.*;
-import java.awt.*;
+
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+
+
+import java.awt.Toolkit;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class LoginWindow extends JFrame{
     private JButton createUserButton;
@@ -60,9 +63,7 @@ public class LoginWindow extends JFrame{
                 String username = usernameField.getText();
                 String password = new String(passwordField.getPassword());
 
-                System.out.println("username: " + username + " Password: " + password);
-
-                boolean loginSuccessful = client.sendLoginRequest(new Login.LoginBuilder().username(username).password(password).build());
+                boolean loginSuccessful = client.sendLoginRequest(new LoginRequest.LoginBuilder().username(username).password(password).build());
                 if(loginSuccessful){
                     Dashboard dashboard = new Dashboard(client);
                     dispose();

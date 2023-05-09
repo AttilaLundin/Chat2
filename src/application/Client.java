@@ -1,10 +1,15 @@
-package controller;
+package application;
 
-import model.*;
+import sharedresources.User;
+import sharedresources.ImageMessage;
+import sharedresources.TextMessage;
+import sharedresources.ChatRoom;
+import sharedresources.requests.AddMessageRequest;
+import sharedresources.requests.GetUsersRequest;
+import sharedresources.requests.LoginRequest;
+import sharedresources.requests.RegisterRequest;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +17,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,7 +26,7 @@ public class Client {
     private static final String SERVER_ADDRESS = "localhost";
     private static final int SERVER_PORT = 1234;
     private Socket socket;
-    private SessionUser sessionUser;
+    private User user;
     private ObjectOutputStream output;
     private ObjectInputStream input;
 
@@ -37,7 +41,7 @@ public class Client {
                 connected = socket.isConnected();
                 output = new ObjectOutputStream(socket.getOutputStream());
                 input = new ObjectInputStream(socket.getInputStream());
-                System.out.println("connected");
+                System.out.println("Connected to server");
             } catch (IOException e){
                 System.out.println("waiting");
                 try{
@@ -49,26 +53,35 @@ public class Client {
         }
     }
 
-    public void sendMessage(String filePath){
+    public void sendTextMessage(String text){
+        try{
+            output.writeObject(new TextMessage.TextMessageBuilder().text(text).sender(user).build());
+            output.flush();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+  public void sendImageMessage(String filePath, ChatRoom chatRoom){
         try{
             BufferedImage bufferedImage = ImageIO.read(new File(filePath));
-            output.writeObject(new ImageMessage.ImageMessageBuilder().image(bufferedImage).sender(sessionUser).chatRoomID(UUID.randomUUID()).timeSent().build()); // skickar msg till server, vad näst?
+            ImageMessage message = new ImageMessage.ImageMessageBuilder().image(bufferedImage).sender(user).build();
+            output.writeObject(new AddMessageRequest(chatRoom, message)); // skickar msg till server, vad näst?
             output.flush();
         }catch (IOException e){
             e.printStackTrace();
         }
     }
 
-    public boolean sendLoginRequest(Login login){
+    public boolean sendLoginRequest(LoginRequest loginRequest){
         try{
 
-            output.writeObject(login);
+            output.writeObject(loginRequest);
             output.flush();
 
-            SessionUser sessionUser = (SessionUser) input.readObject();
-            if(sessionUser != null) {
-                System.out.println("user received");
-                this.sessionUser = sessionUser;
+            User user = (User) input.readObject();
+            if(user != null) {
+                this.user = user;
+
                 return true;
             }
             return false;
@@ -80,16 +93,15 @@ public class Client {
         return false;
     }
 
-    public boolean sendRegistrationRequest(Register register){
+    public boolean sendRegistrationRequest(RegisterRequest registerRequest){
         try{
 
-            output.writeObject(register);
+            output.writeObject(registerRequest);
             output.flush();
 
-            SessionUser sessionUser = (SessionUser) input.readObject();
-            if(sessionUser != null) {
-                System.out.println("new user received");
-                this.sessionUser = sessionUser;
+            User user = (User) input.readObject();
+            if(user != null) {
+                this.user = user;
                 return true;
             }
             return false;
@@ -101,10 +113,32 @@ public class Client {
         return false;
     }
 
-    public List<ChatRoom> getChatRooms(SessionUser sessionUser){
+    public ArrayList<User> getUsersList(GetUsersRequest usersRequest){
+        try {
+            ArrayList<User> users = new ArrayList<>();
+
+            output.writeObject(usersRequest);
+            output.flush();
+
+            Object object = input.readObject();
+
+            if(object instanceof ArrayList<?> list){
+                for(Object o : list){
+                    if(o instanceof User s) users.add(s);
+                }
+                return users;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public List<ChatRoom> getChatRooms(){
 
         try {
-            output.writeObject(sessionUser);
+            output.writeObject(user);
             output.flush();
 
             Object object = input.readObject();
@@ -122,8 +156,9 @@ public class Client {
 
     }
 
-    public SessionUser getSessionUser(){
-        return sessionUser;
+
+    public User getSessionUser(){
+        return user;
     }
 
 
