@@ -12,6 +12,7 @@ import java.util.List;
 public class AddChatRoomRequest implements DataHandler, Serializable {
 
     private List<User> usersInChatRoom;
+    private String chatRoomName = "yes";
 
     public AddChatRoomRequest(List<User> usersInChatRoom){
         this.usersInChatRoom = usersInChatRoom; //ska det vara add users in chatroom ? om jag fattat rätt
@@ -20,6 +21,7 @@ public class AddChatRoomRequest implements DataHandler, Serializable {
 
     @Override
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream) {
-//            if()
+        chatroomStorage.addChatRoom(chatRoomName, usersInChatRoom);
+
     }
 }

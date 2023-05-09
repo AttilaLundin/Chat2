@@ -2,14 +2,14 @@ package application.graphics;
 
 import javax.swing.*;
 
-public class ChatRoomUI extends JFrame {
+public class ChatRoom extends JFrame {
 
-    private JPanel panel1;
-
+    private JPanel chatRoomPanel;
+    private JLabel ChatRoomNameLabel;
     private JButton gitHubButton;
     private JButton friendsButton;
     private JButton messageButton;
-    private JTextField textField1;
+    private JTextField textMessageField;
     private JButton sendButton;
     private JList list1;
     private JButton

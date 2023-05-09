@@ -1,7 +1,6 @@
 package application.graphics;
 
 import application.Client;
-import sharedresources.ChatRoom;
 import sharedresources.ImageMessage;
 import sharedresources.User;
 import sharedresources.requests.SendMessageRequest;
@@ -50,7 +49,7 @@ public class Dashboard extends JFrame{
     private JButton createCapyHerdButton;
     private JPanel userPanel;
     private JButton createChatRoomButton;
-    private ChatRoom displayedChatroom;
+    private sharedresources.ChatRoom displayedChatroom;
     private User user;
     private Client client;
 
@@ -78,7 +77,7 @@ public class Dashboard extends JFrame{
             }
         });
         createChatRoomButton.addActionListener(new ActionListener() {
-            ChatRoomUI chatRoomUI = new ChatRoomUI();
+            ChatRoom chatRoom = new ChatRoom(client);
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -108,7 +107,7 @@ public class Dashboard extends JFrame{
 
     public void initChatRoomDisplay(){
 
-        List<ChatRoom> chatRooms = client.getChatRooms();
+        List<sharedresources.ChatRoom> chatRooms = client.getChatRooms();
         System.out.println(chatRooms.size());
         if(chatRooms.isEmpty()) return;
         String[] items = new String[chatRooms.size()];
