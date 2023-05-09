@@ -7,36 +7,19 @@
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="f4033" binding="sidePanel" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="f4033" binding="sidePanel" layout-manager="GridLayoutManager" row-count="7" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints border-constraint="West"/>
         <properties>
           <background color="-15790311"/>
           <foreground color="-15790311"/>
+          <visible value="true"/>
         </properties>
         <border type="bevel-raised"/>
         <children>
-          <component id="64473" class="javax.swing.JButton" binding="dashboardButton">
+          <component id="e023" class="javax.swing.JButton" binding="gitHubButton">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <minimum-size width="40" height="40"/>
-                <preferred-size width="40" height="40"/>
-                <maximum-size width="40" height="40"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-15066591"/>
-              <borderPainted value="false"/>
-              <foreground color="-15066591"/>
-              <icon value="application/graphics/icons/icons8_dashboard_layout_40px.png"/>
-              <label value=""/>
-              <opaque value="false"/>
-              <text value=""/>
-            </properties>
-          </component>
-          <component id="e023" class="javax.swing.JButton" binding="githubButton">
-            <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <actionCommand value="Button"/>
@@ -52,26 +35,7 @@
               <visible value="true"/>
             </properties>
           </component>
-          <component id="eba3c" class="javax.swing.JButton" binding="contactsButton">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <minimum-size width="40" height="40"/>
-                <preferred-size width="40" height="40"/>
-                <maximum-size width="40" height="40"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-15790311"/>
-              <borderPainted value="false"/>
-              <contentAreaFilled value="true"/>
-              <foreground color="-15790311"/>
-              <icon value="application/graphics/icons/icons8_contacts_40px.png"/>
-              <label value=""/>
-              <opaque value="true"/>
-              <text value=""/>
-            </properties>
-          </component>
-          <component id="3885a" class="javax.swing.JButton" binding="messageButton">
+          <component id="3885a" class="javax.swing.JButton" binding="homeScreenButton">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="40" height="40"/>
@@ -84,11 +48,36 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="true"/>
               <foreground color="-15790311"/>
-              <icon value="application/graphics/icons/icons8_topic_40px.png"/>
+              <icon value="application/graphics/icons/icons8_dashboard_layout_40px.png"/>
               <label value=""/>
               <text value=""/>
             </properties>
           </component>
+          <vspacer id="d0d55">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <vspacer id="69c5">
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <vspacer id="a798a">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <vspacer id="c8892">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <vspacer id="e6c36">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
         </children>
       </grid>
       <grid id="f0086" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
@@ -131,19 +120,15 @@
             </properties>
             <border type="none"/>
             <children>
-              <scrollpane id="be87c">
+              <scrollpane id="6f649">
                 <constraints border-constraint="Center"/>
-                <properties>
-                  <background color="-15790311"/>
-                  <foreground color="-15790311"/>
-                  <opaque value="false"/>
-                </properties>
+                <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="fd37" class="javax.swing.JList" binding="chatroomList">
+                  <component id="759f6" class="javax.swing.JList" binding="list1" default-binding="true">
                     <constraints/>
                     <properties>
-                      <background color="-15066588"/>
+                      <background color="-5792000"/>
                     </properties>
                   </component>
                 </children>

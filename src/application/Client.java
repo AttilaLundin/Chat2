@@ -1,24 +1,16 @@
 package application;
 
 import sharedresources.User;
-import sharedresources.ImageMessage;
 import sharedresources.TextMessage;
 import sharedresources.ChatRoom;
-import sharedresources.requests.AddMessageRequest;
-import sharedresources.requests.GetUsersRequest;
-import sharedresources.requests.LoginRequest;
-import sharedresources.requests.RegisterRequest;
+import sharedresources.interfaces.Message;
+import sharedresources.requests.*;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 
 public class Client {
@@ -53,19 +45,9 @@ public class Client {
         }
     }
 
-    public void sendTextMessage(String text){
+    public void sendMessage(SendMessageRequest sendMessageRequest){
         try{
-            output.writeObject(new TextMessage.TextMessageBuilder().text(text).sender(user).build());
-            output.flush();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-  public void sendImageMessage(String filePath, ChatRoom chatRoom){
-        try{
-            BufferedImage bufferedImage = ImageIO.read(new File(filePath));
-            ImageMessage message = new ImageMessage.ImageMessageBuilder().image(bufferedImage).sender(user).build();
-            output.writeObject(new AddMessageRequest(chatRoom, message)); // skickar msg till server, vad näst?
+            output.writeObject(sendMessageRequest);
             output.flush();
         }catch (IOException e){
             e.printStackTrace();
@@ -113,20 +95,17 @@ public class Client {
         return false;
     }
 
-    public ArrayList<User> getUsersList(GetUsersRequest usersRequest){
+    public Map<String, User> getUsersList(GetUsersRequest getUsersRequest){
         try {
-            ArrayList<User> users = new ArrayList<>();
 
-            output.writeObject(usersRequest);
+            output.writeObject(getUsersRequest);
             output.flush();
 
             Object object = input.readObject();
-
-            if(object instanceof ArrayList<?> list){
-                for(Object o : list){
-                    if(o instanceof User s) users.add(s);
-                }
-                return users;
+            if(object instanceof Map<?,?> map){
+                @SuppressWarnings ("unchecked")
+                Map<String, User> userMap = (Map<String, User>) map;
+                return userMap;
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -146,15 +125,35 @@ public class Client {
             if(object instanceof List<?> list){
                 for(Object o : list) if(o instanceof ChatRoom chatRoom) chatRooms.add(chatRoom);
             }
+
             return chatRooms;
 
-        }catch (Exception e){
+        }catch (IOException | ClassNotFoundException e){
             e.printStackTrace();
         }
 
         return null;
 
     }
+
+    public ChatRoom addChatRoom(AddChatRoomRequest addChatRoomRequest){
+
+        try{
+            output.writeObject(addChatRoomRequest);
+            output.flush();
+
+            Object object = input.readObject();
+
+            if(object instanceof ChatRoom chatRoom){
+                return chatRoom;
+            }
+        }catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 
 
     public User getSessionUser(){

@@ -2,9 +2,13 @@ package application.graphics;
 
 import application.Client;
 import sharedresources.ChatRoom;
-import sharedresources.requests.GetUsersRequest;
+import sharedresources.ImageMessage;
 import sharedresources.User;
+import sharedresources.requests.AddChatRoomRequest;
+import sharedresources.requests.GetUsersRequest;
+import sharedresources.requests.SendMessageRequest;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -14,38 +18,42 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Toolkit;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetAdapter;
 import java.awt.dnd.DropTargetDropEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Dashboard extends JFrame{
     private JPanel rootPanel;
     private JPanel sidePanel;
-    private JButton dashboardButton;
-    private JButton githubButton;
-    private JButton contactsButton;
-    private JButton messageButton;
+    private JButton gitHubButton;
+    private JButton homeScreenButton;
     private JPanel mainPanel;
     private JScrollPane chatRoomScrollPane;
     private JPanel chatRoomPanel;
     private JLabel displayNameLabel;
     private JList userList;
-    private List<String> selectedUsernames = new ArrayList<>();
+    private List<User> selectedUsernames = new ArrayList<>();
     private JButton createCapyHerdButton;
     private JPanel userPanel;
-    private JList chatroomList;
+    private JList list1;
     private JButton createChatRoomButton;
-    private ChatRoom displayedChatroom;
+    private sharedresources.ChatRoom displayedChatroom;
     private User user;
     private Client client;
 
@@ -54,30 +62,69 @@ public class Dashboard extends JFrame{
         this.client = client;
         user = client.getSessionUser();
 
-        DefaultListModel<String> listModel = new DefaultListModel<>();
+        DefaultListModel<User> listModel = new DefaultListModel<>();
         userList.setModel(listModel);
         userList.setCellRenderer(new UsernameListCellRenderer());
         userList.setSelectionModel(new CustomListSelectionModel());
         userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
+        //TODO: ta bort när vi är klara med testning
         userList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
                     selectedUsernames.clear();
+                    System.out.println("Selected usernames: ");
+                    int i = 0;
                     for (int index : userList.getSelectedIndices()) {
                         selectedUsernames.add(listModel.getElementAt(index));
+                        System.out.println(" " + selectedUsernames.get(i));
+                        i++;
                     }
-                    System.out.println("Selected usernames: " + selectedUsernames);
                 }
             }
         });
 
-        listModel.addElement("Attila");
-        listModel.addElement("Odai");
-        listModel.addElement("Roger");
-        listModel.addElement("Shark");
-        listModel.addElement("Binki");
+        gitHubButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                if (Desktop.isDesktopSupported()) {
+                    Desktop desktop = Desktop.getDesktop();
+                    try{
+                        desktop.browse(new URI(url));
+                    }catch (IOException | URISyntaxException i){
+                        i.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        createCapyHerdButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List<User> selectedUsers = userList.getSelectedValuesList();
+                ChatRoom chatRoom = client.addChatRoom(new AddChatRoomRequest(selectedUsers));
+                if(chatRoom != null){
+                    dispose();
+                    Chat chat = new Chat(client, chatRoom);
+                }
+            }
+        });
+
+//        listModel.addElement("Attila");
+//        listModel.addElement("Odai");
+//        listModel.addElement("Roger");
+//        listModel.addElement("Shark");
+//        listModel.addElement("Binki");
+
+        Map<String, User> userMap= client.getUsersList(new GetUsersRequest());
+        Set<String> usersUserNameSet = userMap.keySet();
+        for(String s : usersUserNameSet){
+            if(s.equals(user.getUsername()))continue;
+            listModel.addElement(userMap.get(s));
+        }
+
 
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -88,7 +135,6 @@ public class Dashboard extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeDragAndDrop();
         setDisplayName();
-        chatRoomPanel.setLayout(new BorderLayout());
         initChatRoomDisplay();
         setVisible(true);
 
@@ -96,7 +142,7 @@ public class Dashboard extends JFrame{
 
     public void initChatRoomDisplay(){
 
-        List<ChatRoom> chatRooms = client.getChatRooms();
+        List<sharedresources.ChatRoom> chatRooms = client.getChatRooms();
         System.out.println(chatRooms.size());
         if(chatRooms.isEmpty()) return;
         String[] items = new String[chatRooms.size()];
@@ -126,6 +172,7 @@ public class Dashboard extends JFrame{
 
     private void initializeDragAndDrop(){
         mainPanel.setDropTarget(new DropTarget(mainPanel, DnDConstants.ACTION_COPY, new DropTargetAdapter() {
+            //TODO: ändra mainpanel till chattrumspanelen eller den här Jlist
             @Override
             public void drop(DropTargetDropEvent dtde) {
                 try {
@@ -134,171 +181,21 @@ public class Dashboard extends JFrame{
 
                     dtde.acceptDrop(DnDConstants.ACTION_COPY);
 
-                    if(!transferable.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) throw new Exception();
+                    if(!transferable.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) throw new UnsupportedFlavorException(DataFlavor.javaFileListFlavor);
                     Object object = transferable.getTransferData(DataFlavor.javaFileListFlavor);
 
                     if(object instanceof List<?> list){
                         for(Object o : list){
                             if(o instanceof File image){
-                                client.sendImageMessage(image.getAbsolutePath(), displayedChatroom);
+                                BufferedImage bufferedImage = ImageIO.read(image);
+                                client.sendMessage(new SendMessageRequest(displayedChatroom, new ImageMessage.ImageMessageBuilder().image(bufferedImage).sender(user).build()));
                             }
                         }
                     }
-
-                } catch (Exception e) {
+                } catch (UnsupportedFlavorException | IOException e) {
                     e.printStackTrace();
                 }
             }
         }));
     }
-
-    private void displayUsersList(){
-        ArrayList<User> users = client.getUsersList(new GetUsersRequest());
-
-        for(User user : users){
-
-        }
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-    public class ChatRoomListModel extends AbstractListModel<String> {
-        private final List<ChatRoom> chatRooms;
-
-        public ChatRoomListModel(List<ChatRoom> chatRooms) {
-            this.chatRooms = chatRooms;
-        }
-
-        @Override
-        public int getSize() {
-            return chatRooms.size();
-        }
-
-        @Override
-        public String getElementAt(int index) {
-            ChatRoom chatRoom = chatRooms.get(index);
-            List<SessionUser> users = chatRoom.getUsersInChatRoom();
-            StringBuilder userDisplayNames = new StringBuilder();
-            for (SessionUser user : users) {
-                userDisplayNames.append(user.getDisplayname()).append(", ");
-            }
-            return "ChatRoom " + (index + 1) + ": " + userDisplayNames.toString();
-        }
-    }
-
-    public class ChatRoomListCellRenderer extends JLabel implements ListCellRenderer<String> {
-        @Override
-        public Component getListCellRendererComponent(JList<? extends String> list, String value, int index, boolean isSelected, boolean cellHasFocus) {
-            setText(value);
-
-            if (isSelected) {
-                setBackground(list.getSelectionBackground());
-                setForeground(list.getSelectionForeground());
-            } else {
-                setBackground(list.getBackground());
-                setForeground(list.getForeground());
-            }
-
-            setEnabled(list.isEnabled());
-            setFont(list.getFont());
-            setOpaque(true);
-
-            return this;
-        }
-    }
-
-    public class ChatRoomList extends JList<String> implements MouseListener{
-        public ChatRoomList(List<ChatRoom> chatRooms) {
-            super(new ChatRoomListModel(chatRooms));
-            setCellRenderer(new ChatRoomListCellRenderer());
-            addMouseListener(new MouseListener(){
-                public void mouseClicked(MouseEvent e) {
-                    if (e.getClickCount() == 2) { // Double-click
-                        int selectedIndex = getSelectedIndex();
-                        if (selectedIndex != -1) {
-                            // Handle the chat room selection, e.g., display the chat room view
-                            System.out.println("Chat room " + (selectedIndex + 1) + " selected");
-                        }
-                    }
-                }
-
-                @Override
-                public void mousePressed(MouseEvent e) {
-                }
-
-                @Override
-                public void mouseReleased(MouseEvent e) {
-                }
-
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                }
-
-                @Override
-                public void mouseExited(MouseEvent e) {
-                }
-            });
-        }
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (e.getClickCount() == 2) { // Double-click
-                int selectedIndex = getSelectedIndex();
-                if (selectedIndex != -1) {
-                    // Handle the chat room selection, e.g., display the chat room view
-                    System.out.println("Chat room " + (selectedIndex + 1) + " selected");
-                }
-            }
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-    }
-
- */
-
 }
