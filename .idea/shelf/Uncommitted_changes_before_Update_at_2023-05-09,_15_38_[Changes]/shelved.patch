@@ -1,0 +1,111 @@
+Index: src/view/graphics/Dashboard.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package view.graphics;\n\nimport controller.Client;\nimport model.ChatRoom;\nimport model.SessionUser;\n\nimport javax.swing.*;\nimport java.awt.*;\nimport java.awt.datatransfer.DataFlavor;\nimport java.awt.datatransfer.Transferable;\nimport java.awt.dnd.DnDConstants;\nimport java.awt.dnd.DropTarget;\nimport java.awt.dnd.DropTargetAdapter;\nimport java.awt.dnd.DropTargetDropEvent;\nimport java.io.File;\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic class Dashboard extends JFrame{\n    private JPanel rootPanel;\n    private JPanel sidePanel;\n    private JButton dashboardButton;\n    private JButton githubButton;\n    private JButton contactsButton;\n    private JButton messageButton;\n    private JPanel mainPanel;\n    private JTable chatroomTable;\n    private JScrollPane chatRoomScrollPane;\n    private JPanel chatRoomPanel;\n    private JLabel displayNameLabel;\n    private JLabel dispalynameLabel;\n    private SessionUser sessionUser;\n    private Client client;\n\n    public Dashboard(Client client){\n//        this.user = user;\n        this.client = client;\n        sessionUser = client.getSessionUser();\n        client.connectToServer();\n        Dimension minmumWindowSize = new Dimension(500, 300);\n        Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();\n        setContentPane(rootPanel);\n        setSize(screeSize.width * 3 / 5,screeSize.height * 3 / 5);\n        setMinimumSize(minmumWindowSize);\n        setLocationRelativeTo(null);\n        setDefaultCloseOperation(EXIT_ON_CLOSE);\n        initializeMainPanel();\n        setDisplayName();\n        setVisible(true);\n    }\n\n    private void setDisplayName(){\n        dispalynameLabel.setText(\"Welcome \" + sessionUser.getDisplayname() + \", have a capybara day!\");\n    }\n\n\n    private void initializeMainPanel(){\n        mainPanel.setDropTarget(new DropTarget(mainPanel, DnDConstants.ACTION_COPY, new DropTargetAdapter() {\n            @Override\n            public void drop(DropTargetDropEvent dtde) {\n                try {\n                    Transferable transferable = dtde.getTransferable();\n                    if (!transferable.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) dtde.rejectDrop();\n\n                    dtde.acceptDrop(DnDConstants.ACTION_COPY);\n\n                    if(!transferable.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) throw new Exception();\n                    List <File> images = new ArrayList<>();\n                    Object object = transferable.getTransferData(DataFlavor.javaFileListFlavor);\n                    if(object instanceof List<?> list){\n                        for(Object o : list){\n                            if(o instanceof File image) images.add(image);\n\n                        }\n                    }\n\n                    ArrayList<String> filePaths = new ArrayList<>();\n                    for (File i : images) {\n                        filePaths.add(i.getAbsolutePath());\n                        System.out.println(\"File path: \" + i.getAbsolutePath());\n                    }\n                    client.sendMessage(filePaths.get(0));\n\n                } catch (Exception e) {\n                    e.printStackTrace();\n                }\n            }\n        }));\n    }\n\n\n}\n
+===================================================================
+diff --git a/src/view/graphics/Dashboard.java b/src/view/graphics/Dashboard.java
+--- a/src/view/graphics/Dashboard.java	
++++ b/src/view/graphics/Dashboard.java	
+@@ -5,6 +5,7 @@
+ import model.SessionUser;
+ 
+ import javax.swing.*;
++import javax.swing.table.TableColumn;
+ import java.awt.*;
+ import java.awt.datatransfer.DataFlavor;
+ import java.awt.datatransfer.Transferable;
+@@ -24,18 +25,20 @@
+     private JButton contactsButton;
+     private JButton messageButton;
+     private JPanel mainPanel;
+-    private JTable chatroomTable;
+-    private JScrollPane chatRoomScrollPane;
+     private JPanel chatRoomPanel;
+     private JLabel displayNameLabel;
+-    private JLabel dispalynameLabel;
++    private JTable table1;
++    private JButton button1;
++    private JScrollPane chatRoomScrollPane;
+     private SessionUser sessionUser;
+     private Client client;
++    private ChatRoom chatRoom;
+ 
+     public Dashboard(Client client){
+ //        this.user = user;
+         this.client = client;
+         sessionUser = client.getSessionUser();
++        this.chatRoom = new ChatRoom();
+         client.connectToServer();
+         Dimension minmumWindowSize = new Dimension(500, 300);
+         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
+@@ -43,14 +46,21 @@
+         setSize(screeSize.width * 3 / 5,screeSize.height * 3 / 5);
+         setMinimumSize(minmumWindowSize);
+         setLocationRelativeTo(null);
++
+         setDefaultCloseOperation(EXIT_ON_CLOSE);
+-        initializeMainPanel();
++//        initializeMainPanel();
+         setDisplayName();
+         setVisible(true);
+     }
+ 
++    private void initScrollPane(){
++        chatRoomScrollPane = new JScrollPane();
++        chatRoomScrollPane.setOpaque(false);
++        chatRoomScrollPane.setBackground(new Color(26,26,36));
++    }
++
+     private void setDisplayName(){
+-        dispalynameLabel.setText("Welcome " + sessionUser.getDisplayname() + ", have a capybara day!");
++        displayNameLabel.setText("Welcome " + sessionUser.getDisplayname() + ", have a capybara day!");
+     }
+ 
+ 
+@@ -87,6 +97,46 @@
+             }
+         }));
+     }
++    // 1. lista/tabell av chatrum User är medlem i skapas från model och displayas i dashboard
++    private void displayChatrooms(){
++        List<ChatRoom>  chatRooms = client.getChatRooms(sessionUser);
++
++        TableColumn tableColumn = new TableColumn();
++        String[][] usersToDisplay = new String[chatRooms.size()][1];
++        for(int i = 0; i < chatRooms.size(); i++){
++            List<SessionUser> usersInChatroom = chatRooms.get(i).getUsersInChatRoom();
++            usersInChatroom.remove(sessionUser);
++        }
++    }
+ 
++    private void displayUsersList(){
++        ArrayList<SessionUser> users = client.getUsersList();
++        DefaultListModel<SessionUser> modelList = new DefaultListModel<>();
++        for(SessionUser user : users){
++            modelList.addElement(user);
++        }
++        usersList.setModel(modelList); // skapa en usersList i guin
++    }
+ 
++    private void displayCreateChatRoom(){
++        ArrayList<SessionUser> users = client.getUsersList();
++
++     for(SessionUser user : users){
++         if (user.equals(true)){
++             ChatRoom NewChatRoom = client.add.getUsersList();
++         }
++     }
++
++    }
++
++    /* pseudokod:
++    1. lista/tabell av chatrum User är medlem i skapas från model och displayas i dashboard
++    2. lista av medlemmar skapas i dashboard också
++    3. User bockar in medlemmar och klickar "create chatroom"
++    4. Nytt chattrum skapas och hamnar i chatRoomList för User och inbockade medlemmar
++    5. Model har nu ny information, en chatrum har skapats för vissa medlemmar
++    6. View reagerar på nya infon (genom controller?) och repaintar lista/tabell av chatrum
++
++    Osäkerheter: I vilken/vilka klasser ska detta ske?
++     */
+ }
