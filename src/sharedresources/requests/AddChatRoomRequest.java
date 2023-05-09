@@ -15,7 +15,8 @@ public class AddChatRoomRequest implements DataHandler, Serializable {
     private String chatRoomName = "yes";
 
     public AddChatRoomRequest(List<User> usersInChatRoom){
-        this.usersInChatRoom = usersInChatRoom; //ska det vara add users in chatroom ? om jag fattat rätt
+        this.usersInChatRoom = usersInChatRoom;//ska det vara add users in chatroom ? om jag fattat rätt
+
     }
 
 
