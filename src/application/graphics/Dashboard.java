@@ -4,6 +4,7 @@ import application.Client;
 import sharedresources.ChatRoom;
 import sharedresources.ImageMessage;
 import sharedresources.User;
+import sharedresources.requests.GetUsersRequest;
 import sharedresources.requests.SendMessageRequest;
 
 import javax.imageio.ImageIO;
@@ -33,6 +34,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Dashboard extends JFrame{
     private JPanel rootPanel;
@@ -107,6 +110,18 @@ public class Dashboard extends JFrame{
                 }
             }
         });
+
+//        listModel.addElement("Attila");
+//        listModel.addElement("Odai");
+//        listModel.addElement("Roger");
+//        listModel.addElement("Shark");
+//        listModel.addElement("Binki");
+
+        Set<String> usersUserNameSet= client.getUsersList(new GetUsersRequest()).keySet();
+        for(String s : usersUserNameSet){
+            if(s.equals(user.getUsername()))continue;
+            userListModel.addElement(s);
+        }
 
 
         Dimension minmumWindowSize = new Dimension(500, 300);
