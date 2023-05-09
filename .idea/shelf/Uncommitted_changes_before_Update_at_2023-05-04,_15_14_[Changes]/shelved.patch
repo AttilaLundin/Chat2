@@ -1,0 +1,115 @@
+Index: src/application/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package application;\n\nimport java.io.Serializable;\nimport java.util.*;\npublic class User implements Serializable {\n    private String UserName;\n    private String displayName;\n    private String PassWord;\n\n    private List<UUID> chatRoomIDs;\n\n    public User(String Username, String displayName, String PassWord, List<UUID> chatRoomIDs){\n        this.UserName= Username;\n        this.displayName = displayName;\n        this.PassWord = PassWord;\n        this.chatRoomIDs = chatRoomIDs;\n    }\n\n    public User(){\n        this.UserName= \"Username\";\n        this.displayName = \"displayName\";\n        this.PassWord = \"PAssWord\"; // varför stort W \uD83E\uDD28 jag vet inte bara blir så iblöand eller hru???\n\n    }\n\n    public void addChatRoom(UUID chatRoomID){\n        this.chatRoomIDs.add(chatRoomID);\n    }\n\n    public List<UUID> getChatRoomIDs(){return chatRoomIDs;}\n\n    public String getUserName(){return UserName;}\n\n    public String getDisplayName() {\n        return displayName;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/application/User.java b/src/application/User.java
+--- a/src/application/User.java	(revision 49323b040b6d88761497404cee64f703455170ce)
++++ b/src/application/User.java	(date 1683194760347)
+@@ -19,7 +19,7 @@
+     public User(){
+         this.UserName= "Username";
+         this.displayName = "displayName";
+-        this.PassWord = "PAssWord"; // varför stort W 🤨 jag vet inte bara blir så iblöand eller hru???
++        this.PassWord = "PAssWord"; // varför stort W 🤨 jag vet inte bara blir så ibland eller hru???
+ 
+     }
+ 
+Index: src/application/Message.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package application;\n\nimport java.awt.image.BufferedImage;\nimport java.io.Serializable;\nimport java.text.SimpleDateFormat;\nimport java.util.UUID;\n\npublic class Message implements Serializable {\n    private final String text;\n    private transient BufferedImage image;\n    private String time;\n    private User sender;\n\n    private final UUID chatRoomID;\n\n    public Message(String text, BufferedImage image, User sender, UUID chatRoomID){\n        this.text= text;\n        this.image = image;\n        time = new SimpleDateFormat(\"yyyy.MM.dd.HH.mm.ss\").format(new java.util.Date());\n        this.sender= sender;\n        this.chatRoomID = chatRoomID;\n    }\n\n    public String getText(){\n        return text;\n    }\n    public UUID getChatRoomID(){\n        return chatRoomID;\n    }\n\n\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/application/Message.java b/src/application/Message.java
+--- a/src/application/Message.java	(revision 49323b040b6d88761497404cee64f703455170ce)
++++ b/src/application/Message.java	(date 1683193979714)
+@@ -28,7 +28,4 @@
+         return chatRoomID;
+     }
+ 
+-
+-
+-
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"02740190-028b-4c58-bdf5-1625c1ed7212\" name=\"Changes\" comment=\"jh\" />\n    <list id=\"acccb66a-aa85-492c-a780-f96147765580\" name=\"Changes by benny\" comment=\"\" />\n    <list id=\"25826a8a-48ba-4ba5-adee-9a22015f4501\" name=\"Changes by Mehrab Kazmi\" comment=\"Changes by Mehrab Kazmi\" />\n    <list id=\"f1a9475c-ed3b-4962-8f4d-5004ec5a699f\" name=\"Changes by rozgar\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/src/application/ChatRoom.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/application/ChatRoom.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/application/User.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/application/User.java\" afterDir=\"false\" />\n    </list>\n    <list id=\"6d653381-a49a-48d0-8db6-87a360bddb09\" name=\"Changes by rozkh\" comment=\"\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2PEvnkeSbnM0HWarY3PUweqrkxJ\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;Store__Message&quot;,\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/attil/IdeaProjects/server&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\lundi\\IdeaProjects\\Chat2\\src\" />\n      <recent name=\"C:\\Users\\lundi\\IdeaProjects\\Chat2\\src\\graphics\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\attil\\IdeaProjects\\Chat2\\src\\application\\graphics\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"application.Main\" />\n      <module name=\"Chat2\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"Server\" type=\"Application\" factoryName=\"Application\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"server.ConnectionHandler\" />\n      <module name=\"Chat2\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/../server\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <list>\n      <item itemvalue=\"Application.Main\" />\n      <item itemvalue=\"Application.Server\" />\n    </list>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"02740190-028b-4c58-bdf5-1625c1ed7212\" name=\"Changes\" comment=\"\" />\n      <created>1683035226135</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1683035226135</updated>\n      <workItem from=\"1683051564033\" duration=\"6760000\" />\n      <workItem from=\"1683065435676\" duration=\"2302000\" />\n      <workItem from=\"1683100819143\" duration=\"11523000\" />\n    </task>\n    <task id=\"LOCAL−00001\" summary=\"asd\">\n      <created>1683035410568</created>\n      <option name=\"number\" value=\"LOCAL−00001\" />\n      <option name=\"presentableId\" value=\"LOCAL−00001\" />\n      <updated>1683035410568</updated>\n    </task>\n    <task id=\"LOCAL−00002\" summary=\"Client class impelemented\">\n      <created>1683036346886</created>\n      <option name=\"number\" value=\"LOCAL−00002\" />\n      <option name=\"presentableId\" value=\"LOCAL−00002\" />\n      <updated>1683036346886</updated>\n    </task>\n    <task id=\"LOCAL−00003\" summary=\"gui added\">\n      <created>1683038931902</created>\n      <option name=\"number\" value=\"LOCAL−00003\" />\n      <option name=\"presentableId\" value=\"LOCAL−00003\" />\n      <updated>1683038931902</updated>\n    </task>\n    <task id=\"LOCAL−00004\" summary=\"gui added\">\n      <created>1683039129011</created>\n      <option name=\"number\" value=\"LOCAL−00004\" />\n      <option name=\"presentableId\" value=\"LOCAL−00004\" />\n      <updated>1683039129011</updated>\n    </task>\n    <task id=\"LOCAL−00005\" summary=\"gui added\">\n      <created>1683041702582</created>\n      <option name=\"number\" value=\"LOCAL−00005\" />\n      <option name=\"presentableId\" value=\"LOCAL−00005\" />\n      <updated>1683041702582</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"gui added\">\n      <created>1683052657089</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683052657089</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"chatroom\">\n      <created>1683052882123</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683052882123</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"chatroom added\">\n      <created>1683059004038</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683059004038</updated>\n    </task>\n    <task id=\"LOCAL-00009\" summary=\"jh\">\n      <created>1683104905667</created>\n      <option name=\"number\" value=\"00009\" />\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683104905667</updated>\n    </task>\n    <task id=\"LOCAL-00010\" summary=\"jh\">\n      <created>1683106396987</created>\n      <option name=\"number\" value=\"00010\" />\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683106396987</updated>\n    </task>\n    <task id=\"LOCAL-00011\" summary=\"jh\">\n      <created>1683110981359</created>\n      <option name=\"number\" value=\"00011\" />\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683110981359</updated>\n    </task>\n    <task id=\"LOCAL-00012\" summary=\"jh\">\n      <created>1683112497400</created>\n      <option name=\"number\" value=\"00012\" />\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683112497400</updated>\n    </task>\n    <task id=\"LOCAL-00013\" summary=\"jh\">\n      <created>1683112632663</created>\n      <option name=\"number\" value=\"00013\" />\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1683112632663</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"14\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"asd\" />\n    <MESSAGE value=\"Client class impelemented\" />\n    <MESSAGE value=\"gui added\" />\n    <MESSAGE value=\"chatroom\" />\n    <MESSAGE value=\"chatroom added\" />\n    <MESSAGE value=\"Changes by Mehrab Kazmi\" />\n    <MESSAGE value=\"jh\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"jh\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 49323b040b6d88761497404cee64f703455170ce)
++++ b/.idea/workspace.xml	(date 1683206049487)
+@@ -4,13 +4,14 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="jh" />
++    <list default="true" id="02740190-028b-4c58-bdf5-1625c1ed7212" name="Changes" comment="jh">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/application/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/Message.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/application/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
++    </list>
+     <list id="acccb66a-aa85-492c-a780-f96147765580" name="Changes by benny" comment="" />
+     <list id="25826a8a-48ba-4ba5-adee-9a22015f4501" name="Changes by Mehrab Kazmi" comment="Changes by Mehrab Kazmi" />
+-    <list id="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" name="Changes by rozgar" comment="">
+-      <change beforePath="$PROJECT_DIR$/src/application/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/ChatRoom.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/application/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/User.java" afterDir="false" />
+-    </list>
++    <list id="f1a9475c-ed3b-4962-8f4d-5004ec5a699f" name="Changes by rozgar" comment="" />
+     <list id="6d653381-a49a-48d0-8db6-87a360bddb09" name="Changes by rozkh" comment="" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -67,7 +68,7 @@
+       <recent name="C:\Users\attil\IdeaProjects\Chat2\src\application\graphics" />
+     </key>
+   </component>
+-  <component name="RunManager">
++  <component name="RunManager" selected="Application.Main">
+     <configuration name="Main" type="Application" factoryName="Application">
+       <option name="MAIN_CLASS_NAME" value="application.Main" />
+       <module name="Chat2" />
+@@ -98,7 +99,7 @@
+       <updated>1683035226135</updated>
+       <workItem from="1683051564033" duration="6760000" />
+       <workItem from="1683065435676" duration="2302000" />
+-      <workItem from="1683100819143" duration="11523000" />
++      <workItem from="1683100819143" duration="9655000" />
+     </task>
+     <task id="LOCAL−00001" summary="asd">
+       <created>1683035410568</created>
+@@ -165,28 +166,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1683106396987</updated>
+     </task>
+-    <task id="LOCAL-00011" summary="jh">
+-      <created>1683110981359</created>
+-      <option name="number" value="00011" />
+-      <option name="presentableId" value="LOCAL-00011" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1683110981359</updated>
+-    </task>
+-    <task id="LOCAL-00012" summary="jh">
+-      <created>1683112497400</created>
+-      <option name="number" value="00012" />
+-      <option name="presentableId" value="LOCAL-00012" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1683112497400</updated>
+-    </task>
+-    <task id="LOCAL-00013" summary="jh">
+-      <created>1683112632663</created>
+-      <option name="number" value="00013" />
+-      <option name="presentableId" value="LOCAL-00013" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1683112632663</updated>
+-    </task>
+-    <option name="localTasksCounter" value="14" />
++    <option name="localTasksCounter" value="11" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">

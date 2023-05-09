@@ -1,0 +1,47 @@
+Index: src/view/graphics/Dashboard.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package view.graphics;\n\nimport controller.Client;\nimport model.ChatRoom;\nimport model.SessionUser;\n\nimport javax.swing.*;\nimport javax.swing.table.TableColumn;\nimport java.awt.*;\nimport java.awt.datatransfer.DataFlavor;\nimport java.awt.datatransfer.Transferable;\nimport java.awt.dnd.DnDConstants;\nimport java.awt.dnd.DropTarget;\nimport java.awt.dnd.DropTargetAdapter;\nimport java.awt.dnd.DropTargetDropEvent;\nimport java.io.File;\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic class Dashboard extends JFrame{\n    private JPanel rootPanel;\n    private JPanel sidePanel;\n    private JButton dashboardButton;\n    private JButton githubButton;\n    private JButton contactsButton;\n    private JButton messageButton;\n    private JPanel mainPanel;\n    private JPanel chatRoomPanel;\n    private JLabel displayNameLabel;\n    private JTable table1;\n    private JButton button1;\n    private JScrollPane chatRoomScrollPane;\n    private SessionUser sessionUser;\n    private Client client;\n    private ChatRoom chatRoom;\n\n    public Dashboard(Client client){\n//        this.user = user;\n        this.client = client;\n        sessionUser = client.getSessionUser();\n        this.chatRoom = new ChatRoom();\n        client.connectToServer();\n        Dimension minmumWindowSize = new Dimension(500, 300);\n        Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();\n        setContentPane(rootPanel);\n        setSize(screeSize.width * 3 / 5,screeSize.height * 3 / 5);\n        setMinimumSize(minmumWindowSize);\n        setLocationRelativeTo(null);\n\n        setDefaultCloseOperation(EXIT_ON_CLOSE);\n//        initializeMainPanel();\n        setDisplayName();\n        setVisible(true);\n    }\n\n    private void initScrollPane(){\n        chatRoomScrollPane = new JScrollPane();\n        chatRoomScrollPane.setOpaque(false);\n        chatRoomScrollPane.setBackground(new Color(26,26,36));\n    }\n\n    private void setDisplayName(){\n        displayNameLabel.setText(\"Welcome \" + sessionUser.getDisplayname() + \", have a capybara day!\");\n    }\n\n\n    private void initializeMainPanel(){\n        mainPanel.setDropTarget(new DropTarget(mainPanel, DnDConstants.ACTION_COPY, new DropTargetAdapter() {\n            @Override\n            public void drop(DropTargetDropEvent dtde) {\n                try {\n                    Transferable transferable = dtde.getTransferable();\n                    if (!transferable.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) dtde.rejectDrop();\n\n                    dtde.acceptDrop(DnDConstants.ACTION_COPY);\n\n                    if(!transferable.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) throw new Exception();\n                    List <File> images = new ArrayList<>();\n                    Object object = transferable.getTransferData(DataFlavor.javaFileListFlavor);\n                    if(object instanceof List<?> list){\n                        for(Object o : list){\n                            if(o instanceof File image) images.add(image);\n\n                        }\n                    }\n\n                    ArrayList<String> filePaths = new ArrayList<>();\n                    for (File i : images) {\n                        filePaths.add(i.getAbsolutePath());\n                        System.out.println(\"File path: \" + i.getAbsolutePath());\n                    }\n                    client.sendMessage(filePaths.get(0));\n\n                } catch (Exception e) {\n                    e.printStackTrace();\n                }\n            }\n        }));\n    }\n    // 1. lista/tabell av chatrum User är medlem i skapas från model och displayas i dashboard\n    private void displayChatrooms(){\n        List<ChatRoom>  chatRooms = client.getChatRooms(sessionUser);\n\n        TableColumn tableColumn = new TableColumn();\n        String[][] usersToDisplay = new String[chatRooms.size()][1];\n        for(int i = 0; i < chatRooms.size(); i++){\n            List<SessionUser> usersInChatroom = chatRooms.get(i).getUsersInChatRoom();\n            usersInChatroom.remove(sessionUser);\n        }\n    }\n\n    private void displayUsersList(){\n        ArrayList<SessionUser> users = client.getUsersList();\n        DefaultListModel<SessionUser> modelList = new DefaultListModel<>();\n        for(SessionUser user : users){\n            modelList.addElement(user);\n        }\n        usersList.setModel(modelList); // skapa en usersList i guin\n    }\n\n    private void displayCreateChatRoom(){\n        ArrayList<SessionUser> users = client.getUsersList();\n\n     for(SessionUser user : users){\n         if (user.equals(true)){\n             ChatRoom NewChatRoom = client.add.getUsersList();\n         }\n     }\n\n    }\n\n    /* pseudokod:\n    1. lista/tabell av chatrum User är medlem i skapas från model och displayas i dashboard\n    2. lista av medlemmar skapas i dashboard också\n    3. User bockar in medlemmar och klickar \"create chatroom\"\n    4. Nytt chattrum skapas och hamnar i chatRoomList för User och inbockade medlemmar\n    5. Model har nu ny information, en chatrum har skapats för vissa medlemmar\n    6. View reagerar på nya infon (genom controller?) och repaintar lista/tabell av chatrum\n\n    Osäkerheter: I vilken/vilka klasser ska detta ske?\n     */\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/view/graphics/Dashboard.java b/src/view/graphics/Dashboard.java
+--- a/src/view/graphics/Dashboard.java	(revision bee8e3e9ac938800c978b03550a61ce822af7e05)
++++ b/src/view/graphics/Dashboard.java	(date 1683479706892)
+@@ -108,7 +108,7 @@
+             usersInChatroom.remove(sessionUser);
+         }
+     }
+-
++/*
+     private void displayUsersList(){
+         ArrayList<SessionUser> users = client.getUsersList();
+         DefaultListModel<SessionUser> modelList = new DefaultListModel<>();
+@@ -128,7 +128,7 @@
+      }
+ 
+     }
+-
++*/
+     /* pseudokod:
+     1. lista/tabell av chatrum User är medlem i skapas från model och displayas i dashboard
+     2. lista av medlemmar skapas i dashboard också
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_X\" default=\"true\" project-jdk-name=\"openjdk-20\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/out\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision bee8e3e9ac938800c978b03550a61ce822af7e05)
++++ b/.idea/misc.xml	(date 1683479594734)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="openjdk-20" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="openjdk-20" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
