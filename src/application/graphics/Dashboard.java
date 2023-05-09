@@ -51,7 +51,9 @@ public class Dashboard extends JFrame{
     private List<User> selectedUsernames = new ArrayList<>();
     private JButton createCapyHerdButton;
     private JPanel userPanel;
-    private JList list1;
+    private JPanel displayBarPanel;
+    private JList chatRoomList;
+    private JScrollPane userListScrollPane;
     private JButton createChatRoomButton;
     private sharedresources.ChatRoom displayedChatroom;
     private User user;
@@ -62,13 +64,24 @@ public class Dashboard extends JFrame{
         this.client = client;
         user = client.getSessionUser();
 
-        DefaultListModel<User> listModel = new DefaultListModel<>();
-        userList.setModel(listModel);
+        DefaultListModel<User> userListModel = new DefaultListModel<>();
+        userList.setModel(userListModel);
         userList.setCellRenderer(new UsernameListCellRenderer());
         userList.setSelectionModel(new CustomListSelectionModel());
         userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         //TODO: ta bort när vi är klara med testning
+        DefaultListModel<String> chatRoomListModel = new DefaultListModel<>();
+        chatRoomList.setModel(chatRoomListModel);
+        chatRoomList.setCellRenderer(new ChatRoomListCellRenderer());
+
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+
         userList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -77,7 +90,7 @@ public class Dashboard extends JFrame{
                     System.out.println("Selected usernames: ");
                     int i = 0;
                     for (int index : userList.getSelectedIndices()) {
-                        selectedUsernames.add(listModel.getElementAt(index));
+                        selectedUsernames.add(userListModel.getElementAt(index));
                         System.out.println(" " + selectedUsernames.get(i));
                         i++;
                     }
@@ -119,10 +132,10 @@ public class Dashboard extends JFrame{
 //        listModel.addElement("Binki");
 
         Map<String, User> userMap= client.getUsersList(new GetUsersRequest());
-        Set<String> usersUserNameSet = userMap.keySet();
+        Set<String> usersUserNameSet= client.getUsersList(new GetUsersRequest()).keySet();
         for(String s : usersUserNameSet){
             if(s.equals(user.getUsername()))continue;
-            listModel.addElement(userMap.get(s));
+            userListModel.addElement(userMap.get(s));
         }
 
 

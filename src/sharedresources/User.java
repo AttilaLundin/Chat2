@@ -30,7 +30,6 @@ public class User implements sharedresources.interfaces.User, DataHandler, Seria
     @Override
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatRoomStorage, ObjectOutputStream outputStream) {
 
-
         try {
             outputStream.writeObject(chatRoomStorage.getChatRooms(this));
             outputStream.flush();
@@ -46,8 +45,6 @@ public class User implements sharedresources.interfaces.User, DataHandler, Seria
     public boolean correctCredentials(LoginRequest loginRequest){
         return username.equals(loginRequest.getUsername()) && password.equals(loginRequest.getPassword());
     }
-
-
 
     public static class SessionUserBuilder{
         private String username;
