@@ -79,7 +79,6 @@ public class Dashboard extends JFrame{
 
         chatRoomListModel.addElement("Capy community center");
         */
-
         userList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
