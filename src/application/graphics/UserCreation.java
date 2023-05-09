@@ -3,11 +3,7 @@ package application.graphics;
 import application.Client;
 import sharedresources.requests.RegisterRequest;
 
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
+import javax.swing.*;
 import java.awt.Toolkit;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -60,14 +56,14 @@ public class UserCreation extends JFrame {
                         dispose();
                     }
                     else{
-                        System.out.println("Invalid username: try again. JLAbel");
+                        JOptionPane.showMessageDialog(null, "Invalid credentials, please try again!", "Registration unsuccessful", JOptionPane.INFORMATION_MESSAGE);
                         usernameField.setText("");
                         passwordField.setText("");
                         passwordField2.setText("");
                         displaynameField.setText("");
                     }
                 }else{
-                    System.out.println("Invalid username or password: try again.");
+                    JOptionPane.showMessageDialog(null, "Username already taken\nPlease try again", "Registration unsuccessful" , JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });

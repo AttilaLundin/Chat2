@@ -1,5 +1,7 @@
 package sharedresources;
 
+import server.ChatRoomStorage;
+import server.UserStorage;
 import sharedresources.interfaces.DataHandler;
 import sharedresources.interfaces.Message;
 
@@ -19,6 +21,8 @@ public class TextMessage implements Message, DataHandler, Serializable {
         this.timeSent = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
         this.sender= textMessageBuilder.sender;
     }
+
+    // new TextMessage.TextMessageBuilder().text("abx").sender(user).build();
 
     public static class TextMessageBuilder{
         private String text;
@@ -60,7 +64,7 @@ public class TextMessage implements Message, DataHandler, Serializable {
     }
 
     @Override
-    public void dataHandler(Object registeredUser, Object chatHistory, ObjectOutputStream outputStream) {
+    public void dataHandler(UserStorage userStorage, ChatRoomStorage chatRoomStorage, ObjectOutputStream outputStream) {
 
     }
 }

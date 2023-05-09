@@ -24,11 +24,18 @@ public class ChatRoomStorage {
 
     public List<ChatRoom> getChatRooms(User user){
         List<UUID> chatRoomIDs = chatRoomsThisUsersIsIn.get(user);
-        //TODO: returnera chattrummen för en användare
-        return null;
+        List<ChatRoom> chatRooms = new ArrayList<>();
+
+        if(chatRoomIDs == null) return null;
+        for(UUID id : chatRoomIDs){
+            chatRooms.add(chatRoomCentralStorage.get(id));
+        }
+
+        return chatRooms;
+
     }
 
-    public void addChatRoom(String chatRoomName, List<User> membersInChatRoom){
+    public ChatRoom addChatRoom(String chatRoomName, List<User> membersInChatRoom){
 
         ChatRoom chatRoom = new ChatRoom(chatRoomName, membersInChatRoom, new ArrayList<>());
 
@@ -41,6 +48,7 @@ public class ChatRoomStorage {
                 chatRoomsThisUsersIsIn.put(user, chatRoomId);
             }
         }
+        return chatRoom;
     }
 
     public void addMessageToChatRoom(UUID chatRoomID, Message message){

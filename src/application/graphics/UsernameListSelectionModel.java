@@ -5,11 +5,11 @@ import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CustomListSelectionModel extends DefaultListSelectionModel {
+class UsernameListSelectionModel extends DefaultListSelectionModel {
     private int lastClickedIndex = -1;
     private Timer timer;
 
-    public CustomListSelectionModel() {
+    public UsernameListSelectionModel() {
         int delay = 200; // A 200 milliseconds delay between consecutive clicks
         timer = new Timer(delay, new ActionListener() {
             @Override

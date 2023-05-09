@@ -1,7 +1,10 @@
 package sharedresources.interfaces;
 
+import server.ChatRoomStorage;
+import server.UserStorage;
+
 import java.io.ObjectOutputStream;
 
 public interface DataHandler {
-    void dataHandler(Object userStorage, Object chatroomStorage, ObjectOutputStream outputStream);
+    void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream);
 }
