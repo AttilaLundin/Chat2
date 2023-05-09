@@ -140,6 +140,8 @@ public class Client {
     }
 
 
+
+
     public User getSessionUser(){
         return user;
     }
