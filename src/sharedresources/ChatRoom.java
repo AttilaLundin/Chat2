@@ -32,16 +32,14 @@ public class ChatRoom implements Serializable {
         this.users = testUsers;
         this.messages = new ArrayList<>();
     }
-     */
+    */
 
     public List<User> getUsers(){
         return users;
     }
-
     public UUID getChatRoomID(){
         return chatRoomID;
     }
-
     public List<User> getUsersInChatRoom(){
         return users;
     }
@@ -51,8 +49,5 @@ public class ChatRoom implements Serializable {
     public void addMessage(Message message){
         this.messages.add(message);
     }
-
-
-
 
 }

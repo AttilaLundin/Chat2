@@ -18,14 +18,12 @@ public class TextMessage implements Message, DataHandler, Serializable {
         this.text= textMessageBuilder.text;
         this.timeSent = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
         this.sender= textMessageBuilder.sender;
-        this.chatRoomID = textMessageBuilder.chatRoomID;
     }
 
     public static class TextMessageBuilder{
         private String text;
         private String timeSent;
         private User sender;
-        private UUID chatRoomID;
 
         public TextMessageBuilder text (String text){
             this.text = text;
@@ -34,11 +32,6 @@ public class TextMessage implements Message, DataHandler, Serializable {
 
         public TextMessageBuilder sender(User sender) {
             this.sender = sender;
-            return this;
-        }
-
-        public TextMessageBuilder chatRoomID(UUID chatRoomID){
-            this.chatRoomID = chatRoomID;
             return this;
         }
 
