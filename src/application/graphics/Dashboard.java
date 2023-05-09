@@ -67,7 +67,7 @@ public class Dashboard extends JFrame{
         DefaultListModel<User> userListModel = new DefaultListModel<>();
         userList.setModel(userListModel);
         userList.setCellRenderer(new UsernameListCellRenderer());
-        userList.setSelectionModel(new CustomListSelectionModel());
+//        userList.setSelectionModel(new CustomListSelectionModel());
         userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         //TODO: ta bort när vi är klara med testning
