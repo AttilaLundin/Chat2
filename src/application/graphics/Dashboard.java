@@ -62,6 +62,7 @@ public class Dashboard extends JFrame{
         this.client = client;
         user = client.getSessionUser();
 
+//        TODO: rozkek, fixa det här din råtta
         DefaultListModel<String> userListModel = new DefaultListModel<>();
         userList.setModel(new DefaultListModel<String>());
         userList.setCellRenderer(new UsernameListCellRenderer());
