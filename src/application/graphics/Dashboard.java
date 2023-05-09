@@ -1,6 +1,7 @@
 package application.graphics;
 
 import application.Client;
+import sharedresources.ChatRoom;
 import sharedresources.ImageMessage;
 import sharedresources.User;
 import sharedresources.requests.SendMessageRequest;
@@ -37,7 +38,7 @@ public class Dashboard extends JFrame{
     private JPanel rootPanel;
     private JPanel sidePanel;
     private JButton gitHubButton;
-    private JButton messageButton;
+    private JButton homeScreenButton;
     private JPanel mainPanel;
     private JScrollPane chatRoomScrollPane;
     private JPanel chatRoomPanel;
@@ -46,6 +47,8 @@ public class Dashboard extends JFrame{
     private List<String> selectedUsernames = new ArrayList<>();
     private JButton createCapyHerdButton;
     private JPanel userPanel;
+    private JPanel displayBarPanel;
+    private JList chatRoomList;
     private JButton createChatRoomButton;
     private sharedresources.ChatRoom displayedChatroom;
     private User user;
@@ -56,19 +59,31 @@ public class Dashboard extends JFrame{
         this.client = client;
         user = client.getSessionUser();
 
-        DefaultListModel<String> listModel = new DefaultListModel<>();
-        userList.setModel(listModel);
+        DefaultListModel<String> userListModel = new DefaultListModel<>();
+        userList.setModel(new DefaultListModel<String>());
         userList.setCellRenderer(new UsernameListCellRenderer());
-        userList.setSelectionModel(new CustomListSelectionModel());
+        userList.setSelectionModel(new UsernameListSelectionModel());
         userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
+        userListModel.addElement("Attila");
+        userListModel.addElement("Odai");
+        userListModel.addElement("Roger");
+        userListModel.addElement("Shark");
+        userListModel.addElement("Binki");
+
+        DefaultListModel<String> chatRoomListModel = new DefaultListModel<>();
+        chatRoomList.setModel(chatRoomListModel);
+        chatRoomList.setCellRenderer(new ChatRoomListCellRenderer());
+        chatRoomList.setSelectionMode(chatRoomList.getSelectionModel().SINGLE_SELECTION);
+
+        chatRoomListModel.addElement("Capy community center");
         userList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
                     selectedUsernames.clear();
                     for (int index : userList.getSelectedIndices()) {
-                        selectedUsernames.add(listModel.getElementAt(index));
+                        selectedUsernames.add(userListModel.getElementAt(index));
                     }
                     System.out.println("Selected usernames: " + selectedUsernames);
                 }
@@ -90,11 +105,6 @@ public class Dashboard extends JFrame{
             }
         });
 
-        listModel.addElement("Attila");
-        listModel.addElement("Odai");
-        listModel.addElement("Roger");
-        listModel.addElement("Shark");
-        listModel.addElement("Binki");
 
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();

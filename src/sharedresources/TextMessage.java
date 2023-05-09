@@ -22,8 +22,7 @@ public class TextMessage implements Message, DataHandler, Serializable {
         this.sender= textMessageBuilder.sender;
     }
 
-
-   // new TextMessage.TextMessageBuilder().text("abx").sender(user).build();
+    // new TextMessage.TextMessageBuilder().text("abx").sender(user).build();
 
     public static class TextMessageBuilder{
         private String text;
