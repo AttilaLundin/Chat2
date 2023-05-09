@@ -119,7 +119,21 @@
               <foreground color="-15790311"/>
             </properties>
             <border type="none"/>
-            <children/>
+            <children>
+              <scrollpane id="6f649">
+                <constraints border-constraint="Center"/>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="759f6" class="javax.swing.JList" binding="list1" default-binding="true">
+                    <constraints/>
+                    <properties>
+                      <background color="-5792000"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+            </children>
           </grid>
         </children>
       </grid>

@@ -136,6 +136,23 @@ public class Client {
 
     }
 
+    public ChatRoom addChatRoom(AddChatRoomRequest addChatRoomRequest){
+
+        try{
+            output.writeObject(addChatRoomRequest);
+            output.flush();
+
+            Object object = input.readObject();
+
+            if(object instanceof ChatRoom chatRoom){
+                return chatRoom;
+            }
+        }catch (IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 
 

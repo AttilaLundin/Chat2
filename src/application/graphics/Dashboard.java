@@ -1,8 +1,10 @@
 package application.graphics;
 
 import application.Client;
+import sharedresources.ChatRoom;
 import sharedresources.ImageMessage;
 import sharedresources.User;
+import sharedresources.requests.AddChatRoomRequest;
 import sharedresources.requests.GetUsersRequest;
 import sharedresources.requests.SendMessageRequest;
 
@@ -46,9 +48,10 @@ public class Dashboard extends JFrame{
     private JPanel chatRoomPanel;
     private JLabel displayNameLabel;
     private JList userList;
-    private List<String> selectedUsernames = new ArrayList<>();
+    private List<User> selectedUsernames = new ArrayList<>();
     private JButton createCapyHerdButton;
     private JPanel userPanel;
+    private JList list1;
     private JButton createChatRoomButton;
     private sharedresources.ChatRoom displayedChatroom;
     private User user;
@@ -59,21 +62,25 @@ public class Dashboard extends JFrame{
         this.client = client;
         user = client.getSessionUser();
 
-        DefaultListModel<String> listModel = new DefaultListModel<>();
+        DefaultListModel<User> listModel = new DefaultListModel<>();
         userList.setModel(listModel);
         userList.setCellRenderer(new UsernameListCellRenderer());
         userList.setSelectionModel(new CustomListSelectionModel());
         userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
+        //TODO: ta bort när vi är klara med testning
         userList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
                     selectedUsernames.clear();
+                    System.out.println("Selected usernames: ");
+                    int i = 0;
                     for (int index : userList.getSelectedIndices()) {
                         selectedUsernames.add(listModel.getElementAt(index));
+                        System.out.println(" " + selectedUsernames.get(i));
+                        i++;
                     }
-                    System.out.println("Selected usernames: " + selectedUsernames);
                 }
             }
         });
@@ -93,16 +100,29 @@ public class Dashboard extends JFrame{
             }
         });
 
+        createCapyHerdButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List<User> selectedUsers = userList.getSelectedValuesList();
+                ChatRoom chatRoom = client.addChatRoom(new AddChatRoomRequest(selectedUsers));
+                if(chatRoom != null){
+                    dispose();
+                    Chat chat = new Chat(client, chatRoom);
+                }
+            }
+        });
+
 //        listModel.addElement("Attila");
 //        listModel.addElement("Odai");
 //        listModel.addElement("Roger");
 //        listModel.addElement("Shark");
 //        listModel.addElement("Binki");
 
-        Set<String> usersUserNameSet= client.getUsersList(new GetUsersRequest()).keySet();
+        Map<String, User> userMap= client.getUsersList(new GetUsersRequest());
+        Set<String> usersUserNameSet = userMap.keySet();
         for(String s : usersUserNameSet){
             if(s.equals(user.getUsername()))continue;
-            listModel.addElement(s);
+            listModel.addElement(userMap.get(s));
         }
 
 
@@ -115,7 +135,6 @@ public class Dashboard extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeDragAndDrop();
         setDisplayName();
-        chatRoomPanel.setLayout(new BorderLayout());
         initChatRoomDisplay();
         setVisible(true);
 

@@ -1,6 +1,7 @@
 package application.graphics;
 
 import application.Client;
+import sharedresources.ChatRoom;
 import sharedresources.ImageMessage;
 import sharedresources.TextMessage;
 import sharedresources.User;
@@ -28,7 +29,7 @@ import java.util.List;
 
 public class Chat extends JFrame {
 
-    private JPanel chatRoomPanel;
+    private JPanel rootPanel;
     private JLabel ChatRoomNameLabel;
     private JButton gitHubButton;
     private JButton messageButton;
@@ -39,22 +40,21 @@ public class Chat extends JFrame {
     private Message msgToSend;
     private sharedresources.ChatRoom displayedChatroom;
     private Client client;
+    private ChatRoom chatRoom;
     private User user;
 
-    public Chat(Client client){
+    public Chat(Client client, ChatRoom chatRoom){
         this.client = client;
-
+        this.chatRoom = chatRoom;
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setContentPane(chatRoomPanel);
+        setContentPane(rootPanel);
         setSize(screeSize.width * 3 / 5,screeSize.height * 3 / 5);
         setMinimumSize(minmumWindowSize);
-
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeDragAndDrop();
-//        setDisplayName();
-        chatRoomPanel.setLayout(new BorderLayout());
-
+        initializeDragAndDrop();
         setVisible(true);
         sendButton.addActionListener(new ActionListener() {
 
@@ -89,7 +89,7 @@ public class Chat extends JFrame {
 //        .setText("Welcome to the ChatRoom" + user);
 //    }
     private void initializeDragAndDrop(){
-        chatRoomPanel.setDropTarget(new DropTarget(chatRoomPanel, DnDConstants.ACTION_COPY, new DropTargetAdapter() {
+        rootPanel.setDropTarget(new DropTarget(rootPanel, DnDConstants.ACTION_COPY, new DropTargetAdapter() {
             //TODO: ändra mainpanel till chattrumspanelen eller den här Jlist
             @Override
             public void drop(DropTargetDropEvent dtde) {
