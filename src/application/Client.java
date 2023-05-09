@@ -4,6 +4,7 @@ import sharedresources.User;
 import sharedresources.ImageMessage;
 import sharedresources.TextMessage;
 import sharedresources.ChatRoom;
+import sharedresources.requests.AddMessageRequest;
 import sharedresources.requests.GetUsersRequest;
 import sharedresources.requests.LoginRequest;
 import sharedresources.requests.RegisterRequest;
@@ -52,18 +53,19 @@ public class Client {
         }
     }
 
-    public void sendTextMessage(String text, UUID chatRoomID){
+    public void sendTextMessage(String text){
         try{
-            output.writeObject(new TextMessage.TextMessageBuilder().text(text).sender(user).chatRoomID(chatRoomID).build());
+            output.writeObject(new TextMessage.TextMessageBuilder().text(text).sender(user).build());
             output.flush();
         }catch (IOException e){
             e.printStackTrace();
         }
     }
-  public void sendImageMessage(String filePath, UUID chatRoomID){
+  public void sendImageMessage(String filePath, ChatRoom chatRoom){
         try{
             BufferedImage bufferedImage = ImageIO.read(new File(filePath));
-            output.writeObject(new ImageMessage.ImageMessageBuilder().image(bufferedImage).sender(user).chatRoomID(chatRoomID).build()); // skickar msg till server, vad näst?
+            ImageMessage message = new ImageMessage.ImageMessageBuilder().image(bufferedImage).sender(user).build();
+            output.writeObject(new AddMessageRequest(chatRoom, message)); // skickar msg till server, vad näst?
             output.flush();
         }catch (IOException e){
             e.printStackTrace();

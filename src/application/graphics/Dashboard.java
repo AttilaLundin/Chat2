@@ -140,7 +140,7 @@ public class Dashboard extends JFrame{
                     if(object instanceof List<?> list){
                         for(Object o : list){
                             if(o instanceof File image){
-                                client.sendImageMessage(image.getAbsolutePath(), displayedChatroom.getChatRoomID());
+                                client.sendImageMessage(image.getAbsolutePath(), displayedChatroom);
                             }
                         }
                     }

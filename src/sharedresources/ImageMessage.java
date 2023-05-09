@@ -33,11 +33,6 @@ public class ImageMessage implements Message, Serializable {
             return this;
         }
 
-        public ImageMessageBuilder chatRoomID(UUID chatRoomID){
-            this.chatRoomID = chatRoomID;
-            return this;
-        }
-
         public ImageMessage build(){
             return new ImageMessage(this);
         }
@@ -59,10 +54,6 @@ public class ImageMessage implements Message, Serializable {
         return sender;
     }
 
-    @Override
-    public UUID getChatRoomID(){
-        return chatRoomID;
-    }
 
 
 

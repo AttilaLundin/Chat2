@@ -8,7 +8,4 @@ public interface Message {
 
     String getTimeSent();
     User getSender();
-    UUID getChatRoomID();
-
-
 }

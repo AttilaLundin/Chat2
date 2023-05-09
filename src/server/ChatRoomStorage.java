@@ -44,7 +44,7 @@ public class ChatRoomStorage {
     }
 
     public void addMessageToChatRoom(UUID chatRoomID, Message message){
-        ChatRoom theChatRoom = chatRoomCentralStorage.get(message.getChatRoomID());
+        ChatRoom theChatRoom = chatRoomCentralStorage.get(chatRoomID);
         if(theChatRoom == null) return;
         theChatRoom.addMessage(message);
     }

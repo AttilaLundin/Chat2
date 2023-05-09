@@ -2,6 +2,7 @@ package sharedresources.requests;
 
 import server.ChatRoomStorage;
 import sharedresources.ChatRoom;
+import sharedresources.ImageMessage;
 import sharedresources.interfaces.DataHandler;
 import sharedresources.interfaces.Message;
 
@@ -14,7 +15,7 @@ public class AddMessageRequest implements DataHandler, Serializable {
     private UUID chatRoomID;
     private Message message;
 
-    public void AddChatRoomRequest(ChatRoom chatRoom, Message message){
+    public AddMessageRequest(ChatRoom chatRoom, Message message){
         this.chatRoomID = chatRoom.getChatRoomID();
         this.message = message;
     }
