@@ -112,7 +112,8 @@ public class Dashboard extends JFrame{
         chatRoomListModel.addElement("Capy community center");
         chatRoomListModel.addElement("Capy community center");
         chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
         chatRoomListModel.addElement("Capy community center");
         chatRoomListModel.addElement("Capy community center");
         chatRoomListModel.addElement("Capy community center");

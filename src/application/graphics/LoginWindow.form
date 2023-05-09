@@ -15,9 +15,10 @@
       <component id="114cd" class="javax.swing.JButton" binding="createUserButton">
         <constraints border-constraint="South"/>
         <properties>
-          <background color="-14211277"/>
+          <background color="-16772301"/>
+          <enabled value="false"/>
           <font name="Leelawadee UI" size="22" style="1"/>
-          <foreground color="-855824"/>
+          <foreground color="-14732558"/>
           <icon value="application/graphics/icons/icons8_Sign_Up_40px.png"/>
           <label value="Create new user"/>
           <text value="Create new user"/>
