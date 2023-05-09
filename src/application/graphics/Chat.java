@@ -32,7 +32,7 @@ public class Chat extends JFrame {
     private JPanel rootPanel;
     private JLabel ChatRoomNameLabel;
     private JButton gitHubButton;
-    private JButton messageButton;
+    private JButton homeScreenButton;
     private JTextField textMessageField;
     private JButton sendButton;
     private JList messagesList;
@@ -65,6 +65,14 @@ public class Chat extends JFrame {
                 client.sendMessage(new SendMessageRequest(displayedChatroom, msgToSend));
 
 
+            }
+        });
+
+        homeScreenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Dashboard dashboard = new Dashboard(client);
             }
         });
 

@@ -26,7 +26,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="fb42b" class="javax.swing.JButton" binding="messageButton">
+          <component id="fb42b" class="javax.swing.JButton" binding="homeScreenButton">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="40" height="40"/>
@@ -37,7 +37,7 @@
             <properties>
               <background color="-15790311"/>
               <borderPainted value="false"/>
-              <icon value="application/graphics/icons/icons8_topic_40px.png"/>
+              <icon value="application/graphics/icons/icons8_dashboard_layout_40px.png"/>
               <text value=""/>
             </properties>
           </component>

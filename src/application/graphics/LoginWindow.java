@@ -4,11 +4,7 @@ import application.Client;
 import sharedresources.requests.LoginRequest;
 
 
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
+import javax.swing.*;
 
 
 import java.awt.Toolkit;
@@ -69,7 +65,7 @@ public class LoginWindow extends JFrame{
                     dispose();
                 }
                 else{
-                    System.out.println("Incorrect credentials: try again. JLAbel");
+                    JOptionPane.showMessageDialog(null, "Invalid Username or Password\nTry again!", "Could not verify Account", JOptionPane.INFORMATION_MESSAGE);
                     usernameField.setText("");
                     passwordField.setText("");
                 }

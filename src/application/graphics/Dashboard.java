@@ -54,6 +54,8 @@ public class Dashboard extends JFrame{
     private JPanel displayBarPanel;
     private JList chatRoomList;
     private JScrollPane userListScrollPane;
+    private JButton enterButton;
+    private JButton button1;
     private JButton createChatRoomButton;
     private sharedresources.ChatRoom displayedChatroom;
     private User user;
@@ -75,6 +77,107 @@ public class Dashboard extends JFrame{
         chatRoomList.setModel(chatRoomListModel);
         chatRoomList.setCellRenderer(new ChatRoomListCellRenderer());
 
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
         chatRoomListModel.addElement("Capy community center");
         chatRoomListModel.addElement("Capy community center");
         chatRoomListModel.addElement("Capy community center");
@@ -117,6 +220,8 @@ public class Dashboard extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 List<User> selectedUsers = userList.getSelectedValuesList();
+                if(selectedUsers == null || selectedUsers.isEmpty()) return;
+                selectedUsers.add(user);
                 ChatRoom chatRoom = client.addChatRoom(new AddChatRoomRequest(selectedUsers));
                 if(chatRoom != null){
                     dispose();
@@ -148,33 +253,8 @@ public class Dashboard extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeDragAndDrop();
         setDisplayName();
-        initChatRoomDisplay();
+        //initChatRoomDisplay();
         setVisible(true);
-
-    }
-
-    public void initChatRoomDisplay(){
-
-        List<sharedresources.ChatRoom> chatRooms = client.getChatRooms();
-        System.out.println(chatRooms.size());
-        if(chatRooms.isEmpty()) return;
-        String[] items = new String[chatRooms.size()];
-        for(int i = 0; i < chatRooms.size(); i++){
-            List<User> usersInRoom = chatRooms.get(i).getUsersInChatRoom();
-            StringBuilder stringBuilder = new StringBuilder();
-            for(int j = 0; j < usersInRoom.size(); j++){
-                stringBuilder.append(usersInRoom.get(j).getDisplayName());
-                if(j < usersInRoom.size() - 1)stringBuilder.append(", ");
-            }
-            items[i] = stringBuilder.toString();
-
-        }
-
-        JList<String> list = new JList<>(items);
-
-        chatRoomScrollPane = new JScrollPane(list);
-        chatRoomScrollPane.setBackground(new Color(26,26,36));
-        chatRoomPanel.add(chatRoomScrollPane, BorderLayout.CENTER);
 
     }
 
