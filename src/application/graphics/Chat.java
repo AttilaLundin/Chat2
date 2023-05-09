@@ -31,7 +31,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 public class Chat extends JFrame {
-
+    private ScheduledExecutorService scheduler;
     private JPanel rootPanel;
     private JLabel ChatRoomNameLabel;
     private JButton gitHubButton;
@@ -118,6 +118,7 @@ public class Chat extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 Dashboard dashboard = new Dashboard(client);
+                scheduler.close();
             }
         });
 
