@@ -71,12 +71,15 @@ public class Dashboard extends JFrame{
         userListModel.addElement("Shark");
         userListModel.addElement("Binki");
 
+        /*
         DefaultListModel<String> chatRoomListModel = new DefaultListModel<>();
         chatRoomList.setModel(chatRoomListModel);
         chatRoomList.setCellRenderer(new ChatRoomListCellRenderer());
         chatRoomList.setSelectionMode(chatRoomList.getSelectionModel().SINGLE_SELECTION);
 
         chatRoomListModel.addElement("Capy community center");
+        */
+
         userList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
