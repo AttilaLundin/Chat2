@@ -23,7 +23,7 @@ class ChatRoomListCellRenderer extends DefaultListCellRenderer{
 
         // Set an empty border with padding around each item
         label.setBorder(new EmptyBorder(VERTICAL_PADDING, HORIZONTAL_PADDING, VERTICAL_PADDING, HORIZONTAL_PADDING));
-
+        label.setHorizontalAlignment(JLabel.CENTER);
         // Set the font size
         Font currentFont = label.getFont();
         label.setFont(new Font(currentFont.getName(), currentFont.getStyle(), FONT_SIZE));
