@@ -10,7 +10,7 @@ public class ChatRoomUI extends JFrame {
     private JButton friendsButton;
     private JButton messageButton;
     private JTextField textField1;
-    private JButton button5;
+    private JButton sendButton;
     private JList list1;
     private JButton
 
