@@ -2,7 +2,6 @@ package sharedresources.requests;
 
 import server.ChatRoomStorage;
 import sharedresources.ChatRoom;
-import sharedresources.ImageMessage;
 import sharedresources.interfaces.DataHandler;
 import sharedresources.interfaces.Message;
 
