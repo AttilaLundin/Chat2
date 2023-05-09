@@ -34,6 +34,7 @@ public class ChatRoom extends JFrame {
     private Message msgToSend;
     private sharedresources.ChatRoom displayedChatroom;
     private Client client;
+    private User us
 
     public ChatRoom(Client client){
         this.client = client;
