@@ -6,7 +6,8 @@ import sharedresources.ImageMessage;
 import sharedresources.TextMessage;
 import sharedresources.User;
 import sharedresources.interfaces.Message;
-import sharedresources.requests.SendMessageRequest;
+import sharedresources.requests.SendMessage;
+import sharedresources.requests.FetchChatRoom;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -26,7 +27,9 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 public class Chat extends JFrame {
 
     private JPanel rootPanel;
@@ -36,16 +39,16 @@ public class Chat extends JFrame {
     private JTextField textMessageField;
     private JButton sendButton;
     private JList messagesList;
-
-    private Message msgToSend;
-    private sharedresources.ChatRoom displayedChatroom;
+    private JButton refreshButton;
+    private DefaultListModel<Message> messageListModel;
+    private ChatRoom displayedChatroom;
     private Client client;
-    private ChatRoom chatRoom;
+
     private User user;
 
-    public Chat(Client client, ChatRoom chatRoom){
+    public Chat(Client client, ChatRoom displayedChatroom){
         this.client = client;
-        this.chatRoom = chatRoom;
+        this.displayedChatroom = displayedChatroom;
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
         setContentPane(rootPanel);
@@ -54,17 +57,59 @@ public class Chat extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeDragAndDrop();
-        initializeDragAndDrop();
+        initializeButtons();
+        initializeMessagesList();
+        updateTimer();
         setVisible(true);
+    }
+
+
+    public void initializeMessagesList(){
+        List <Message> messageHistory = displayedChatroom.getMessages();
+        messageListModel = new DefaultListModel<>();
+        messagesList.setModel(messageListModel);
+        messagesList.setCellRenderer(new MessageListCellRenderer());
+        messagesList.setSelectionModel(new DefaultListSelectionModel());
+
+
+        refreshHistory();
+    }
+    public void refreshHistory(){
+        System.out.println("here");
+        ChatRoom chatRoom = client.getChatRoom(new FetchChatRoom(displayedChatroom.getChatRoomID()));
+
+        for(Message message : chatRoom.getMessages()){
+            messageListModel.addElement(message);
+            JLabel label = new JLabel (message.toString());
+            rootPanel.add(label);
+        }
+    }
+
+    public void updateTimer(){
+        scheduler = Executors.newScheduledThreadPool(1);
+            scheduler.scheduleAtFixedRate(new Runnable(){
+                @Override
+                public void run(){
+                    refreshHistory();
+                }
+            }, 4, 5, TimeUnit.SECONDS);
+    }
+
+
+    public void initializeButtons(){
+        refreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                refreshHistory();
+            }
+        });
         sendButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 String msg = textMessageField.getText();
                 TextMessage msgToSend = new TextMessage.TextMessageBuilder().text(msg).sender(user).build();
-                client.sendMessage(new SendMessageRequest(displayedChatroom, msgToSend));
-
-
+                client.sendMessage(new SendMessage(displayedChatroom.getChatRoomID(), msgToSend));
             }
         });
 
@@ -90,12 +135,9 @@ public class Chat extends JFrame {
                 }
             }
         });
-
     }
 
-//    public void setDisplayName(){
-//        .setText("Welcome to the ChatRoom" + user);
-//    }
+
     private void initializeDragAndDrop(){
         rootPanel.setDropTarget(new DropTarget(rootPanel, DnDConstants.ACTION_COPY, new DropTargetAdapter() {
             //TODO: ändra mainpanel till chattrumspanelen eller den här Jlist
@@ -114,7 +156,8 @@ public class Chat extends JFrame {
                         for(Object o : list){
                             if(o instanceof File image){
                                 BufferedImage bufferedImage = ImageIO.read(image);
-                                client.sendMessage(new SendMessageRequest(displayedChatroom, new ImageMessage.ImageMessageBuilder().image(bufferedImage).sender(user).build()));
+                                System.out.println(displayedChatroom.getChatRoomID());
+                                client.sendMessage(new SendMessage(displayedChatroom.getChatRoomID(), new ImageMessage.ImageMessageBuilder().image(bufferedImage).sender(user).build()));
                             }
                         }
                     }
@@ -124,5 +167,6 @@ public class Chat extends JFrame {
             }
         }));
     }
+
 
 }

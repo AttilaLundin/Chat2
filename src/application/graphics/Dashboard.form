@@ -73,7 +73,7 @@
               <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <component id="4aee" class="javax.swing.JButton" binding="button1" default-binding="true">
+          <component id="4aee" class="javax.swing.JButton" binding="refreshButton">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <minimum-size width="40" height="40"/>
@@ -212,8 +212,9 @@
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <background color="-11776924"/>
+                  <background color="-13684930"/>
                   <font size="18"/>
+                  <foreground color="-855824"/>
                   <icon value="application/graphics/icons/icons8_topic_40px.png"/>
                   <inheritsPopupMenu value="false"/>
                   <text value="Enter"/>

@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class ImageMessage implements Message, Serializable {
+//    todo:: buffered image skickas inte när vi serialiserar.. måste göra om till byte arrat eller ngt
     private final transient BufferedImage image;
     private final String timeSent;
     private final User sender;

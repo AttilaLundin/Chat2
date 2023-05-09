@@ -22,7 +22,7 @@ public class ChatRoomStorage {
         chatRoomsThisUsersIsIn = Collections.synchronizedMap(new HashMap<>());
     }
 
-    public List<ChatRoom> getChatRooms(User user){
+    public List<ChatRoom> getAllChatRooms(User user){
         List<UUID> chatRoomIDs = chatRoomsThisUsersIsIn.get(user);
         List<ChatRoom> chatRooms = new ArrayList<>();
 
@@ -33,6 +33,10 @@ public class ChatRoomStorage {
 
         return chatRooms;
 
+    }
+
+    public ChatRoom getChatRoom(UUID chatRoomID){
+        return chatRoomCentralStorage.get(chatRoomID);
     }
 
     public ChatRoom addChatRoom(String chatRoomName, List<User> membersInChatRoom){
@@ -50,6 +54,7 @@ public class ChatRoomStorage {
         }
         return chatRoom;
     }
+
 
     public void addMessageToChatRoom(UUID chatRoomID, Message message){
         ChatRoom theChatRoom = chatRoomCentralStorage.get(chatRoomID);

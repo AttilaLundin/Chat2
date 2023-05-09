@@ -10,13 +10,13 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.UUID;
 
-public class SendMessageRequest implements DataHandler, Serializable {
+public class SendMessage implements DataHandler, Serializable {
 
     private UUID chatRoomID;
     private Message message;
 
-    public SendMessageRequest(ChatRoom chatRoom, Message message){
-        this.chatRoomID = chatRoom.getChatRoomID();
+    public SendMessage(UUID chatRoomID, Message message){
+        this.chatRoomID = chatRoomID;
         this.message = message;
     }
 

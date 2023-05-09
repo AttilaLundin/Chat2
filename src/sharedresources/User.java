@@ -31,7 +31,7 @@ public class User implements sharedresources.interfaces.User, DataHandler, Seria
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatRoomStorage, ObjectOutputStream outputStream) {
 
         try {
-            outputStream.writeObject(chatRoomStorage.getChatRooms(this));
+            outputStream.writeObject(chatRoomStorage.getAllChatRooms(this));
             outputStream.flush();
         }catch (Exception e){
             e.printStackTrace();

@@ -10,12 +10,12 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.List;
 
-public class AddChatRoomRequest implements DataHandler, Serializable {
+public class CreateNewChatRoom implements DataHandler, Serializable {
 
     private List<User> usersInChatRoom;
     private String chatRoomName = "capy chat";
 
-    public AddChatRoomRequest(List<User> usersInChatRoom){
+    public CreateNewChatRoom(List<User> usersInChatRoom){
         this.usersInChatRoom = usersInChatRoom;//ska det vara add users in chatroom ? om jag fattat rätt
 
     }

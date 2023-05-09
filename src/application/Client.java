@@ -1,9 +1,7 @@
 package application;
 
 import sharedresources.User;
-import sharedresources.TextMessage;
 import sharedresources.ChatRoom;
-import sharedresources.interfaces.Message;
 import sharedresources.requests.*;
 
 import java.io.IOException;
@@ -45,9 +43,10 @@ public class Client {
         }
     }
 
-    public void sendMessage(SendMessageRequest sendMessageRequest){
+    public void sendMessage(SendMessage sendMessage){
         try{
-            output.writeObject(sendMessageRequest);
+            System.out.println("msg sent");
+            output.writeObject(sendMessage);
             output.flush();
         }catch (IOException e){
             e.printStackTrace();
@@ -95,10 +94,10 @@ public class Client {
         return false;
     }
 
-    public Map<String, User> getUsersList(GetUsersRequest getUsersRequest){
+    public Map<String, User> getUsersList(FetchAllUser fetchAllUser){
         try {
 
-            output.writeObject(getUsersRequest);
+            output.writeObject(fetchAllUser);
             output.flush();
 
             Object object = input.readObject();
@@ -114,10 +113,10 @@ public class Client {
         return null;
     }
 
-    public List<ChatRoom> getChatRooms(){
+    public List<ChatRoom> getAllChatRoom(){
 
         try {
-            output.writeObject(user);
+            output.writeObject(new FetchAllChatRooms(user));
             output.flush();
 
             Object object = input.readObject();
@@ -136,10 +135,22 @@ public class Client {
 
     }
 
-    public ChatRoom addChatRoom(AddChatRoomRequest addChatRoomRequest){
+    public ChatRoom getChatRoom(FetchChatRoom fetchChatRoom){
+        try{
+            output.writeObject(fetchChatRoom);
+            output.flush();
+            Object object = input.readObject();
+            if(object instanceof ChatRoom chatRoom) return chatRoom;
+        }catch (IOException | ClassNotFoundException e){
+             e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ChatRoom addChatRoom(CreateNewChatRoom createNewChatRoom){
 
         try{
-            output.writeObject(addChatRoomRequest);
+            output.writeObject(createNewChatRoom);
             output.flush();
 
             Object object = input.readObject();
