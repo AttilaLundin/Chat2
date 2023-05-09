@@ -2,6 +2,8 @@ package application.graphics;
 
 import application.Client;
 import sharedresources.ImageMessage;
+import sharedresources.TextMessage;
+import sharedresources.User;
 import sharedresources.interfaces.Message;
 import sharedresources.requests.SendMessageRequest;
 
@@ -15,6 +17,8 @@ import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetAdapter;
 import java.awt.dnd.DropTargetDropEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -34,7 +38,7 @@ public class ChatRoom extends JFrame {
     private Message msgToSend;
     private sharedresources.ChatRoom displayedChatroom;
     private Client client;
-    private User us
+    private User user;
 
     public ChatRoom(Client client){
         this.client = client;
@@ -44,14 +48,24 @@ public class ChatRoom extends JFrame {
         setContentPane(chatRoomPanel);
         setSize(screeSize.width * 3 / 5,screeSize.height * 3 / 5);
         setMinimumSize(minmumWindowSize);
-        setLocationRelativeTo(null);
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeDragAndDrop();
         setDisplayName();
         chatRoomPanel.setLayout(new BorderLayout());
-        initChatRoomDisplay();
-        setVisible(true);
 
+        setVisible(true);
+        sendButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String msg = textMessageField.getText();
+                TextMessage msgToSend = new TextMessage.TextMessageBuilder().text(msg).sender(user).build();
+                client.sendMessage(new SendMessageRequest(displayedChatroom, msgToSend));
+
+
+            }
+        });
 
     }
 
