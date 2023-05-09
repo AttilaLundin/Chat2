@@ -116,7 +116,7 @@
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints border-constraint="Center"/>
             <properties>
-              <background color="-15066588"/>
+              <background color="-13684930"/>
               <foreground color="-15790311"/>
             </properties>
             <border type="none"/>
@@ -131,7 +131,11 @@
                   <component id="a4396" class="javax.swing.JList" binding="chatRoomList">
                     <constraints/>
                     <properties>
+                      <background color="-13684930"/>
+                      <foreground color="-14626794"/>
                       <opaque value="true"/>
+                      <selectionForeground color="-10765313"/>
+                      <selectionMode value="0"/>
                     </properties>
                   </component>
                 </children>
@@ -162,7 +166,7 @@
               <text value="Create Capy Herd"/>
             </properties>
           </component>
-          <scrollpane id="c5876">
+          <scrollpane id="c5876" binding="userListScrollPane">
             <constraints border-constraint="Center"/>
             <properties>
               <background color="-15790311"/>

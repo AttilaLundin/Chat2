@@ -52,6 +52,7 @@ public class Dashboard extends JFrame{
     private JPanel userPanel;
     private JPanel displayBarPanel;
     private JList chatRoomList;
+    private JScrollPane userListScrollPane;
     private JButton createChatRoomButton;
     private sharedresources.ChatRoom displayedChatroom;
     private User user;
@@ -62,27 +63,22 @@ public class Dashboard extends JFrame{
         this.client = client;
         user = client.getSessionUser();
 
-//        TODO: rozkek, fixa det här din råtta
         DefaultListModel<String> userListModel = new DefaultListModel<>();
-        userList.setModel(new DefaultListModel<String>());
+        userList.setModel(userListModel);
         userList.setCellRenderer(new UsernameListCellRenderer());
         userList.setSelectionModel(new UsernameListSelectionModel());
         userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-        userListModel.addElement("Attila");
-        userListModel.addElement("Odai");
-        userListModel.addElement("Roger");
-        userListModel.addElement("Shark");
-        userListModel.addElement("Binki");
-
-        /*
         DefaultListModel<String> chatRoomListModel = new DefaultListModel<>();
         chatRoomList.setModel(chatRoomListModel);
         chatRoomList.setCellRenderer(new ChatRoomListCellRenderer());
-        chatRoomList.setSelectionMode(chatRoomList.getSelectionModel().SINGLE_SELECTION);
 
         chatRoomListModel.addElement("Capy community center");
-        */
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
+        chatRoomListModel.addElement("Capy community center");
 
         userList.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -112,12 +108,6 @@ public class Dashboard extends JFrame{
             }
         });
 
-//        listModel.addElement("Attila");
-//        listModel.addElement("Odai");
-//        listModel.addElement("Roger");
-//        listModel.addElement("Shark");
-//        listModel.addElement("Binki");
-
         Set<String> usersUserNameSet= client.getUsersList(new GetUsersRequest()).keySet();
         for(String s : usersUserNameSet){
             if(s.equals(user.getUsername()))continue;
@@ -134,7 +124,6 @@ public class Dashboard extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeDragAndDrop();
         setDisplayName();
-        chatRoomPanel.setLayout(new BorderLayout());
         initChatRoomDisplay();
         setVisible(true);
 
