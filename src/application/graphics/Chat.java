@@ -22,14 +22,15 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
-public class ChatRoom extends JFrame {
+public class Chat extends JFrame {
 
     private JPanel chatRoomPanel;
     private JLabel ChatRoomNameLabel;
     private JButton gitHubButton;
-    private JButton friendsButton;
     private JButton messageButton;
     private JTextField textMessageField;
     private JButton sendButton;
@@ -40,7 +41,7 @@ public class ChatRoom extends JFrame {
     private Client client;
     private User user;
 
-    public ChatRoom(Client client){
+    public Chat(Client client){
         this.client = client;
 
         Dimension minmumWindowSize = new Dimension(500, 300);
@@ -51,7 +52,7 @@ public class ChatRoom extends JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeDragAndDrop();
-        setDisplayName();
+//        setDisplayName();
         chatRoomPanel.setLayout(new BorderLayout());
 
         setVisible(true);
@@ -67,11 +68,26 @@ public class ChatRoom extends JFrame {
             }
         });
 
+        gitHubButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String url = "https://www.youtube.com/watch?v=kz_lzEhyryY";
+                if (Desktop.isDesktopSupported()) {
+                    Desktop desktop = Desktop.getDesktop();
+                    try{
+                        desktop.browse(new URI(url));
+                    }catch (IOException | URISyntaxException i){
+                        i.printStackTrace();
+                    }
+                }
+            }
+        });
+
     }
 
-    public void setDisplayName(){
-        ChatRoomNameLabel.setText("Welcome to the ChatRoom" + user);
-    }
+//    public void setDisplayName(){
+//        .setText("Welcome to the ChatRoom" + user);
+//    }
     private void initializeDragAndDrop(){
         chatRoomPanel.setDropTarget(new DropTarget(chatRoomPanel, DnDConstants.ACTION_COPY, new DropTargetAdapter() {
             //TODO: ändra mainpanel till chattrumspanelen eller den här Jlist

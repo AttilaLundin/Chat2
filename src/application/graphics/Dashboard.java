@@ -15,10 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Toolkit;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -31,14 +28,15 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Dashboard extends JFrame{
     private JPanel rootPanel;
     private JPanel sidePanel;
-    private JButton githubButton;
-    private JButton contactsButton;
+    private JButton gitHubButton;
     private JButton messageButton;
     private JPanel mainPanel;
     private JScrollPane chatRoomScrollPane;
@@ -76,11 +74,19 @@ public class Dashboard extends JFrame{
                 }
             }
         });
-        createChatRoomButton.addActionListener(new ActionListener() {
-            ChatRoom chatRoom = new ChatRoom(client);
+
+        gitHubButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                String url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                if (Desktop.isDesktopSupported()) {
+                    Desktop desktop = Desktop.getDesktop();
+                    try{
+                        desktop.browse(new URI(url));
+                    }catch (IOException | URISyntaxException i){
+                        i.printStackTrace();
+                    }
+                }
             }
         });
 

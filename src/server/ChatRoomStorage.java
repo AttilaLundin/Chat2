@@ -26,6 +26,7 @@ public class ChatRoomStorage {
         List<UUID> chatRoomIDs = chatRoomsThisUsersIsIn.get(user);
         List<ChatRoom> chatRooms = new ArrayList<>();
 
+        if(chatRoomIDs == null) return null;
         for(UUID id : chatRoomIDs){
             chatRooms.add(chatRoomCentralStorage.get(id));
         }
