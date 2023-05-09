@@ -19,7 +19,7 @@ public class AddChatRoomRequest implements DataHandler, Serializable {
 
 
     @Override
-    public void dataHandler(Object userStorage, Object chatroomStorage, ObjectOutputStream outputStream) {
-
+    public void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream) {
+//            if()
     }
 }

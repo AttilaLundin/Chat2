@@ -77,6 +77,13 @@ public class Dashboard extends JFrame{
                 }
             }
         });
+        createChatRoomButton.addActionListener(new ActionListener() {
+            ChatRoomUI chatRoomUI = new ChatRoomUI();
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
 
         listModel.addElement("Attila");
         listModel.addElement("Odai");
