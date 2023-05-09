@@ -3,6 +3,7 @@ package sharedresources.requests;
 import server.ChatRoomStorage;
 import server.UserStorage;
 import sharedresources.ChatRoom;
+import sharedresources.User;
 import sharedresources.interfaces.DataHandler;
 
 import java.io.IOException;
@@ -16,6 +17,15 @@ public class GetChatRoomsRequest implements DataHandler, Serializable {
         this.user = user;
     }
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream) {
+
+        try{
+
+            outputStream.writeObject(chatroomStorage.getChatRooms(user));
+            outputStream.flush();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
 
     }
 }

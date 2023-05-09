@@ -5,6 +5,7 @@ import server.UserStorage;
 import sharedresources.User;
 import sharedresources.interfaces.DataHandler;
 
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.List;
@@ -22,7 +23,12 @@ public class AddChatRoomRequest implements DataHandler, Serializable {
 
     @Override
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream) {
-        chatroomStorage.addChatRoom(chatRoomName, usersInChatRoom);
+       try{
+           outputStream.writeObject(chatroomStorage.addChatRoom(chatRoomName, usersInChatRoom));
+           outputStream.flush();
+       }catch (IOException e){
+           e.printStackTrace();
+       }
 
     }
 }
