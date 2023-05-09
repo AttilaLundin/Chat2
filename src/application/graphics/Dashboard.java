@@ -65,6 +65,20 @@ public class Dashboard extends JFrame{
         userList.setSelectionModel(new UsernameListSelectionModel());
         userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
+        userListModel.addElement("Attila");
+        userListModel.addElement("Odai");
+        userListModel.addElement("Roger");
+        userListModel.addElement("Shark");
+        userListModel.addElement("Binki");
+
+        /*
+        DefaultListModel<String> chatRoomListModel = new DefaultListModel<>();
+        chatRoomList.setModel(chatRoomListModel);
+        chatRoomList.setCellRenderer(new ChatRoomListCellRenderer());
+        chatRoomList.setSelectionMode(chatRoomList.getSelectionModel().SINGLE_SELECTION);
+
+        chatRoomListModel.addElement("Capy community center");
+        */
 
         userList.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -78,13 +92,6 @@ public class Dashboard extends JFrame{
                 }
             }
         });
-
-
-        userListModel.addElement("Attila");
-        userListModel.addElement("Odai");
-        userListModel.addElement("Roger");
-        userListModel.addElement("Shark");
-        userListModel.addElement("Binki");
 
         gitHubButton.addActionListener(new ActionListener() {
             @Override
