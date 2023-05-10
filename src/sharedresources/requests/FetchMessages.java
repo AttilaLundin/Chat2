@@ -8,8 +8,7 @@ import sharedresources.interfaces.Message;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
-
+import java.util.List;
 import java.util.UUID;
 
 public class FetchMessages implements DataHandler, Serializable {
@@ -21,8 +20,12 @@ public class FetchMessages implements DataHandler, Serializable {
     @Override
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream) {
         try {
-            List<Message> list = chatroomStorage.deBugger(chatRoomID);
-            outputStream.writeObject(list);
+            List<Message> list = chatroomStorage.getMessages(chatRoomID);
+            for(Message m : list){
+                outputStream.writeObject(m);
+                outputStream.flush();
+            }
+            outputStream.writeObject(true);
             outputStream.flush();
         }catch (IOException e){
             e.printStackTrace();

@@ -41,9 +41,8 @@ public class ChatRoomStorage {
         return chatRoomCentralStorage.get(chatRoomID);
     }
 
-    public List<Message> deBugger(UUID chatRoomID){
-        ChatRoom chatRoom = chatRoomCentralStorage.get(chatRoomID);
-        return chatRoom.getMessages();
+    public List<Message> getMessages(UUID chatRoomID){
+        return chatRoomCentralStorage.get(chatRoomID).getMessages();
     }
 
     public ChatRoom addChatRoom(String chatRoomName, List<User> membersInChatRoom){
