@@ -1,5 +1,7 @@
 package application.graphics;
 
+import sharedresources.ChatRoom;
+
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 import javax.swing.JLabel;
@@ -18,8 +20,8 @@ class ChatRoomListCellRenderer extends DefaultListCellRenderer{
     @Override
     public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-        String chatRoomName = (String) value;
-        label.setText(chatRoomName);
+        ChatRoom chatRoom = (ChatRoom) value;
+//        label.setText(chatRoom.);
 
         // Set an empty border with padding around each item
         label.setBorder(new EmptyBorder(VERTICAL_PADDING, HORIZONTAL_PADDING, VERTICAL_PADDING, HORIZONTAL_PADDING));

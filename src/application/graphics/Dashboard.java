@@ -2,13 +2,10 @@ package application.graphics;
 
 import application.Client;
 import sharedresources.ChatRoom;
-import sharedresources.ImageMessage;
 import sharedresources.User;
 import sharedresources.requests.CreateNewChatRoom;
 import sharedresources.requests.FetchAllUser;
-import sharedresources.requests.SendMessage;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -19,17 +16,7 @@ import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.awt.dnd.DnDConstants;
-import java.awt.dnd.DropTarget;
-import java.awt.dnd.DropTargetAdapter;
-import java.awt.dnd.DropTargetDropEvent;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
+import java.awt.event.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -50,12 +37,13 @@ public class Dashboard extends JFrame{
     private JList userList;
     private List<User> selectedUsernames = new ArrayList<>();
     private JButton createCapyHerdButton;
-    private JPanel userPanel;
     private JPanel displayBarPanel;
     private JList chatRoomList;
     private JScrollPane userListScrollPane;
     private JButton enterButton;
     private JButton refreshButton;
+    private JTextField chatRoomNameTextField;
+    private JPanel userPanel;
     private JButton createChatRoomButton;
     private sharedresources.ChatRoom displayedChatroom;
     private User user;
@@ -110,7 +98,14 @@ public class Dashboard extends JFrame{
                 List<User> selectedUsers = userList.getSelectedValuesList();
                 if(selectedUsers == null || selectedUsers.isEmpty()) return;
                 selectedUsers.add(user);
-                ChatRoom chatRoom = client.addChatRoom(new CreateNewChatRoom(selectedUsers));
+                String chatRoomName = chatRoomNameTextField.getText();
+                System.out.println(chatRoomName);
+                if(chatRoomName.equals("") || chatRoomName.equals("Enter Chatroom Name")){
+                    JOptionPane.showMessageDialog(null, "Please set chat room name\nTry again!", "Please set a valid chat room name", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
+
+                ChatRoom chatRoom = client.addChatRoom(new CreateNewChatRoom(chatRoomName, selectedUsers));
                 if(chatRoom != null){
                     Chat chat = new Chat(client, chatRoom, user);
                     dispose();
@@ -136,6 +131,13 @@ public class Dashboard extends JFrame{
         setDisplayName();
         setVisible(true);
 
+        chatRoomNameTextField.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if(chatRoomNameTextField.getText().equals("Enter Chatroom Name")) chatRoomNameTextField.setText("");
+            }
+        });
     }
 
     private void setDisplayName(){

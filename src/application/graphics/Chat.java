@@ -43,6 +43,7 @@ public class Chat extends JFrame {
     private JButton sendButton;
     private JList messagesList;
     private JButton refreshButton;
+    private JLabel chatNameLabel;
     private DefaultListModel<Message> messageListModel;
     private ChatRoom displayedChatroom;
     private final Client client;
@@ -51,6 +52,7 @@ public class Chat extends JFrame {
     public Chat(Client client, ChatRoom displayedChatroom, User user){
         this.client = client;
         this.displayedChatroom = displayedChatroom;
+        this.chatNameLabel.setText("Chatting in Room: " + displayedChatroom.getChatRoomName());
         this.user = user;
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();

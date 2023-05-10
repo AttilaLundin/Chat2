@@ -179,7 +179,7 @@
               </component>
             </children>
           </grid>
-          <grid id="300e5" binding="chatRoomPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="300e5" binding="chatRoomPanel" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints border-constraint="Center"/>
             <properties>
@@ -220,55 +220,66 @@
                   <text value="Enter"/>
                 </properties>
               </component>
-            </children>
-          </grid>
-        </children>
-      </grid>
-      <grid id="bf495" binding="userPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
-        <constraints border-constraint="East"/>
-        <properties>
-          <background color="-15790311"/>
-          <foreground color="-15790311"/>
-        </properties>
-        <border type="none"/>
-        <children>
-          <component id="d02d6" class="javax.swing.JButton" binding="createCapyHerdButton" default-binding="true">
-            <constraints border-constraint="South"/>
-            <properties>
-              <autoscrolls value="false"/>
-              <background color="-9089481"/>
-              <borderPainted value="false"/>
-              <contentAreaFilled value="true"/>
-              <font size="18"/>
-              <foreground color="-1"/>
-              <icon value="application/graphics/icons/capybara (1).png"/>
-              <opaque value="true"/>
-              <text value="Create Capy Herd"/>
-            </properties>
-          </component>
-          <scrollpane id="c5876" binding="userListScrollPane">
-            <constraints border-constraint="Center"/>
-            <properties>
-              <background color="-15790311"/>
-              <foreground color="-15790311"/>
-            </properties>
-            <border type="none"/>
-            <children>
-              <component id="66763" class="javax.swing.JList" binding="userList">
-                <constraints/>
+              <grid id="8fdef" binding="userPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="24579" class="javax.swing.JTextField" binding="chatRoomNameTextField">
+                    <constraints border-constraint="North"/>
+                    <properties>
+                      <caretColor color="-855824"/>
+                      <font size="16" style="1"/>
+                      <foreground color="-9089481"/>
+                      <horizontalAlignment value="0"/>
+                      <text value="Enter Chatroom Name"/>
+                    </properties>
+                  </component>
+                  <scrollpane id="c5876" binding="userListScrollPane">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <background color="-15790311"/>
+                      <foreground color="-15790311"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="66763" class="javax.swing.JList" binding="userList">
+                        <constraints/>
+                        <properties>
+                          <background color="-13684930"/>
+                          <fixedCellHeight value="-1"/>
+                          <foreground color="-855824"/>
+                          <model/>
+                          <selectionBackground color="-8168650"/>
+                          <selectionForeground color="-855824"/>
+                          <selectionMode value="2"/>
+                          <visible value="true"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </scrollpane>
+                </children>
+              </grid>
+              <component id="d02d6" class="javax.swing.JButton" binding="createCapyHerdButton" default-binding="true">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
                 <properties>
-                  <background color="-13684930"/>
-                  <fixedCellHeight value="-1"/>
-                  <foreground color="-855824"/>
-                  <model/>
-                  <selectionBackground color="-8168650"/>
-                  <selectionForeground color="-855824"/>
-                  <selectionMode value="2"/>
-                  <visible value="true"/>
+                  <autoscrolls value="false"/>
+                  <background color="-9089481"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="true"/>
+                  <font size="18"/>
+                  <foreground color="-1"/>
+                  <icon value="application/graphics/icons/capybara (1).png"/>
+                  <opaque value="true"/>
+                  <text value="Create Capy Herd"/>
                 </properties>
               </component>
             </children>
-          </scrollpane>
+          </grid>
         </children>
       </grid>
     </children>

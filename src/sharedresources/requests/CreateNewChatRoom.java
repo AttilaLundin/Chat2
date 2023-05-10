@@ -14,10 +14,11 @@ import java.util.List;
 public class CreateNewChatRoom implements DataHandler, Serializable {
 
     private List<User> usersInChatRoom;
-    private String chatRoomName = "capy chat";
+    private String chatRoomName;
 
-    public CreateNewChatRoom(List<User> usersInChatRoom){
-        this.usersInChatRoom = usersInChatRoom;//ska det vara add users in chatroom ? om jag fattat rätt
+    public CreateNewChatRoom(String chatRoomName, List<User> usersInChatRoom){
+        this.usersInChatRoom = usersInChatRoom;
+        this.chatRoomName = chatRoomName;
 
     }
 

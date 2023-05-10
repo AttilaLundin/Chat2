@@ -53,4 +53,8 @@ public class ChatRoom implements Serializable {
         this.messages = messages;
     }
 
+    public String getChatRoomName(){
+        return chatRoomName;
+    }
+
 }
