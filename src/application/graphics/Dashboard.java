@@ -78,6 +78,12 @@ public class Dashboard extends JFrame{
         chatRoomList.setCellRenderer(new ChatRoomListCellRenderer());
 
 
+        chatRoomListModel.addElement("Attila");
+
+        chatRoomListModel.addElement("Odai");
+        chatRoomListModel.addElement("Roger");
+        chatRoomListModel.addElement("Shark");
+        chatRoomListModel.addElement("Binki");
 
 
         userList.addListSelectionListener(new ListSelectionListener() {
@@ -127,11 +133,7 @@ public class Dashboard extends JFrame{
 
 
 
-//        listModel.addElement("Attila");
-//        listModel.addElement("Odai");
-//        listModel.addElement("Roger");
-//        listModel.addElement("Shark");
-//        listModel.addElement("Binki");
+
 
         Map<String, User> userMap= client.getUsersList(new GetUsersRequest());
         Set<String> usersUserNameSet= client.getUsersList(new GetUsersRequest()).keySet();
