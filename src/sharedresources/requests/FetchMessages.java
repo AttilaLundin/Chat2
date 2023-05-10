@@ -11,10 +11,10 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
-public class FetchMessagesInChatroom implements DataHandler, Serializable {
+public class FetchMessages implements DataHandler, Serializable {
     private UUID chatRoomID;
 
-    public FetchMessagesInChatroom(UUID chatRoomID){
+    public FetchMessages(UUID chatRoomID){
         this.chatRoomID = chatRoomID;
     }
     @Override

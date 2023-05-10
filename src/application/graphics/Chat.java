@@ -6,7 +6,7 @@ import sharedresources.ImageMessage;
 import sharedresources.TextMessage;
 import sharedresources.User;
 import sharedresources.interfaces.Message;
-import sharedresources.requests.FetchMessagesInChatroom;
+import sharedresources.requests.FetchMessages;
 import sharedresources.requests.SendMessage;
 import sharedresources.requests.FetchChatRoom;
 
@@ -29,9 +29,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+
 public class Chat extends JFrame {
     private ScheduledExecutorService scheduler;
     private JPanel rootPanel;
@@ -108,10 +107,8 @@ public class Chat extends JFrame {
         refreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                updateChatRoom();
                 System.out.println("Calling debug in client");
-                client.deBugger(new FetchMessagesInChatroom(displayedChatroom.getChatRoomID()));
-//                updateChatRoom();
+                client.getMessages(new FetchMessages(displayedChatroom.getChatRoomID()));
             }
         });
 

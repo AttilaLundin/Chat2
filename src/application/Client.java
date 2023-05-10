@@ -141,27 +141,29 @@ public class Client {
         try{
             output.writeObject(fetchChatRoom);
             output.flush();
+
             Object object = input.readObject();
             if(object instanceof ChatRoom chatRoom){
-                System.out.println(chatRoom.getMessages().size());
-                System.out.println(chatRoom.getChatRoomID());
-                System.out.println(chatRoom.getUsersInChatRoom().size());
                 return chatRoom;
             }
-        }catch (IOException | ClassNotFoundException e){
-             e.printStackTrace();
+        }catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return null;
     }
 
-    public void deBugger(FetchMessagesInChatroom fetchMessagesInChatroom){
+    public void getMessages(FetchMessages fetchMessages){
         try{
-            output.writeObject(fetchMessagesInChatroom);
+            output.writeObject(fetchMessages);
             output.flush();
 
             Object object = input.readObject();
-            List<Message> list = (List<Message>) object;
-            for (Message m : list) System.out.println(((TextMessage)m).getText());
+            List<Message> messages = new ArrayList<>();
+            List<?> list = (List<?>) object;
+            for(Object o : list){
+                if(o instanceof Message m) messages.add(m);
+            }
+            for (Message m : messages) System.out.println(((TextMessage)m).getText());
         }catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

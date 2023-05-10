@@ -13,7 +13,7 @@ public class ChatRoom implements Serializable {
     private String chatRoomName;
     private final UUID chatRoomID;
     private List<User> users;
-    private List<Message> messages;
+    private transient List<Message> messages;
 
     public ChatRoom(String chatRoomName, List<User> users, List<Message> messages){
         this.chatRoomName = Objects.requireNonNull(chatRoomName);

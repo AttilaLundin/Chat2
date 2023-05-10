@@ -1,7 +1,8 @@
 package sharedresources.interfaces;
 
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public interface User {
+public interface User{
     String getUsername();
 }

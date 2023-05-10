@@ -4,7 +4,8 @@ import server.ChatRoomStorage;
 import server.UserStorage;
 
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public interface DataHandler {
+public interface DataHandler{
     void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream);
 }
