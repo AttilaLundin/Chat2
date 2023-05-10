@@ -69,13 +69,8 @@ public class LoginWindow extends JFrame{
                     usernameField.setText("");
                     passwordField.setText("");
                 }
-
-
                 }
-
         });
-
-
 
     }
 }

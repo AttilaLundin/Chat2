@@ -13,7 +13,6 @@ public class Server {
         UserStorage userStorage = new UserStorage();
         try (ServerSocket serverSocket = new ServerSocket(PORT)){
 
-
             while(true){
                 Socket socket = serverSocket.accept();
                 ClientHandler clientHandler = new ClientHandler(socket, chatroomStorage, userStorage);

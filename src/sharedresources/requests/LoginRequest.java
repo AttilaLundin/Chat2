@@ -46,16 +46,13 @@ public class LoginRequest implements sharedresources.interfaces.User, DataHandle
 
     @Override
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatRoomStorage, ObjectOutputStream outputStream) {
-
         try {
             User user = userStorage.validateUser(this);
-
             outputStream.writeObject(user);
             outputStream.flush();
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
 
     public String getPassword(){

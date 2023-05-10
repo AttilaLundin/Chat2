@@ -77,114 +77,8 @@ public class Dashboard extends JFrame{
         chatRoomList.setModel(chatRoomListModel);
         chatRoomList.setCellRenderer(new ChatRoomListCellRenderer());
 
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
-        chatRoomListModel.addElement("Capy community center");
+
+
 
         userList.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -230,6 +124,8 @@ public class Dashboard extends JFrame{
                 }
             }
         });
+
+
 
 //        listModel.addElement("Attila");
 //        listModel.addElement("Odai");

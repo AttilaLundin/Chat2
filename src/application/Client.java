@@ -56,7 +56,6 @@ public class Client {
 
     public boolean sendLoginRequest(LoginRequest loginRequest){
         try{
-
             output.writeObject(loginRequest);
             output.flush();
 
