@@ -8,13 +8,14 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class UserStorage {
 
     private final Map<String, User> registeredUsers;
 
     public UserStorage(){
-        registeredUsers = Collections.synchronizedMap(new HashMap<>());
+        registeredUsers = new ConcurrentHashMap<>();
 //todo: remove
         registeredUsers.put("test", new User.SessionUserBuilder().username("test").password("test").displayname("test").build());
         registeredUsers.put("test1", new User.SessionUserBuilder().username("test1").password("test1").displayname("test1").build());

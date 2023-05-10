@@ -93,21 +93,19 @@ public class Dashboard extends JFrame{
 
     public void updateUserList(){
         userListModel.clear();
-        Map<String, User> userMap= client.getUsersList(new FetchAllUser());
-        Set<String> usersUserNameSet= client.getUsersList(new FetchAllUser()).keySet();
-        for(String s : usersUserNameSet){
-            if(s.equals(user.getUsername()))continue;
-            userListModel.addElement(userMap.get(s));
+        List<User> usersList = client.getUsersList(new FetchAllUser());
+        if(usersList == null) return;
+        for(User u : usersList){
+            if(u.getUsername().equals(user.getUsername()))continue;
+            userListModel.addElement(u);
         }
     }
 
     public void updateChatroomList(){
         chatRoomListModel.clear();
-        List<ChatRoom> chatRoomsList = client.getAllChatRoom();
+        List<ChatRoom> chatRoomsList = client.getAllChatRooms();
         for(ChatRoom c : chatRoomsList){
             System.out.println(c.getChatRoomName());
-        }
-        for(ChatRoom c : chatRoomsList){
             chatRoomListModel.addElement(c);
         }
     }

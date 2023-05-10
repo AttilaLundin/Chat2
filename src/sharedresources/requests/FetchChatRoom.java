@@ -25,10 +25,6 @@ public class FetchChatRoom implements DataHandler, Serializable {
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream) {
         try {
             ChatRoom chatRoom = chatroomStorage.getChatRoom(chatRoomID);
-            System.out.println(chatRoom.getMessages().size());
-            List<Message> list = chatRoom.getMessages();
-            for(Message m : list) System.out.println("in Fetch chatroom: " + ((TextMessage)m).getText());
-
             outputStream.writeObject(chatRoom);
             outputStream.flush();
         }catch (IOException e){

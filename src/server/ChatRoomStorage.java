@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Collections;
 import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public class ChatRoomStorage {
@@ -19,8 +20,8 @@ public class ChatRoomStorage {
     private  Map<User, List<UUID>> chatRoomsThisUsersIsIn;
 
     public ChatRoomStorage() {
-        chatRoomCentralStorage = Collections.synchronizedMap(new HashMap<>());
-        chatRoomsThisUsersIsIn = Collections.synchronizedMap(new HashMap<>());
+        chatRoomCentralStorage = new ConcurrentHashMap<>();
+        chatRoomsThisUsersIsIn = new ConcurrentHashMap<>();
     }
 
     public List<ChatRoom> getAllChatRooms(User user){
@@ -51,11 +52,7 @@ public class ChatRoomStorage {
 
         chatRoomCentralStorage.put(chatRoom.getChatRoomID(), chatRoom);
         for(User user : membersInChatRoom){
-            System.out.println(user.getUsername());
-            if(chatRoomsThisUsersIsIn.containsKey(user)){
-                List<UUID> chatroomIDList = chatRoomsThisUsersIsIn.get(user);
-                chatroomIDList.add(chatRoom.getChatRoomID());
-            }
+            if(chatRoomsThisUsersIsIn.containsKey(user)) chatRoomsThisUsersIsIn.get(user).add(chatRoom.getChatRoomID());
             else {
                 ArrayList<UUID> chatRoomId = new ArrayList<>();
                 chatRoomId.add(chatRoom.getChatRoomID());

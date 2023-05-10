@@ -20,8 +20,14 @@ public class FetchMessages implements DataHandler, Serializable {
     @Override
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream) {
         try {
-            List<Message> list = chatroomStorage.getMessages(chatRoomID);
-            for(Message m : list){
+            List<Message> messagesList = chatroomStorage.getMessages(chatRoomID);
+            if(messagesList == null){
+                outputStream.writeObject(true);
+                outputStream.flush();
+                return;
+            }
+
+            for(Message m : messagesList){
                 outputStream.writeObject(m);
                 outputStream.flush();
             }

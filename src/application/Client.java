@@ -95,17 +95,20 @@ public class Client {
         return false;
     }
 
-    public Map<String, User> getUsersList(FetchAllUser fetchAllUser){
+    public List<User> getUsersList(FetchAllUser fetchAllUser){
         try {
 
             output.writeObject(fetchAllUser);
             output.flush();
 
-            Object object = input.readObject();
-            if(object instanceof Map<?,?> map){
-                @SuppressWarnings ("unchecked")
-                Map<String, User> userMap = (Map<String, User>) map;
-                return userMap;
+            List <User> userList = new ArrayList<>();
+            while(true){
+                System.out.println(1);
+                Object o = input.readObject();
+                System.out.println(11);
+                if(o == null)return new ArrayList<>();
+                if(o instanceof Boolean) return userList;
+                if(o instanceof User u) userList.add(u);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -114,25 +117,26 @@ public class Client {
         return null;
     }
 
-    public List<ChatRoom> getAllChatRoom(){
+    public List<ChatRoom> getAllChatRooms(){
 
         try {
             output.writeObject(new FetchAllChatRooms(user));
             output.flush();
 
-            Object object = input.readObject();
-            List <ChatRoom> chatRooms = new ArrayList<>();
-            if(object instanceof List<?> list){
-                for(Object o : list) if(o instanceof ChatRoom chatRoom) chatRooms.add(chatRoom);
+            List <ChatRoom> chatRoomList = new ArrayList<>();
+            while(true){
+                System.out.println(2);
+                Object o = input.readObject();
+                System.out.println(22);
+                if(o == null)return new ArrayList<>();
+                if(o instanceof Boolean) return chatRoomList;
+                if(o instanceof ChatRoom c) chatRoomList.add(c);
             }
-
-            return chatRooms;
-
         }catch (IOException | ClassNotFoundException e){
             e.printStackTrace();
         }
 
-        return null;
+        return new ArrayList<>();
 
     }
 
@@ -158,7 +162,9 @@ public class Client {
 
             List<Message> messages = new ArrayList<>();
             while(true){
+                System.out.println(3);
                 Object o = input.readObject();
+                System.out.println(33);
                 if(o instanceof Boolean) return messages;
                 if(o instanceof Message m) messages.add(m);
             }
