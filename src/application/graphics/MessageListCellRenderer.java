@@ -12,7 +12,7 @@ public class MessageListCellRenderer extends DefaultListCellRenderer{
 
     private static final int VERTICAL_PADDING = 8;
     private static final int HORIZONTAL_PADDING = 16;
-    private static final int FONT_SIZE = 32;
+    private static final int FONT_SIZE = 28;
 
     @Override
     public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
