@@ -1,5 +1,6 @@
 package application;
 
+import sharedresources.TextMessage;
 import sharedresources.User;
 import sharedresources.ChatRoom;
 import sharedresources.interfaces.Message;
@@ -143,6 +144,8 @@ public class Client {
             Object object = input.readObject();
             if(object instanceof ChatRoom chatRoom){
                 System.out.println(chatRoom.getMessages().size());
+                System.out.println(chatRoom.getChatRoomID());
+                System.out.println(chatRoom.getUsersInChatRoom().size());
                 return chatRoom;
             }
         }catch (IOException | ClassNotFoundException e){
@@ -151,16 +154,29 @@ public class Client {
         return null;
     }
 
+    public void deBugger(FetchMessagesInChatroom fetchMessagesInChatroom){
+        try{
+            output.writeObject(fetchMessagesInChatroom);
+            output.flush();
+
+            Object object = input.readObject();
+            List<Message> list = (List<Message>) object;
+            for (Message m : list) System.out.println(((TextMessage)m).getText());
+        }catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     public ChatRoom addChatRoom(CreateNewChatRoom createNewChatRoom){
 
         try{
             output.writeObject(createNewChatRoom);
             output.flush();
-
             Object object = input.readObject();
-
-            List<Message> messages = (List<Message>)object;
-            System.out.println(messages.size());
+            if(object instanceof ChatRoom chatRoom){
+                System.out.println(chatRoom.getUsersInChatRoom().size());
+                return chatRoom;
+            }
         }catch (IOException | ClassNotFoundException e){
             e.printStackTrace();
         }

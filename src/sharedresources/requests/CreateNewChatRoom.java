@@ -2,6 +2,7 @@ package sharedresources.requests;
 
 import server.ChatRoomStorage;
 import server.UserStorage;
+import sharedresources.ChatRoom;
 import sharedresources.User;
 import sharedresources.interfaces.DataHandler;
 
@@ -24,7 +25,8 @@ public class CreateNewChatRoom implements DataHandler, Serializable {
     @Override
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream) {
        try{
-           outputStream.writeObject(chatroomStorage.addChatRoom(chatRoomName, usersInChatRoom));
+           ChatRoom chatRoom = chatroomStorage.addChatRoom(chatRoomName, usersInChatRoom);
+           outputStream.writeObject(chatRoom);
            outputStream.flush();
        }catch (IOException e){
            e.printStackTrace();

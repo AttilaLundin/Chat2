@@ -6,6 +6,7 @@ import sharedresources.ImageMessage;
 import sharedresources.TextMessage;
 import sharedresources.User;
 import sharedresources.interfaces.Message;
+import sharedresources.requests.FetchMessagesInChatroom;
 import sharedresources.requests.SendMessage;
 import sharedresources.requests.FetchChatRoom;
 
@@ -108,8 +109,9 @@ public class Chat extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 //                updateChatRoom();
-                System.out.println("updateMessages");
-                updateChatRoom();
+                System.out.println("Calling debug in client");
+                client.deBugger(new FetchMessagesInChatroom(displayedChatroom.getChatRoomID()));
+//                updateChatRoom();
             }
         });
 
