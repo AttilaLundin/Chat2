@@ -27,6 +27,7 @@ public class User implements sharedresources.interfaces.User, DataHandler, Seria
         return username;
     }
 
+
     @Override
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatRoomStorage, ObjectOutputStream outputStream) {
 

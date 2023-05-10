@@ -6,6 +6,7 @@ import sharedresources.ImageMessage;
 import sharedresources.TextMessage;
 import sharedresources.User;
 import sharedresources.interfaces.Message;
+import sharedresources.requests.GetChatRoomsRequest;
 import sharedresources.requests.SendMessageRequest;
 
 import javax.imageio.ImageIO;
@@ -43,27 +44,77 @@ public class Chat extends JFrame {
     private ChatRoom chatRoom;
     private User user;
 
-    public Chat(Client client, ChatRoom chatRoom){
+
+    public Chat(Client client, ChatRoom chatRoom) {
         this.client = client;
         this.chatRoom = chatRoom;
+
+
+
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
         setContentPane(rootPanel);
-        setSize(screeSize.width * 3 / 5,screeSize.height * 3 / 5);
+        setSize(screeSize.width * 3 / 5, screeSize.height * 3 / 5);
         setMinimumSize(minmumWindowSize);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        initializeButtons();
+        getRootPane().setDefaultButton(sendButton);
         initializeDragAndDrop();
         initializeDragAndDrop();
         setVisible(true);
-        sendButton.addActionListener(new ActionListener() {
 
+    }
+
+    public Chat(Client client, ChatRoom chatRoom, String msg) {
+        this.client = client;
+        this.chatRoom = chatRoom;
+
+
+        DefaultListModel<String> chatRoomListModel = new DefaultListModel<>();
+        messagesList.setModel(chatRoomListModel);
+        messagesList.setCellRenderer(new ChatRoomListCellRenderer());
+
+        chatRoom.addMessage(new TextMessage.TextMessageBuilder().text(msg).sender(client.getSessionUser()).build());
+
+       // chatRoomListModel.addElement(msg);
+        for ( Message messages: chatRoom.getMessages() ) {
+            String message = getMessageText(messages);
+            chatRoomListModel.addElement(message);
+        }
+
+
+        Dimension minmumWindowSize = new Dimension(500, 300);
+        Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setContentPane(rootPanel);
+        setSize(screeSize.width * 3 / 5, screeSize.height * 3 / 5);
+        setMinimumSize(minmumWindowSize);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        initializeButtons();
+        getRootPane().setDefaultButton(sendButton);
+        initializeDragAndDrop();
+        initializeDragAndDrop();
+        setVisible(true);
+
+    }
+
+
+
+    public void initializeButtons(){
+        sendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String msg = textMessageField.getText();
                 TextMessage msgToSend = new TextMessage.TextMessageBuilder().text(msg).sender(user).build();
-                client.sendMessage(new SendMessageRequest(displayedChatroom, msgToSend));
-
+                client.sendMessage(new SendMessageRequest(chatRoom, msgToSend));
+                System.out.println(msg);
+                DefaultListModel<String> currentChats = new DefaultListModel<String>();
+                messagesList.setModel(currentChats);
+                currentChats.addElement(msg);
+                messagesList.setModel(currentChats);
+                dispose();
+                Chat chat = new Chat(client, chatRoom, msg);
 
             }
         });
@@ -124,5 +175,29 @@ public class Chat extends JFrame {
             }
         }));
     }
+
+    private String getMessageText(Message message) {
+        if (message instanceof TextMessage) {
+            return ((TextMessage) message).getText();
+        } else if (message instanceof ImageMessage) {
+            return "Image Message";
+        } else {
+            return "Unknown Message Type";
+        }
+    }
+
+
+    private void fetchChatRoomHistory(ChatRoom chatRoom) {
+        List<Message> chatHistory = chatRoom.getMessages();
+        DefaultListModel<String> chatRoomListModel = (DefaultListModel<String>) messagesList.getModel();
+
+        for (Message message : chatHistory) {
+            String messageText = getMessageText(message);
+            chatRoomListModel.addElement(messageText);
+        }
+    }
+
+
+
 
 }

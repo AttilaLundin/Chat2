@@ -135,6 +135,35 @@ public class Client {
 
     }
 
+    /*
+    public List<ChatRoom> getChatRooms(){
+        try {
+            output.writeObject(user);
+            output.flush();
+
+            Object object = input.readObject();
+            List<ChatRoom> chatRooms = new ArrayList<>();
+            if (object instanceof List<?> list) {
+                for (Object o : list) {
+                    if (o instanceof ChatRoom chatRoom) {
+                        chatRooms.add(chatRoom);
+                        fetchChatRoomHistory(chatRoom); // Fetch and display the chat room history
+                    }
+                }
+            }
+
+            return chatRooms;
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+     */
+
+
+
     public ChatRoom addChatRoom(AddChatRoomRequest addChatRoomRequest){
 
         try{

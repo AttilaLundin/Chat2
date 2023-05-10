@@ -17,7 +17,6 @@ public class AddChatRoomRequest implements DataHandler, Serializable {
 
     public AddChatRoomRequest(List<User> usersInChatRoom){
         this.usersInChatRoom = usersInChatRoom;//ska det vara add users in chatroom ? om jag fattat rätt
-
     }
     @Override
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream) {

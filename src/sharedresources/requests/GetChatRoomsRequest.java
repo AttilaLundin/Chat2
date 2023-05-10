@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class GetChatRoomsRequest implements DataHandler, Serializable {
 
     private User user;
-    public void GetChatRoomRequest(User user){
+    public GetChatRoomsRequest(User user){
         this.user = user;
     }
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream) {
