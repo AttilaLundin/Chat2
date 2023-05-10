@@ -47,7 +47,6 @@ public class Client {
 
     public void sendMessage(SendMessage sendMessage){
         try{
-            System.out.println("msg sent");
             output.writeObject(sendMessage);
             output.flush();
         }catch (IOException e){
@@ -152,21 +151,21 @@ public class Client {
         return null;
     }
 
-    public void getMessages(FetchMessages fetchMessages){
+    public List<Message> getMessages(FetchMessages fetchMessages){
         try{
             output.writeObject(fetchMessages);
             output.flush();
 
-            Object object = input.readObject();
             List<Message> messages = new ArrayList<>();
-            List<?> list = (List<?>) object;
-            for(Object o : list){
+            while(true){
+                Object o = input.readObject();
+                if(o instanceof Boolean) return messages;
                 if(o instanceof Message m) messages.add(m);
             }
-            for (Message m : messages) System.out.println(((TextMessage)m).getText());
         }catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     public ChatRoom addChatRoom(CreateNewChatRoom createNewChatRoom){
@@ -176,7 +175,6 @@ public class Client {
             output.flush();
             Object object = input.readObject();
             if(object instanceof ChatRoom chatRoom){
-                System.out.println(chatRoom.getUsersInChatRoom().size());
                 return chatRoom;
             }
         }catch (IOException | ClassNotFoundException e){

@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
 
-public class TextMessage implements Message, DataHandler, Serializable {
+public class TextMessage implements Message, Serializable {
     private final String text;
     private String timeSent;
     private User sender;
@@ -59,8 +59,4 @@ public class TextMessage implements Message, DataHandler, Serializable {
         return sender;
     }
 
-    @Override
-    public void dataHandler(UserStorage userStorage, ChatRoomStorage chatRoomStorage, ObjectOutputStream outputStream) {
-
-    }
 }

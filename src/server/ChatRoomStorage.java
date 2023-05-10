@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 public class ChatRoomStorage {
 
-    private final Map<UUID, ChatRoom> chatRoomCentralStorage;
-    private final Map<User, List<UUID>> chatRoomsThisUsersIsIn;
+    private  Map<UUID, ChatRoom> chatRoomCentralStorage;
+    private  Map<User, List<UUID>> chatRoomsThisUsersIsIn;
 
     public ChatRoomStorage() {
         chatRoomCentralStorage = Collections.synchronizedMap(new HashMap<>());
@@ -37,11 +37,7 @@ public class ChatRoomStorage {
     }
 
     public ChatRoom getChatRoom(UUID chatRoomID){
-        System.out.println("In the getChatRoom function in the server, UUID: " + chatRoomCentralStorage.get(chatRoomID));
-        System.out.println("In the getChatRoom function in the server, nr of messages: " + chatRoomCentralStorage.get(chatRoomID).getMessages().size());
         List<Message> list = chatRoomCentralStorage.get(chatRoomID).getMessages();
-        for(Message m : list) System.out.println("In the getChatRoom function in the server, message content: " + ((TextMessage)m).getText());
-
         return chatRoomCentralStorage.get(chatRoomID);
     }
 
@@ -70,14 +66,10 @@ public class ChatRoomStorage {
     public void addMessageToChatRoom(UUID chatRoomID, Message message){
         ChatRoom chatRoom = chatRoomCentralStorage.get(chatRoomID);
         chatRoom.addMessage(message);
-        System.out.println("Storage adress: "+chatRoom);
-        System.out.println("Added message: " + ((TextMessage)message).getText());
         if(chatRoom == null){
-            System.out.println("chatRoom is null");
             return;
         }
         ChatRoom chatRoom1 = chatRoomCentralStorage.get(chatRoomID);
-        System.out.println("Verification " + ((TextMessage)chatRoom1.getMessages().get(0)).getText());
     }
 }
 

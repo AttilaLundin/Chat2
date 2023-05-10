@@ -11,6 +11,7 @@ import sharedresources.requests.SendMessage;
 import sharedresources.requests.FetchChatRoom;
 
 import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageInputStream;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
@@ -29,7 +30,9 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Chat extends JFrame {
     private ScheduledExecutorService scheduler;
@@ -59,7 +62,7 @@ public class Chat extends JFrame {
         initializeDragAndDrop();
         initializeButtons();
         initializeMessagesList();
-//        updateTimer();
+        updateTimer();
         setVisible(true);
     }
 
@@ -68,38 +71,27 @@ public class Chat extends JFrame {
         messageListModel = new DefaultListModel<>();
         messagesList.setModel(messageListModel);
         messagesList.setCellRenderer(new MessageListCellRenderer());
-        messageListModel.addElement(new TextMessage.TextMessageBuilder().text("msg1").sender(user).build());
-        messageListModel.addElement(new TextMessage.TextMessageBuilder().text("msg2").sender(user).build());
-        messageListModel.addElement(new TextMessage.TextMessageBuilder().text("msg3").sender(user).build());
-        messageListModel.addElement(new TextMessage.TextMessageBuilder().text("msg4").sender(user).build());
-
     }
 
-    public void updateChatRoom(){
-        displayedChatroom = client.getChatRoom(new FetchChatRoom(displayedChatroom.getChatRoomID()));
-        System.out.println(displayedChatroom.getChatRoomID());
-
-        updateMessages();
-    }
-
-    public void updateMessages(){
+    public void updateMessageList(){
+        messageListModel.clear();
         List<Message> messages = displayedChatroom.getMessages();
-        System.out.println(messages.size());
         for(Message m : messages){
-            if(m instanceof TextMessage textMessage) System.out.println(textMessage.getText());
-            if(m instanceof ImageMessage imageMessage) System.out.println(imageMessage.getImage());
+            messageListModel.addElement(m);
         }
     }
-//
-//    public void updateTimer(){
-//        scheduler = Executors.newScheduledThreadPool(1);
-//            scheduler.scheduleAtFixedRate(new Runnable(){
-//                @Override
-//                public void run(){
-//                    refreshHistory();
-//                }
-//            }, 9, 10, TimeUnit.SECONDS);
-//    }
+
+    public void updateTimer(){
+        scheduler = Executors.newScheduledThreadPool(1);
+            scheduler.scheduleAtFixedRate(new Runnable(){
+                @Override
+                public void run(){
+                    List<Message> messages = client.getMessages(new FetchMessages(displayedChatroom.getChatRoomID()));
+                    displayedChatroom.addMessagList(messages);
+                    updateMessageList();
+                }
+            }, 2, 3, TimeUnit.SECONDS);
+    }
 
 
     public void initializeButtons(){
@@ -107,8 +99,9 @@ public class Chat extends JFrame {
         refreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Calling debug in client");
-                client.getMessages(new FetchMessages(displayedChatroom.getChatRoomID()));
+                List<Message> messages = client.getMessages(new FetchMessages(displayedChatroom.getChatRoomID()));
+                displayedChatroom.addMessagList(messages);
+                updateMessageList();
             }
         });
 
@@ -116,9 +109,7 @@ public class Chat extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                String msg = textMessageField.getText();
-                TextMessage msgToSend = new TextMessage.TextMessageBuilder().text(msg).sender(user).build();
-                client.sendMessage(new SendMessage(displayedChatroom.getChatRoomID(), msgToSend));
+                client.sendMessage(new SendMessage(displayedChatroom.getChatRoomID(), new TextMessage.TextMessageBuilder().text(textMessageField.getText()).sender(user).build()));
             }
         });
 
@@ -134,7 +125,7 @@ public class Chat extends JFrame {
         gitHubButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String url = "https://www.youtube.com/watch?v=kz_lzEhyryY";
+                String url = "https://www.youtube.com/watch?v=eBxTEoseZak";
                 if (Desktop.isDesktopSupported()) {
                     Desktop desktop = Desktop.getDesktop();
                     try{
@@ -168,10 +159,10 @@ public class Chat extends JFrame {
                                 BufferedImage bufferedImage = ImageIO.read(imageFile);
                                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 //                                Avkommentera detta om vi vill ha support för mer än jpg, typ gif osv.
-//                                ImageInputStream imageInputStream = ImageIO.createImageInputStream(imageFile);
-//                                String format = ImageIO.getImageReaders(imageInputStream).next().getFormatName();
+                                ImageInputStream imageInputStream = ImageIO.createImageInputStream(imageFile);
+                                String format = ImageIO.getImageReaders(imageInputStream).next().getFormatName();
 
-                                ImageIO.write(bufferedImage, "jpg" /*format*/, byteArrayOutputStream);
+                                ImageIO.write(bufferedImage, format, byteArrayOutputStream);
                                 System.out.println(displayedChatroom.getChatRoomID());
                                 client.sendMessage(new SendMessage(displayedChatroom.getChatRoomID(), new ImageMessage.ImageMessageBuilder().image(byteArrayOutputStream.toByteArray()).sender(user).build()));
                             }

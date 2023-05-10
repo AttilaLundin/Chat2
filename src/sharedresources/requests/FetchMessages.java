@@ -8,7 +8,8 @@ import sharedresources.interfaces.Message;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
+
 import java.util.UUID;
 
 public class FetchMessages implements DataHandler, Serializable {

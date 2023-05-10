@@ -19,7 +19,7 @@ public class MessageListCellRenderer extends DefaultListCellRenderer{
         JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
         label.setBorder(new EmptyBorder(VERTICAL_PADDING, HORIZONTAL_PADDING, VERTICAL_PADDING, HORIZONTAL_PADDING));
         label.setHorizontalAlignment(JLabel.CENTER);
-        // Set the font size
+
         Font currentFont = label.getFont();
         label.setFont(new Font(currentFont.getName(), currentFont.getStyle(), FONT_SIZE));
 
@@ -31,6 +31,7 @@ public class MessageListCellRenderer extends DefaultListCellRenderer{
             ImageMessage imageMessage = (ImageMessage) value;
             label.setText("<html><b>" + imageMessage.getSender().getUsername() + ":</b></html>");
             label.setIcon(new ImageIcon(imageMessage.getImage()));
+            label.setHorizontalTextPosition(JLabel.LEFT);
         }
 
         return label;
