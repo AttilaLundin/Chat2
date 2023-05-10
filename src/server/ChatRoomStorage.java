@@ -1,5 +1,6 @@
 package server;
 
+import sharedresources.TextMessage;
 import sharedresources.interfaces.Message;
 import sharedresources.ChatRoom;
 import sharedresources.User;
@@ -36,6 +37,8 @@ public class ChatRoomStorage {
     }
 
     public ChatRoom getChatRoom(UUID chatRoomID){
+        System.out.println(chatRoomCentralStorage.get(chatRoomID));
+
         return chatRoomCentralStorage.get(chatRoomID);
     }
 
@@ -57,9 +60,16 @@ public class ChatRoomStorage {
 
 
     public void addMessageToChatRoom(UUID chatRoomID, Message message){
-        ChatRoom theChatRoom = chatRoomCentralStorage.get(chatRoomID);
-        if(theChatRoom == null) return;
-        theChatRoom.addMessage(message);
+        ChatRoom chatRoom = chatRoomCentralStorage.get(chatRoomID);
+        chatRoom.addMessage(message);
+        System.out.println("Storage adress: "+chatRoom);
+        System.out.println(((TextMessage)message).getText());
+        if(chatRoom == null){
+            System.out.println("chatRoom is null");
+            return;
+        }
+        ChatRoom chatRoom1 = chatRoomCentralStorage.get(chatRoomID);
+        System.out.println(((TextMessage)chatRoom1.getMessages().get(0)).getText());
     }
 }
 

@@ -59,10 +59,6 @@ public class TextMessage implements Message, DataHandler, Serializable {
         return sender;
     }
 
-    public UUID getChatRoomID(){
-        return chatRoomID;
-    }
-
     @Override
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatRoomStorage, ObjectOutputStream outputStream) {
 

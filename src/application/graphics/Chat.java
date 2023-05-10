@@ -22,6 +22,7 @@ import java.awt.dnd.DropTargetDropEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -33,7 +34,6 @@ import java.util.concurrent.TimeUnit;
 public class Chat extends JFrame {
     private ScheduledExecutorService scheduler;
     private JPanel rootPanel;
-    private JLabel ChatRoomNameLabel;
     private JButton gitHubButton;
     private JButton homeScreenButton;
     private JTextField textMessageField;
@@ -42,13 +42,13 @@ public class Chat extends JFrame {
     private JButton refreshButton;
     private DefaultListModel<Message> messageListModel;
     private ChatRoom displayedChatroom;
-    private Client client;
+    private final Client client;
+    private final User user;
 
-    private User user;
-
-    public Chat(Client client, ChatRoom displayedChatroom){
+    public Chat(Client client, ChatRoom displayedChatroom, User user){
         this.client = client;
         this.displayedChatroom = displayedChatroom;
+        this.user = user;
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
         setContentPane(rootPanel);
@@ -59,50 +59,60 @@ public class Chat extends JFrame {
         initializeDragAndDrop();
         initializeButtons();
         initializeMessagesList();
-        updateTimer();
+//        updateTimer();
         setVisible(true);
     }
 
 
     public void initializeMessagesList(){
-        List <Message> messageHistory = displayedChatroom.getMessages();
         messageListModel = new DefaultListModel<>();
         messagesList.setModel(messageListModel);
         messagesList.setCellRenderer(new MessageListCellRenderer());
-        messagesList.setSelectionModel(new DefaultListSelectionModel());
+        messageListModel.addElement(new TextMessage.TextMessageBuilder().text("msg1").sender(user).build());
+        messageListModel.addElement(new TextMessage.TextMessageBuilder().text("msg2").sender(user).build());
+        messageListModel.addElement(new TextMessage.TextMessageBuilder().text("msg3").sender(user).build());
+        messageListModel.addElement(new TextMessage.TextMessageBuilder().text("msg4").sender(user).build());
 
-
-        refreshHistory();
     }
-    public void refreshHistory(){
-        System.out.println("here");
-        ChatRoom chatRoom = client.getChatRoom(new FetchChatRoom(displayedChatroom.getChatRoomID()));
 
-        for(Message message : chatRoom.getMessages()){
-            messageListModel.addElement(message);
-            JLabel label = new JLabel (message.toString());
-            rootPanel.add(label);
+    public void updateChatRoom(){
+        displayedChatroom = client.getChatRoom(new FetchChatRoom(displayedChatroom.getChatRoomID()));
+        System.out.println(displayedChatroom.getChatRoomID());
+
+        updateMessages();
+    }
+
+    public void updateMessages(){
+        List<Message> messages = displayedChatroom.getMessages();
+        System.out.println(messages.size());
+        for(Message m : messages){
+            if(m instanceof TextMessage textMessage) System.out.println(textMessage.getText());
+            if(m instanceof ImageMessage imageMessage) System.out.println(imageMessage.getImage());
         }
     }
-
-    public void updateTimer(){
-        scheduler = Executors.newScheduledThreadPool(1);
-            scheduler.scheduleAtFixedRate(new Runnable(){
-                @Override
-                public void run(){
-                    refreshHistory();
-                }
-            }, 4, 5, TimeUnit.SECONDS);
-    }
+//
+//    public void updateTimer(){
+//        scheduler = Executors.newScheduledThreadPool(1);
+//            scheduler.scheduleAtFixedRate(new Runnable(){
+//                @Override
+//                public void run(){
+//                    refreshHistory();
+//                }
+//            }, 9, 10, TimeUnit.SECONDS);
+//    }
 
 
     public void initializeButtons(){
+
         refreshButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                refreshHistory();
+//                updateChatRoom();
+                System.out.println("updateMessages");
+                updateChatRoom();
             }
         });
+
         sendButton.addActionListener(new ActionListener() {
 
             @Override
@@ -155,10 +165,16 @@ public class Chat extends JFrame {
 
                     if(object instanceof List<?> list){
                         for(Object o : list){
-                            if(o instanceof File image){
-                                BufferedImage bufferedImage = ImageIO.read(image);
+                            if(o instanceof File imageFile){
+                                BufferedImage bufferedImage = ImageIO.read(imageFile);
+                                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+//                                Avkommentera detta om vi vill ha support för mer än jpg, typ gif osv.
+//                                ImageInputStream imageInputStream = ImageIO.createImageInputStream(imageFile);
+//                                String format = ImageIO.getImageReaders(imageInputStream).next().getFormatName();
+
+                                ImageIO.write(bufferedImage, "jpg" /*format*/, byteArrayOutputStream);
                                 System.out.println(displayedChatroom.getChatRoomID());
-                                client.sendMessage(new SendMessage(displayedChatroom.getChatRoomID(), new ImageMessage.ImageMessageBuilder().image(bufferedImage).sender(user).build()));
+                                client.sendMessage(new SendMessage(displayedChatroom.getChatRoomID(), new ImageMessage.ImageMessageBuilder().image(byteArrayOutputStream.toByteArray()).sender(user).build()));
                             }
                         }
                     }

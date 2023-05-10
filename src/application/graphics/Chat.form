@@ -206,6 +206,9 @@
                     <constraints/>
                     <properties>
                       <background color="-15066588"/>
+                      <enabled value="true"/>
+                      <foreground color="-855824"/>
+                      <selectionForeground color="-855824"/>
                     </properties>
                   </component>
                 </children>

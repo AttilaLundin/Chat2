@@ -116,7 +116,7 @@ public class Dashboard extends JFrame{
                 selectedUsers.add(user);
                 ChatRoom chatRoom = client.addChatRoom(new CreateNewChatRoom(selectedUsers));
                 if(chatRoom != null){
-                    Chat chat = new Chat(client, chatRoom);
+                    Chat chat = new Chat(client, chatRoom, user);
                     dispose();
                 }
             }

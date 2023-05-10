@@ -2,6 +2,7 @@ package application;
 
 import sharedresources.User;
 import sharedresources.ChatRoom;
+import sharedresources.interfaces.Message;
 import sharedresources.requests.*;
 
 import java.io.IOException;
@@ -140,7 +141,10 @@ public class Client {
             output.writeObject(fetchChatRoom);
             output.flush();
             Object object = input.readObject();
-            if(object instanceof ChatRoom chatRoom) return chatRoom;
+            if(object instanceof ChatRoom chatRoom){
+                System.out.println(chatRoom.getMessages().size());
+                return chatRoom;
+            }
         }catch (IOException | ClassNotFoundException e){
              e.printStackTrace();
         }
@@ -155,9 +159,8 @@ public class Client {
 
             Object object = input.readObject();
 
-            if(object instanceof ChatRoom chatRoom){
-                return chatRoom;
-            }
+            List<Message> messages = (List<Message>)object;
+            System.out.println(messages.size());
         }catch (IOException | ClassNotFoundException e){
             e.printStackTrace();
         }
