@@ -15,7 +15,7 @@ public class UserStorage {
 
     public UserStorage(){
         registeredUsers = Collections.synchronizedMap(new HashMap<>());
-//        TODO: remove
+//todo: remove
         registeredUsers.put("test", new User.SessionUserBuilder().username("test").password("test").displayname("test").build());
         registeredUsers.put("test1", new User.SessionUserBuilder().username("test1").password("test1").displayname("test1").build());
         registeredUsers.put("test2", new User.SessionUserBuilder().username("test2").password("test2").displayname("test2").build());
@@ -25,10 +25,6 @@ public class UserStorage {
     public User validateUser(LoginRequest loginRequestAttempt){
         User user = registeredUsers.get(loginRequestAttempt.getUsername());
         Set<String> keys = registeredUsers.keySet();
-
-        for(String s : keys){
-            System.out.println(s);
-        }
 
         if(user == null) return null;
         if (user.correctCredentials(loginRequestAttempt)) {

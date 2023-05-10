@@ -72,7 +72,7 @@ public class Dashboard extends JFrame{
         userList.setSelectionModel(new UsernameListSelectionModel());
         userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-        //TODO: ta bort när vi är klara med testning
+
         DefaultListModel<String> chatRoomListModel = new DefaultListModel<>();
         chatRoomList.setModel(chatRoomListModel);
         chatRoomList.setCellRenderer(new ChatRoomListCellRenderer());
@@ -82,12 +82,8 @@ public class Dashboard extends JFrame{
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
                     selectedUsernames.clear();
-                    System.out.println("Selected usernames: ");
-                    int i = 0;
                     for (int index : userList.getSelectedIndices()) {
                         selectedUsernames.add(userListModel.getElementAt(index));
-                        System.out.println(" " + selectedUsernames.get(i));
-                        i++;
                     }
                 }
             }

@@ -163,7 +163,6 @@ public class Chat extends JFrame {
                                 String format = ImageIO.getImageReaders(imageInputStream).next().getFormatName();
 
                                 ImageIO.write(bufferedImage, format, byteArrayOutputStream);
-                                System.out.println(displayedChatroom.getChatRoomID());
                                 client.sendMessage(new SendMessage(displayedChatroom.getChatRoomID(), new ImageMessage.ImageMessageBuilder().image(byteArrayOutputStream.toByteArray()).sender(user).build()));
                             }
                         }
