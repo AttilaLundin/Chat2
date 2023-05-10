@@ -11,14 +11,14 @@ import java.awt.*;
 public class MessageListCellRenderer extends DefaultListCellRenderer{
 
     private static final int VERTICAL_PADDING = 8;
-    private static final int HORIZONTAL_PADDING = 12;
-    private static final int FONT_SIZE = 20;
+    private static final int HORIZONTAL_PADDING = 16;
+    private static final int FONT_SIZE = 32;
 
     @Override
     public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
         label.setBorder(new EmptyBorder(VERTICAL_PADDING, HORIZONTAL_PADDING, VERTICAL_PADDING, HORIZONTAL_PADDING));
-        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setHorizontalAlignment(JLabel.LEFT);
 
         Font currentFont = label.getFont();
         label.setFont(new Font(currentFont.getName(), currentFont.getStyle(), FONT_SIZE));
