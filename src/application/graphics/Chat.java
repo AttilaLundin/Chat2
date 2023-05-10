@@ -1,6 +1,7 @@
 package application.graphics;
 
 import application.Client;
+import application.graphics.customlist.MessageListCellRenderer;
 import sharedresources.ChatRoom;
 import sharedresources.ImageMessage;
 import sharedresources.TextMessage;
@@ -8,7 +9,6 @@ import sharedresources.User;
 import sharedresources.interfaces.Message;
 import sharedresources.requests.FetchMessages;
 import sharedresources.requests.SendMessage;
-import sharedresources.requests.FetchChatRoom;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageInputStream;
@@ -65,6 +65,7 @@ public class Chat extends JFrame {
         initializeButtons();
         initializeMessagesList();
         updateTimer();
+        getRootPane().setDefaultButton(sendButton);
         setVisible(true);
     }
 
@@ -92,7 +93,7 @@ public class Chat extends JFrame {
                     displayedChatroom.addMessagList(messages);
                     updateMessageList();
                 }
-            }, 2, 3, TimeUnit.SECONDS);
+            }, 0, 2, TimeUnit.SECONDS);
     }
 
 
@@ -112,15 +113,16 @@ public class Chat extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 client.sendMessage(new SendMessage(displayedChatroom.getChatRoomID(), new TextMessage.TextMessageBuilder().text(textMessageField.getText()).sender(user).build()));
+                textMessageField.setText("");
             }
         });
 
         homeScreenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
                 Dashboard dashboard = new Dashboard(client);
                 scheduler.close();
+                dispose();
             }
         });
 
@@ -160,7 +162,6 @@ public class Chat extends JFrame {
                             if(o instanceof File imageFile){
                                 BufferedImage bufferedImage = ImageIO.read(imageFile);
                                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//                                Avkommentera detta om vi vill ha support för mer än jpg, typ gif osv.
                                 ImageInputStream imageInputStream = ImageIO.createImageInputStream(imageFile);
                                 String format = ImageIO.getImageReaders(imageInputStream).next().getFormatName();
 

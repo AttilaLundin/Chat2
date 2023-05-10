@@ -51,7 +51,11 @@ public class ChatRoomStorage {
 
         chatRoomCentralStorage.put(chatRoom.getChatRoomID(), chatRoom);
         for(User user : membersInChatRoom){
-            if(chatRoomsThisUsersIsIn.containsKey(user)) chatRoomsThisUsersIsIn.get(user).add(chatRoom.getChatRoomID());
+            System.out.println(user.getUsername());
+            if(chatRoomsThisUsersIsIn.containsKey(user)){
+                List<UUID> chatroomIDList = chatRoomsThisUsersIsIn.get(user);
+                chatroomIDList.add(chatRoom.getChatRoomID());
+            }
             else {
                 ArrayList<UUID> chatRoomId = new ArrayList<>();
                 chatRoomId.add(chatRoom.getChatRoomID());

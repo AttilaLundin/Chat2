@@ -1,4 +1,4 @@
-package application.graphics;
+package application.graphics.customlist;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.Arrays;
 
-class UsernameListCellRenderer extends DefaultListCellRenderer{
+public class UsernameListCellRenderer extends DefaultListCellRenderer{
     private static final int VERTICAL_PADDING = 4;
     private static final int HORIZONTAL_PADDING = 8;
     private static final int FONT_SIZE = 16;

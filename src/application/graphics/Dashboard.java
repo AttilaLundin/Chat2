@@ -1,10 +1,15 @@
 package application.graphics;
 
 import application.Client;
+import application.graphics.customlist.ChatRoomListCellRenderer;
+import application.graphics.customlist.UsernameListCellRenderer;
+import application.graphics.customlist.UsernameListSelectionModel;
 import sharedresources.ChatRoom;
 import sharedresources.User;
+import sharedresources.interfaces.Message;
 import sharedresources.requests.CreateNewChatRoom;
 import sharedresources.requests.FetchAllUser;
+import sharedresources.requests.FetchMessages;
 
 import javax.swing.*;
 import javax.swing.JPanel;
@@ -24,6 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Dashboard extends JFrame{
     private JPanel rootPanel;
@@ -35,17 +43,18 @@ public class Dashboard extends JFrame{
     private JPanel chatRoomPanel;
     private JLabel displayNameLabel;
     private JList userList;
+    private DefaultListModel<User> userListModel;
     private List<User> selectedUsernames = new ArrayList<>();
+    private ChatRoom selectedChatroom;
     private JButton createCapyHerdButton;
     private JPanel displayBarPanel;
     private JList chatRoomList;
+    private DefaultListModel<ChatRoom> chatRoomListModel;
     private JScrollPane userListScrollPane;
     private JButton enterButton;
     private JButton refreshButton;
     private JTextField chatRoomNameTextField;
     private JPanel userPanel;
-    private JButton createChatRoomButton;
-    private sharedresources.ChatRoom displayedChatroom;
     private User user;
     private Client client;
 
@@ -53,18 +62,71 @@ public class Dashboard extends JFrame{
 
         this.client = client;
         user = client.getSessionUser();
+        Dimension minmumWindowSize = new Dimension(500, 300);
+        Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setContentPane(rootPanel);
+        setSize(screeSize.width * 3 / 5,screeSize.height * 3 / 5);
+        setMinimumSize(minmumWindowSize);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        initLists();
+        initTextField();
+        initButtons();
+        setDisplayName();
+        updateUserList();
+        updateChatroomList();
+        setVisible(true);
+    }
 
-        DefaultListModel<User> userListModel = new DefaultListModel<>();
+    public void initLists(){
+        userListModel = new DefaultListModel<>();
         userList.setModel(userListModel);
         userList.setCellRenderer(new UsernameListCellRenderer());
         userList.setSelectionModel(new UsernameListSelectionModel());
         userList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
 
-        DefaultListModel<String> chatRoomListModel = new DefaultListModel<>();
+        chatRoomListModel = new DefaultListModel<>();
         chatRoomList.setModel(chatRoomListModel);
         chatRoomList.setCellRenderer(new ChatRoomListCellRenderer());
+    }
 
+    public void updateUserList(){
+        userListModel.clear();
+        Map<String, User> userMap= client.getUsersList(new FetchAllUser());
+        Set<String> usersUserNameSet= client.getUsersList(new FetchAllUser()).keySet();
+        for(String s : usersUserNameSet){
+            if(s.equals(user.getUsername()))continue;
+            userListModel.addElement(userMap.get(s));
+        }
+    }
+
+    public void updateChatroomList(){
+        chatRoomListModel.clear();
+        List<ChatRoom> chatRoomsList = client.getAllChatRoom();
+        for(ChatRoom c : chatRoomsList){
+            System.out.println(c.getChatRoomName());
+        }
+        for(ChatRoom c : chatRoomsList){
+            chatRoomListModel.addElement(c);
+        }
+    }
+
+    public void initTextField(){
+        chatRoomNameTextField.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if(chatRoomNameTextField.getText().equals("Enter Chatroom Name")) chatRoomNameTextField.setText("");
+            }
+        });
+    }
+
+    private void setDisplayName(){
+        displayNameLabel.setText("Welcome " + user.getDisplayName() + ", have a capybara day!");
+    }
+
+    public void initButtons(){
         userList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -73,6 +135,15 @@ public class Dashboard extends JFrame{
                     for (int index : userList.getSelectedIndices()) {
                         selectedUsernames.add(userListModel.getElementAt(index));
                     }
+                }
+            }
+        });
+
+        chatRoomList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    selectedChatroom = (ChatRoom) chatRoomList.getSelectedValue();
                 }
             }
         });
@@ -113,35 +184,27 @@ public class Dashboard extends JFrame{
             }
         });
 
-        Map<String, User> userMap= client.getUsersList(new FetchAllUser());
-        Set<String> usersUserNameSet= client.getUsersList(new FetchAllUser()).keySet();
-        for(String s : usersUserNameSet){
-            if(s.equals(user.getUsername()))continue;
-            userListModel.addElement(userMap.get(s));
-        }
-
-
-        Dimension minmumWindowSize = new Dimension(500, 300);
-        Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setContentPane(rootPanel);
-        setSize(screeSize.width * 3 / 5,screeSize.height * 3 / 5);
-        setMinimumSize(minmumWindowSize);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setDisplayName();
-        setVisible(true);
-
-        chatRoomNameTextField.addMouseListener(new MouseAdapter() {
+        enterButton.addActionListener(new ActionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                if(chatRoomNameTextField.getText().equals("Enter Chatroom Name")) chatRoomNameTextField.setText("");
+            public void actionPerformed(ActionEvent e) {
+                if(selectedChatroom == null) return;
+                Chat chat = new Chat(client,selectedChatroom, user);
+                dispose();
             }
         });
+
+        refreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateUserList();
+                updateChatroomList();
+            }
+        });
+
     }
 
-    private void setDisplayName(){
-        displayNameLabel.setText("Welcome " + user.getDisplayName() + ", have a capybara day!");
-    }
+
+
+
 
 }

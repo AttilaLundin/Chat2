@@ -1,4 +1,4 @@
-package application.graphics;
+package application.graphics.customlist;
 
 import sharedresources.ImageMessage;
 import sharedresources.TextMessage;

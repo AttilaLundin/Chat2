@@ -1,11 +1,11 @@
-package application.graphics;
+package application.graphics.customlist;
 
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class UsernameListSelectionModel extends DefaultListSelectionModel {
+public class UsernameListSelectionModel extends DefaultListSelectionModel {
     private int lastClickedIndex = -1;
     private Timer timer;
 
