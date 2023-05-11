@@ -11,6 +11,7 @@ public class Server {
 
         ChatRoomStorage chatroomStorage = new ChatRoomStorage();
         UserStorage userStorage = new UserStorage();
+
         try (ServerSocket serverSocket = new ServerSocket(PORT)){
 
             while(true){
