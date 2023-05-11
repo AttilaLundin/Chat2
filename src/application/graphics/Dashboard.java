@@ -25,7 +25,12 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * A JFrame class that provides a dashboard interface for users to interact with chatrooms and other users.
+ * It allows users to select from a list of existing chatrooms, or create a new chatroom with a selected group of users.
+ * The interface includes features such as a refresh button to fetch the latest chatrooms and users,
+ * and a create button to create a new chatroom. The dashboard interface also includes a link to a YouTube video.
+ */
 public class Dashboard extends JFrame{
     private JPanel rootPanel;
     private JPanel sidePanel;
@@ -51,9 +56,15 @@ public class Dashboard extends JFrame{
     private User user;
     private Client client;
 
+    /**
+     * Constructs a new Dashboard instance with a given client.
+     * This also sets up the dashboard interface and fetches the latest chatrooms and users.
+     *
+     * @param client the client that is used to fetch chatrooms and users
+     */
     public Dashboard(Client client){
         this.client = client;
-        user = client.getSessionUser();
+        user = client.getUser();
 
         setupWindow();
         initLists();
@@ -63,6 +74,10 @@ public class Dashboard extends JFrame{
         updateChatRoomList();
         setVisible(true);
     }
+
+    /**
+     * Sets up the window for the dashboard interface, including its size, location, and close operation.
+     */
     private void setupWindow(){
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -74,6 +89,9 @@ public class Dashboard extends JFrame{
         setWelcomeText();
     }
 
+    /**
+     * Initializes the lists that display the users and chatrooms.
+     */
     public void initLists(){
         userListModel = new DefaultListModel<>();
         userList.setModel(userListModel);
@@ -87,6 +105,9 @@ public class Dashboard extends JFrame{
         chatRoomList.setCellRenderer(new ChatRoomListCellRenderer());
     }
 
+    /**
+     * Updates the list of users displayed in the interface by fetching the latest users from the client.
+     */
     public void updateUserList(){
         userListModel.clear();
         List<User> usersList = client.getUsersList(new FetchAllUser());
@@ -97,15 +118,20 @@ public class Dashboard extends JFrame{
         }
     }
 
+    /**
+     * Updates the list of chatrooms displayed in the interface by fetching the latest chatrooms from the client.
+     */
     public void updateChatRoomList(){
         chatRoomListModel.clear();
         List<ChatRoom> chatRoomsList = client.getAllChatRooms();
         for(ChatRoom c : chatRoomsList){
-            System.out.println(c.getChatRoomName());
             chatRoomListModel.addElement(c);
         }
     }
 
+    /**
+     * Initializes the text field where the user can enter the name of a new chatroom.
+     */
     public void initTextField(){
         chatRoomNameTextField.addMouseListener(new MouseAdapter() {
             @Override
@@ -116,10 +142,16 @@ public class Dashboard extends JFrame{
         });
     }
 
+    /**
+     * Sets the welcome text displayed in the dashboard interface.
+     */
     private void setWelcomeText(){
         displayNameLabel.setText("Welcome " + user.getUsername() + ", have a capybara day!");
     }
 
+    /**
+     * Sets up the event listeners for the dashboard interface, including the listeners for the lists and buttons.
+     */
     private void setupEventListeners() {
 
         //

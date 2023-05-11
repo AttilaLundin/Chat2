@@ -8,11 +8,22 @@ import sharedresources.interfaces.DataHandler;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * This class implements the DataHandler interface and Serializable interface.
+ * It is responsible for fetching all users from the user storage.
+ */
 public class FetchAllUser implements DataHandler, Serializable {
+
+    /**
+     * Handles fetching all users from the user storage and sending them to the client through the output stream.
+     *
+     * @param userStorage The storage of users.
+     * @param chatroomStorage The storage of chat rooms.
+     * @param outputStream The output stream to the client.
+     */
     @Override
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream) {
 

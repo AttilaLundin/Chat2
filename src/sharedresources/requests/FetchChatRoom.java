@@ -13,14 +13,30 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * This class implements the DataHandler interface and Serializable interface.
+ * It is responsible for fetching a specific chat room using its UUID.
+ */
 public class FetchChatRoom implements DataHandler, Serializable {
 
     UUID chatRoomID;
 
+    /**
+     * Initializes a new FetchChatRoom request with the given UUID of the chat room.
+     *
+     * @param chatRoomID The UUID of the chat room.
+     */
     public FetchChatRoom(UUID chatRoomID){
         this.chatRoomID = chatRoomID;
     }
 
+    /**
+     * Handles fetching the specified chat room from the chat room storage and sending it to the client through the output stream.
+     *
+     * @param userStorage The storage of users.
+     * @param chatroomStorage The storage of chat rooms.
+     * @param outputStream The output stream to the client.
+     */
     @Override
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream) {
         try {

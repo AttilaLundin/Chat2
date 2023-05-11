@@ -1,6 +1,5 @@
 package application;
 
-import sharedresources.TextMessage;
 import sharedresources.User;
 import sharedresources.ChatRoom;
 import sharedresources.interfaces.Message;
@@ -12,7 +11,11 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.*;
 
-
+/**
+ * A class representing a client in the chat application. This class is responsible for creating connections
+ * to the server and handling data transfer between the client and server. It manages user actions such as
+ * login, registration, sending messages, fetching users, chat rooms and messages.
+ */
 public class Client {
 
     private static final String SERVER_ADDRESS = "localhost";
@@ -22,7 +25,9 @@ public class Client {
     private ObjectOutputStream output;
     private ObjectInputStream input;
 
-
+    /**
+     * Connects to the server.
+     */
     public void connectToServer(){
         boolean connected = false;
 
@@ -45,6 +50,11 @@ public class Client {
         }
     }
 
+    /**
+     * Sends a message to the server.
+     *
+     * @param sendMessage the message to send
+     */
     public void sendMessage(SendMessage sendMessage){
         try{
             output.writeObject(sendMessage);
@@ -54,6 +64,12 @@ public class Client {
         }
     }
 
+    /**
+     * Sends a login request to the server.
+     *
+     * @param loginRequest the login request to send
+     * @return true if the login was successful, false otherwise
+     */
     public boolean sendLoginRequest(LoginRequest loginRequest){
         try{
 
@@ -75,6 +91,12 @@ public class Client {
         return false;
     }
 
+    /**
+     * Sends a registration request to the server.
+     *
+     * @param registerRequest the registration request to send
+     * @return true if the registration was successful, false otherwise
+     */
     public boolean sendRegistrationRequest(RegisterRequest registerRequest){
         try{
 
@@ -95,6 +117,12 @@ public class Client {
         return false;
     }
 
+    /**
+     * Requests a list of all users from the server.
+     *
+     * @param fetchAllUser the fetch all user request to send
+     * @return a list of users
+     */
     public List<User> getUsersList(FetchAllUser fetchAllUser){
         try {
 
@@ -103,9 +131,7 @@ public class Client {
 
             List <User> userList = new ArrayList<>();
             while(true){
-                System.out.println(1);
                 Object o = input.readObject();
-                System.out.println(11);
                 if(o == null)return new ArrayList<>();
                 if(o instanceof Boolean) return userList;
                 if(o instanceof User u) userList.add(u);
@@ -117,6 +143,11 @@ public class Client {
         return null;
     }
 
+    /**
+     * Requests a list of all chat rooms from the server.
+     *
+     * @return a list of chat rooms
+     */
     public List<ChatRoom> getAllChatRooms(){
 
         try {
@@ -125,9 +156,7 @@ public class Client {
 
             List <ChatRoom> chatRoomList = new ArrayList<>();
             while(true){
-                System.out.println(2);
                 Object o = input.readObject();
-                System.out.println(22);
                 if(o == null)return new ArrayList<>();
                 if(o instanceof Boolean) return chatRoomList;
                 if(o instanceof ChatRoom c) chatRoomList.add(c);
@@ -140,31 +169,20 @@ public class Client {
 
     }
 
-    public ChatRoom getChatRoom(FetchChatRoom fetchChatRoom){
-        try{
-            output.writeObject(fetchChatRoom);
-            output.flush();
-
-            Object object = input.readObject();
-            if(object instanceof ChatRoom chatRoom){
-                return chatRoom;
-            }
-        }catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
+    /**
+     * Requests a list of messages from the server.
+     *
+     * @param fetchMessages the fetch messages request to send
+     * @return a list of messages
+     */
     public List<Message> getMessages(FetchMessages fetchMessages){
         try{
             output.writeObject(fetchMessages);
             output.flush();
 
             List<Message> messages = new ArrayList<>();
-            while(true){
-                System.out.println(3);
+            while(true){;
                 Object o = input.readObject();
-                System.out.println(33);
                 if(o instanceof Boolean) return messages;
                 if(o instanceof Message m) messages.add(m);
             }
@@ -174,6 +192,12 @@ public class Client {
         return null;
     }
 
+    /**
+     * Requests to create a new chat room on the server.
+     *
+     * @param createNewChatRoom the create new chat room request to send
+     * @return the created chat room
+     */
     public ChatRoom addChatRoom(CreateNewChatRoom createNewChatRoom){
 
         try{
@@ -189,10 +213,12 @@ public class Client {
         return null;
     }
 
-
-
-
-    public User getSessionUser(){
+    /**
+     * Returns the user of the current session.
+     *
+     * @return the user of the current session
+     */
+    public User getUser(){
         return user;
     }
 
