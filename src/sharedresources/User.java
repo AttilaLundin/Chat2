@@ -50,7 +50,6 @@ public class User implements sharedresources.interfaces.User, DataHandler, Seria
         private String username;
         private String displayname;
         private String password;
-        private List<UUID> chatRoomIDs;
 
         public SessionUserBuilder username(String username){
             this.username = username;
@@ -65,16 +64,27 @@ public class User implements sharedresources.interfaces.User, DataHandler, Seria
             return this;
         }
 
-
-        public SessionUserBuilder chatRoomIDs(List<UUID> chatRoomIDs) {
-            this.chatRoomIDs = chatRoomIDs;
-            return this;
-        }
-
         public User build(){
             return new User(this);
         }
 
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if(other == this) {
+            return true;
+        }
+        if(other == null || other.getClass() != this.getClass()) {
+            return false;
+        }
+        User user = (User) other;
+        return this.username.equals((user.username));
+    }
+
+    @Override
+    public int hashCode(){
+        return this.username.hashCode();
     }
 
 
