@@ -8,18 +8,15 @@ import sharedresources.requests.LoginRequest;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.UUID;
-import java.util.List;
 
 public class User implements sharedresources.interfaces.User, DataHandler, Serializable{
     private String username;
-    private String displayname;
+
     private String password;
 
-    private User(SessionUserBuilder sessionUserBuilder){
-        this.username= Objects.requireNonNull(sessionUserBuilder.username);
-        this.displayname = Objects.requireNonNull(sessionUserBuilder.displayname);
-        this.password = Objects.requireNonNull(sessionUserBuilder.password);
+    private User(UserBuilder userBuilder){
+        this.username= Objects.requireNonNull(userBuilder.username);
+        this.password = Objects.requireNonNull(userBuilder.password);
     }
 
     @Override
@@ -38,28 +35,21 @@ public class User implements sharedresources.interfaces.User, DataHandler, Seria
         }
     }
 
-    public String getDisplayName() {
-        return displayname;
-    }
-
     public boolean correctCredentials(LoginRequest loginRequest){
         return username.equals(loginRequest.getUsername()) && password.equals(loginRequest.getPassword());
     }
 
-    public static class SessionUserBuilder{
+    public static class UserBuilder {
+
         private String username;
-        private String displayname;
         private String password;
 
-        public SessionUserBuilder username(String username){
+        public UserBuilder username(String username){
             this.username = username;
             return this;
         }
-        public SessionUserBuilder displayname(String displayname){
-            this.displayname = displayname;
-            return this;
-        }
-        public SessionUserBuilder password(String password){
+
+        public UserBuilder password(String password){
             this.password = password;
             return this;
         }

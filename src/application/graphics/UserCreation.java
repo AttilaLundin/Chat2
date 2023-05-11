@@ -21,7 +21,7 @@ public class UserCreation extends JFrame {
     private Client client;
     private final String[] invalidUsernameChars = {"&", "=", "_", "'", "-", ",", "<", ">", "."};
     private final String[] invalidPasswordChars = { "(", ")", "{", "}", "[", "]", "|", "'", "´", "¬", "¦", "!", "\"", "£", "$", "%",
-            "<", ">", "&", "*", ";", ":", "#", "^", "-", "_", "~", "+", "=", ",", "@", "."};
+                                                    "<", ">", "&", "*", ";", ":", "#", "^", "-", "_", "~", "+", "=", ",", "@", "."};
 
 
     public UserCreation(Client client) {
@@ -50,7 +50,7 @@ public class UserCreation extends JFrame {
                 String controllPassword = new String(passwordField2.getPassword());
                 String displayName = displaynameField.getText();
                 if (password.equals(controllPassword) && validUsername(username) && validPassword(password) && validDisplayName(displayName)){
-                    boolean registrationSuccessful = client.sendRegistrationRequest(new RegisterRequest.RegisterBuilder().username(username).password(password).displayName(displayName).build());
+                    boolean registrationSuccessful = client.sendRegistrationRequest(new RegisterRequest.RegisterBuilder().username(username).password(password).build());
                     if(registrationSuccessful){
                         Dashboard dashboard = new Dashboard(client);
                         dispose();

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Objects;
 
 
@@ -31,8 +32,26 @@ public class ClientHandler implements Runnable{
                     data.dataHandler(userStorage, chatRoomStorage, output);
                 }
             }
-        }catch (IOException | ClassNotFoundException e){
-            e.printStackTrace();
+        }catch (SocketException se) {
+            System.out.println("Socket " + socket.getPort() + " disconnected");
+            try {
+                if (!socket.isClosed()) {
+                    socket.close();
+                }
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        } catch (IOException | ClassNotFoundException ioe) {
+            ioe.printStackTrace();
+        } finally {
+            try {
+                if (!socket.isClosed()) {
+                    socket.close();
+                }
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+            Thread.currentThread().interrupt();
         }
     }
 }

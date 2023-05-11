@@ -1,20 +1,18 @@
 package server;
 
-import sharedresources.TextMessage;
 import sharedresources.interfaces.Message;
 import sharedresources.ChatRoom;
 import sharedresources.User;
 
+import java.io.Serializable;
 import java.util.UUID;
 import java.util.Map;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Collections;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-public class ChatRoomStorage {
+public class ChatRoomStorage implements Serializable {
 
     private  Map<UUID, ChatRoom> chatRoomCentralStorage;
     private  Map<User, List<UUID>> chatRoomsThisUsersIsIn;
@@ -65,11 +63,8 @@ public class ChatRoomStorage {
 
     public void addMessageToChatRoom(UUID chatRoomID, Message message){
         ChatRoom chatRoom = chatRoomCentralStorage.get(chatRoomID);
+        if(chatRoom == null) return;
         chatRoom.addMessage(message);
-        if(chatRoom == null){
-            return;
-        }
-        ChatRoom chatRoom1 = chatRoomCentralStorage.get(chatRoomID);
     }
 }
 

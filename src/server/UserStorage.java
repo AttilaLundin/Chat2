@@ -4,28 +4,26 @@ import sharedresources.User;
 import sharedresources.requests.LoginRequest;
 import sharedresources.requests.RegisterRequest;
 
-import java.util.Collections;
-import java.util.HashMap;
+import java.io.Serializable;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class UserStorage {
+public class UserStorage implements Serializable {
 
     private final Map<String, User> registeredUsers;
 
     public UserStorage(){
         registeredUsers = new ConcurrentHashMap<>();
-//todo: remove
-        registeredUsers.put("test", new User.SessionUserBuilder().username("test").password("test").displayname("test").build());
-        registeredUsers.put("test1", new User.SessionUserBuilder().username("test1").password("test1").displayname("test1").build());
-        registeredUsers.put("test2", new User.SessionUserBuilder().username("test2").password("test2").displayname("test2").build());
-        registeredUsers.put("test3", new User.SessionUserBuilder().username("test3").password("test3").displayname("test3").build());
+          //todo: remove
+//        registeredUsers.put("test", new User.UserBuilder().username("test").password("test").build());
+//        registeredUsers.put("test1", new User.UserBuilder().username("test1").password("test1").build());
+//        registeredUsers.put("test2", new User.UserBuilder().username("test2").password("test2").build());
+//        registeredUsers.put("test3", new User.UserBuilder().username("test3").password("test3").build());
     }
 
     public User validateUser(LoginRequest loginRequestAttempt){
+
         User user = registeredUsers.get(loginRequestAttempt.getUsername());
-        Set<String> keys = registeredUsers.keySet();
 
         if(user == null) return null;
         if (user.correctCredentials(loginRequestAttempt)) {
@@ -39,7 +37,7 @@ public class UserStorage {
     public User createUser(RegisterRequest registerRequest){
         String username = registerRequest.getUsername();
         if(registeredUsers.containsKey(username)) return null;
-        User newUser = new User.SessionUserBuilder().username(registerRequest.getUsername()).password(registerRequest.getPassword()).displayname(registerRequest.getDisplayName()).build();
+        User newUser = new User.UserBuilder().username(registerRequest.getUsername()).password(registerRequest.getPassword()).build();
         registeredUsers.put(username, newUser);
         return newUser;
     }

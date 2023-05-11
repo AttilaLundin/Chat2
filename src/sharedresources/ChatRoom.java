@@ -22,18 +22,6 @@ public class ChatRoom implements Serializable {
         this.messages = messages;
     }
 
-    /*
-    public ChatRoom(){
-
-        this.chatRoomID = UUID.randomUUID();
-        ArrayList<User> testUsers = new ArrayList<>();
-        testUsers.add(new User.SessionUserBuilder().username("test").password("test").displayname("test").build());
-        testUsers.add(new User.SessionUserBuilder().username("test1").password("test1").displayname("test1").build());
-        this.users = testUsers;
-        this.messages = new ArrayList<>();
-    }
-    */
-
     public List<User> getUsers(){
         return users;
     }

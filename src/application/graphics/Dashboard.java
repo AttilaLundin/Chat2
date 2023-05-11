@@ -121,7 +121,7 @@ public class Dashboard extends JFrame{
     }
 
     private void setDisplayName(){
-        displayNameLabel.setText("Welcome " + user.getDisplayName() + ", have a capybara day!");
+        displayNameLabel.setText("Welcome " + user.getUsername() + ", have a capybara day!");
     }
 
     public void initButtons(){

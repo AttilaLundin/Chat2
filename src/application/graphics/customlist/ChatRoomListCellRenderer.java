@@ -26,7 +26,7 @@ public class ChatRoomListCellRenderer extends DefaultListCellRenderer{
         List<User> userList = chatRoom.getUsers();
         StringBuilder allUsers = new StringBuilder();
         for(User u : userList){
-            allUsers.append(", ").append(u.getUsername());
+            allUsers.append(u.getUsername()).append(", ");
         }
 
         label.setText("Chat room name: " + chatRoom.getChatRoomName() + "   Members: " + allUsers);
