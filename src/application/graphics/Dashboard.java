@@ -39,6 +39,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Dashboard extends JFrame{
+    private static final String GITHUB_URL = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
     private JPanel rootPanel;
     private JPanel sidePanel;
     private JButton gitHubButton;
