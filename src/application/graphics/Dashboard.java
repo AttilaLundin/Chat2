@@ -6,10 +6,8 @@ import application.graphics.customlist.UsernameListCellRenderer;
 import application.graphics.customlist.UsernameListSelectionModel;
 import sharedresources.ChatRoom;
 import sharedresources.User;
-import sharedresources.interfaces.Message;
 import sharedresources.requests.CreateNewChatRoom;
 import sharedresources.requests.FetchAllUser;
-import sharedresources.requests.FetchMessages;
 
 import javax.swing.*;
 import javax.swing.JPanel;
@@ -19,7 +17,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -27,11 +24,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+
 
 public class Dashboard extends JFrame{
     private JPanel rootPanel;
@@ -59,9 +52,18 @@ public class Dashboard extends JFrame{
     private Client client;
 
     public Dashboard(Client client){
-
         this.client = client;
         user = client.getSessionUser();
+
+        setupWindow();
+        initLists();
+        initTextField();
+        setupEventListeners();
+        updateUserList();
+        updateChatRoomList();
+        setVisible(true);
+    }
+    private void setupWindow(){
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
         setContentPane(rootPanel);
@@ -69,13 +71,7 @@ public class Dashboard extends JFrame{
         setMinimumSize(minmumWindowSize);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        initLists();
-        initTextField();
-        initButtons();
-        setDisplayName();
-        updateUserList();
-        updateChatroomList();
-        setVisible(true);
+        setWelcomeText();
     }
 
     public void initLists(){
@@ -101,7 +97,7 @@ public class Dashboard extends JFrame{
         }
     }
 
-    public void updateChatroomList(){
+    public void updateChatRoomList(){
         chatRoomListModel.clear();
         List<ChatRoom> chatRoomsList = client.getAllChatRooms();
         for(ChatRoom c : chatRoomsList){
@@ -120,89 +116,78 @@ public class Dashboard extends JFrame{
         });
     }
 
-    private void setDisplayName(){
+    private void setWelcomeText(){
         displayNameLabel.setText("Welcome " + user.getUsername() + ", have a capybara day!");
     }
 
-    public void initButtons(){
-        userList.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()) {
-                    selectedUsernames.clear();
-                    for (int index : userList.getSelectedIndices()) {
-                        selectedUsernames.add(userListModel.getElementAt(index));
-                    }
-                }
-            }
-        });
+    private void setupEventListeners() {
 
-        chatRoomList.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()) {
-                    selectedChatroom = (ChatRoom) chatRoomList.getSelectedValue();
-                }
-            }
-        });
+        //
+        userList.addListSelectionListener(this::onUserListValueChanged);
 
-        gitHubButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-                if (Desktop.isDesktopSupported()) {
-                    Desktop desktop = Desktop.getDesktop();
-                    try{
-                        desktop.browse(new URI(url));
-                    }catch (IOException | URISyntaxException i){
-                        i.printStackTrace();
-                    }
-                }
-            }
-        });
+        chatRoomList.addListSelectionListener(this::onChatRoomListValueChanged);
 
-        createCapyHerdButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                List<User> selectedUsers = userList.getSelectedValuesList();
-                if(selectedUsers == null || selectedUsers.isEmpty()) return;
-                selectedUsers.add(user);
-                String chatRoomName = chatRoomNameTextField.getText();
-                System.out.println(chatRoomName);
-                if(chatRoomName.equals("") || chatRoomName.equals("Enter Chatroom Name")){
-                    JOptionPane.showMessageDialog(null, "Please set chat room name\nTry again!", "Please set a valid chat room name", JOptionPane.INFORMATION_MESSAGE);
-                    return;
-                }
+        gitHubButton.addActionListener(this::onGitHubButtonClicked);
 
-                ChatRoom chatRoom = client.addChatRoom(new CreateNewChatRoom(chatRoomName, selectedUsers));
-                if(chatRoom != null){
-                    Chat chat = new Chat(client, chatRoom, user);
-                    dispose();
-                }
-            }
-        });
+        createCapyHerdButton.addActionListener(this::onCreateCapyHerdButtonClicked);
 
-        enterButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(selectedChatroom == null) return;
-                Chat chat = new Chat(client,selectedChatroom, user);
-                dispose();
-            }
-        });
+        enterButton.addActionListener(this::onEnterButtonClicked);
 
-        refreshButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                updateUserList();
-                updateChatroomList();
-            }
-        });
-
+        refreshButton.addActionListener(this::onRefreshButtonClicked);
     }
 
 
+    private void onUserListValueChanged(ListSelectionEvent e) {
+        if (!e.getValueIsAdjusting()) {
+            selectedUsernames.clear();
+            for (int index : userList.getSelectedIndices()) {
+                selectedUsernames.add(userListModel.getElementAt(index));
+            }
+        }
+    }
 
+    private void onChatRoomListValueChanged(ListSelectionEvent e){
+        if (!e.getValueIsAdjusting()) {
+            selectedChatroom = (ChatRoom) chatRoomList.getSelectedValue();
+        }
+    }
 
+    private void onGitHubButtonClicked(ActionEvent e) {
+        String url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        if (Desktop.isDesktopSupported()) {
+            Desktop desktop = Desktop.getDesktop();
+            try{
+                desktop.browse(new URI(url));
+            }catch (IOException | URISyntaxException i){
+                i.printStackTrace();
+            }
+        }
+    }
 
+    private void onCreateCapyHerdButtonClicked(ActionEvent e) {
+        List<User> selectedUsers = userList.getSelectedValuesList();
+        if(selectedUsers == null || selectedUsers.isEmpty()) return;
+        selectedUsers.add(user);
+        String chatRoomName = chatRoomNameTextField.getText();
+        if(chatRoomName.equals("") || chatRoomName.equals("Enter Chatroom Name")){
+            JOptionPane.showMessageDialog(null, "Please set chat room name\nTry again!", "Please set a valid chat room name", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        ChatRoom chatRoom = client.addChatRoom(new CreateNewChatRoom(chatRoomName, selectedUsers));
+        if(chatRoom != null){
+            Chat chat = new Chat(client, chatRoom, user);
+            dispose();
+        }
+    }
+
+    private void onEnterButtonClicked(ActionEvent e) {
+        if(selectedChatroom == null) return;
+        Chat chat = new Chat(client,selectedChatroom, user);
+        dispose();
+    }
+
+    private void onRefreshButtonClicked(ActionEvent e){
+        updateUserList();
+        updateChatRoomList();
+    }
 }

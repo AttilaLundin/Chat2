@@ -8,6 +8,7 @@ import javax.swing.JList;
 import javax.swing.JLabel;
 import java.awt.*;
 import java.util.List;
+import java.util.StringJoiner;
 
 
 import javax.swing.border.EmptyBorder;
@@ -24,9 +25,9 @@ public class ChatRoomListCellRenderer extends DefaultListCellRenderer{
         JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
         ChatRoom chatRoom = (ChatRoom) value;
         List<User> userList = chatRoom.getUsers();
-        StringBuilder allUsers = new StringBuilder();
+        StringJoiner allUsers = new StringJoiner(", ");
         for(User u : userList){
-            allUsers.append(u.getUsername()).append(", ");
+            allUsers.add(u.getUsername());
         }
 
         label.setText("Chat room name: " + chatRoom.getChatRoomName() + "   Members: " + allUsers);
