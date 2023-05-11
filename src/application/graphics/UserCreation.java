@@ -14,7 +14,6 @@ public class UserCreation extends JFrame {
     private JButton createButton;
     private JTextField usernameField;
     private JPasswordField passwordField2;
-    private JTextField displaynameField;
     private JPasswordField passwordField;
     private JButton capybara;
     private JButton loginButton;
@@ -48,8 +47,7 @@ public class UserCreation extends JFrame {
                 String username = usernameField.getText();
                 String password = new String(passwordField.getPassword());
                 String controllPassword = new String(passwordField2.getPassword());
-                String displayName = displaynameField.getText();
-                if (password.equals(controllPassword) && validUsername(username) && validPassword(password) && validDisplayName(displayName)){
+                if (password.equals(controllPassword) && validUsername(username) && validPassword(password)){
                     boolean registrationSuccessful = client.sendRegistrationRequest(new RegisterRequest.RegisterBuilder().username(username).password(password).build());
                     if(registrationSuccessful){
                         Dashboard dashboard = new Dashboard(client);
@@ -60,7 +58,6 @@ public class UserCreation extends JFrame {
                         usernameField.setText("");
                         passwordField.setText("");
                         passwordField2.setText("");
-                        displaynameField.setText("");
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "Username already taken\nPlease try again", "Registration unsuccessful" , JOptionPane.INFORMATION_MESSAGE);
@@ -92,10 +89,4 @@ public class UserCreation extends JFrame {
         }
         return true;
     }
-
-    private boolean validDisplayName(String displayName){
-        return displayName.length() >= 1 && displayName.length() <= 30;
-    }
-
-
 }
