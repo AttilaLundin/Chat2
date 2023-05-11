@@ -59,16 +59,10 @@ public class Dashboard extends JFrame{
     private Client client;
 
     public Dashboard(Client client){
-
         this.client = client;
         user = client.getSessionUser();
-        Dimension minmumWindowSize = new Dimension(500, 300);
-        Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setContentPane(rootPanel);
-        setSize(screeSize.width * 3 / 5,screeSize.height * 3 / 5);
-        setMinimumSize(minmumWindowSize);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        setupWindow();
         initLists();
         initTextField();
         initButtons();
@@ -76,6 +70,15 @@ public class Dashboard extends JFrame{
         updateUserList();
         updateChatroomList();
         setVisible(true);
+    }
+    private void setupWindow(){
+        Dimension minmumWindowSize = new Dimension(500, 300);
+        Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setContentPane(rootPanel);
+        setSize(screeSize.width * 3 / 5,screeSize.height * 3 / 5);
+        setMinimumSize(minmumWindowSize);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public void initLists(){
@@ -200,9 +203,4 @@ public class Dashboard extends JFrame{
         });
 
     }
-
-
-
-
-
 }
