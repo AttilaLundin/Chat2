@@ -1,6 +1,7 @@
 package application.graphics;
 
 import application.Client;
+import application.graphics.customlist.MessageListCellRenderer;
 import sharedresources.ChatRoom;
 import sharedresources.ImageMessage;
 import sharedresources.TextMessage;
@@ -8,7 +9,6 @@ import sharedresources.User;
 import sharedresources.interfaces.Message;
 import sharedresources.requests.FetchMessages;
 import sharedresources.requests.SendMessage;
-import sharedresources.requests.FetchChatRoom;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageInputStream;
@@ -33,7 +33,12 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
+/**
+ * A JFrame class that provides a chat interface for users to send and receive messages.
+ * It allows users to send text messages, and drag-and-drop files (currently only images) into the chat.
+ * The interface includes features such as a refresh button to fetch latest messages, and a send button to send messages.
+ * The chat interface also includes a link to a YouTube video and a button to go back to the home screen.
+ */
 public class Chat extends JFrame {
     private ScheduledExecutorService scheduler;
     private JPanel rootPanel;
@@ -43,14 +48,24 @@ public class Chat extends JFrame {
     private JButton sendButton;
     private JList messagesList;
     private JButton refreshButton;
+    private JLabel chatNameLabel;
     private DefaultListModel<Message> messageListModel;
     private ChatRoom displayedChatroom;
     private final Client client;
     private final User user;
 
+    /**
+     * Constructs a new Chat instance with a given client, chat room, and user.
+     * This also sets up the chat interface and starts the message update timer.
+     *
+     * @param client the client that is used to send and fetch messages
+     * @param displayedChatroom the chat room that this chat instance is associated with
+     * @param user the user who is currently using this chat interface
+     */
     public Chat(Client client, ChatRoom displayedChatroom, User user){
         this.client = client;
         this.displayedChatroom = displayedChatroom;
+        this.chatNameLabel.setText("Chatting in Room: " + displayedChatroom.getChatRoomName());
         this.user = user;
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -63,16 +78,22 @@ public class Chat extends JFrame {
         initializeButtons();
         initializeMessagesList();
         updateTimer();
+        getRootPane().setDefaultButton(sendButton);
         setVisible(true);
     }
 
-
+    /**
+     * Initializes the JList that displays the messages.
+     */
     public void initializeMessagesList(){
         messageListModel = new DefaultListModel<>();
         messagesList.setModel(messageListModel);
         messagesList.setCellRenderer(new MessageListCellRenderer());
     }
 
+    /**
+     * Updates the list of messages displayed in the interface by fetching the latest messages from the chat room.
+     */
     public void updateMessageList(){
         messageListModel.clear();
         List<Message> messages = displayedChatroom.getMessages();
@@ -81,6 +102,9 @@ public class Chat extends JFrame {
         }
     }
 
+    /**
+     * Starts a timer that updates the list of messages displayed in the interface every two seconds.
+     */
     public void updateTimer(){
         scheduler = Executors.newScheduledThreadPool(1);
             scheduler.scheduleAtFixedRate(new Runnable(){
@@ -90,10 +114,12 @@ public class Chat extends JFrame {
                     displayedChatroom.addMessagList(messages);
                     updateMessageList();
                 }
-            }, 2, 3, TimeUnit.SECONDS);
+            }, 0, 2, TimeUnit.SECONDS);
     }
 
-
+    /**
+     * Initializes the buttons in the chat interface, including their action listeners.
+     */
     public void initializeButtons(){
 
         refreshButton.addActionListener(new ActionListener() {
@@ -110,15 +136,16 @@ public class Chat extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 client.sendMessage(new SendMessage(displayedChatroom.getChatRoomID(), new TextMessage.TextMessageBuilder().text(textMessageField.getText()).sender(user).build()));
+                textMessageField.setText("");
             }
         });
 
         homeScreenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
                 Dashboard dashboard = new Dashboard(client);
                 scheduler.close();
+                dispose();
             }
         });
 
@@ -138,7 +165,10 @@ public class Chat extends JFrame {
         });
     }
 
-
+    /**
+     * Initializes the drag-and-drop feature for the chat interface.
+     * This allows users to drag and drop files (currently only images) into the chat to send them as messages.
+     */
     private void initializeDragAndDrop(){
         rootPanel.setDropTarget(new DropTarget(rootPanel, DnDConstants.ACTION_COPY, new DropTargetAdapter() {
             //TODO: ändra mainpanel till chattrumspanelen eller den här Jlist
@@ -158,7 +188,6 @@ public class Chat extends JFrame {
                             if(o instanceof File imageFile){
                                 BufferedImage bufferedImage = ImageIO.read(imageFile);
                                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//                                Avkommentera detta om vi vill ha support för mer än jpg, typ gif osv.
                                 ImageInputStream imageInputStream = ImageIO.createImageInputStream(imageFile);
                                 String format = ImageIO.getImageReaders(imageInputStream).next().getFormatName();
 

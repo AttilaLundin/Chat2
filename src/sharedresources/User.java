@@ -8,18 +8,15 @@ import sharedresources.requests.LoginRequest;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.UUID;
-import java.util.List;
 
 public class User implements sharedresources.interfaces.User, DataHandler, Serializable{
     private String username;
-    private String displayname;
+
     private String password;
 
-    private User(SessionUserBuilder sessionUserBuilder){
-        this.username= Objects.requireNonNull(sessionUserBuilder.username);
-        this.displayname = Objects.requireNonNull(sessionUserBuilder.displayname);
-        this.password = Objects.requireNonNull(sessionUserBuilder.password);
+    private User(UserBuilder userBuilder){
+        this.username= Objects.requireNonNull(userBuilder.username);
+        this.password = Objects.requireNonNull(userBuilder.password);
     }
 
     @Override
@@ -38,36 +35,22 @@ public class User implements sharedresources.interfaces.User, DataHandler, Seria
         }
     }
 
-    public String getDisplayName() {
-        return displayname;
-    }
-
     public boolean correctCredentials(LoginRequest loginRequest){
         return username.equals(loginRequest.getUsername()) && password.equals(loginRequest.getPassword());
     }
 
-    public static class SessionUserBuilder{
-        private String username;
-        private String displayname;
-        private String password;
-        private List<UUID> chatRoomIDs;
+    public static class UserBuilder {
 
-        public SessionUserBuilder username(String username){
+        private String username;
+        private String password;
+
+        public UserBuilder username(String username){
             this.username = username;
             return this;
         }
-        public SessionUserBuilder displayname(String displayname){
-            this.displayname = displayname;
-            return this;
-        }
-        public SessionUserBuilder password(String password){
+
+        public UserBuilder password(String password){
             this.password = password;
-            return this;
-        }
-
-
-        public SessionUserBuilder chatRoomIDs(List<UUID> chatRoomIDs) {
-            this.chatRoomIDs = chatRoomIDs;
             return this;
         }
 
@@ -75,6 +58,23 @@ public class User implements sharedresources.interfaces.User, DataHandler, Seria
             return new User(this);
         }
 
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if(other == this) {
+            return true;
+        }
+        if(other == null || other.getClass() != this.getClass()) {
+            return false;
+        }
+        User user = (User) other;
+        return this.username.equals((user.username));
+    }
+
+    @Override
+    public int hashCode(){
+        return this.username.hashCode();
     }
 
 

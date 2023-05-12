@@ -1,28 +1,39 @@
 package server;
 
-import sharedresources.TextMessage;
 import sharedresources.interfaces.Message;
 import sharedresources.ChatRoom;
 import sharedresources.User;
 
+import java.io.Serializable;
 import java.util.UUID;
 import java.util.Map;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Collections;
 import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
-
-public class ChatRoomStorage {
+/**
+ * A class that handles the storage of chat rooms in the chat application. This class is responsible for
+ * adding and retrieving chat rooms and messages, and tracking which users are in which chat rooms.
+ */
+public class ChatRoomStorage implements Serializable {
 
     private  Map<UUID, ChatRoom> chatRoomCentralStorage;
     private  Map<User, List<UUID>> chatRoomsThisUsersIsIn;
 
+    /**
+     * Constructor that initializes the chat room and user storage.
+     */
     public ChatRoomStorage() {
-        chatRoomCentralStorage = Collections.synchronizedMap(new HashMap<>());
-        chatRoomsThisUsersIsIn = Collections.synchronizedMap(new HashMap<>());
+        chatRoomCentralStorage = new ConcurrentHashMap<>();
+        chatRoomsThisUsersIsIn = new ConcurrentHashMap<>();
     }
 
+    /**
+     * Retrieves all chat rooms that a specific user is in.
+     *
+     * @param user the user for which to get the chat rooms
+     * @return a list of chat rooms
+     */
     public List<ChatRoom> getAllChatRooms(User user){
         List<UUID> chatRoomIDs = chatRoomsThisUsersIsIn.get(user);
         List<ChatRoom> chatRooms = new ArrayList<>();
@@ -36,15 +47,34 @@ public class ChatRoomStorage {
 
     }
 
+    /**
+     * Retrieves a specific chat room by its ID.
+     *
+     * @param chatRoomID the ID of the chat room
+     * @return the chat room
+     */
     public ChatRoom getChatRoom(UUID chatRoomID){
         List<Message> list = chatRoomCentralStorage.get(chatRoomID).getMessages();
         return chatRoomCentralStorage.get(chatRoomID);
     }
 
+    /**
+     * Retrieves all messages from a specific chat room.
+     *
+     * @param chatRoomID the ID of the chat room
+     * @return a list of messages
+     */
     public List<Message> getMessages(UUID chatRoomID){
         return chatRoomCentralStorage.get(chatRoomID).getMessages();
     }
 
+    /**
+     * Adds a new chat room with the provided name and members.
+     *
+     * @param chatRoomName the name of the chat room
+     * @param membersInChatRoom the members of the chat room
+     * @return the created chat room
+     */
     public ChatRoom addChatRoom(String chatRoomName, List<User> membersInChatRoom){
 
         ChatRoom chatRoom = new ChatRoom(chatRoomName, membersInChatRoom, new ArrayList<>());
@@ -61,14 +91,16 @@ public class ChatRoomStorage {
         return chatRoom;
     }
 
-
+    /**
+     * Adds a message to a specific chat room.
+     *
+     * @param chatRoomID the ID of the chat room
+     * @param message the message to add
+     */
     public void addMessageToChatRoom(UUID chatRoomID, Message message){
         ChatRoom chatRoom = chatRoomCentralStorage.get(chatRoomID);
+        if(chatRoom == null) return;
         chatRoom.addMessage(message);
-        if(chatRoom == null){
-            return;
-        }
-        ChatRoom chatRoom1 = chatRoomCentralStorage.get(chatRoomID);
     }
 }
 

@@ -12,6 +12,10 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * A JFrame class that provides a login interface for users to input their username and password.
+ * The interface includes buttons to submit the login information, create a new user, and exit the application.
+ */
 public class LoginWindow extends JFrame{
     private JButton createUserButton;
     private JPanel rootPanel;
@@ -22,6 +26,13 @@ public class LoginWindow extends JFrame{
     private JPanel buttonPanel;
     private JButton button1;
     private final Client client;
+
+    /**
+     * Constructs a new LoginWindow instance with a given client.
+     * This also sets up the login interface and makes it visible.
+     *
+     * @param client the client that is used to send login requests
+     */
     public LoginWindow(Client client){
         this.client = client;
         Dimension minmumWindowSize = new Dimension(500, 300);
@@ -36,7 +47,14 @@ public class LoginWindow extends JFrame{
         setVisible(true);
     }
 
-
+    /**
+     * Initializes the buttons on the login interface, including their event listeners.
+     * The 'create user' button opens a new UserCreation window and closes the login window.
+     * The 'exit' button closes the application.
+     * The 'login' button sends a login request with the inputted username and password,
+     * opens a new Dashboard window and closes the login window if the login is successful,
+     * or displays an error message and clears the input fields if the login is unsuccessful.
+     */
     public void initializeButtons(){
         createUserButton.addActionListener(new ActionListener() {
             @Override
