@@ -1,4 +1,4 @@
-package graphics.customlist;
+package ui;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;

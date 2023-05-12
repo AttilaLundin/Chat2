@@ -1,10 +1,6 @@
-package graphics;
+package ui;
 
 import application.Client;
-import common.User;
-import graphics.customlist.ChatRoomListCellRenderer;
-import graphics.customlist.UsernameListCellRenderer;
-import graphics.customlist.UsernameListSelectionModel;
 import common.ChatRoom;
 import common.RegisteredUser;
 import common.requests.CreateNewChatRoom;

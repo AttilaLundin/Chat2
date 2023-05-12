@@ -1,4 +1,4 @@
-package graphics;
+package ui;
 
 import application.Client;
 import common.requests.LoginRequest;

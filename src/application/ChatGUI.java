@@ -1,6 +1,6 @@
 package application;
 
-import graphics.LoginWindow;
+import ui.LoginWindow;
 
 /**
  * The main class for running the chat application.

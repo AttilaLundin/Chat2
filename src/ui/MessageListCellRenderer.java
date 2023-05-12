@@ -1,4 +1,4 @@
-package graphics.customlist;
+package ui;
 
 import common.ImageMessage;
 import common.TextMessage;

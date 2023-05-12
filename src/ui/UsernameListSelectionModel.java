@@ -1,4 +1,4 @@
-package graphics.customlist;
+package ui;
 
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.Timer;

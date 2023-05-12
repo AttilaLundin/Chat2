@@ -1,7 +1,6 @@
-package graphics;
+package ui;
 
 import application.Client;
-import graphics.customlist.MessageListCellRenderer;
 import common.ChatRoom;
 import common.ImageMessage;
 import common.TextMessage;
