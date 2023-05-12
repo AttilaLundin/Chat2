@@ -43,6 +43,7 @@ public class LoginWindow extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeButtons();
         getRootPane().setDefaultButton(loginButton);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
