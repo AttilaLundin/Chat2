@@ -44,7 +44,7 @@ public class Server {
     }
 
     /**
-     * Load the user storage from a file. If the file does not exist or an error occurs while reading the file,
+     * Load the user storage from a file. If an error occurs while reading the file,
      * a new empty user storage is created.
      *
      * @return the loaded or newly created user storage
@@ -73,7 +73,7 @@ public class Server {
     }
 
     /**
-     * Load the chat room storage from a file. If the file does not exist or an error occurs while reading the file,
+     * Load the chat room storage from a file. If an error occurs while reading the file,
      * a new empty chat room storage is created.
      *
      * @return the loaded or newly created chat room storage

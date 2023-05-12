@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * A class that handles the storage of chat rooms in the chat application. This class is responsible for
- * adding and retrieving chat rooms and messages, and tracking which users are in which chat rooms.
+ * adding and retrieving (storing) chat rooms and messages, and tracking which users are in which chat rooms.
  */
 public class ChatRoomStorage implements Serializable {
     @Serial

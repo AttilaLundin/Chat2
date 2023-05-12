@@ -21,7 +21,7 @@ public class UserCreation extends JFrame {
     private JPasswordField passwordField;
     private JButton capybara;
     private JButton loginButton;
-    private Client client;
+    private final Client client;
     private final String[] invalidUsernameChars = {"&", "=", "_", "'", "-", ",", "<", ">", "."};
     private final String[] invalidPasswordChars = { "(", ")", "{", "}", "[", "]", "|", "'", "´", "¬", "¦", "!", "\"", "£", "$", "%",
                                                     "<", ">", "&", "*", ";", ":", "#", "^", "-", "_", "~", "+", "=", ",", "@", "."};

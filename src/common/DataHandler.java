@@ -7,7 +7,8 @@ import java.io.ObjectOutputStream;
 
 /**
  * An interface that represents a data handler in the chat application.
- * This interface has a method to handle data from user storage and chat room storage.
+ * This interface has a method with parameters meant for handling data from user storage and chat room storage but also
+ * handles requests and users.
  */
 public interface DataHandler{
 
