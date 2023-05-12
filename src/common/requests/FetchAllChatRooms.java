@@ -8,6 +8,7 @@ import common.DataHandler;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,8 +17,10 @@ import java.util.List;
  * It is responsible for fetching all chat rooms that a specific user is part of.
  */
 public class FetchAllChatRooms implements DataHandler, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
-    private RegisteredUser user;
+    private final RegisteredUser user;
 
     /**
      * This constructor initializes the FetchAllChatRooms object.

@@ -1,11 +1,14 @@
 package common;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 
 public class TextMessage implements Message, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private final String text;
-    private RegisteredUser sender;
+    private final RegisteredUser sender;
 
     private TextMessage(TextMessageBuilder textMessageBuilder){
         this.text= textMessageBuilder.text;

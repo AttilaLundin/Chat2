@@ -5,13 +5,16 @@ import server.UserStorage;
 import common.requests.LoginRequest;
 
 import java.io.ObjectOutputStream;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
 public class RegisteredUser implements User, DataHandler, Serializable{
-    private String username;
+    @Serial
+    private static final long serialVersionUID = 1L;
+    private final String username;
 
-    private String password;
+    private final String password;
 
     private RegisteredUser(UserBuilder userBuilder){
         this.username= Objects.requireNonNull(userBuilder.username);

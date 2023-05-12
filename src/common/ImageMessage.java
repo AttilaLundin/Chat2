@@ -4,10 +4,13 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
 public class ImageMessage implements Message, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private final byte[] imageBytes;
     private final RegisteredUser sender;
 
@@ -17,6 +20,8 @@ public class ImageMessage implements Message, Serializable {
     }
 
     public static class ImageMessageBuilder implements Serializable{
+        @Serial
+        private static final long serialVersionUID = 1L;
         private byte[] imageBytes;
         private RegisteredUser sender;
 

@@ -8,6 +8,7 @@ import common.DataHandler;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,9 +17,11 @@ import java.util.List;
  * It is responsible for creating a new chat room and handling related data.
  */
 public class CreateNewChatRoom implements DataHandler, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
-    private List<RegisteredUser> usersInChatRoom;
-    private String chatRoomName;
+    private final List<RegisteredUser> usersInChatRoom;
+    private final String chatRoomName;
 
     /**
      * This constructor initializes the CreateNewChatRoom object.

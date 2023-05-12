@@ -1,5 +1,6 @@
 package common;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -7,10 +8,12 @@ import java.util.UUID;
 
 
 public class ChatRoom implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
-    private String chatRoomName;
+    private final String chatRoomName;
     private final UUID chatRoomID;
-    private List<RegisteredUser> users;
+    private final List<RegisteredUser> users;
     private List<Message> messages;
 
     public ChatRoom(String chatRoomName, List<RegisteredUser> users, List<Message> messages){
