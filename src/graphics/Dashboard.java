@@ -1,6 +1,7 @@
 package graphics;
 
 import application.Client;
+import common.User;
 import graphics.customlist.ChatRoomListCellRenderer;
 import graphics.customlist.UsernameListCellRenderer;
 import graphics.customlist.UsernameListSelectionModel;
@@ -41,7 +42,7 @@ public class Dashboard extends JFrame{
     private JScrollPane chatRoomScrollPane;
     private JPanel chatRoomPanel;
     private JLabel displayNameLabel;
-    private JList userList;
+    private JList<RegisteredUser> userList;
     private DefaultListModel<RegisteredUser> userListModel;
     private List<RegisteredUser> selectedUsernames = new ArrayList<>();
     private ChatRoom selectedChatroom;
