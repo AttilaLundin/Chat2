@@ -52,6 +52,5 @@ public class CreateNewChatRoom implements DataHandler, Serializable {
        }catch (IOException e){
            e.printStackTrace();
        }
-
     }
 }
