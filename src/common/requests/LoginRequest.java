@@ -1,10 +1,11 @@
-package sharedresources.requests;
+package common.requests;
 
 
+import common.User;
 import server.ChatRoomStorage;
 import server.UserStorage;
-import sharedresources.User;
-import sharedresources.interfaces.DataHandler;
+import common.RegisteredUser;
+import common.DataHandler;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -13,7 +14,7 @@ import java.io.Serializable;
  * This class implements the User, DataHandler, and Serializable interfaces.
  * It represents a login request from a client, containing the client's username and password.
  */
-public class LoginRequest implements sharedresources.interfaces.User, DataHandler, Serializable {
+public class LoginRequest implements User, DataHandler, Serializable {
 
     private final String username;
     private final String password;
@@ -89,7 +90,7 @@ public class LoginRequest implements sharedresources.interfaces.User, DataHandle
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatRoomStorage, ObjectOutputStream outputStream) {
 
         try {
-            User user = userStorage.validateUser(this);
+            RegisteredUser user = userStorage.validateUser(this);
 
             outputStream.writeObject(user);
             outputStream.flush();

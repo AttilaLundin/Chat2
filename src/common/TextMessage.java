@@ -1,12 +1,11 @@
-package sharedresources;
+package common;
 
-import sharedresources.interfaces.Message;
 import java.io.Serializable;
 
 
 public class TextMessage implements Message, Serializable {
     private final String text;
-    private User sender;
+    private RegisteredUser sender;
 
     private TextMessage(TextMessageBuilder textMessageBuilder){
         this.text= textMessageBuilder.text;
@@ -15,14 +14,14 @@ public class TextMessage implements Message, Serializable {
 
     public static class TextMessageBuilder{
         private String text;
-        private User sender;
+        private RegisteredUser sender;
 
         public TextMessageBuilder text (String text){
             this.text = text;
             return this;
         }
 
-        public TextMessageBuilder sender(User sender) {
+        public TextMessageBuilder sender(RegisteredUser sender) {
             this.sender = sender;
             return this;
         }
@@ -38,7 +37,7 @@ public class TextMessage implements Message, Serializable {
     }
 
     @Override
-    public User getSender() {
+    public RegisteredUser getSender() {
         return sender;
     }
 

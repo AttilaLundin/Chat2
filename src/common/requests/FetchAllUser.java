@@ -1,9 +1,9 @@
-package sharedresources.requests;
+package common.requests;
 
 import server.ChatRoomStorage;
 import server.UserStorage;
-import sharedresources.User;
-import sharedresources.interfaces.DataHandler;
+import common.RegisteredUser;
+import common.DataHandler;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -28,7 +28,7 @@ public class FetchAllUser implements DataHandler, Serializable {
     public void dataHandler(UserStorage userStorage, ChatRoomStorage chatroomStorage, ObjectOutputStream outputStream) {
 
         try{
-            Map<String, User> userMap = userStorage.getAllUsers();
+            Map<String, RegisteredUser> userMap = userStorage.getAllUsers();
             if(userMap == null){
                 outputStream.writeObject(true);
                 outputStream.flush();

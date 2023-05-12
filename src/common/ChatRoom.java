@@ -1,6 +1,4 @@
-package sharedresources;
-
-import sharedresources.interfaces.Message;
+package common;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,23 +10,23 @@ public class ChatRoom implements Serializable {
 
     private String chatRoomName;
     private final UUID chatRoomID;
-    private List<User> users;
+    private List<RegisteredUser> users;
     private List<Message> messages;
 
-    public ChatRoom(String chatRoomName, List<User> users, List<Message> messages){
+    public ChatRoom(String chatRoomName, List<RegisteredUser> users, List<Message> messages){
         this.chatRoomName = Objects.requireNonNull(chatRoomName);
         this.chatRoomID = UUID.randomUUID();
         this.users = Objects.requireNonNull(users);
         this.messages = messages;
     }
 
-    public List<User> getUsers(){
+    public List<RegisteredUser> getUsers(){
         return users;
     }
     public UUID getChatRoomID(){
         return chatRoomID;
     }
-    public List<User> getUsersInChatRoom(){
+    public List<RegisteredUser> getUsersInChatRoom(){
         return users;
     }
     public List<Message> getMessages(){

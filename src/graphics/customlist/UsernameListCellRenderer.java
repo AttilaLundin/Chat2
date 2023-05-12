@@ -1,15 +1,14 @@
-package application.graphics.customlist;
+package graphics.customlist;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 import javax.swing.JLabel;
 import java.awt.Component;
 
-import sharedresources.User;
-import javax.swing.*;
+import common.RegisteredUser;
+
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.util.Arrays;
 
 
 /**
@@ -43,7 +42,7 @@ public class UsernameListCellRenderer extends DefaultListCellRenderer{
     @Override
     public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-        User user = (User) value;
+        RegisteredUser user = (RegisteredUser) value;
 
         label.setText(user.getUsername());
 

@@ -1,10 +1,10 @@
-package sharedresources.requests;
+package common.requests;
 
 import server.ChatRoomStorage;
 import server.UserStorage;
-import sharedresources.ChatRoom;
-import sharedresources.User;
-import sharedresources.interfaces.DataHandler;
+import common.ChatRoom;
+import common.RegisteredUser;
+import common.DataHandler;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -17,14 +17,14 @@ import java.util.List;
  */
 public class FetchAllChatRooms implements DataHandler, Serializable {
 
-    private User user;
+    private RegisteredUser user;
 
     /**
      * This constructor initializes the FetchAllChatRooms object.
      *
      * @param user The user whose chat rooms will be fetched.
      */
-    public FetchAllChatRooms(User user){
+    public FetchAllChatRooms(RegisteredUser user){
         this.user = user;
     }
 

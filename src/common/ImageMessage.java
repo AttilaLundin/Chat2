@@ -1,6 +1,5 @@
-package sharedresources;
+package common;
 
-import sharedresources.interfaces.Message;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -10,7 +9,7 @@ import java.util.Objects;
 
 public class ImageMessage implements Message, Serializable {
     private final byte[] imageBytes;
-    private final User sender;
+    private final RegisteredUser sender;
 
     private ImageMessage(ImageMessageBuilder imageMessageBuilder){
         this.imageBytes = Objects.requireNonNull(imageMessageBuilder.imageBytes);
@@ -19,14 +18,14 @@ public class ImageMessage implements Message, Serializable {
 
     public static class ImageMessageBuilder implements Serializable{
         private byte[] imageBytes;
-        private User sender;
+        private RegisteredUser sender;
 
         public ImageMessageBuilder image (byte[] imageBytes){
             this.imageBytes = imageBytes;
             return this;
         }
 
-        public ImageMessageBuilder sender(User sender) {
+        public ImageMessageBuilder sender(RegisteredUser sender) {
             this.sender = sender;
             return this;
         }
@@ -47,7 +46,7 @@ public class ImageMessage implements Message, Serializable {
     }
 
     @Override
-    public User getSender() {
+    public RegisteredUser getSender() {
         return sender;
     }
 

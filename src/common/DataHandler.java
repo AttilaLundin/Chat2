@@ -1,10 +1,9 @@
-package sharedresources.interfaces;
+package common;
 
 import server.ChatRoomStorage;
 import server.UserStorage;
 
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
 /**
  * An interface that represents a data handler in the chat application.

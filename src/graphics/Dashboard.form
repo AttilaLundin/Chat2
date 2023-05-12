@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="application.graphics.Dashboard">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="graphics.Dashboard">
   <grid id="27dc6" binding="rootPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="20" y="20" width="1236" height="814"/>
@@ -28,7 +28,7 @@
               <contentAreaFilled value="true"/>
               <defaultCapable value="true"/>
               <foreground color="-15790311"/>
-              <icon value="application/graphics/icons/icons8_github_40px_1.png"/>
+              <icon value="graphics/icons/icons8_github_40px_1.png"/>
               <label value=""/>
               <text value=""/>
               <verifyInputWhenFocusTarget value="true"/>
@@ -48,7 +48,7 @@
               <borderPainted value="false"/>
               <contentAreaFilled value="true"/>
               <foreground color="-15790311"/>
-              <icon value="application/graphics/icons/icons8_dashboard_layout_40px.png"/>
+              <icon value="graphics/icons/icons8_dashboard_layout_40px.png"/>
               <label value=""/>
               <text value=""/>
             </properties>
@@ -85,7 +85,7 @@
               <background color="-15790311"/>
               <borderPainted value="false"/>
               <contentAreaFilled value="true"/>
-              <icon value="application/graphics/icons/icons8_Refresh_40px.png"/>
+              <icon value="graphics/icons/icons8_Refresh_40px.png"/>
               <opaque value="true"/>
               <text value=""/>
             </properties>
@@ -215,7 +215,7 @@
                   <background color="-13684930"/>
                   <font size="18"/>
                   <foreground color="-855824"/>
-                  <icon value="application/graphics/icons/icons8_topic_40px.png"/>
+                  <icon value="graphics/icons/icons8_topic_40px.png"/>
                   <inheritsPopupMenu value="false"/>
                   <text value="Enter"/>
                 </properties>
@@ -273,7 +273,7 @@
                   <contentAreaFilled value="true"/>
                   <font size="18"/>
                   <foreground color="-1"/>
-                  <icon value="application/graphics/icons/capybara (1).png"/>
+                  <icon value="graphics/icons/capybara (1).png"/>
                   <opaque value="true"/>
                   <text value="Create Capy Herd"/>
                 </properties>

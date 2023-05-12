@@ -1,16 +1,13 @@
-package sharedresources.requests;
+package common.requests;
 
 import server.ChatRoomStorage;
 import server.UserStorage;
-import sharedresources.ChatRoom;
-import sharedresources.TextMessage;
-import sharedresources.interfaces.DataHandler;
-import sharedresources.interfaces.Message;
+import common.ChatRoom;
+import common.DataHandler;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.List;
 import java.util.UUID;
 
 /**

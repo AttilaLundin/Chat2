@@ -1,13 +1,13 @@
-package application.graphics;
+package graphics;
 
 import application.Client;
-import application.graphics.customlist.ChatRoomListCellRenderer;
-import application.graphics.customlist.UsernameListCellRenderer;
-import application.graphics.customlist.UsernameListSelectionModel;
-import sharedresources.ChatRoom;
-import sharedresources.User;
-import sharedresources.requests.CreateNewChatRoom;
-import sharedresources.requests.FetchAllUser;
+import graphics.customlist.ChatRoomListCellRenderer;
+import graphics.customlist.UsernameListCellRenderer;
+import graphics.customlist.UsernameListSelectionModel;
+import common.ChatRoom;
+import common.RegisteredUser;
+import common.requests.CreateNewChatRoom;
+import common.requests.FetchAllUser;
 
 import javax.swing.*;
 import javax.swing.JPanel;
@@ -42,8 +42,8 @@ public class Dashboard extends JFrame{
     private JPanel chatRoomPanel;
     private JLabel displayNameLabel;
     private JList userList;
-    private DefaultListModel<User> userListModel;
-    private List<User> selectedUsernames = new ArrayList<>();
+    private DefaultListModel<RegisteredUser> userListModel;
+    private List<RegisteredUser> selectedUsernames = new ArrayList<>();
     private ChatRoom selectedChatroom;
     private JButton createCapyHerdButton;
     private JPanel displayBarPanel;
@@ -54,7 +54,7 @@ public class Dashboard extends JFrame{
     private JButton refreshButton;
     private JTextField chatRoomNameTextField;
     private JPanel userPanel;
-    private User user;
+    private RegisteredUser user;
     private Client client;
 
     /**
@@ -111,9 +111,9 @@ public class Dashboard extends JFrame{
      */
     public void updateUserList(){
         userListModel.clear();
-        List<User> usersList = client.getUsersList(new FetchAllUser());
+        List<RegisteredUser> usersList = client.getUsersList(new FetchAllUser());
         if(usersList == null) return;
-        for(User u : usersList){
+        for(RegisteredUser u : usersList){
             if(u.getUsername().equals(user.getUsername()))continue;
             userListModel.addElement(u);
         }
@@ -198,7 +198,7 @@ public class Dashboard extends JFrame{
     }
 
     private void onCreateCapyHerdButtonClicked(ActionEvent e) {
-        List<User> selectedUsers = userList.getSelectedValuesList();
+        List<RegisteredUser> selectedUsers = userList.getSelectedValuesList();
         if(selectedUsers == null || selectedUsers.isEmpty()) return;
         selectedUsers.add(user);
         String chatRoomName = chatRoomNameTextField.getText();

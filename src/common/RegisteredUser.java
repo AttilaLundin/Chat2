@@ -1,20 +1,19 @@
-package sharedresources;
+package common;
 
 import server.ChatRoomStorage;
 import server.UserStorage;
-import sharedresources.interfaces.DataHandler;
-import sharedresources.requests.LoginRequest;
+import common.requests.LoginRequest;
 
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class User implements sharedresources.interfaces.User, DataHandler, Serializable{
+public class RegisteredUser implements User, DataHandler, Serializable{
     private String username;
 
     private String password;
 
-    private User(UserBuilder userBuilder){
+    private RegisteredUser(UserBuilder userBuilder){
         this.username= Objects.requireNonNull(userBuilder.username);
         this.password = Objects.requireNonNull(userBuilder.password);
     }
@@ -54,8 +53,8 @@ public class User implements sharedresources.interfaces.User, DataHandler, Seria
             return this;
         }
 
-        public User build(){
-            return new User(this);
+        public RegisteredUser build(){
+            return new RegisteredUser(this);
         }
 
     }
@@ -68,7 +67,7 @@ public class User implements sharedresources.interfaces.User, DataHandler, Seria
         if(other == null || other.getClass() != this.getClass()) {
             return false;
         }
-        User user = (User) other;
+        RegisteredUser user = (RegisteredUser) other;
         return this.username.equals((user.username));
     }
 

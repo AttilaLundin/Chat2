@@ -1,14 +1,14 @@
-package application.graphics;
+package graphics;
 
 import application.Client;
-import application.graphics.customlist.MessageListCellRenderer;
-import sharedresources.ChatRoom;
-import sharedresources.ImageMessage;
-import sharedresources.TextMessage;
-import sharedresources.User;
-import sharedresources.interfaces.Message;
-import sharedresources.requests.FetchMessages;
-import sharedresources.requests.SendMessage;
+import graphics.customlist.MessageListCellRenderer;
+import common.ChatRoom;
+import common.ImageMessage;
+import common.TextMessage;
+import common.RegisteredUser;
+import common.Message;
+import common.requests.FetchMessages;
+import common.requests.SendMessage;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageInputStream;
@@ -52,7 +52,7 @@ public class Chat extends JFrame {
     private DefaultListModel<Message> messageListModel;
     private ChatRoom displayedChatroom;
     private final Client client;
-    private final User user;
+    private final RegisteredUser user;
 
     /**
      * Constructs a new Chat instance with a given client, chat room, and user.
@@ -62,11 +62,12 @@ public class Chat extends JFrame {
      * @param displayedChatroom the chat room that this chat instance is associated with
      * @param user the user who is currently using this chat interface
      */
-    public Chat(Client client, ChatRoom displayedChatroom, User user){
+    public Chat(Client client, ChatRoom displayedChatroom, RegisteredUser user){
         this.client = client;
         this.displayedChatroom = displayedChatroom;
         this.chatNameLabel.setText("Chatting in Room: " + displayedChatroom.getChatRoomName());
         this.user = user;
+
         Dimension minmumWindowSize = new Dimension(500, 300);
         Dimension screeSize = Toolkit.getDefaultToolkit().getScreenSize();
         setContentPane(rootPanel);

@@ -1,6 +1,6 @@
 package server;
 
-import sharedresources.interfaces.DataHandler;
+import common.DataHandler;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

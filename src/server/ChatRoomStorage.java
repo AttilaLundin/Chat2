@@ -1,8 +1,8 @@
 package server;
 
-import sharedresources.interfaces.Message;
-import sharedresources.ChatRoom;
-import sharedresources.User;
+import common.Message;
+import common.ChatRoom;
+import common.RegisteredUser;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ChatRoomStorage implements Serializable {
 
     private  Map<UUID, ChatRoom> chatRoomCentralStorage;
-    private  Map<User, List<UUID>> chatRoomsThisUsersIsIn;
+    private  Map<RegisteredUser, List<UUID>> chatRoomsThisUsersIsIn;
 
     /**
      * Constructor that initializes the chat room and user storage.
@@ -34,7 +34,7 @@ public class ChatRoomStorage implements Serializable {
      * @param user the user for which to get the chat rooms
      * @return a list of chat rooms
      */
-    public List<ChatRoom> getAllChatRooms(User user){
+    public List<ChatRoom> getAllChatRooms(RegisteredUser user){
         List<UUID> chatRoomIDs = chatRoomsThisUsersIsIn.get(user);
         List<ChatRoom> chatRooms = new ArrayList<>();
 
@@ -75,12 +75,12 @@ public class ChatRoomStorage implements Serializable {
      * @param membersInChatRoom the members of the chat room
      * @return the created chat room
      */
-    public ChatRoom addChatRoom(String chatRoomName, List<User> membersInChatRoom){
+    public ChatRoom addChatRoom(String chatRoomName, List<RegisteredUser> membersInChatRoom){
 
         ChatRoom chatRoom = new ChatRoom(chatRoomName, membersInChatRoom, new ArrayList<>());
 
         chatRoomCentralStorage.put(chatRoom.getChatRoomID(), chatRoom);
-        for(User user : membersInChatRoom){
+        for(RegisteredUser user : membersInChatRoom){
             if(chatRoomsThisUsersIsIn.containsKey(user)) chatRoomsThisUsersIsIn.get(user).add(chatRoom.getChatRoomID());
             else {
                 ArrayList<UUID> chatRoomId = new ArrayList<>();

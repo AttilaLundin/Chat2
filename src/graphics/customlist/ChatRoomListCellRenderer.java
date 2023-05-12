@@ -1,7 +1,7 @@
-package application.graphics.customlist;
+package graphics.customlist;
 
-import sharedresources.ChatRoom;
-import sharedresources.User;
+import common.ChatRoom;
+import common.RegisteredUser;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
@@ -39,9 +39,9 @@ public class ChatRoomListCellRenderer extends DefaultListCellRenderer{
     public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
         ChatRoom chatRoom = (ChatRoom) value;
-        List<User> userList = chatRoom.getUsers();
+        List<RegisteredUser> userList = chatRoom.getUsers();
         StringJoiner allUsers = new StringJoiner(", ");
-        for(User u : userList){
+        for(RegisteredUser u : userList){
             allUsers.add(u.getUsername());
         }
 

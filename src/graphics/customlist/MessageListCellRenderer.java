@@ -1,8 +1,7 @@
-package application.graphics.customlist;
+package graphics.customlist;
 
-import sharedresources.ImageMessage;
-import sharedresources.TextMessage;
-import sharedresources.interfaces.Message;
+import common.ImageMessage;
+import common.TextMessage;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

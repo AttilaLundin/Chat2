@@ -1,10 +1,10 @@
-package sharedresources.requests;
+package common.requests;
 
 import server.ChatRoomStorage;
 import server.UserStorage;
-import sharedresources.ChatRoom;
-import sharedresources.User;
-import sharedresources.interfaces.DataHandler;
+import common.ChatRoom;
+import common.RegisteredUser;
+import common.DataHandler;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class CreateNewChatRoom implements DataHandler, Serializable {
 
-    private List<User> usersInChatRoom;
+    private List<RegisteredUser> usersInChatRoom;
     private String chatRoomName;
 
     /**
@@ -26,7 +26,7 @@ public class CreateNewChatRoom implements DataHandler, Serializable {
      * @param chatRoomName The name of the chat room to be created.
      * @param usersInChatRoom The list of users in the chat room.
      */
-    public CreateNewChatRoom(String chatRoomName, List<User> usersInChatRoom){
+    public CreateNewChatRoom(String chatRoomName, List<RegisteredUser> usersInChatRoom){
         this.usersInChatRoom = usersInChatRoom;
         this.chatRoomName = chatRoomName;
 

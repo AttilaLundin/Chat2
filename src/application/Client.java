@@ -1,9 +1,9 @@
 package application;
 
-import sharedresources.User;
-import sharedresources.ChatRoom;
-import sharedresources.interfaces.Message;
-import sharedresources.requests.*;
+import common.RegisteredUser;
+import common.ChatRoom;
+import common.Message;
+import common.requests.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -21,7 +21,7 @@ public class Client {
     private static final String SERVER_ADDRESS = "localhost";
     private static final int SERVER_PORT = 1234;
     private Socket socket;
-    private User user;
+    private RegisteredUser user;
     private ObjectOutputStream output;
     private ObjectInputStream input;
 
@@ -76,7 +76,7 @@ public class Client {
             output.writeObject(loginRequest);
             output.flush();
 
-            User user = (User) input.readObject();
+            RegisteredUser user = (RegisteredUser) input.readObject();
             if(user != null) {
                 this.user = user;
 
@@ -103,7 +103,7 @@ public class Client {
             output.writeObject(registerRequest);
             output.flush();
 
-            User user = (User) input.readObject();
+            RegisteredUser user = (RegisteredUser) input.readObject();
             if(user != null) {
                 this.user = user;
                 return true;
@@ -123,18 +123,18 @@ public class Client {
      * @param fetchAllUser the fetch all user request to send
      * @return a list of users
      */
-    public List<User> getUsersList(FetchAllUser fetchAllUser){
+    public List<RegisteredUser> getUsersList(FetchAllUser fetchAllUser){
         try {
 
             output.writeObject(fetchAllUser);
             output.flush();
 
-            List <User> userList = new ArrayList<>();
+            List <RegisteredUser> userList = new ArrayList<>();
             while(true){
                 Object o = input.readObject();
                 if(o == null)return new ArrayList<>();
                 if(o instanceof Boolean) return userList;
-                if(o instanceof User u) userList.add(u);
+                if(o instanceof RegisteredUser u) userList.add(u);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -218,7 +218,7 @@ public class Client {
      *
      * @return the user of the current session
      */
-    public User getUser(){
+    public RegisteredUser getUser(){
         return user;
     }
 

@@ -1,7 +1,7 @@
-package application.graphics;
+package graphics;
 
 import application.Client;
-import sharedresources.requests.LoginRequest;
+import common.requests.LoginRequest;
 
 
 import javax.swing.*;
@@ -40,7 +40,6 @@ public class LoginWindow extends JFrame{
         setContentPane(rootPanel);
         setSize(screeSize.width / 5,screeSize.height  / 2);
         setMinimumSize(minmumWindowSize);
-        setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeButtons();
         getRootPane().setDefaultButton(loginButton);

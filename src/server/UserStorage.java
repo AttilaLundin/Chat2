@@ -1,8 +1,8 @@
 package server;
 
-import sharedresources.User;
-import sharedresources.requests.LoginRequest;
-import sharedresources.requests.RegisterRequest;
+import common.RegisteredUser;
+import common.requests.LoginRequest;
+import common.requests.RegisterRequest;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class UserStorage implements Serializable {
 
-    private final Map<String, User> registeredUsers;
+    private final Map<String, RegisteredUser> registeredUsers;
 
     /**
      * Constructor for the UserStorage class. Initializes a ConcurrentHashMap for registered users.
@@ -30,9 +30,9 @@ public class UserStorage implements Serializable {
      * @param loginRequestAttempt the login request containing the username and password
      * @return the User object if validation is successful, null otherwise
      */
-    public User validateUser(LoginRequest loginRequestAttempt){
+    public RegisteredUser validateUser(LoginRequest loginRequestAttempt){
 
-        User user = registeredUsers.get(loginRequestAttempt.getUsername());
+        RegisteredUser user = registeredUsers.get(loginRequestAttempt.getUsername());
 
         if(user == null) return null;
         if (user.correctCredentials(loginRequestAttempt)) {
@@ -50,10 +50,10 @@ public class UserStorage implements Serializable {
      * @param registerRequest the register request containing the username and password
      * @return the newly created User object if creation is successful, null otherwise
      */
-    public User createUser(RegisterRequest registerRequest){
+    public RegisteredUser createUser(RegisterRequest registerRequest){
         String username = registerRequest.getUsername();
         if(registeredUsers.containsKey(username)) return null;
-        User newUser = new User.UserBuilder().username(registerRequest.getUsername()).password(registerRequest.getPassword()).build();
+        RegisteredUser newUser = new RegisteredUser.UserBuilder().username(registerRequest.getUsername()).password(registerRequest.getPassword()).build();
         registeredUsers.put(username, newUser);
         return newUser;
     }
@@ -63,7 +63,7 @@ public class UserStorage implements Serializable {
      *
      * @return a map of all registered users
      */
-    public Map<String, User> getAllUsers(){
+    public Map<String, RegisteredUser> getAllUsers(){
         return registeredUsers;
     }
 }

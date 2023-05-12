@@ -1,4 +1,4 @@
-package sharedresources.interfaces;
+package common;
 
 /**
  * An interface that represents a user in the chat application.

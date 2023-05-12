@@ -1,9 +1,9 @@
-package sharedresources.requests;
+package common.requests;
 
 import server.ChatRoomStorage;
 import server.UserStorage;
-import sharedresources.interfaces.DataHandler;
-import sharedresources.interfaces.Message;
+import common.DataHandler;
+import common.Message;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

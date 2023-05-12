@@ -1,6 +1,4 @@
-package sharedresources.interfaces;
-
-import sharedresources.User;
+package common;
 
 
 /**
@@ -14,5 +12,5 @@ public interface Message{
      *
      * @return User object representing the sender of the message
      */
-    User getSender();
+    RegisteredUser getSender();
 }

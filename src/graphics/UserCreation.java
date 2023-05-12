@@ -1,7 +1,7 @@
-package application.graphics;
+package graphics;
 
 import application.Client;
-import sharedresources.requests.RegisterRequest;
+import common.requests.RegisterRequest;
 
 import javax.swing.*;
 import java.awt.Toolkit;
