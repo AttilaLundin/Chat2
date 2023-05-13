@@ -40,7 +40,7 @@ public class Dashboard extends JFrame{
     private JLabel displayNameLabel;
     private JList<RegisteredUser> userList;
     private DefaultListModel<RegisteredUser> userListModel;
-    private List<RegisteredUser> selectedUsernames = new ArrayList<>();
+    private final List<RegisteredUser> selectedUsernames = new ArrayList<>();
     private ChatRoom selectedChatroom;
     private JButton createCapyHerdButton;
     private JPanel displayBarPanel;
@@ -51,8 +51,8 @@ public class Dashboard extends JFrame{
     private JButton refreshButton;
     private JTextField chatRoomNameTextField;
     private JPanel userPanel;
-    private RegisteredUser user;
-    private Client client;
+    private final RegisteredUser user;
+    private final Client client;
 
     /**
      * Constructs a new Dashboard instance with a given client.
@@ -189,11 +189,10 @@ public class Dashboard extends JFrame{
     }
 
     private void onGitHubButtonClicked(ActionEvent e) {
-        String url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
             try{
-                desktop.browse(new URI(url));
+                desktop.browse(new URI(GITHUB_URL));
             }catch (IOException | URISyntaxException i){
                 i.printStackTrace();
             }

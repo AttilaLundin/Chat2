@@ -22,7 +22,6 @@ public class ChatRoomTest {
     private TextMessage message1;
     private TextMessage message2;
     private TextMessage message3;
-    private List<Message> messages;
 
     /**
      * This method sets up the testing environment before each test is run.
@@ -37,7 +36,7 @@ public class ChatRoomTest {
         members.add(user2);
         members.add(user3);
 
-        messages = new ArrayList<>();
+        List<Message> messages = new ArrayList<>();
         message1 = new TextMessage.TextMessageBuilder().text("testMessage1").sender(user1).build();
         message2 = new TextMessage.TextMessageBuilder().text("testMessage2").sender(user2).build();
         message3 = new TextMessage.TextMessageBuilder().text("testMessage3").sender(user3).build();

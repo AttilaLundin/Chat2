@@ -19,8 +19,6 @@ public class ChatRoomStorageTest {
 
     private ChatRoomStorage storage;
     private RegisteredUser user1;
-    private RegisteredUser user2;
-    private RegisteredUser user3;
     private ChatRoom chatRoom1;
     private ChatRoom chatRoom2;
     private ChatRoom chatRoom3;
