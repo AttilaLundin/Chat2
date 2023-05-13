@@ -17,8 +17,8 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ChatRoomStorage implements Serializable {
 
-    private  Map<UUID, ChatRoom> chatRoomCentralStorage;
-    private  Map<RegisteredUser, List<UUID>> chatRoomsThisUsersIsIn;
+    private final Map<UUID, ChatRoom> chatRoomCentralStorage;
+    private final Map<RegisteredUser, List<UUID>> chatRoomsThisUsersIsIn;
 
     /**
      * Constructor that initializes the chat room and user storage.
@@ -54,7 +54,6 @@ public class ChatRoomStorage implements Serializable {
      * @return the chat room
      */
     public ChatRoom getChatRoom(UUID chatRoomID){
-        List<Message> list = chatRoomCentralStorage.get(chatRoomID).getMessages();
         return chatRoomCentralStorage.get(chatRoomID);
     }
 
