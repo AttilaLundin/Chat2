@@ -94,5 +94,4 @@ public class ChatRoom implements Serializable {
     public String getChatRoomName(){
         return chatRoomName;
     }
-
 }
