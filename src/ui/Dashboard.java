@@ -107,13 +107,19 @@ public class Dashboard extends JFrame{
      * Updates the list of users displayed in the interface by fetching the latest users from the client.
      */
     public void updateUserList(){
-        userListModel.clear();
-        List<RegisteredUser> usersList = client.getUsersList(new FetchAllUser());
-        if(usersList == null) return;
-        for(RegisteredUser u : usersList){
-            if(u.getUsername().equals(user.getUsername()))continue;
-            userListModel.addElement(u);
-        }
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                userListModel.clear();
+                List<RegisteredUser> usersList = client.getUsersList(new FetchAllUser());
+                if(usersList == null) return;
+                for(RegisteredUser u : usersList){
+                    if(u.getUsername().equals(user.getUsername()))continue;
+                    userListModel.addElement(u);
+                }
+            }
+        });
     }
 
     /**

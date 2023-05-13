@@ -13,9 +13,9 @@ public class RegisteredUser implements User, DataHandler, Serializable{
 
     private final String password;
 
-    private RegisteredUser(UserBuilder userBuilder){
-        this.username= Objects.requireNonNull(userBuilder.username);
-        this.password = Objects.requireNonNull(userBuilder.password);
+    private RegisteredUser(RegisteredUserBuilder registeredUserBuilder){
+        this.username= Objects.requireNonNull(registeredUserBuilder.username);
+        this.password = Objects.requireNonNull(registeredUserBuilder.password);
     }
 
     @Override
@@ -38,17 +38,17 @@ public class RegisteredUser implements User, DataHandler, Serializable{
         return username.equals(loginRequest.getUsername()) && password.equals(loginRequest.getPassword());
     }
 
-    public static class UserBuilder {
+    public static class RegisteredUserBuilder {
 
         private String username;
         private String password;
 
-        public UserBuilder username(String username){
+        public RegisteredUserBuilder username(String username){
             this.username = username;
             return this;
         }
 
-        public UserBuilder password(String password){
+        public RegisteredUserBuilder password(String password){
             this.password = password;
             return this;
         }

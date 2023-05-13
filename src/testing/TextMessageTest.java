@@ -1,15 +1,19 @@
-package common;
-
-import org.junit.jupiter.api.BeforeEach;
+import common.RegisteredUser;
+import common.TextMessage;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-
+/**
+ * This class is responsible for testing the functionality of the TextMessage class.
+ */
 public class TextMessageTest {
 
+    /**
+     * This test ensures that the correct text is retrieved from a TextMessage object.
+     */
     @Test
     public void testGetText() {
         String messageText = "Hello YADZILA!";
@@ -25,6 +29,10 @@ public class TextMessageTest {
         assertEquals(messageText, retrievedText);
     }
 
+    /**
+     * This test verifies that the correct sender is retrieved from a TextMessage object,
+     * and that the method does not return incorrect senders.
+     */
     @Test
     public void testGetSender() {
         String messageText = "Hello ROZKEK";
