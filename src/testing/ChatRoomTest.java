@@ -1,96 +1,78 @@
-package testing;
+package common;
 
-import common.ChatRoom;
-import common.Message;
-import common.RegisteredUser;
-import common.TextMessage;
-import org.junit.Before;
-import org.junit.Test;
-
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
-import static org.junit.Assert.*;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ChatRoomTest {
+
     private ChatRoom chatRoom;
-    private List<RegisteredUser> users;
-    private List<Message> messages;
+    private RegisteredUser user;
+    private Message message;
 
-    @Before
-    public void setUp() {
-        users = new ArrayList<>();
-        RegisteredUser User1 = new RegisteredUser.UserBuilder().username("User1").password("user1").build();
-        RegisteredUser User2 = new RegisteredUser.UserBuilder().username("User1").password("user1").build();
-        users.add(User1);
-        users.add(User2);
-
-        messages = new ArrayList<>();
-        messages.add(new TextMessage.TextMessageBuilder().text("hello User2").sender(User1).build());
-        messages.add(new TextMessage.TextMessageBuilder().text("hello user1").sender(User2).build());
-
-        chatRoom = new ChatRoom("Test Chat Room", users, messages);
+    @BeforeEach
+    public void setup() {
+        user = new RegisteredUser.RegisteredUserBuilder().username("testUser").password("testPassword").build();
+        message = new TextMessage.TextMessageBuilder().text("testMesage").sender(user).build();
+        List<RegisteredUser> users = new ArrayList<>();
+        users.add(user);
+        List<Message> messages = new ArrayList<>();
+        messages.add(message);
+        chatRoom = new ChatRoom("testChatRoom", users, messages);
     }
 
     @Test
     public void testGetUsers() {
-        List<RegisteredUser> retrievedUsers = chatRoom.getUsers();
-        assertEquals(users, retrievedUsers);
+        List<RegisteredUser> users = chatRoom.getUsers();
+        assertEquals(1, users.size());
+        assertTrue(users.contains(user));
     }
 
     @Test
     public void testGetChatRoomID() {
-        UUID chatRoomID = chatRoom.getChatRoomID();
-        assertNotNull(chatRoomID);
+        assertNotNull(chatRoom.getChatRoomID());
     }
 
     @Test
     public void testGetUsersInChatRoom() {
-        List<RegisteredUser> retrievedUsers = chatRoom.getUsersInChatRoom();
-        assertEquals(users, retrievedUsers);
+        List<RegisteredUser> users = chatRoom.getUsersInChatRoom();
+        assertEquals(1, users.size());
+        assertTrue(users.contains(user));
     }
 
     @Test
     public void testGetMessages() {
-        List<Message> retrievedMessages = chatRoom.getMessages();
-        assertEquals(messages, retrievedMessages);
+        List<Message> messages = chatRoom.getMessages();
+        assertEquals(1, messages.size());
+        assertTrue(messages.contains(message));
     }
 
     @Test
     public void testAddMessage() {
-        RegisteredUser User1 = new RegisteredUser.UserBuilder().username("User1").password("user1").build();
-        Message newMessage = new TextMessage.TextMessageBuilder().text("hello").sender(User1).build();
+        Message newMessage = new TextMessage.TextMessageBuilder().text("testMesage").sender(user).build();
         chatRoom.addMessage(newMessage);
-
-        List<Message> retrievedMessages = chatRoom.getMessages();
-
-        assertTrue(retrievedMessages.contains(newMessage));
-
+        List<Message> messages = chatRoom.getMessages();
+        assertEquals(2, messages.size());
+        assertTrue(messages.contains(newMessage));
     }
 
     @Test
     public void testAddMessageList() {
-        RegisteredUser User1 = new RegisteredUser.UserBuilder().username("User1").password("user1").build();
+        Message newMessage1 = new TextMessage.TextMessageBuilder().text("testMessage1").sender(user).build();
+        Message newMessage2 = new TextMessage.TextMessageBuilder().text("testMessage2").sender(user).build();
         List<Message> newMessages = new ArrayList<>();
-        Message msg = new TextMessage.TextMessageBuilder().text("this is a test for addMessagelist").sender(User1).build();
-
-        newMessages.add(msg);
-
-        chatRoom.addMessagList(newMessages);
-
-        List<Message> retrievedMessages = chatRoom.getMessages();
-        assertEquals(newMessages, retrievedMessages);
+        newMessages.add(newMessage1);
+        newMessages.add(newMessage2);
+        chatRoom.addMessageList(newMessages);
+        List<Message> messages = chatRoom.getMessages();
+        assertEquals(2, messages.size());
+        assertTrue(messages.containsAll(newMessages));
     }
 
     @Test
     public void testGetChatRoomName() {
-        String chatRoomName = chatRoom.getChatRoomName();
-        assertEquals("Test Chat Room", chatRoomName);
-    }
-
-
-    public static void main(String [] args){
+        assertEquals("testChatRoom", chatRoom.getChatRoomName());
     }
 }

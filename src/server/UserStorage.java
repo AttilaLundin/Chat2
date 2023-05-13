@@ -53,7 +53,7 @@ public class UserStorage implements Serializable {
     public RegisteredUser createUser(RegisterRequest registerRequest){
         String username = registerRequest.getUsername();
         if(registeredUsers.containsKey(username)) return null;
-        RegisteredUser newUser = new RegisteredUser.UserBuilder().username(registerRequest.getUsername()).password(registerRequest.getPassword()).build();
+        RegisteredUser newUser = new RegisteredUser.RegisteredUserBuilder().username(registerRequest.getUsername()).password(registerRequest.getPassword()).build();
         registeredUsers.put(username, newUser);
         return newUser;
     }

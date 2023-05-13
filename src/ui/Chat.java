@@ -111,7 +111,7 @@ public class Chat extends JFrame {
                 @Override
                 public void run(){
                     List<Message> messages = client.getMessages(new FetchMessages(displayedChatroom.getChatRoomID()));
-                    displayedChatroom.addMessagList(messages);
+                    displayedChatroom.addMessageList(messages);
                     updateMessageList();
                 }
             }, 0, 2, TimeUnit.SECONDS);
@@ -126,7 +126,7 @@ public class Chat extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 List<Message> messages = client.getMessages(new FetchMessages(displayedChatroom.getChatRoomID()));
-                displayedChatroom.addMessagList(messages);
+                displayedChatroom.addMessageList(messages);
                 updateMessageList();
             }
         });

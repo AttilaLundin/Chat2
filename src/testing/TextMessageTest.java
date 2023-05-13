@@ -1,12 +1,11 @@
-package testing;
+package common;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import common.RegisteredUser;
-import common.TextMessage;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 public class TextMessageTest {
@@ -14,7 +13,7 @@ public class TextMessageTest {
     @Test
     public void testGetText() {
         String messageText = "Hello YADZILA!";
-        RegisteredUser sender = new RegisteredUser.UserBuilder().username("User1").password("user1").build();
+        RegisteredUser sender = new RegisteredUser.RegisteredUserBuilder().username("User1").password("user1").build();
 
         TextMessage textMessage = new TextMessage.TextMessageBuilder()
                 .text(messageText)
@@ -29,8 +28,8 @@ public class TextMessageTest {
     @Test
     public void testGetSender() {
         String messageText = "Hello ROZKEK";
-        RegisteredUser sender = new RegisteredUser.UserBuilder().username("User1").password("user1").build();
-        RegisteredUser NOTSender = new RegisteredUser.UserBuilder().username("USER2").password("user2").build();
+        RegisteredUser sender = new RegisteredUser.RegisteredUserBuilder().username("User1").password("user1").build();
+        RegisteredUser NOTSender = new RegisteredUser.RegisteredUserBuilder().username("USER2").password("user2").build();
         TextMessage textMessage = new TextMessage.TextMessageBuilder()
                 .text(messageText)
                 .sender(sender)

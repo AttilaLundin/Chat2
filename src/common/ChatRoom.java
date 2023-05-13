@@ -35,12 +35,29 @@ public class ChatRoom implements Serializable {
     public void addMessage(Message message){
         this.messages.add(message);
     }
-    public void addMessagList(List<Message> messages){
+    public void addMessageList(List<Message> messages){
         this.messages = messages;
     }
 
     public String getChatRoomName(){
         return chatRoomName;
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if(other == this) {
+            return true;
+        }
+        if(other == null || other.getClass() != this.getClass()) {
+            return false;
+        }
+        ChatRoom chatRoom = (ChatRoom) other;
+        return this.chatRoomID.equals((chatRoom.chatRoomID));
+    }
+
+    @Override
+    public int hashCode(){
+        return this.chatRoomID.hashCode();
     }
 
 }
