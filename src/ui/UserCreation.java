@@ -70,13 +70,14 @@ public class UserCreation extends JFrame {
                         dispose();
                     }
                     else{
-                        JOptionPane.showMessageDialog(null, "Invalid credentials, please try again!", "Registration unsuccessful", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Username already taken\nPlease try again", "Registration unsuccessful" , JOptionPane.INFORMATION_MESSAGE);
                         usernameField.setText("");
                         passwordField.setText("");
                         passwordField2.setText("");
                     }
-                }else{
-                    JOptionPane.showMessageDialog(null, "Username already taken\nPlease try again", "Registration unsuccessful" , JOptionPane.INFORMATION_MESSAGE);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Invalid credentials, please try again!", "Registration unsuccessful", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });

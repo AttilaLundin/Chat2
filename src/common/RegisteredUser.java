@@ -23,11 +23,11 @@ public class RegisteredUser implements User, DataHandler, Serializable {
     /**
      * Constructs a RegisteredUser with the specified builder.
      *
-     * @param userBuilder the builder to construct a registered user
+     * @param registeredUserBuilder the builder to construct a registered user
      */
-    private RegisteredUser(UserBuilder userBuilder) {
-        this.username = Objects.requireNonNull(userBuilder.username);
-        this.password = Objects.requireNonNull(userBuilder.password);
+    private RegisteredUser(RegisteredUserBuilder registeredUserBuilder) {
+        this.username = Objects.requireNonNull(registeredUserBuilder.username);
+        this.password = Objects.requireNonNull(registeredUserBuilder.password);
     }
 
     /**
@@ -71,7 +71,7 @@ public class RegisteredUser implements User, DataHandler, Serializable {
     /**
      * This class provides a way to build a RegisteredUser.
      */
-    public static class UserBuilder {
+    public static class RegisteredUserBuilder {
 
         private String username;
         private String password;
@@ -82,7 +82,7 @@ public class RegisteredUser implements User, DataHandler, Serializable {
          * @param username the username
          * @return this builder
          */
-        public UserBuilder username(String username) {
+        public RegisteredUserBuilder username(String username) {
             this.username = username;
             return this;
         }
@@ -93,7 +93,7 @@ public class RegisteredUser implements User, DataHandler, Serializable {
          * @param password the password
          * @return this builder
          */
-        public UserBuilder password(String password) {
+        public RegisteredUserBuilder password(String password) {
             this.password = password;
             return this;
         }
