@@ -30,7 +30,7 @@ public class Server {
                 saveUserStorage(userStorage);
                 saveChatRoomStorage(chatroomStorage);
             }));
-
+            // Warning is fine because it's a server
             while(true){
                 Socket socket = serverSocket.accept();
                 ClientHandler clientHandler = new ClientHandler(socket, chatroomStorage, userStorage);
