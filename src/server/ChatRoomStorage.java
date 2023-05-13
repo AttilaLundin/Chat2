@@ -4,7 +4,6 @@ import common.Message;
 import common.ChatRoom;
 import common.RegisteredUser;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.UUID;
 import java.util.Map;
@@ -14,14 +13,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * A class that handles the storage of chat rooms in the chat application. This class is responsible for
- * adding and retrieving (storing) chat rooms and messages, and tracking which users are in which chat rooms.
+ * adding and retrieving chat rooms and messages, and tracking which users are in which chat rooms.
  */
 public class ChatRoomStorage implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
 
-    private final Map<UUID, ChatRoom> chatRoomCentralStorage;
-    private final Map<RegisteredUser, List<UUID>> chatRoomsThisUsersIsIn;
+    private  Map<UUID, ChatRoom> chatRoomCentralStorage;
+    private  Map<RegisteredUser, List<UUID>> chatRoomsThisUsersIsIn;
 
     /**
      * Constructor that initializes the chat room and user storage.

@@ -39,6 +39,7 @@ public class ClientHandler implements Runnable{
             ObjectInputStream input = new ObjectInputStream(socket.getInputStream())){
             socket.setKeepAlive(true);
 
+            // Warning is fine in this case because it's a server
             while (true){
                 Object object = input.readObject();
                 if(object instanceof DataHandler data){
