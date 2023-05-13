@@ -49,7 +49,6 @@ public class FetchAllChatRooms implements DataHandler, Serializable {
                 return;
             }
             for(ChatRoom c : chatRoomList){
-                System.out.println(c.getChatRoomName());
                 outputStream.writeObject(c);
                 outputStream.flush();
             }
