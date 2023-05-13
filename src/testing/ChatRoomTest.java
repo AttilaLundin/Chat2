@@ -1,4 +1,4 @@
-package ModulTesting;
+package testing;
 
 import common.ChatRoom;
 import common.Message;

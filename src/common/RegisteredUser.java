@@ -9,9 +9,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class RegisteredUser implements User, DataHandler, Serializable{
-    private String username;
+    private final String username;
 
-    private String password;
+    private final String password;
 
     private RegisteredUser(UserBuilder userBuilder){
         this.username= Objects.requireNonNull(userBuilder.username);

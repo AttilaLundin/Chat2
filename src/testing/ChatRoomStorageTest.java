@@ -1,4 +1,4 @@
-package ModulTesting;
+package testing;
 import common.TextMessage;
 import server.ChatRoomStorage;
 import common.RegisteredUser;
@@ -8,7 +8,6 @@ import common.ChatRoom;
 import common.Message;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,12 +1,8 @@
-package ModulTesting;
+package testing;
 import org.junit.Test;
 import server.UserStorage;
 import common.RegisteredUser;
 import common.requests.LoginRequest;
-import common.requests.RegisterRequest;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class UserStorageTest {
 @Test
