@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
 /**
  * A JFrame class that provides a chat interface for users to send and receive messages.
  * It allows users to send text messages, and drag-and-drop files (currently only images) into the chat.
@@ -95,12 +96,17 @@ public class Chat extends JFrame {
      * Updates the list of messages displayed in the interface by fetching the latest messages from the chat room.
      */
     public void updateMessageList(){
-        messageListModel.clear();
-        List<Message> messages = displayedChatroom.getMessages();
-        for(Message m : messages){
-            messageListModel.addElement(m);
-        }
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                messageListModel.clear();
+                List<Message> messages = displayedChatroom.getMessages();
+                for(Message m : messages){
+                    messageListModel.addElement(m);
+                }
+            }
+        });
     }
+
 
     /**
      * Starts a timer that updates the list of messages displayed in the interface every two seconds.
@@ -114,7 +120,7 @@ public class Chat extends JFrame {
                     displayedChatroom.addMessageList(messages);
                     updateMessageList();
                 }
-            }, 0, 2, TimeUnit.SECONDS);
+            }, 1, 3, TimeUnit.SECONDS);
     }
 
     /**

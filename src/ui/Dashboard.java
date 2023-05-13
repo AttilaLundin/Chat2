@@ -40,7 +40,7 @@ public class Dashboard extends JFrame{
     private JLabel displayNameLabel;
     private JList<RegisteredUser> userList;
     private DefaultListModel<RegisteredUser> userListModel;
-    private List<RegisteredUser> selectedUsernames = new ArrayList<>();
+    private final List<RegisteredUser> selectedUsernames = new ArrayList<>();
     private ChatRoom selectedChatroom;
     private JButton createCapyHerdButton;
     private JPanel displayBarPanel;
@@ -51,8 +51,8 @@ public class Dashboard extends JFrame{
     private JButton refreshButton;
     private JTextField chatRoomNameTextField;
     private JPanel userPanel;
-    private RegisteredUser user;
-    private Client client;
+    private final RegisteredUser user;
+    private final Client client;
 
     /**
      * Constructs a new Dashboard instance with a given client.
@@ -107,13 +107,19 @@ public class Dashboard extends JFrame{
      * Updates the list of users displayed in the interface by fetching the latest users from the client.
      */
     public void updateUserList(){
-        userListModel.clear();
-        List<RegisteredUser> usersList = client.getUsersList(new FetchAllUser());
-        if(usersList == null) return;
-        for(RegisteredUser u : usersList){
-            if(u.getUsername().equals(user.getUsername()))continue;
-            userListModel.addElement(u);
-        }
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                userListModel.clear();
+                List<RegisteredUser> usersList = client.getUsersList(new FetchAllUser());
+                if(usersList == null) return;
+                for(RegisteredUser u : usersList){
+                    if(u.getUsername().equals(user.getUsername()))continue;
+                    userListModel.addElement(u);
+                }
+            }
+        });
     }
 
     /**
@@ -183,11 +189,10 @@ public class Dashboard extends JFrame{
     }
 
     private void onGitHubButtonClicked(ActionEvent e) {
-        String url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
             try{
-                desktop.browse(new URI(url));
+                desktop.browse(new URI(GITHUB_URL));
             }catch (IOException | URISyntaxException i){
                 i.printStackTrace();
             }

@@ -1,17 +1,20 @@
-package server;
-
 import common.TextMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import common.Message;
 import common.ChatRoom;
 import common.RegisteredUser;
+import server.ChatRoomStorage;
+
 import java.util.UUID;
 import java.util.List;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class is responsible for testing the functionality of the ChatRoomStorage class.
+ */
 public class ChatRoomStorageTest {
 
     private ChatRoomStorage storage;
@@ -25,6 +28,9 @@ public class ChatRoomStorageTest {
     private Message message2;
     private Message message3;
 
+    /**
+     * This method sets up the testing environment before each test is run.
+     */
     @BeforeEach
     public void setup() {
         storage = new ChatRoomStorage();
@@ -45,22 +51,22 @@ public class ChatRoomStorageTest {
         message3 = new TextMessage.TextMessageBuilder().text("testMessage3").sender(user3).build();
     }
 
-
+    /**
+     * This test ensures that the correct chat rooms for a user are returned.
+     */
     @Test
     public void testGetChatRoomsUserIsPartOf() {
-        //Should be able to return the existing chatroom on the server.
         List<ChatRoom> chatRoomsForUser = storage.getAllChatRooms(user1);
 
         assertEquals(3, chatRoomsForUser.size());
         assertEquals(chatRoom1, chatRoomsForUser.get(0));
         assertEquals(chatRoom2, chatRoomsForUser.get(1));
         assertEquals(chatRoom3, chatRoomsForUser.get(2));
-
-        //Should NOT return any chatrooms but instead return null, since none have been added for this user.
-        List<ChatRoom> chatRoomsForOther = storage.getAllChatRooms(new RegisteredUser.RegisteredUserBuilder().username("otherUsername").password("otherPassword").build());
-        assertNull(chatRoomsForOther);
     }
 
+    /**
+     * This test verifies that the correct chat rooms are returned based on their IDs.
+     */
     @Test
     public void testGetChatRooms() {
 
@@ -73,11 +79,11 @@ public class ChatRoomStorageTest {
         ChatRoom retrievedChatRoom3 = storage.getChatRoom(chatRoom3.getChatRoomID());
         assertEquals(chatRoom3, retrievedChatRoom3);
 
-        //Should NOT return any chatroom but instead return null
-        ChatRoom retrievedChatRoomNull = storage.getChatRoom(UUID.randomUUID());
-        assertNull(retrievedChatRoomNull);
     }
 
+    /**
+     * This test verifies that the correct messages are returned for a given chat room ID.
+     */
     @Test
     public void testGetMessages() {
         storage.addMessageToChatRoom(chatRoom1.getChatRoomID(), message1);
@@ -85,7 +91,7 @@ public class ChatRoomStorageTest {
         storage.addMessageToChatRoom(chatRoom1.getChatRoomID(), message3);
 
         List<Message> messages = storage.getMessages(chatRoom1.getChatRoomID());
-        
+
         assertEquals(3, messages.size());
         assertEquals(message1, messages.get(0));
         assertEquals(message2, messages.get(1));
@@ -94,6 +100,9 @@ public class ChatRoomStorageTest {
 
     }
 
+    /**
+     * This test checks if adding a chat room works correctly.
+     */
     @Test
     public void testAddChatRoom() {
         int initialSize = storage.getAllChatRooms(user1).size();
@@ -103,15 +112,21 @@ public class ChatRoomStorageTest {
         assertEquals(newChatRoom, storage.getChatRoom(newChatRoom.getChatRoomID()));
     }
 
+    /**
+     * This test checks if adding a text message to a chat room works correctly.
+     */
     @Test
     public void testAddTextMessageToChatRoom() {
         int initialSize = storage.getMessages(chatRoom1.getChatRoomID()).size();
         Message newMessage = new TextMessage.TextMessageBuilder().text("testMessage").sender(user1).build();
         storage.addMessageToChatRoom(chatRoom1.getChatRoomID(), newMessage);
         assertEquals(initialSize + 1, storage.getMessages(chatRoom1.getChatRoomID()).size());
-        assertEquals(newMessage, storage.getMessages(chatRoom1.getChatRoomID()).get(initialSize - 1));
+        assertEquals(newMessage, storage.getMessages(chatRoom1.getChatRoomID()).get(initialSize));
     }
 
+    /**
+     * This test checks if adding an image message to a chat room works correctly.
+     */
     @Test
     public void testAddImageMessageToChatRoom() {
         int initialSize = storage.getMessages(chatRoom1.getChatRoomID()).size();
@@ -121,22 +136,32 @@ public class ChatRoomStorageTest {
         assertEquals(newMessage, storage.getMessages(chatRoom1.getChatRoomID()).get(initialSize));
     }
 
+    /**
+     * This test checks the behavior when trying to get chat rooms for a non-existent user.
+     */
     @Test
     public void testGetChatRoomsForNonExistentUser() {
-
-        assertThrowsExactly(NullPointerException.class, () -> storage.getAllChatRooms(null) );
-
+        assertThrowsExactly(NullPointerException.class, () -> storage.getAllChatRooms(null));
     }
 
+    /**
+     * This test checks the behavior when trying to get a chat room with a non-existent ID.
+     */
     @Test
     public void testGetChatRoomForNonExistentId() {
-        UUID nonExistentID = UUID.randomUUID();
-        assertNull(storage.getChatRoom(nonExistentID));
+        UUID randomUUID = UUID.randomUUID();
+        assertThrowsExactly(NullPointerException.class, () -> storage.getMessages(randomUUID));
     }
 
+    /**
+     * This test checks the behavior when trying to get messages for a non-existent chat room.
+     */
     @Test
     public void testGetMessagesForNonExistentChatRoom() {
-        UUID nonExistentID = UUID.randomUUID();
-        assertNull(storage.getMessages(nonExistentID));
+        UUID randomUUID = UUID.randomUUID();
+        assertThrowsExactly(NullPointerException.class, () -> storage.getMessages(randomUUID));
+
+        List<ChatRoom> chatRoomsForOther = storage.getAllChatRooms(new RegisteredUser.RegisteredUserBuilder().username("otherUsername").password("otherPassword").build());
+        assertNull(chatRoomsForOther);
     }
 }

@@ -53,7 +53,7 @@ public class RegisteredUser implements User, DataHandler, Serializable {
         try {
             outputStream.writeObject(chatRoomStorage.getAllChatRooms(this));
             outputStream.flush();
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
@@ -68,6 +68,7 @@ public class RegisteredUser implements User, DataHandler, Serializable {
         return username.equals(loginRequest.getUsername()) && password.equals(loginRequest.getPassword());
     }
 
+    public static class RegisteredUserBuilder {
     /**
      * This class provides a way to build a RegisteredUser.
      */
@@ -83,10 +84,12 @@ public class RegisteredUser implements User, DataHandler, Serializable {
          * @return this builder
          */
         public RegisteredUserBuilder username(String username) {
+        public RegisteredUserBuilder username(String username){
             this.username = username;
             return this;
         }
 
+        public RegisteredUserBuilder password(String password){
         /**
          * Sets the password for the RegisteredUser to be built.
          *
