@@ -78,6 +78,9 @@ public class UserCreation extends JFrame {
                 }
                 else{
                     JOptionPane.showMessageDialog(null, "Invalid credentials, please try again!", "Registration unsuccessful", JOptionPane.INFORMATION_MESSAGE);
+                    usernameField.setText("");
+                    passwordField.setText("");
+                    passwordField2.setText("");
                 }
             }
         });

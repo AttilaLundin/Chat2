@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -202,8 +203,8 @@ public class Chat extends JFrame {
                             }
                         }
                     }
-                } catch (UnsupportedFlavorException | IOException e) {
-                    e.printStackTrace();
+                } catch (UnsupportedFlavorException | IOException | NoSuchElementException e){
+                    JOptionPane.showMessageDialog(null, "Come on bro, dont break my program", "That's not an image you flippin twit", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         }));
