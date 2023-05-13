@@ -6,6 +6,7 @@ import server.UserStorage;
 import common.DataHandler;
 
 import java.io.ObjectOutputStream;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -14,6 +15,8 @@ import java.util.Objects;
  * It represents a registration request from a client, containing the client's desired username and password.
  */
 public class RegisterRequest implements User, DataHandler, Serializable{
+    @Serial
+    private static final long serialVersionUID = 1L;
     private final String username;
     private final String password;
 

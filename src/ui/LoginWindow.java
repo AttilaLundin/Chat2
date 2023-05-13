@@ -29,7 +29,7 @@ public class LoginWindow extends JFrame{
 
     /**
      * Constructs a new LoginWindow instance with a given client.
-     * This also sets up the login interface and makes it visible.
+     * This also sets up the login interface.
      *
      * @param client the client that is used to send login requests
      */
@@ -43,6 +43,7 @@ public class LoginWindow extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initializeButtons();
         getRootPane().setDefaultButton(loginButton);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -91,8 +92,5 @@ public class LoginWindow extends JFrame{
                 }
 
         });
-
-
-
     }
 }

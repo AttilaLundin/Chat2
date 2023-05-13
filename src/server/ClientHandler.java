@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 public class ClientHandler implements Runnable{
     private final Socket socket;
-    private ChatRoomStorage chatRoomStorage;
+    private final ChatRoomStorage chatRoomStorage;
     private final UserStorage userStorage;
 
     /**

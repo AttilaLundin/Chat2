@@ -6,17 +6,20 @@ import common.DataHandler;
 import common.Message;
 
 import java.io.ObjectOutputStream;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * This class implements the DataHandler and Serializable interfaces.
- * It represents a message sending request from a client, containing the message and the chat room ID.
+ * It represents a message sending request from a client (user), containing the message and the chat room ID.
  */
 public class SendMessage implements DataHandler, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
-    private UUID chatRoomID;
-    private Message message;
+    private final UUID chatRoomID;
+    private final Message message;
 
     /**
      * Initializes a new SendMessage with the given chat room ID and message.

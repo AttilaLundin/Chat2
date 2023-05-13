@@ -167,7 +167,7 @@ public class Chat extends JFrame {
 
     /**
      * Initializes the drag-and-drop feature for the chat interface.
-     * This allows users to drag and drop files (currently only images) into the chat to send them as messages.
+     * This allows users to drag and drop files (only images) into the chat to send them as messages.
      */
     private void initializeDragAndDrop(){
         rootPanel.setDropTarget(new DropTarget(rootPanel, DnDConstants.ACTION_COPY, new DropTargetAdapter() {
@@ -202,6 +202,4 @@ public class Chat extends JFrame {
             }
         }));
     }
-
-
 }

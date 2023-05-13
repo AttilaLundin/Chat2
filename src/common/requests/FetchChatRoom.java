@@ -7,6 +7,7 @@ import common.DataHandler;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -15,6 +16,8 @@ import java.util.UUID;
  * It is responsible for fetching a specific chat room using its UUID.
  */
 public class FetchChatRoom implements DataHandler, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     UUID chatRoomID;
 

@@ -14,7 +14,7 @@ import java.util.*;
 /**
  * A class representing a client in the chat application. This class is responsible for creating connections
  * to the server and handling data transfer between the client and server. It manages user actions such as
- * login, registration, sending messages, fetching users, chat rooms and messages.
+ * login, registration, sending messages, fetching user, chat rooms and messages.
  */
 public class Client {
 
@@ -26,7 +26,7 @@ public class Client {
     private ObjectInputStream input;
 
     /**
-     * Connects to the server.
+     * Connects client to the server.
      */
     public void connectToServer(){
         boolean connected = false;
@@ -51,7 +51,7 @@ public class Client {
     }
 
     /**
-     * Sends a message to the server.
+     * Sends a user message to the server.
      *
      * @param sendMessage the message to send
      */

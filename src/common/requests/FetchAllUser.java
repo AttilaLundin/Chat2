@@ -7,6 +7,7 @@ import common.DataHandler;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
@@ -16,6 +17,8 @@ import java.util.Set;
  * It is responsible for fetching all users from the user storage.
  */
 public class FetchAllUser implements DataHandler, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     /**
      * Handles fetching all users from the user storage and sending them to the client through the output stream.

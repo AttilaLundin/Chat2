@@ -44,17 +44,14 @@ public class Server {
     }
 
     /**
-     * Load the user storage from a file. If the file does not exist or an error occurs while reading the file,
+     * Load the user storage from a file. If an error occurs while reading the file,
      * a new empty user storage is created.
      *
      * @return the loaded or newly created user storage
      */
     private static UserStorage loadUserStorage() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter filepath if you want to load file for users\nType \"n\" if you want a new database\n");
-        String filePath = scanner.nextLine();
-        if(filePath.equals("n")) return new UserStorage();
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(USER_STORAGE_FILE))) {
             return (UserStorage) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Error loading user storage: " + e.getMessage());
@@ -76,17 +73,13 @@ public class Server {
     }
 
     /**
-     * Load the chat room storage from a file. If the file does not exist or an error occurs while reading the file,
+     * Load the chat room storage from a file. If an error occurs while reading the file,
      * a new empty chat room storage is created.
      *
      * @return the loaded or newly created chat room storage
      */
     private static ChatRoomStorage loadChatRoomStorage() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter filepath if you want to load file for Chatrooms\nType \"n\" if you want a new database\n");
-        String filePath = scanner.nextLine();
-        if(filePath.equals("n")) return new ChatRoomStorage();
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(CHAT_ROOM_STORAGE_FILE))) {
             return (ChatRoomStorage) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Error loading chat room storage: " + e.getMessage());

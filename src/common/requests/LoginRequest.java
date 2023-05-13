@@ -8,6 +8,7 @@ import common.RegisteredUser;
 import common.DataHandler;
 
 import java.io.ObjectOutputStream;
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -15,6 +16,8 @@ import java.io.Serializable;
  * It represents a login request from a client, containing the client's username and password.
  */
 public class LoginRequest implements User, DataHandler, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     private final String username;
     private final String password;

@@ -74,7 +74,7 @@ public class Dashboard extends JFrame{
     }
 
     /**
-     * Sets up the window for the dashboard interface, including its size, location, and close operation.
+     * Sets up the window and functionality for the dashboard interface.
      */
     private void setupWindow(){
         Dimension minmumWindowSize = new Dimension(500, 300);

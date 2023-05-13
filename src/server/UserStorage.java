@@ -4,6 +4,7 @@ import common.RegisteredUser;
 import common.requests.LoginRequest;
 import common.requests.RegisterRequest;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -13,6 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * This class is responsible for user validation and user creation.
  */
 public class UserStorage implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     private final Map<String, RegisteredUser> registeredUsers;
 
