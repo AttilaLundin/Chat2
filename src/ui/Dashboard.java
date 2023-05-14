@@ -27,6 +27,8 @@ import java.util.List;
  * It allows users to select from a list of existing chatrooms, or create a new chatroom with a selected group of users.
  * The interface includes features such as a refresh button to fetch the latest chatrooms and users,
  * and a create button to create a new chatroom. The dashboard interface also includes a link to a YouTube video.
+ *
+ * @author Benhur Almedom
  */
 public class Dashboard extends JFrame{
     private static final String GITHUB_URL = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
@@ -44,7 +46,7 @@ public class Dashboard extends JFrame{
     private ChatRoom selectedChatroom;
     private JButton createCapyHerdButton;
     private JPanel displayBarPanel;
-    private JList chatRoomList;
+    private JList<ChatRoom> chatRoomList;
     private DefaultListModel<ChatRoom> chatRoomListModel;
     private JScrollPane userListScrollPane;
     private JButton enterButton;

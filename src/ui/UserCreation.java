@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 /**
  * A JFrame class that provides a user registration interface for users to input their username and password.
  * The interface includes buttons to submit the registration information and go to the login page.
+ *
+ * @author Odai Alrahem
  */
 public class UserCreation extends JFrame {
     private JPanel rootPanel;

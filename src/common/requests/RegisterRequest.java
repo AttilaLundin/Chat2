@@ -13,6 +13,8 @@ import java.util.Objects;
 /**
  * This class implements the User, DataHandler, and Serializable interfaces.
  * It represents a registration request from a client, containing the client's desired username and password.
+ *
+ * @author Attila Lundin
  */
 public class RegisterRequest implements User, DataHandler, Serializable{
     @Serial

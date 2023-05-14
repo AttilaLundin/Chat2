@@ -11,6 +11,8 @@ import java.util.Objects;
 /**
  * This class represents an image message in a chat application. Each image message is associated with
  * a sender (RegisteredUser) and the image is stored in byte array format.
+ *
+ * @author Shazhaib Kazmi
  */
 public class ImageMessage implements Message, Serializable {
     @Serial

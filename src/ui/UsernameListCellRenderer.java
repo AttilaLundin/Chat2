@@ -16,6 +16,8 @@ import java.awt.*;
  The UsernameListCellRenderer class is responsible for rendering User objects in a JList.
 
  It customizes the appearance of the list cells by displaying the username of each user.
+
+ @author Benhur Almedom
  */
 public class UsernameListCellRenderer extends DefaultListCellRenderer{
     private static final int VERTICAL_PADDING = 4;

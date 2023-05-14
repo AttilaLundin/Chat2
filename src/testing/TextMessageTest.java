@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * This class is responsible for testing the functionality of the TextMessage class.
+ * @author Benhur Almedom
  */
 public class TextMessageTest {
 

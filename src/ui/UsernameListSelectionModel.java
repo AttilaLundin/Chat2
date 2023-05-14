@@ -10,10 +10,12 @@ import java.awt.event.ActionListener;
  The UsernameListSelectionModel class is responsible for managing the selection of items in a JList.
 
  It keeps track of the last clicked index and provides a delayed clearing of the selection after consecutive clicks.
+
+ @author Benhur Almedom
  */
 public class UsernameListSelectionModel extends DefaultListSelectionModel {
     private int lastClickedIndex = -1;
-    private Timer timer;
+    private final Timer timer;
 
     /**
 

@@ -12,6 +12,8 @@ import java.util.Objects;
 /**
  * This class represents a registered user in a chat application. Each registered user is associated with
  * a unique username and password. This class implements the User and DataHandler interfaces.
+ *
+ * @author Rozgar Khatab
  */
 public class RegisteredUser implements User, DataHandler, Serializable {
     @Serial

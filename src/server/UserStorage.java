@@ -12,6 +12,8 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * A class that represents the storage of registered users in the server of a chat application.
  * This class is responsible for user validation and user creation.
+ *
+ * @author Rozgar Khatab
  */
 public class UserStorage implements Serializable {
     @Serial
@@ -44,6 +46,7 @@ public class UserStorage implements Serializable {
         else{
             return null;
         }
+
     }
 
     /**
@@ -54,11 +57,13 @@ public class UserStorage implements Serializable {
      * @return the newly created User object if creation is successful, null otherwise
      */
     public RegisteredUser createUser(RegisterRequest registerRequest){
+
         String username = registerRequest.getUsername();
         if(registeredUsers.containsKey(username)) return null;
         RegisteredUser newUser = new RegisteredUser.RegisteredUserBuilder().username(registerRequest.getUsername()).password(registerRequest.getPassword()).build();
         registeredUsers.put(username, newUser);
         return newUser;
+
     }
 
     /**
@@ -67,6 +72,8 @@ public class UserStorage implements Serializable {
      * @return a map of all registered users
      */
     public Map<String, RegisteredUser> getAllUsers(){
+
         return registeredUsers;
+
     }
 }

@@ -12,6 +12,8 @@ import java.util.Objects;
 /**
  * A class that handles client connections for the chat server. This class is responsible for receiving
  * requests from clients, processing them, and sending responses back to the clients.
+ *
+ * @author Attila Lundin
  */
 public class ClientHandler implements Runnable{
     private final Socket socket;

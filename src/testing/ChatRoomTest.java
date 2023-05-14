@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * This class is responsible for testing the functionality of the ChatRoom class.
+ * @author Odai Alrahem
  */
 public class ChatRoomTest {
 

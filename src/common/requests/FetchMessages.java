@@ -15,6 +15,8 @@ import java.util.UUID;
 /**
  * This class implements the DataHandler and Serializable interfaces.
  * It is responsible for fetching all messages from a specific chat room identified by its UUID.
+ *
+ * @author Odai Alrahem
  */
 public class FetchMessages implements DataHandler, Serializable {
     @Serial

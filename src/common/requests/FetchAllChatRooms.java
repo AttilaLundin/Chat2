@@ -15,6 +15,8 @@ import java.util.List;
 /**
  * This class implements the DataHandler interface and Serializable interface.
  * It is responsible for fetching all chat rooms that a specific user is part of.
+ *
+ * @author Rozgar Khatab
  */
 public class FetchAllChatRooms implements DataHandler, Serializable {
     @Serial

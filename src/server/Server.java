@@ -7,6 +7,8 @@ import java.net.Socket;
 /**
  * A class that represents the server of a chat application. This class is responsible for managing
  * client connections, user and chat room storage, as well as server-side operations.
+ *
+ * @author Attila Lundin
  */
 public class Server {
     private static final int PORT = 1234;

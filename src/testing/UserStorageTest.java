@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * This class tests the functionality of the UserStorage class, ensuring the correct
  * user validation and user creation behavior.
+ * @author Shazhaib Kazmi
  */
 public class UserStorageTest {
 

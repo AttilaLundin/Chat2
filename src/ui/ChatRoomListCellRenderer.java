@@ -19,6 +19,8 @@ import javax.swing.border.EmptyBorder;
  The ChatRoomListCellRenderer class is responsible for rendering ChatRoom objects in a JList.
 
  It customizes the appearance of the list cells by displaying the chat room name and its members.
+
+ @author Rozgar Khatab
  */
 public class ChatRoomListCellRenderer extends DefaultListCellRenderer{
     private static final int VERTICAL_PADDING = 8;
