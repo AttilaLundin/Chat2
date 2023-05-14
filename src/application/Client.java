@@ -15,6 +15,8 @@ import java.util.*;
  * A class representing a client in the chat application. This class is responsible for creating connections
  * to the server and handling data transfer between the client and server. It manages user actions such as
  * login, registration, sending messages, fetching user, chat rooms and messages.
+ *
+ * @author Attila Lundin
  */
 public class Client {
 
