@@ -1,6 +1,61 @@
 # Chat2
 
-Krav:
+Hur man kör programmet:
+    
+    Programmet består av två delar 
+    
+    Server sidan: 
+    Servern behövs köras på en maskin som är kopplat till ett nätverk som klienter är en del av.
+    För att starta servern måste man köra Classen vid namn Server som har följande projektpath: src/server/Server.java
+    Servern kommer lyssna på port: 1234, om så önskas går detta att justeras i Serverklassen, i sådana fall måste
+    du ändra rad 12 "private static final int PORT = 1234;" ändra heltalet till det önskade värdet, säkerställ att
+    Client.java med projektpath: src/application/Client.java har samma värde på rad 22: "private static final int SERVER_PORT = 1234;"
+    
+
+    Klient Sidan:
+    Klienten, det vill säga chattapplikationen, startas genom att köra classen ChatGUI som har en projektpath: src/application/ChatGUI.java
+    För att kunna registrera sig och logga in behöver servern köras. När du registrerar dig behöver ditt användarnamn vara minst
+    4 karatärer långt och inte överskrida 30 kararktärer. 
+
+    Följande karaktärer är ogiltiga att ha i sitt användarnamn: 
+                                        "&", "=", "_", "'", "-", ",", "<", ">", "."
+    
+    Samma längdrestiktioner gäller för lösenord, där ogiltiga karaktärer är:
+                        "(", ")", "{", "}", "[", "]", "|", "'", "´", "¬", "¦", "!", "\"", "£", "$", "%",
+                        "<", ">", "&", "*", ";", ":", "#", "^", "-", "_", "~", "+", "=", ",", "@", "."
+    
+    
+    När du har skapat en användare kan du framöver logga in med samma användare. När du har loggats in kan du på höger sida
+    se användare av chattappen, du kan välja vilka användare du vill ha i chattrummet. Sen är det bara börja chatta.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Projektets Krav:
 
     1) Servern ska kunna lagra
     2) Bilder ska kunna och tas emot som en del av Chat
