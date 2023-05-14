@@ -13,6 +13,8 @@ import java.util.UUID;
 /**
  * This class implements the DataHandler and Serializable interfaces.
  * It represents a message sending request from a client (user), containing the message and the chat room ID.
+ *
+ * @author Odai Alrahem
  */
 public class SendMessage implements DataHandler, Serializable {
     @Serial

@@ -5,6 +5,8 @@ import ui.LoginWindow;
 /**
  * The main class for running the chat application.
  * This class initializes a client, opens a login window, and connects the client to the server.
+ *
+ * @author Attila Lundin
  */
 public class ChatGUI {
 

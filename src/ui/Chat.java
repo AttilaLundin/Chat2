@@ -39,6 +39,8 @@ import java.util.concurrent.TimeUnit;
  * It allows users to send text messages, and drag-and-drop files (currently only images) into the chat.
  * The interface includes features such as a refresh button to fetch latest messages, and a send button to send messages.
  * The chat interface also includes a link to a YouTube video and a button to go back to the home screen.
+ *
+ * @author Benhur Almedom
  */
 public class Chat extends JFrame {
     private ScheduledExecutorService scheduler;
@@ -47,11 +49,11 @@ public class Chat extends JFrame {
     private JButton homeScreenButton;
     private JTextField textMessageField;
     private JButton sendButton;
-    private JList messagesList;
+    private JList<Message> messagesList;
     private JButton refreshButton;
     private JLabel chatNameLabel;
     private DefaultListModel<Message> messageListModel;
-    private ChatRoom displayedChatroom;
+    private final ChatRoom displayedChatroom;
     private final Client client;
     private final RegisteredUser user;
 

@@ -15,6 +15,8 @@ import java.util.Set;
 /**
  * This class implements the DataHandler interface and Serializable interface.
  * It is responsible for fetching all users from the user storage.
+ *
+ * @author Rozgar Khatab
  */
 public class FetchAllUser implements DataHandler, Serializable {
     @Serial

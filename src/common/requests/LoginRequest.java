@@ -14,6 +14,8 @@ import java.io.Serializable;
 /**
  * This class implements the User, DataHandler, and Serializable interfaces.
  * It represents a login request from a client, containing the client's username and password.
+ *
+ * @author Attila Lundin
  */
 public class LoginRequest implements User, DataHandler, Serializable {
     @Serial

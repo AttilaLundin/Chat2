@@ -6,6 +6,8 @@ import java.io.Serializable;
 /**
  * This class represents a text message in a chat application. Each text message is associated with
  * a sender (RegisteredUser) and the message content is stored as a String.
+ *
+ * @author Shazhaib Kazmi
  */
 public class TextMessage implements Message, Serializable {
     @Serial

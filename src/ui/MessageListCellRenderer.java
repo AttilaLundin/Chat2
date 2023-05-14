@@ -13,6 +13,8 @@ import java.awt.*;
  The MessageListCellRenderer class is responsible for rendering Message objects in a JList.
 
  It customizes the appearance of the list cells based on the type of message (TextMessage or ImageMessage).
+
+ @author Rozgar Khatab
  */
 public class MessageListCellRenderer extends DefaultListCellRenderer{
 

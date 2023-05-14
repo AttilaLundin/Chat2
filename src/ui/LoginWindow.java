@@ -15,6 +15,8 @@ import java.awt.event.ActionListener;
 /**
  * A JFrame class that provides a login interface for users to input their username and password.
  * The interface includes buttons to submit the login information, create a new user, and exit the application.
+ *
+ * @author Shazhaib Kazmi
  */
 public class LoginWindow extends JFrame{
     private JButton createUserButton;

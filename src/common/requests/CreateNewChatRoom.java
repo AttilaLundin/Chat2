@@ -15,6 +15,8 @@ import java.util.List;
 /**
  * This class implements the DataHandler interface and Serializable interface.
  * It is responsible for creating a new chat room and handling related data.
+ *
+ * @author Shazhaib Kazmi
  */
 public class CreateNewChatRoom implements DataHandler, Serializable {
     @Serial
