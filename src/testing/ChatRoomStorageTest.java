@@ -14,6 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * This class is responsible for testing the functionality of the ChatRoomStorage class.
+ *
+ * @author Odai Alrahem
  */
 public class ChatRoomStorageTest {
 
